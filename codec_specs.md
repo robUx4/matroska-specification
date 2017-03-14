@@ -23,6 +23,7 @@ Video      | "V_"
 Audio      | "A_"
 Subtitle   | "S_"
 Button     | "B_"
+Timecode   | "T_"
 
 Each `Codec ID` MUST include a `Major Codec ID` immediately following the `Codec ID Prefix`. A `Major Codec ID` MAY be followed by an OPTIONAL `Codec ID Suffix` to communicate a refinement of the `Major Codec ID`. If a `Codec ID Suffix` is used, then the `Codec ID` MUST include a forward slash ("/") as a separator between the `Major Codec ID` and the `Codec ID Suffix`. The `Major Codec ID` MUST be composed of only capital letters (A-Z) and numbers (0-9). The `Codec ID Suffix` MUST be composed of only capital letters (A-Z), numbers (0-9), underscore ("_"), and forward slash ("/").
 
@@ -713,3 +714,15 @@ Codec ID: B_VOBBTN
 Codec Name: VobBtn Buttons
 
 Description: Based on [MPEG/VOB PCI packets](http://dvd.sourceforge.net/dvdinfo/pci_pkt.html). The file contains a header consisting of the string "butonDVD" followed by the width and height in pixels (16 bits integer each) and 4 reserved bytes. The rest is full [PCI packets](http://dvd.sourceforge.net/dvdinfo/pci_pkt.html).
+
+## Timecode Codec Mappings
+
+### T_QUICKTIME
+
+Codec ID: T_QUICKTIME
+
+Codec Name: QuickTime timecode track
+
+Description: `T_QUICKTIME` is used to identify Timecode tracks as stored in QuickTime. The `QuickTime Timecode Sample Data` is stored within the Block's data section. For an explanation of `QuickTime Timecode Sample Data` read [QuickTime File Format Specification](https://developer.apple.com/library/content/documentation/QuickTime/QTFF/QTFFChap3/qtff3.html#//apple_ref/doc/uid/TP40000939-CH205-57421).
+
+Initialisation: The `Private Data` contains the `Timecode Sample Description` which in QuickTime is stored within the 'tmcd' atom after the mandatory `data reference index` value. For an explanation of the `Timecode Sample Description` read [QuickTime File Format Specification](https://developer.apple.com/library/content/documentation/QuickTime/QTFF/QTFFChap3/qtff3.html#//apple_ref/doc/uid/TP40000939-CH205-69831).
