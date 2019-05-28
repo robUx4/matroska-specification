@@ -1,0 +1,459 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EBMLSchema docType="matroska" version="4">
+  <!-- constraints on EBML Header Elements -->
+  <element name="EBMLMaxIDLength" path="1*1(\EBML\EBMLMaxIDLength)" id="0x42F2" type="uinteger" range="4" default="4" minOccurs="1" maxOccurs="1"/>
+  <element name="EBMLMaxSizeLength" path="1*1(\EBML\EBMLMaxSizeLength)" id="0x42F3" type="uinteger" range="1-8" default="8" minOccurs="1" maxOccurs="1"/>
+  <!-- Root Element-->
+  <element name="Segment" path="1*1(\Segment)" id="0x18538067" type="master" minOccurs="1" maxOccurs="1" unknownsizeallowed="1">
+    <documentation lang="en">The Root Element that contains all other Top-Level Elements (Elements defined only at Level 1). A Matroska file is composed of 1 Segment.</documentation>
+  </element>
+  <element name="SeekHead" path="0*2(\Segment\SeekHead)" id="0x114D9B74" type="master" maxOccurs="2">
+    <documentation lang="en">Contains the Segment Position of other Top-Level Elements.</documentation>
+  </element>
+  <element name="Seek" path="1*(\Segment\SeekHead\Seek)" id="0x4DBB" type="master" minOccurs="1">
+    <documentation lang="en">Contains a single seek entry to an EBML Element.</documentation>
+  </element>
+  <element name="SeekID" path="1*1(\Segment\SeekHead\Seek\SeekID)" id="0x53AB" type="binary" minOccurs="1" maxOccurs="1">
+    <documentation lang="en">The binary ID corresponding to the Element name.</documentation>
+  </element>
+  <element name="SeekPosition" path="1*1(\Segment\SeekHead\Seek\SeekPosition)" id="0x53AC" type="uinteger" minOccurs="1" maxOccurs="1">
+    <documentation lang="en">The Segment Position of the Element.</documentation>
+  </element>
+  <element name="Info" path="1*(\Segment\Info)" id="0x1549A966" type="master" minOccurs="1" recurring="1">
+    <documentation lang="en" type="definition">Contains general information about the Segment.</documentation>
+  </element>
+  <element name="TimestampScale" path="1*1(\Segment\Info\TimestampScale)" id="0x2AD7B1" type="uinteger" range="not 0" default="1000000" minOccurs="1" maxOccurs="1">
+    <documentation lang="en">Timestamp scale in nanoseconds (1.000.000 means all timestamps in the Segment are expressed in milliseconds).</documentation>
+  </element>
+  <!-- <element name="TimestampScaleDenominator" parent="/Segment/Info" level="2" id="0x2AD7B2" type="uinteger" minOccurs="1" maxOccurs="1" minver="4" default="1000000000">
+    <documentation lang="en">Timestamp scale numerator, see <a href="https://www.matroska.org/technical/specs/index.html#TimestampScale">TimestampScale</a>.</documentation>
+    TimestampScale When combined with <a href="https://www.matroska.org/technical/specs/index.html#TimestampScaleDenominator">TimestampScaleDenominator</a> the Timestamp scale is given by the fraction TimestampScale/TimestampScaleDenominator in seconds.-->
+  <element name="Duration" path="0*1(\Segment\Info\Duration)" id="0x4489" type="float" range="&gt; 0x0p+0" maxOccurs="1">
+    <documentation lang="en" type="definition">Duration of the Segment in nanoseconds based on TimestampScale.</documentation>
+  </element>
+  <element name="DateUTC" path="0*1(\Segment\Info\DateUTC)" id="0x4461" type="date" maxOccurs="1">
+    <documentation lang="en">The date and time that the Segment was created by the muxing application or library.</documentation>
+  </element>
+  <element name="Title" path="0*1(\Segment\Info\Title)" id="0x7BA9" type="utf-8" maxOccurs="1">
+    <documentation lang="en">General name of the Segment.</documentation>
+  </element>
+  <element name="MuxingApp" path="1*1(\Segment\Info\MuxingApp)" id="0x4D80" type="utf-8" minOccurs="1" maxOccurs="1">
+    <documentation lang="en" type="definition">Muxing application or library (example: "libmatroska-0.4.3").</documentation>
+    <documentation lang="en" type="usage notes">Include the full name of the application or library followed by the version number.</documentation>
+  </element>
+  <element name="WritingApp" path="1*1(\Segment\Info\WritingApp)" id="0x5741" type="utf-8" minOccurs="1" maxOccurs="1">
+    <documentation lang="en" type="definition">Writing application (example: "mkvmerge-0.3.3").</documentation>
+    <documentation lang="en" type="usage notes">Include the full name of the application followed by the version number.</documentation>
+  </element>
+  <element name="Cluster" path="0*(\Segment\Cluster)" id="0x1F43B675" type="master" unknownsizeallowed="1">
+    <documentation lang="en">The Top-Level Element containing the (monolithic) Block structure.</documentation>
+  </element>
+  <element name="Timestamp" path="1*1(\Segment\Cluster\Timestamp)" id="0xE7" type="uinteger" minOccurs="1" maxOccurs="1">
+    <documentation lang="en">Absolute timestamp of the cluster (based on TimestampScale).</documentation>
+  </element>
+  <element name="PrevSize" path="0*1(\Segment\Cluster\PrevSize)" id="0xAB" type="uinteger" maxOccurs="1">
+    <documentation lang="en">Size of the previous Cluster, in octets. Can be useful for backward playing.</documentation>
+  </element>
+  <element name="SimpleBlock" path="0*(\Segment\Cluster\SimpleBlock)" id="0xA3" type="binary">
+    <documentation lang="en">Similar to <a href="https://www.matroska.org/technical/specs/index.html#Block">Block</a> but without all the extra information, mostly used to reduced overhead when no extra feature is needed. (see <a href="https://www.matroska.org/technical/specs/index.html#simpleblock_structure">SimpleBlock Structure</a>)</documentation>
+  </element>
+  <element name="BlockGroup" path="0*(\Segment\Cluster\BlockGroup)" id="0xA0" type="master">
+    <documentation lang="en">Basic container of information containing a single Block and information specific to that Block.</documentation>
+  </element>
+  <element name="Block" path="1*1(\Segment\Cluster\BlockGroup\Block)" id="0xA1" type="binary" minOccurs="1" maxOccurs="1">
+    <documentation lang="en">Block containing the actual data to be rendered and a timestamp relative to the Cluster Timestamp. (see <a href="https://www.matroska.org/technical/specs/index.html#block_structure">Block Structure</a>)</documentation>
+  </element>
+  <element name="BlockAdditions" path="0*1(\Segment\Cluster\BlockGroup\BlockAdditions)" id="0x75A1" type="master" maxOccurs="1">
+    <documentation lang="en">Contain additional blocks to complete the main one. An EBML parser that has no knowledge of the Block structure could still see and use/skip these data.</documentation>
+  </element>
+  <element name="BlockMore" path="1*(\Segment\Cluster\BlockGroup\BlockAdditions\BlockMore)" id="0xA6" type="master" minOccurs="1">
+    <documentation lang="en">Contain the BlockAdditional and some parameters.</documentation>
+  </element>
+  <element name="BlockAddID" path="1*1(\Segment\Cluster\BlockGroup\BlockAdditions\BlockMore\BlockAddID)" id="0xEE" type="uinteger" range="not 0" default="1" minOccurs="1" maxOccurs="1">
+    <documentation lang="en">An ID to identify the BlockAdditional level.</documentation>
+  </element>
+  <element name="BlockAdditional" path="1*1(\Segment\Cluster\BlockGroup\BlockAdditions\BlockMore\BlockAdditional)" id="0xA5" type="binary" minOccurs="1" maxOccurs="1">
+    <documentation lang="en">Interpreted by the codec as it wishes (using the BlockAddID).</documentation>
+  </element>
+  <element name="BlockDuration" path="0*1(\Segment\Cluster\BlockGroup\BlockDuration)" id="0x9B" type="uinteger" default="DefaultDuration" maxOccurs="1">
+    <documentation lang="en">The duration of the Block (based on TimestampScale). This Element is mandatory when DefaultDuration is set for the track (but can be omitted as other default values). When not written and with no DefaultDuration, the value is assumed to be the difference between the timestamp of this Block and the timestamp of the next Block in "display" order (not coding order). This Element can be useful at the end of a Track (as there is no other Block available), or when there is a break in a track like for subtitle tracks.</documentation>
+  </element>
+  <element name="ReferenceBlock" path="0*(\Segment\Cluster\BlockGroup\ReferenceBlock)" id="0xFB" type="integer">
+    <documentation lang="en">Timestamp of another frame used as a reference (ie: B or P frame). The timestamp is relative to the block it's attached to.</documentation>
+  </element>
+  <element name="DiscardPadding" path="0*1(\Segment\Cluster\BlockGroup\DiscardPadding)" id="0x75A2" type="integer" maxOccurs="1">
+    <documentation lang="en">Duration in nanoseconds of the silent data added to the Block (padding at the end of the Block for positive value, at the beginning of the Block for negative value). The duration of DiscardPadding is not calculated in the duration of the TrackEntry and SHOULD be discarded during playback.</documentation>
+  </element>
+  <element name="Tracks" path="0*(\Segment\Tracks)" id="0x1654AE6B" type="master" recurring="1">
+    <documentation lang="en">A Top-Level Element of information with many tracks described.</documentation>
+  </element>
+  <element name="TrackEntry" path="1*(\Segment\Tracks\TrackEntry)" id="0xAE" type="master" minOccurs="1">
+    <documentation lang="en">Describes a track with all Elements.</documentation>
+  </element>
+  <element name="TrackNumber" path="1*1(\Segment\Tracks\TrackEntry\TrackNumber)" id="0xD7" type="uinteger" range="not 0" minOccurs="1" maxOccurs="1">
+    <documentation lang="en">The track number as used in the Block Header (using more than 127 tracks is not encouraged, though the design allows an unlimited number).</documentation>
+  </element>
+  <element name="TrackUID" path="1*1(\Segment\Tracks\TrackEntry\TrackUID)" id="0x73C5" type="uinteger" range="not 0" minOccurs="1" maxOccurs="1">
+    <documentation lang="en">A unique ID to identify the Track. This SHOULD be kept the same when making a direct stream copy of the Track to another file.</documentation>
+  </element>
+  <element name="TrackType" path="1*1(\Segment\Tracks\TrackEntry\TrackType)" id="0x83" type="uinteger" range="1-254" minOccurs="1" maxOccurs="1">
+    <documentation lang="en">A set of track types coded on 8 bits.</documentation>
+    <restriction>
+      <enum value="1" label="video"/>
+      <enum value="2" label="audio"/>
+      <enum value="3" label="complex"/>
+      <enum value="16" label="logo"/>
+      <enum value="17" label="subtitle"/>
+      <enum value="18" label="buttons"/>
+      <enum value="32" label="control"/>
+    </restriction>
+  </element>
+  <element name="FlagEnabled" path="1*1(\Segment\Tracks\TrackEntry\FlagEnabled)" id="0xB9" type="uinteger" range="0-1" default="1" minOccurs="1" maxOccurs="1">
+    <documentation lang="en">Set if the track is usable. (1 bit)</documentation>
+  </element>
+  <element name="FlagDefault" path="1*1(\Segment\Tracks\TrackEntry\FlagDefault)" id="0x88" type="uinteger" range="0-1" default="1" minOccurs="1" maxOccurs="1">
+    <documentation lang="en">Set if that track (audio, video or subs) SHOULD be active if no language found matches the user preference. (1 bit)</documentation>
+  </element>
+  <element name="FlagForced" path="1*1(\Segment\Tracks\TrackEntry\FlagForced)" id="0x55AA" type="uinteger" range="0-1" default="0" minOccurs="1" maxOccurs="1">
+    <documentation lang="en">Set if that track MUST be active during playback. There can be many forced track for a kind (audio, video or subs), the player SHOULD select the one which language matches the user preference or the default + forced track. Overlay MAY happen between a forced and non-forced track of the same kind. (1 bit)</documentation>
+  </element>
+  <element name="FlagLacing" path="1*1(\Segment\Tracks\TrackEntry\FlagLacing)" id="0x9C" type="uinteger" range="0-1" default="1" minOccurs="1" maxOccurs="1">
+    <documentation lang="en">Set if the track MAY contain blocks using lacing. (1 bit)</documentation>
+  </element>
+  <element name="DefaultDuration" path="0*1(\Segment\Tracks\TrackEntry\DefaultDuration)" id="0x23E383" type="uinteger" range="not 0" maxOccurs="1">
+    <documentation lang="en">Number of nanoseconds (not scaled via TimestampScale) per frame ('frame' in the Matroska sense -- one Element put into a (Simple)Block).</documentation>
+  </element>
+  <element name="Name" path="0*1(\Segment\Tracks\TrackEntry\Name)" id="0x536E" type="utf-8" maxOccurs="1">
+    <documentation lang="en">A human-readable track name.</documentation>
+  </element>
+  <element name="Language" path="0*1(\Segment\Tracks\TrackEntry\Language)" id="0x22B59C" type="string" default="eng" maxOccurs="1">
+    <documentation lang="en">Specifies the language of the track in the <a href="https://www.matroska.org/technical/specs/index.html#languages">Matroska languages form</a>. This Element MUST be ignored if the LanguageIETF Element is used in the same TrackEntry.</documentation>
+  </element>
+  <element name="LanguageIETF" path="0*1(\Segment\Tracks\TrackEntry\LanguageIETF)" id="0x22B59D" type="string" maxOccurs="1">
+    <documentation lang="en">Specifies the language of the track according to <a href="https://tools.ietf.org/html/bcp47">BCP 47</a> and using the <a href="https://www.iana.com/assignments/language-subtag-registry/language-subtag-registry">IANA Language Subtag Registry</a>. If this Element is used, then any Language Elements used in the same TrackEntry MUST be ignored.</documentation>
+  </element>
+  <element name="CodecID" path="1*1(\Segment\Tracks\TrackEntry\CodecID)" id="0x86" type="string" minOccurs="1" maxOccurs="1">
+    <documentation lang="en">An ID corresponding to the codec, see the <a href="https://www.matroska.org/technical/specs/codecid/index.html">codec page</a> for more info.</documentation>
+  </element>
+  <element name="CodecPrivate" path="0*1(\Segment\Tracks\TrackEntry\CodecPrivate)" id="0x63A2" type="binary" maxOccurs="1">
+    <documentation lang="en">Private data only known to the codec.</documentation>
+  </element>
+  <element name="CodecName" path="0*1(\Segment\Tracks\TrackEntry\CodecName)" id="0x258688" type="utf-8" maxOccurs="1">
+    <documentation lang="en">A human-readable string specifying the codec.</documentation>
+  </element>
+  <element name="CodecDelay" path="0*1(\Segment\Tracks\TrackEntry\CodecDelay)" id="0x56AA" type="uinteger" default="0" maxOccurs="1">
+    <documentation lang="en">CodecDelay is The codec-built-in delay in nanoseconds. This value MUST be subtracted from each block timestamp in order to get the actual timestamp. The value SHOULD be small so the muxing of tracks with the same actual timestamp are in the same Cluster.</documentation>
+  </element>
+  <element name="SeekPreRoll" path="1*1(\Segment\Tracks\TrackEntry\SeekPreRoll)" id="0x56BB" type="uinteger" default="0" minOccurs="1" maxOccurs="1">
+    <documentation lang="en">After a discontinuity, SeekPreRoll is the duration in nanoseconds of the data the decoder MUST decode before the decoded data is valid.</documentation>
+  </element>
+  <element name="Video" path="0*1(\Segment\Tracks\TrackEntry\Video)" id="0xE0" type="master" maxOccurs="1">
+    <documentation lang="en">Video settings.</documentation>
+  </element>
+  <element name="FlagInterlaced" path="1*1(\Segment\Tracks\TrackEntry\Video\FlagInterlaced)" id="0x9A" type="uinteger" range="0-2" default="0" minOccurs="1" maxOccurs="1">
+    <documentation lang="en">A flag to declare if the video is known to be progressive or interlaced and if applicable to declare details about the interlacement.</documentation>
+    <restriction>
+      <enum value="0" label="undetermined"/>
+      <enum value="1" label="interlaced"/>
+      <enum value="2" label="progressive"/>
+    </restriction>
+  </element>
+  <element name="StereoMode" path="0*1(\Segment\Tracks\TrackEntry\Video\StereoMode)" id="0x53B8" type="uinteger" default="0" maxOccurs="1">
+    <documentation lang="en">Stereo-3D video mode. There are some more details on <a href="https://www.matroska.org/technical/specs/notes.html#3D">3D support in the Specification Notes</a>.</documentation>
+    <restriction>
+      <enum value="0" label="mono"/>
+      <enum value="1" label="side by side (left eye first)"/>
+      <enum value="2" label="top - bottom (right eye is first)"/>
+      <enum value="3" label="top - bottom (left eye is first)"/>
+      <enum value="4" label="checkboard (right eye is first)"/>
+      <enum value="5" label="checkboard (left eye is first)"/>
+      <enum value="6" label="row interleaved (right eye is first)"/>
+      <enum value="7" label="row interleaved (left eye is first)"/>
+      <enum value="8" label="column interleaved (right eye is first)"/>
+      <enum value="9" label="column interleaved (left eye is first)"/>
+      <enum value="10" label="anaglyph (cyan/red)"/>
+      <enum value="11" label="side by side (right eye first)"/>
+      <enum value="12" label="anaglyph (green/magenta)"/>
+      <enum value="13" label="both eyes laced in one Block (left eye is first)"/>
+      <enum value="14" label="both eyes laced in one Block (right eye is first)"/>
+    </restriction>
+  </element>
+  <element name="AlphaMode" path="0*1(\Segment\Tracks\TrackEntry\Video\AlphaMode)" id="0x53C0" type="uinteger" default="0" maxOccurs="1">
+    <documentation lang="en">Alpha Video Mode. Presence of this Element indicates that the BlockAdditional Element could contain Alpha data.</documentation>
+  </element>
+  <element name="PixelWidth" path="1*1(\Segment\Tracks\TrackEntry\Video\PixelWidth)" id="0xB0" type="uinteger" range="not 0" minOccurs="1" maxOccurs="1">
+    <documentation lang="en">Width of the encoded video frames in pixels.</documentation>
+  </element>
+  <element name="PixelHeight" path="1*1(\Segment\Tracks\TrackEntry\Video\PixelHeight)" id="0xBA" type="uinteger" range="not 0" minOccurs="1" maxOccurs="1">
+    <documentation lang="en">Height of the encoded video frames in pixels.</documentation>
+  </element>
+  <element name="PixelCropBottom" path="0*1(\Segment\Tracks\TrackEntry\Video\PixelCropBottom)" id="0x54AA" type="uinteger" default="0" maxOccurs="1">
+    <documentation lang="en">The number of video pixels to remove at the bottom of the image.</documentation>
+  </element>
+  <element name="PixelCropTop" path="0*1(\Segment\Tracks\TrackEntry\Video\PixelCropTop)" id="0x54BB" type="uinteger" default="0" maxOccurs="1">
+    <documentation lang="en">The number of video pixels to remove at the top of the image.</documentation>
+  </element>
+  <element name="PixelCropLeft" path="0*1(\Segment\Tracks\TrackEntry\Video\PixelCropLeft)" id="0x54CC" type="uinteger" default="0" maxOccurs="1">
+    <documentation lang="en">The number of video pixels to remove on the left of the image.</documentation>
+  </element>
+  <element name="PixelCropRight" path="0*1(\Segment\Tracks\TrackEntry\Video\PixelCropRight)" id="0x54DD" type="uinteger" default="0" maxOccurs="1">
+    <documentation lang="en">The number of video pixels to remove on the right of the image.</documentation>
+  </element>
+  <element name="DisplayWidth" path="0*1(\Segment\Tracks\TrackEntry\Video\DisplayWidth)" id="0x54B0" type="uinteger" range="not 0" default="PixelWidth - PixelCropLeft - PixelCropRight" maxOccurs="1">
+    <documentation lang="en">Width of the video frames to display. Applies to the video frame after cropping (PixelCrop* Elements). The default value is only valid when <a href="https://www.matroska.org/technical/specs/index.html#DisplayUnit">DisplayUnit</a> is 0.</documentation>
+  </element>
+  <element name="DisplayHeight" path="0*1(\Segment\Tracks\TrackEntry\Video\DisplayHeight)" id="0x54BA" type="uinteger" range="not 0" default="PixelHeight - PixelCropTop - PixelCropBottom" maxOccurs="1">
+    <documentation lang="en">Height of the video frames to display. Applies to the video frame after cropping (PixelCrop* Elements). The default value is only valid when <a href="https://www.matroska.org/technical/specs/index.html#DisplayUnit">DisplayUnit</a> is 0.</documentation>
+  </element>
+  <element name="DisplayUnit" path="0*1(\Segment\Tracks\TrackEntry\Video\DisplayUnit)" id="0x54B2" type="uinteger" default="0" maxOccurs="1">
+    <documentation lang="en">How DisplayWidth &amp; DisplayHeight are interpreted.</documentation>
+    <restriction>
+      <enum value="0" label="pixels"/>
+      <enum value="1" label="centimeters"/>
+      <enum value="2" label="inches"/>
+      <enum value="3" label="display aspect ratio"/>
+      <enum value="4" label="unknown"/>
+    </restriction>
+  </element>
+  <element name="AspectRatioType" path="0*1(\Segment\Tracks\TrackEntry\Video\AspectRatioType)" id="0x54B3" type="uinteger" default="0" maxOccurs="1">
+    <documentation lang="en">Specify the possible modifications to the aspect ratio.</documentation>
+    <restriction>
+      <enum value="0" label="free resizing"/>
+      <enum value="1" label="keep aspect ratio"/>
+      <enum value="2" label="fixed"/>
+    </restriction>
+  </element>
+  <element name="Projection" path="0*1(\Segment\Tracks\TrackEntry\Video\Projection)" id="0x7670" type="master" maxOccurs="1">
+    <documentation lang="en">Describes the video projection details. Used to render spherical and VR videos.</documentation>
+  </element>
+  <element name="ProjectionType" path="1*1(\Segment\Tracks\TrackEntry\Video\Projection\ProjectionType)" id="0x7671" type="uinteger" range="0-3" default="0" minOccurs="1" maxOccurs="1">
+    <documentation lang="en">Describes the projection used for this video track.</documentation>
+    <restriction>
+      <enum value="0" label="rectangular"/>
+      <enum value="1" label="equirectangular"/>
+      <enum value="2" label="cubemap"/>
+      <enum value="3" label="mesh"/>
+    </restriction>
+  </element>
+  <element name="ProjectionPrivate" path="0*1(\Segment\Tracks\TrackEntry\Video\Projection\ProjectionPrivate)" id="0x7672" type="binary" maxOccurs="1">
+    <documentation lang="en">Private data that only applies to a specific projection.<br/>Semantics<br/>If ProjectionType equals 0 (Rectangular), then this element must not be present.<br/>If ProjectionType equals 1 (Equirectangular), then this element must be present and contain the same binary data that would be stored inside an ISOBMFF Equirectangular Projection Box ('equi').<br/>If ProjectionType equals 2 (Cubemap), then this element must be present and contain the same binary data that would be stored inside an ISOBMFF Cubemap Projection Box ('cbmp').<br/>If ProjectionType equals 3 (Mesh), then this element must be present and contain the same binary data that would be stored inside an ISOBMFF Mesh Projection Box ('mshp').<br/>Note: ISOBMFF box size and fourcc fields are not included in the binary data, but the FullBox version and flag fields are. This is to avoid redundant framing information while preserving versioning and semantics between the two container formats.</documentation>
+  </element>
+  <element name="ProjectionPoseYaw" path="1*1(\Segment\Tracks\TrackEntry\Video\Projection\ProjectionPoseYaw)" id="0x7673" type="float" default="0x0p+0" minOccurs="1" maxOccurs="1">
+    <documentation lang="en">Specifies a yaw rotation to the projection.<br/>Semantics<br/>Value represents a clockwise rotation, in degrees, around the up vector. This rotation must be applied before any ProjectionPosePitch or ProjectionPoseRoll rotations. The value of this field should be in the -180 to 180 degree range.</documentation>
+  </element>
+  <element name="ProjectionPosePitch" path="1*1(\Segment\Tracks\TrackEntry\Video\Projection\ProjectionPosePitch)" id="0x7674" type="float" default="0x0p+0" minOccurs="1" maxOccurs="1">
+    <documentation lang="en">Specifies a pitch rotation to the projection.<br/>Semantics<br/>Value represents a counter-clockwise rotation, in degrees, around the right vector. This rotation must be applied after the ProjectionPoseYaw rotation and before the ProjectionPoseRoll rotation. The value of this field should be in the -90 to 90 degree range.</documentation>
+  </element>
+  <element name="ProjectionPoseRoll" path="1*1(\Segment\Tracks\TrackEntry\Video\Projection\ProjectionPoseRoll)" id="0x7675" type="float" default="0x0p+0" minOccurs="1" maxOccurs="1">
+    <documentation lang="en">Specifies a roll rotation to the projection.<br/>Semantics<br/>Value represents a counter-clockwise rotation, in degrees, around the forward vector. This rotation must be applied after the ProjectionPoseYaw and ProjectionPosePitch rotations. The value of this field should be in the -180 to 180 degree range.</documentation>
+  </element>
+  <element name="Audio" path="0*1(\Segment\Tracks\TrackEntry\Audio)" id="0xE1" type="master" maxOccurs="1">
+    <documentation lang="en">Audio settings.</documentation>
+  </element>
+  <element name="SamplingFrequency" path="1*1(\Segment\Tracks\TrackEntry\Audio\SamplingFrequency)" id="0xB5" type="float" range="&gt; 0x0p+0" default="0x1.f4p+12" minOccurs="1" maxOccurs="1">
+    <documentation lang="en">Sampling frequency in Hz.</documentation>
+  </element>
+  <element name="OutputSamplingFrequency" path="0*1(\Segment\Tracks\TrackEntry\Audio\OutputSamplingFrequency)" id="0x78B5" type="float" range="&gt; 0x0p+0" default="SamplingFrequency" maxOccurs="1">
+    <documentation lang="en">Real output sampling frequency in Hz (used for SBR techniques).</documentation>
+  </element>
+  <element name="Channels" path="1*1(\Segment\Tracks\TrackEntry\Audio\Channels)" id="0x9F" type="uinteger" range="not 0" default="1" minOccurs="1" maxOccurs="1">
+    <documentation lang="en">Numbers of channels in the track.</documentation>
+  </element>
+  <element name="BitDepth" path="0*1(\Segment\Tracks\TrackEntry\Audio\BitDepth)" id="0x6264" type="uinteger" range="not 0" maxOccurs="1">
+    <documentation lang="en">Bits per sample, mostly used for PCM.</documentation>
+  </element>
+  <element name="ContentEncodings" path="0*1(\Segment\Tracks\TrackEntry\ContentEncodings)" id="0x6D80" type="master" maxOccurs="1">
+    <documentation lang="en">Settings for several content encoding mechanisms like compression or encryption.</documentation>
+  </element>
+  <element name="ContentEncoding" path="1*(\Segment\Tracks\TrackEntry\ContentEncodings\ContentEncoding)" id="0x6240" type="master" minOccurs="1">
+    <documentation lang="en">Settings for one content encoding like compression or encryption.</documentation>
+  </element>
+  <element name="ContentEncodingOrder" path="1*1(\Segment\Tracks\TrackEntry\ContentEncodings\ContentEncoding\ContentEncodingOrder)" id="0x5031" type="uinteger" default="0" minOccurs="1" maxOccurs="1">
+    <documentation lang="en">Tells when this modification was used during encoding/muxing starting with 0 and counting upwards. The decoder/demuxer has to start with the highest order number it finds and work its way down. This value has to be unique over all ContentEncodingOrder Elements in the TrackEntry that contains this ContentEncodingOrder element.</documentation>
+  </element>
+  <element name="ContentEncodingScope" path="1*1(\Segment\Tracks\TrackEntry\ContentEncodings\ContentEncoding\ContentEncodingScope)" id="0x5032" type="uinteger" range="not 0" default="1" minOccurs="1" maxOccurs="1">
+    <documentation lang="en">A bit field that describes which Elements have been modified in this way. Values (big endian) can be OR'ed.</documentation>
+    <restriction>
+      <enum value="1" label="All frame contents, excluding lacing data"/>
+      <enum value="2" label="The track's private data"/>
+      <enum value="4" label="The next ContentEncoding (next `ContentEncodingOrder`. Either the data inside `ContentCompression` and/or `ContentEncryption`)"/>
+    </restriction>
+  </element>
+  <element name="ContentEncodingType" path="1*1(\Segment\Tracks\TrackEntry\ContentEncodings\ContentEncoding\ContentEncodingType)" id="0x5033" type="uinteger" default="0" minOccurs="1" maxOccurs="1">
+    <documentation lang="en">A value describing what kind of transformation is applied.</documentation>
+    <restriction>
+      <enum value="0" label="Compression"/>
+      <enum value="1" label="Encryption"/>
+    </restriction>
+  </element>
+  <element name="ContentEncryption" path="0*1(\Segment\Tracks\TrackEntry\ContentEncodings\ContentEncoding\ContentEncryption)" id="0x5035" type="master" maxOccurs="1">
+    <documentation lang="en">Settings describing the encryption used. This Element MUST be present if the value of `ContentEncodingType` is 1 (encryption) and MUST be ignored otherwise.</documentation>
+  </element>
+  <element name="ContentEncAlgo" path="1*1(\Segment\Tracks\TrackEntry\ContentEncodings\ContentEncoding\ContentEncryption\ContentEncAlgo)" id="0x47E1" type="uinteger" default="0" minOccurs="1" maxOccurs="1">
+    <documentation lang="en">The encryption algorithm used. The value '0' means that the contents have not been encrypted but only signed.</documentation>
+    <restriction>
+      <enum value="0" label="Not encrypted"/>
+      <enum value="1" label="DES - FIPS 46-3"/>
+      <enum value="2" label="Triple DES - RFC 1851"/>
+      <enum value="3" label="Twofish"/>
+      <enum value="4" label="Blowfish"/>
+      <enum value="5" label="AES - FIPS 187"/>
+    </restriction>
+  </element>
+  <element name="ContentEncKeyID" path="0*1(\Segment\Tracks\TrackEntry\ContentEncodings\ContentEncoding\ContentEncryption\ContentEncKeyID)" id="0x47E2" type="binary" maxOccurs="1">
+    <documentation lang="en">For public key algorithms this is the ID of the public key the the data was encrypted with.</documentation>
+  </element>
+  <element name="ContentEncAESSettings" path="0*1(\Segment\Tracks\TrackEntry\ContentEncodings\ContentEncoding\ContentEncryption\ContentEncAESSettings)" id="0x47E7" type="master" maxOccurs="1">
+    <documentation lang="en">Settings describing the encryption algorithm used. If `ContentEncAlgo` != 5 this MUST be ignored.</documentation>
+  </element>
+  <element name="AESSettingsCipherMode" path="1*1(\Segment\Tracks\TrackEntry\ContentEncodings\ContentEncoding\ContentEncryption\ContentEncAESSettings\AESSettingsCipherMode)" id="0x47E8" type="uinteger" minOccurs="1" maxOccurs="1">
+    <documentation lang="en">The AES cipher mode used in the encryption.</documentation>
+    <restriction>
+      <enum value="1" label="AES-CTR / Counter, NIST SP 800-38A"/>
+      <enum value="2" label="AES-CBC / Cipher Block Chaining, NIST SP 800-38A"/>
+    </restriction>
+  </element>
+  <element name="Cues" path="0*1(\Segment\Cues)" id="0x1C53BB6B" type="master" maxOccurs="1">
+    <documentation lang="en">A Top-Level Element to speed seeking access. All entries are local to the Segment. This Element SHOULD be mandatory for non <a href="https://www.matroska.org/technical/streaming/index.hmtl">"live" streams</a>.</documentation>
+  </element>
+  <element name="CuePoint" path="1*(\Segment\Cues\CuePoint)" id="0xBB" type="master" minOccurs="1">
+    <documentation lang="en">Contains all information relative to a seek point in the Segment.</documentation>
+  </element>
+  <element name="CueTime" path="1*1(\Segment\Cues\CuePoint\CueTime)" id="0xB3" type="uinteger" minOccurs="1" maxOccurs="1">
+    <documentation lang="en">Absolute timestamp according to the Segment time base.</documentation>
+  </element>
+  <element name="CueTrackPositions" path="1*(\Segment\Cues\CuePoint\CueTrackPositions)" id="0xB7" type="master" minOccurs="1">
+    <documentation lang="en">Contain positions for different tracks corresponding to the timestamp.</documentation>
+  </element>
+  <element name="CueTrack" path="1*1(\Segment\Cues\CuePoint\CueTrackPositions\CueTrack)" id="0xF7" type="uinteger" range="not 0" minOccurs="1" maxOccurs="1">
+    <documentation lang="en">The track for which a position is given.</documentation>
+  </element>
+  <element name="CueClusterPosition" path="1*1(\Segment\Cues\CuePoint\CueTrackPositions\CueClusterPosition)" id="0xF1" type="uinteger" minOccurs="1" maxOccurs="1">
+    <documentation lang="en">The Segment Position of the Cluster containing the associated Block.</documentation>
+  </element>
+  <element name="CueRelativePosition" path="0*1(\Segment\Cues\CuePoint\CueTrackPositions\CueRelativePosition)" id="0xF0" type="uinteger" maxOccurs="1">
+    <documentation lang="en">The relative position inside the Cluster of the referenced SimpleBlock or BlockGroup with 0 being the first possible position for an Element inside that Cluster.</documentation>
+  </element>
+  <element name="CueDuration" path="0*1(\Segment\Cues\CuePoint\CueTrackPositions\CueDuration)" id="0xB2" type="uinteger" maxOccurs="1">
+    <documentation lang="en">The duration of the block according to the Segment time base. If missing the track's DefaultDuration does not apply and no duration information is available in terms of the cues.</documentation>
+  </element>
+  <element name="CueBlockNumber" path="0*1(\Segment\Cues\CuePoint\CueTrackPositions\CueBlockNumber)" id="0x5378" type="uinteger" range="not 0" default="1" maxOccurs="1">
+    <documentation lang="en">Number of the Block in the specified Cluster.</documentation>
+  </element>
+  <element name="Chapters" path="0*1(\Segment\Chapters)" id="0x1043A770" type="master" maxOccurs="1" recurring="1">
+    <documentation lang="en">A system to define basic menus and partition data. For more detailed information, look at the <a href="https://www.matroska.org/technical/specs/chapters/index.html">Chapters Explanation</a>.</documentation>
+  </element>
+  <element name="EditionEntry" path="1*(\Segment\Chapters\EditionEntry)" id="0x45B9" type="master" minOccurs="1">
+    <documentation lang="en">Contains all information about a Segment edition.</documentation>
+  </element>
+  <element name="ChapterAtom" path="1*(\Segment\Chapters\EditionEntry(1*(\ChapterAtom)))" id="0xB6" type="master" minOccurs="1">
+    <documentation lang="en">Contains the atom information to use as the chapter atom (apply to all tracks).</documentation>
+  </element>
+  <element name="ChapterUID" path="1*1(\Segment\Chapters\EditionEntry\ChapterAtom\ChapterUID)" id="0x73C4" type="uinteger" range="not 0" minOccurs="1" maxOccurs="1">
+    <documentation lang="en">A unique ID to identify the Chapter.</documentation>
+  </element>
+  <element name="ChapterStringUID" path="0*1(\Segment\Chapters\EditionEntry\ChapterAtom\ChapterStringUID)" id="0x5654" type="utf-8" maxOccurs="1">
+    <documentation lang="en">A unique string ID to identify the Chapter. Use for <a href="https://w3c.github.io/webvtt/#webvtt-cue-identifier">WebVTT cue identifier storage</a>.</documentation>
+  </element>
+  <element name="ChapterTimeStart" path="1*1(\Segment\Chapters\EditionEntry\ChapterAtom\ChapterTimeStart)" id="0x91" type="uinteger" minOccurs="1" maxOccurs="1">
+    <documentation lang="en">Timestamp of the start of Chapter (not scaled).</documentation>
+  </element>
+  <element name="ChapterTimeEnd" path="0*1(\Segment\Chapters\EditionEntry\ChapterAtom\ChapterTimeEnd)" id="0x92" type="uinteger" maxOccurs="1">
+    <documentation lang="en">Timestamp of the end of Chapter (timestamp excluded, not scaled).</documentation>
+  </element>
+  <element name="ChapterDisplay" path="0*(\Segment\Chapters\EditionEntry\ChapterAtom\ChapterDisplay)" id="0x80" type="master">
+    <documentation lang="en">Contains all possible strings to use for the chapter display.</documentation>
+  </element>
+  <element name="ChapString" path="1*1(\Segment\Chapters\EditionEntry\ChapterAtom\ChapterDisplay\ChapString)" id="0x85" type="utf-8" minOccurs="1" maxOccurs="1">
+    <documentation lang="en">Contains the string to use as the chapter atom.</documentation>
+  </element>
+  <element name="ChapLanguage" path="1*(\Segment\Chapters\EditionEntry\ChapterAtom\ChapterDisplay\ChapLanguage)" id="0x437C" type="string" default="eng" minOccurs="1">
+    <documentation lang="en">The languages corresponding to the string, in the <a href="https://www.loc.gov/standards/iso639-2/php/English_list.php">bibliographic ISO-639-2 form</a>. This Element MUST be ignored if the ChapLanguageIETF Element is used within the same ChapterDisplay Element.</documentation>
+  </element>
+  <element name="ChapCountry" path="0*(\Segment\Chapters\EditionEntry\ChapterAtom\ChapterDisplay\ChapCountry)" id="0x437E" type="string">
+    <documentation lang="en">The countries corresponding to the string, same 2 octets as in <a href="https://www.iana.org/domains/root/db">Internet domains</a>. This Element MUST be ignored if the ChapLanguageIETF Element is used within the same ChapterDisplay Element.</documentation>
+  </element>
+  <element name="Tags" path="0*(\Segment\Tags)" id="0x1254C367" type="master">
+    <documentation lang="en">Element containing metadata describing Tracks, Editions, Chapters, Attachments, or the Segment as a whole. A list of valid tags can be found <a href="https://www.matroska.org/technical/specs/tagging/index.html">here.</a></documentation>
+  </element>
+  <element name="Tag" path="1*(\Segment\Tags\Tag)" id="0x7373" type="master" minOccurs="1">
+    <documentation lang="en">A single metadata descriptor.</documentation>
+  </element>
+  <element name="Targets" path="1*1(\Segment\Tags\Tag\Targets)" id="0x63C0" type="master" minOccurs="1" maxOccurs="1">
+    <documentation lang="en">Specifies which other elements the metadata represented by the Tag applies to. If empty or not present, then the Tag describes everything in the Segment.</documentation>
+  </element>
+  <element name="TargetTypeValue" path="0*1(\Segment\Tags\Tag\Targets\TargetTypeValue)" id="0x68CA" type="uinteger" default="50" maxOccurs="1">
+    <documentation lang="en">A number to indicate the logical level of the target.</documentation>
+    <restriction>
+      <enum value="70" label="COLLECTION">
+        <documentation lang="en" type="definition">The highest hierarchical level that tags can describe.</documentation>
+      </enum>
+      <enum value="60" label="EDITION / ISSUE / VOLUME / OPUS / SEASON / SEQUEL">
+        <documentation lang="en" type="definition">A list of lower levels grouped together.</documentation>
+      </enum>
+      <enum value="50" label="ALBUM / OPERA / CONCERT / MOVIE / EPISODE / CONCERT">
+        <documentation lang="en" type="definition">The most common grouping level of music and video (equals to an episode for TV series).</documentation>
+      </enum>
+      <enum value="40" label="PART / SESSION">
+        <documentation lang="en" type="definition">When an album or episode has different logical parts.</documentation>
+      </enum>
+      <enum value="30" label="TRACK / SONG / CHAPTER">
+        <documentation lang="en" type="definition">The common parts of an album or movie.</documentation>
+      </enum>
+      <enum value="20" label="SUBTRACK / PART / MOVEMENT / SCENE">
+        <documentation lang="en" type="definition">Corresponds to parts of a track for audio (like a movement).</documentation>
+      </enum>
+      <enum value="10" label="SHOT">
+        <documentation lang="en" type="definition">The lowest hierarchy found in music or movies.</documentation>
+      </enum>
+    </restriction>
+  </element>
+  <element name="TargetType" path="0*1(\Segment\Tags\Tag\Targets\TargetType)" id="0x63CA" type="string" maxOccurs="1">
+    <documentation lang="en">An informational string that can be used to display the logical level of the target like "ALBUM", "TRACK", "MOVIE", "CHAPTER", etc (see <a href="https://www.matroska.org/technical/specs/tagging/index.html#targettypes">TargetType</a>).</documentation>
+    <restriction>
+      <enum value="COLLECTION" label="COLLECTION"/>
+      <enum value="EDITION" label="EDITION"/>
+      <enum value="ISSUE" label="ISSUE"/>
+      <enum value="VOLUME" label="VOLUME"/>
+      <enum value="OPUS" label="OPUS"/>
+      <enum value="SEASON" label="SEASON"/>
+      <enum value="SEQUEL" label="SEQUEL"/>
+      <enum value="ALBUM" label="ALBUM"/>
+      <enum value="OPERA" label="OPERA"/>
+      <enum value="CONCERT" label="CONCERT"/>
+      <enum value="MOVIE" label="MOVIE"/>
+      <enum value="EPISODE" label="EPISODE"/>
+      <enum value="PART" label="PART"/>
+      <enum value="SESSION" label="SESSION"/>
+      <enum value="TRACK" label="TRACK"/>
+      <enum value="SONG" label="SONG"/>
+      <enum value="CHAPTER" label="CHAPTER"/>
+      <enum value="SUBTRACK" label="SUBTRACK"/>
+      <enum value="PART" label="PART"/>
+      <enum value="MOVEMENT" label="MOVEMENT"/>
+      <enum value="SCENE" label="SCENE"/>
+      <enum value="SHOT" label="SHOT"/>
+    </restriction>
+  </element>
+  <element name="TagTrackUID" path="0*(\Segment\Tags\Tag\Targets\TagTrackUID)" id="0x63C5" type="uinteger" default="0">
+    <documentation lang="en">A unique ID to identify the Track(s) the tags belong to. If the value is 0 at this level, the tags apply to all tracks in the Segment.</documentation>
+  </element>
+  <element name="SimpleTag" path="1*(\Segment\Tags\Tag(1*(\SimpleTag)))" id="0x67C8" type="master" minOccurs="1">
+    <documentation lang="en">Contains general information about the target.</documentation>
+  </element>
+  <element name="TagName" path="1*1(\Segment\Tags\Tag\SimpleTag\TagName)" id="0x45A3" type="utf-8" minOccurs="1" maxOccurs="1">
+    <documentation lang="en">The name of the Tag that is going to be stored.</documentation>
+  </element>
+  <element name="TagLanguage" path="1*1(\Segment\Tags\Tag\SimpleTag\TagLanguage)" id="0x447A" type="string" default="und" minOccurs="1" maxOccurs="1">
+    <documentation lang="en">Specifies the language of the tag specified, in the <a href="https://www.matroska.org/technical/specs/index.html#languages">Matroska languages form</a>. This Element MUST be ignored if the TagLanguageIETF Element is used within the same SimpleTag Element.</documentation>
+  </element>
+  <element name="TagDefault" path="1*1(\Segment\Tags\Tag\SimpleTag\TagDefault)" id="0x4484" type="uinteger" range="0-1" default="1" minOccurs="1" maxOccurs="1">
+    <documentation lang="en">A boolean value to indicate if this is the default/original language to use for the given tag.</documentation>
+  </element>
+  <element name="TagString" path="0*1(\Segment\Tags\Tag\SimpleTag\TagString)" id="0x4487" type="utf-8" maxOccurs="1">
+    <documentation lang="en">The value of the Tag.</documentation>
+  </element>
+  <element name="TagBinary" path="0*1(\Segment\Tags\Tag\SimpleTag\TagBinary)" id="0x4485" type="binary" maxOccurs="1">
+    <documentation lang="en">The values of the Tag if it is binary. Note that this cannot be used in the same SimpleTag as TagString.</documentation>
+  </element>
+</EBMLSchema>
