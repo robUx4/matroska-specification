@@ -286,6 +286,12 @@ END_LIBMATROSKA_NAMESPACE
             </xsl:choose>
             <xsl:text>)</xsl:text>
             <xsl:if test="@sortPath=$findPath and contains(@path,'(1*(\')"><xsl:text> // recursive</xsl:text></xsl:if>
+            <xsl:if test="@maxver='0'">
+                <xsl:choose>
+                    <xsl:when test="@divx='1'"><xsl:text> // DivX specific</xsl:text></xsl:when>
+                    <xsl:otherwise><xsl:text> // not supported</xsl:text></xsl:otherwise>
+                </xsl:choose>
+            </xsl:if>
             <xsl:text>&#10;</xsl:text>
         </xsl:if>
     </xsl:for-each>
