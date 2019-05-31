@@ -315,16 +315,19 @@ END_LIBMATROSKA_NAMESPACE
     <xsl:for-each select="../element">
         <xsl:variable name="plainPath"><xsl:value-of select="translate(substring-before(substring-after(@path,'('),')'), '(1*(', '')" /></xsl:variable>
         <xsl:if test="$plainPath=concat(concat($findPath,'\'),@name) or ($plainPath=$findPath and contains(@path,'(1*(\'))">
+            <xsl:variable name="EBMLElementOccurrence" select="substring-before(@path,'(')"/>
+            <xsl:variable name="EBMLMinOccurrence"     select="substring-before($EBMLElementOccurrence,'*')"/>
+            <xsl:variable name="EBMLMaxOccurrence"     select="substring-after($EBMLElementOccurrence,'*')"/>
             <xsl:if test="@minver and @minver!='1'">#if MATROSKA_VERSION >= 2&#10;</xsl:if>
             <xsl:text>DEFINE_SEMANTIC_ITEM(</xsl:text>
             <xsl:choose>
                 <xsl:when test="$plainPath=$findPath and contains(@path,'(1*(\')"><xsl:text>false</xsl:text></xsl:when>
-                <xsl:when test="@minOccurs and @minOccurs!='0'"><xsl:text>true</xsl:text></xsl:when>
+                <xsl:when test="$EBMLMinOccurrence!='' and $EBMLMinOccurrence!='0'"><xsl:text>true</xsl:text></xsl:when>
                 <xsl:otherwise><xsl:text>false</xsl:text></xsl:otherwise>
             </xsl:choose>
             <xsl:text>, </xsl:text>
             <xsl:choose>
-                <xsl:when test="@maxOccurs='1'"><xsl:text>true</xsl:text></xsl:when>
+                <xsl:when test="$EBMLMaxOccurrence='1'"><xsl:text>true</xsl:text></xsl:when>
                 <xsl:otherwise><xsl:text>false</xsl:text></xsl:otherwise>
             </xsl:choose>
             <xsl:text>, Kax</xsl:text>
