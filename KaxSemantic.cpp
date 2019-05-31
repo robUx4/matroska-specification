@@ -271,7 +271,7 @@ DEFINE_END_SEMANTIC(KaxClusterSilentTracks)
 DEFINE_MKX_MASTER(KaxClusterSilentTracks, 0x5854, 2, KaxCluster, "ClusterSilentTracks")
 
 DEFINE_MKX_UINTEGER(KaxClusterSilentTrackNumber, 0x58D7, 2, KaxClusterSilentTracks, "ClusterSilentTrackNumber")
-DEFINE_MKX_BINARY (KaxSimpleBlock, 0xA3, 1, KaxCluster, "SimpleBlock")
+DEFINE_MKX_BINARY_CONS(KaxSimpleBlock, 0xA3, 1, KaxCluster, "SimpleBlock")
 
 DEFINE_MKX_UINTEGER(KaxClusterTimecode, 0xE7, 1, KaxCluster, "ClusterTimecode")
 DEFINE_START_SEMANTIC(KaxCues)
