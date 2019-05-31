@@ -59,7 +59,7 @@ DEFINE_START_SEMANTIC(KaxAttachments)
 DEFINE_SEMANTIC_ITEM(true, false, KaxAttached)
 DEFINE_END_SEMANTIC(KaxAttachments)
 
-DEFINE_MKX_MASTER(KaxAttachments, 0x1941A469, 4, KaxSegment, "Attachments")
+DEFINE_MKX_MASTER_CONS(KaxAttachments, 0x1941A469, 4, KaxSegment, "Attachments")
 
 DEFINE_START_SEMANTIC(KaxAttached)
 DEFINE_SEMANTIC_ITEM(false, true, KaxFileDescription)
@@ -72,7 +72,7 @@ DEFINE_SEMANTIC_ITEM(false, true, KaxFileUsedStartTime)
 DEFINE_SEMANTIC_ITEM(false, true, KaxFileUsedEndTime)
 DEFINE_END_SEMANTIC(KaxAttached)
 
-DEFINE_MKX_MASTER(KaxAttached, 0x61A7, 2, KaxAttachments, "AttachedFile")
+DEFINE_MKX_MASTER_CONS(KaxAttached, 0x61A7, 2, KaxAttachments, "AttachedFile")
 
 DEFINE_START_SEMANTIC(KaxChapters)
 DEFINE_SEMANTIC_ITEM(true, false, KaxEditionEntry)
@@ -85,14 +85,28 @@ DEFINE_SEMANTIC_ITEM(false, true, KaxEditionUID)
 DEFINE_SEMANTIC_ITEM(true, true, KaxEditionFlagHidden)
 DEFINE_SEMANTIC_ITEM(true, true, KaxEditionFlagDefault)
 DEFINE_SEMANTIC_ITEM(false, true, KaxEditionFlagOrdered)
+DEFINE_SEMANTIC_ITEM(true, false, KaxChapterAtom)
 DEFINE_END_SEMANTIC(KaxEditionEntry)
 
 DEFINE_MKX_MASTER(KaxEditionEntry, 0x45B9, 2, KaxChapters, "EditionEntry")
 
 DEFINE_START_SEMANTIC(KaxChapterAtom)
+DEFINE_SEMANTIC_ITEM(false, false, KaxChapterAtom) // recursive
+DEFINE_SEMANTIC_ITEM(true, true, KaxChapterUID)
+DEFINE_SEMANTIC_ITEM(false, true, KaxChapterStringUID)
+DEFINE_SEMANTIC_ITEM(true, true, KaxChapterTimeStart)
+DEFINE_SEMANTIC_ITEM(false, true, KaxChapterTimeEnd)
+DEFINE_SEMANTIC_ITEM(true, true, KaxChapterFlagHidden)
+DEFINE_SEMANTIC_ITEM(true, true, KaxChapterFlagEnabled)
+DEFINE_SEMANTIC_ITEM(false, true, KaxChapterSegmentUID)
+DEFINE_SEMANTIC_ITEM(false, true, KaxChapterSegmentEditionUID)
+DEFINE_SEMANTIC_ITEM(false, true, KaxChapterPhysicalEquiv)
+DEFINE_SEMANTIC_ITEM(false, true, KaxChapterTrack)
+DEFINE_SEMANTIC_ITEM(false, false, KaxChapterDisplay)
+DEFINE_SEMANTIC_ITEM(false, false, KaxChapterProcess)
 DEFINE_END_SEMANTIC(KaxChapterAtom)
 
-DEFINE_MKX_MASTER(KaxChapterAtom, 0xB6, 1, KaxEditionEntry(1*(, "ChapterAtom")
+DEFINE_MKX_MASTER(KaxChapterAtom, 0xB6, 1, KaxEditionEntry, "ChapterAtom")
 
 DEFINE_START_SEMANTIC(KaxChapterProcess)
 DEFINE_SEMANTIC_ITEM(true, true, KaxChapterProcessCodecID)
@@ -276,14 +290,22 @@ DEFINE_MKX_MASTER(KaxTags, 0x1254C367, 4, KaxSegment, "Tags")
 
 DEFINE_START_SEMANTIC(KaxTag)
 DEFINE_SEMANTIC_ITEM(true, true, KaxTagTargets)
+DEFINE_SEMANTIC_ITEM(true, false, KaxTagSimple)
 DEFINE_END_SEMANTIC(KaxTag)
 
 DEFINE_MKX_MASTER(KaxTag, 0x7373, 2, KaxSegment, "Tag")
 
 DEFINE_START_SEMANTIC(KaxTagSimple)
+DEFINE_SEMANTIC_ITEM(false, false, KaxTagSimple) // recursive
+DEFINE_SEMANTIC_ITEM(true, true, KaxTagName)
+DEFINE_SEMANTIC_ITEM(true, true, KaxTagLangue)
+DEFINE_SEMANTIC_ITEM(false, true, KaxTagLanguageIETF)
+DEFINE_SEMANTIC_ITEM(true, true, KaxTagDefault)
+DEFINE_SEMANTIC_ITEM(false, true, KaxTagString)
+DEFINE_SEMANTIC_ITEM(false, true, KaxTagBinary)
 DEFINE_END_SEMANTIC(KaxTagSimple)
 
-DEFINE_MKX_MASTER(KaxTagSimple, 0x67C8, 2, KaxTag(1*(, "SimpleTag")
+DEFINE_MKX_MASTER(KaxTagSimple, 0x67C8, 2, KaxTag, "SimpleTag")
 
 DEFINE_START_SEMANTIC(KaxTagTargets)
 DEFINE_SEMANTIC_ITEM(false, true, KaxTagTargetTypeValue)

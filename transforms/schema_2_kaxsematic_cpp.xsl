@@ -76,6 +76,7 @@ END_LIBMATROSKA_NAMESPACE
 
                 <xsl:text>&#10;DEFINE_MKX_MASTER</xsl:text>
                 <xsl:if test="not(contains(substring(@sortPath,2),'\'))"><xsl:text>_ORPHAN</xsl:text></xsl:if>
+                <xsl:if test="@name='Attachments' or @name='AttachedFile'"><xsl:text>_CONS</xsl:text></xsl:if>
                 <xsl:text>(Kax</xsl:text>
                 <xsl:choose>
                     <xsl:when test="@cppname"><xsl:value-of select="@cppname" /></xsl:when>
@@ -262,9 +263,10 @@ END_LIBMATROSKA_NAMESPACE
   <xsl:template name="list-master-children">
     <xsl:param name="findPath"/>
     <xsl:for-each select="../element">
-        <xsl:if test="@sortPath=concat(concat($findPath,'\'),@name)">
+        <xsl:if test="@sortPath=concat(concat($findPath,'\'),@name) or (@sortPath=$findPath and contains(@path,'(1*(\'))">
             <xsl:text>DEFINE_SEMANTIC_ITEM(</xsl:text>
             <xsl:choose>
+                <xsl:when test="@sortPath=$findPath and contains(@path,'(1*(\')"><xsl:text>false</xsl:text></xsl:when>
                 <xsl:when test="@minOccurs and @minOccurs!='0'"><xsl:text>true</xsl:text></xsl:when>
                 <xsl:otherwise><xsl:text>false</xsl:text></xsl:otherwise>
             </xsl:choose>
@@ -278,7 +280,9 @@ END_LIBMATROSKA_NAMESPACE
                 <xsl:when test="@cppname"><xsl:value-of select="@cppname" /></xsl:when>
                 <xsl:otherwise><xsl:value-of select="@name" /></xsl:otherwise>
             </xsl:choose>
-            <xsl:text>)&#10;</xsl:text>
+            <xsl:text>)</xsl:text>
+            <xsl:if test="@sortPath=$findPath and contains(@path,'(1*(\')"><xsl:text> // recursive</xsl:text></xsl:if>
+            <xsl:text>&#10;</xsl:text>
         </xsl:if>
     </xsl:for-each>
   </xsl:template>
