@@ -75,7 +75,7 @@ END_LIBMATROSKA_NAMESPACE
                 <xsl:text>)&#10;</xsl:text>
 
                 <xsl:text>&#10;DEFINE_MKX_MASTER</xsl:text>
-                <xsl:if test="@sortPath='\Segment'"><xsl:text>_ORPHAN</xsl:text></xsl:if>
+                <xsl:if test="not(contains(substring(@sortPath,2),'\'))"><xsl:text>_ORPHAN</xsl:text></xsl:if>
                 <xsl:text>(Kax</xsl:text>
                 <xsl:choose>
                     <xsl:when test="@cppname"><xsl:value-of select="@cppname" /></xsl:when>
