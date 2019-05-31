@@ -91,14 +91,18 @@ END_LIBMATROSKA_NAMESPACE
                     </xsl:when>
                     <xsl:otherwise>
                         <xsl:text>, Kax</xsl:text>
-    <xsl:call-template name="get-element-name">
-        <xsl:with-param name="value"><xsl:value-of select="substring-before(@sortPath, concat('\', @name))" /></xsl:with-param>
-    </xsl:call-template>
-                        <!-- <xsl:value-of select="substring-before(@sortPath, concat('\', @name))" /> -->
+                        <xsl:call-template name="output-master-parent">
+                            <xsl:with-param name="findPath"><xsl:value-of select="@sortPath" /></xsl:with-param>
+                            <xsl:with-param name="name"><xsl:value-of select="@name" /></xsl:with-param>
+                        </xsl:call-template>
                         <xsl:text>, "</xsl:text>
                     </xsl:otherwise>
                 </xsl:choose>
-                <xsl:value-of select="@name" /><xsl:text>")&#10;</xsl:text>
+                <xsl:choose>
+                    <xsl:when test="@cppname"><xsl:value-of select="@cppname" /></xsl:when>
+                    <xsl:otherwise><xsl:value-of select="@name" /></xsl:otherwise>
+                </xsl:choose>
+                <xsl:text>")&#10;</xsl:text>
             </xsl:when>
             <xsl:when test="@type='binary'">
                 <xsl:text>&#10;DEFINE_MKX_BINARY(Kax</xsl:text>
@@ -283,6 +287,19 @@ END_LIBMATROSKA_NAMESPACE
             <xsl:text>)</xsl:text>
             <xsl:if test="@sortPath=$findPath and contains(@path,'(1*(\')"><xsl:text> // recursive</xsl:text></xsl:if>
             <xsl:text>&#10;</xsl:text>
+        </xsl:if>
+    </xsl:for-each>
+  </xsl:template>
+
+  <xsl:template name="output-master-parent">
+    <xsl:param name="findPath"/>
+    <xsl:param name="name"/>
+    <xsl:for-each select="../element">
+        <xsl:if test="$findPath=concat(concat(@sortPath,'\'),$name)">
+            <xsl:choose>
+                <xsl:when test="@cppname"><xsl:value-of select="@cppname" /></xsl:when>
+                <xsl:otherwise><xsl:value-of select="@name" /></xsl:otherwise>
+            </xsl:choose>
         </xsl:if>
     </xsl:for-each>
   </xsl:template>

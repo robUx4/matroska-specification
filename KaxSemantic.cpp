@@ -72,7 +72,7 @@ DEFINE_SEMANTIC_ITEM(false, true, KaxFileUsedStartTime)
 DEFINE_SEMANTIC_ITEM(false, true, KaxFileUsedEndTime)
 DEFINE_END_SEMANTIC(KaxAttached)
 
-DEFINE_MKX_MASTER_CONS(KaxAttached, 0x61A7, 2, KaxAttachments, "AttachedFile")
+DEFINE_MKX_MASTER_CONS(KaxAttached, 0x61A7, 2, KaxAttachments, "Attached")
 
 DEFINE_START_SEMANTIC(KaxChapters)
 DEFINE_SEMANTIC_ITEM(true, false, KaxEditionEntry)
@@ -114,14 +114,14 @@ DEFINE_SEMANTIC_ITEM(false, true, KaxChapterProcessPrivate)
 DEFINE_SEMANTIC_ITEM(false, false, KaxChapterProcessCommand)
 DEFINE_END_SEMANTIC(KaxChapterProcess)
 
-DEFINE_MKX_MASTER(KaxChapterProcess, 0x6944, 2, KaxChapterAtom, "ChapProcess")
+DEFINE_MKX_MASTER(KaxChapterProcess, 0x6944, 2, KaxChapterAtom, "ChapterProcess")
 
 DEFINE_START_SEMANTIC(KaxChapterProcessCommand)
 DEFINE_SEMANTIC_ITEM(true, true, KaxChapterProcessTime)
 DEFINE_SEMANTIC_ITEM(true, true, KaxChapterProcessData)
 DEFINE_END_SEMANTIC(KaxChapterProcessCommand)
 
-DEFINE_MKX_MASTER(KaxChapterProcessCommand, 0x6911, 2, KaxChapProcess, "ChapProcessCommand")
+DEFINE_MKX_MASTER(KaxChapterProcessCommand, 0x6911, 2, KaxChapterProcess, "ChapterProcessCommand")
 
 DEFINE_START_SEMANTIC(KaxChapterDisplay)
 DEFINE_SEMANTIC_ITEM(true, true, KaxChapterString)
@@ -206,7 +206,7 @@ DEFINE_START_SEMANTIC(KaxClusterSilentTracks)
 DEFINE_SEMANTIC_ITEM(false, false, KaxClusterSilentTrackNumber)
 DEFINE_END_SEMANTIC(KaxClusterSilentTracks)
 
-DEFINE_MKX_MASTER(KaxClusterSilentTracks, 0x5854, 2, KaxCluster, "SilentTracks")
+DEFINE_MKX_MASTER(KaxClusterSilentTracks, 0x5854, 2, KaxCluster, "ClusterSilentTracks")
 
 DEFINE_START_SEMANTIC(KaxCues)
 DEFINE_SEMANTIC_ITEM(true, false, KaxCuePoint)
@@ -280,7 +280,7 @@ DEFINE_SEMANTIC_ITEM(true, true, KaxSeekID)
 DEFINE_SEMANTIC_ITEM(true, true, KaxSeekPosition)
 DEFINE_END_SEMANTIC(KaxSeek)
 
-DEFINE_MKX_MASTER(KaxSeek, 0x4DBB, 2, KaxSegment, "Seek")
+DEFINE_MKX_MASTER(KaxSeek, 0x4DBB, 2, KaxSeekHead, "Seek")
 
 DEFINE_START_SEMANTIC(KaxTags)
 DEFINE_SEMANTIC_ITEM(true, false, KaxTag)
@@ -293,7 +293,7 @@ DEFINE_SEMANTIC_ITEM(true, true, KaxTagTargets)
 DEFINE_SEMANTIC_ITEM(true, false, KaxTagSimple)
 DEFINE_END_SEMANTIC(KaxTag)
 
-DEFINE_MKX_MASTER(KaxTag, 0x7373, 2, KaxSegment, "Tag")
+DEFINE_MKX_MASTER(KaxTag, 0x7373, 2, KaxTags, "Tag")
 
 DEFINE_START_SEMANTIC(KaxTagSimple)
 DEFINE_SEMANTIC_ITEM(false, false, KaxTagSimple) // recursive
@@ -305,7 +305,7 @@ DEFINE_SEMANTIC_ITEM(false, true, KaxTagString)
 DEFINE_SEMANTIC_ITEM(false, true, KaxTagBinary)
 DEFINE_END_SEMANTIC(KaxTagSimple)
 
-DEFINE_MKX_MASTER(KaxTagSimple, 0x67C8, 2, KaxTag, "SimpleTag")
+DEFINE_MKX_MASTER(KaxTagSimple, 0x67C8, 2, KaxTag, "TagSimple")
 
 DEFINE_START_SEMANTIC(KaxTagTargets)
 DEFINE_SEMANTIC_ITEM(false, true, KaxTagTargetTypeValue)
@@ -316,7 +316,7 @@ DEFINE_SEMANTIC_ITEM(false, false, KaxTagChapterUID)
 DEFINE_SEMANTIC_ITEM(false, false, KaxTagAttachmentUID)
 DEFINE_END_SEMANTIC(KaxTagTargets)
 
-DEFINE_MKX_MASTER(KaxTagTargets, 0x63C0, 2, KaxTag, "Targets")
+DEFINE_MKX_MASTER(KaxTagTargets, 0x63C0, 2, KaxTag, "TagTargets")
 
 DEFINE_START_SEMANTIC(KaxTracks)
 DEFINE_SEMANTIC_ITEM(true, false, KaxTrackEntry)
@@ -375,7 +375,7 @@ DEFINE_SEMANTIC_ITEM(false, true, KaxAudioPosition)
 DEFINE_SEMANTIC_ITEM(false, true, KaxAudioBitDepth)
 DEFINE_END_SEMANTIC(KaxTrackAudio)
 
-DEFINE_MKX_MASTER(KaxTrackAudio, 0xE1, 1, KaxTrackEntry, "Audio")
+DEFINE_MKX_MASTER(KaxTrackAudio, 0xE1, 1, KaxTrackEntry, "TrackAudio")
 
 DEFINE_START_SEMANTIC(KaxContentEncodings)
 DEFINE_SEMANTIC_ITEM(true, false, KaxContentEncoding)
@@ -391,7 +391,7 @@ DEFINE_SEMANTIC_ITEM(false, true, KaxContentCompression)
 DEFINE_SEMANTIC_ITEM(false, true, KaxContentEncryption)
 DEFINE_END_SEMANTIC(KaxContentEncoding)
 
-DEFINE_MKX_MASTER(KaxContentEncoding, 0x6240, 2, KaxTrackEntry, "ContentEncoding")
+DEFINE_MKX_MASTER(KaxContentEncoding, 0x6240, 2, KaxContentEncodings, "ContentEncoding")
 
 DEFINE_START_SEMANTIC(KaxContentCompression)
 DEFINE_SEMANTIC_ITEM(true, true, KaxContentCompAlgo)
@@ -475,7 +475,7 @@ DEFINE_SEMANTIC_ITEM(false, true, KaxVideoColour)
 DEFINE_SEMANTIC_ITEM(false, true, KaxVideoProjection)
 DEFINE_END_SEMANTIC(KaxTrackVideo)
 
-DEFINE_MKX_MASTER(KaxTrackVideo, 0xE0, 1, KaxTrackEntry, "Video")
+DEFINE_MKX_MASTER(KaxTrackVideo, 0xE0, 1, KaxTrackEntry, "TrackVideo")
 
 DEFINE_START_SEMANTIC(KaxVideoColour)
 DEFINE_SEMANTIC_ITEM(false, true, KaxVideoColourMatrix)
@@ -494,7 +494,7 @@ DEFINE_SEMANTIC_ITEM(false, true, KaxVideoColourMaxFALL)
 DEFINE_SEMANTIC_ITEM(false, true, KaxVideoColourMasterMeta)
 DEFINE_END_SEMANTIC(KaxVideoColour)
 
-DEFINE_MKX_MASTER(KaxVideoColour, 0x55B0, 2, KaxVideo, "Colour")
+DEFINE_MKX_MASTER(KaxVideoColour, 0x55B0, 2, KaxTrackVideo, "VideoColour")
 
 DEFINE_START_SEMANTIC(KaxVideoColourMasterMeta)
 DEFINE_SEMANTIC_ITEM(false, true, KaxVideoRChromaX)
@@ -509,7 +509,7 @@ DEFINE_SEMANTIC_ITEM(false, true, KaxVideoLuminanceMax)
 DEFINE_SEMANTIC_ITEM(false, true, KaxVideoLuminanceMin)
 DEFINE_END_SEMANTIC(KaxVideoColourMasterMeta)
 
-DEFINE_MKX_MASTER(KaxVideoColourMasterMeta, 0x55D0, 2, KaxColour, "MasteringMetadata")
+DEFINE_MKX_MASTER(KaxVideoColourMasterMeta, 0x55D0, 2, KaxVideoColour, "VideoColourMasterMeta")
 
 DEFINE_START_SEMANTIC(KaxVideoProjection)
 DEFINE_SEMANTIC_ITEM(true, true, KaxVideoProjectionType)
@@ -519,7 +519,7 @@ DEFINE_SEMANTIC_ITEM(true, true, KaxVideoProjectionPosePitch)
 DEFINE_SEMANTIC_ITEM(true, true, KaxVideoProjectionPoseRoll)
 DEFINE_END_SEMANTIC(KaxVideoProjection)
 
-DEFINE_MKX_MASTER(KaxVideoProjection, 0x7670, 2, KaxVideo, "Projection")
+DEFINE_MKX_MASTER(KaxVideoProjection, 0x7670, 2, KaxTrackVideo, "VideoProjection")
 
 END_LIBMATROSKA_NAMESPACE
 
