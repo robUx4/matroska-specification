@@ -203,7 +203,7 @@ DEFINE_END_SEMANTIC(KaxBlockGroup)
 
 DEFINE_MKX_MASTER_CONS(KaxBlockGroup, 0xA0, 1, KaxCluster, "BlockGroup")
 
-DEFINE_MKX_BINARY (KaxBlock, 0xA1, 1, KaxBlockGroup, "Block")
+DEFINE_MKX_BINARY_CONS(KaxBlock, 0xA1, 1, KaxBlockGroup, "Block")
 
 DEFINE_START_SEMANTIC(KaxBlockAdditions)
 DEFINE_SEMANTIC_ITEM(true, false, KaxBlockMore)

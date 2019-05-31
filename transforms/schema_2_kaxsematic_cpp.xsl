@@ -76,6 +76,7 @@ END_LIBMATROSKA_NAMESPACE
 
                 <xsl:text>&#10;DEFINE_MKX_MASTER</xsl:text>
                 <xsl:if test="not(contains(substring(@sortPath,2),'\'))"><xsl:text>_ORPHAN</xsl:text></xsl:if>
+                <!-- Needs a special constructor -->
                 <xsl:if test="@name='Attachments' or @name='AttachedFile' or @name='Cluster' or @name='BlockGroup' or @name='TrackEntry'"><xsl:text>_CONS</xsl:text></xsl:if>
                 <xsl:text>(Kax</xsl:text>
                 <xsl:choose>
@@ -105,7 +106,13 @@ END_LIBMATROSKA_NAMESPACE
                 <xsl:text>")&#10;</xsl:text>
             </xsl:when>
             <xsl:when test="@type='binary'">
-                <xsl:text>&#10;DEFINE_MKX_BINARY (Kax</xsl:text>
+                <xsl:text>&#10;DEFINE_MKX_BINARY</xsl:text>
+                <xsl:choose>
+                    <!-- Needs a special constructor -->
+                    <xsl:when test="@name='Block'"><xsl:text>_CONS</xsl:text></xsl:when>
+                    <xsl:otherwise><xsl:text> </xsl:text></xsl:otherwise>
+                </xsl:choose>
+                <xsl:text>(Kax</xsl:text>
                 <xsl:choose>
                     <xsl:when test="@cppname"><xsl:value-of select="@cppname" /></xsl:when>
                     <xsl:otherwise><xsl:value-of select="@name" /></xsl:otherwise>
