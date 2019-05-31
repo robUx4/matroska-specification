@@ -221,13 +221,13 @@ DEFINE_MKX_MASTER(KaxBlockMore, 0xA6, 1, KaxBlockAdditions, "BlockMore")
 DEFINE_MKX_UINTEGER_DEF(KaxBlockAddID, 0xEE, 1, KaxBlockMore, "BlockAddID", 1)
 DEFINE_MKX_BINARY (KaxBlockAdditional, 0xA5, 1, KaxBlockMore, "BlockAdditional")
 
-DEFINE_MKX_UINTEGER_DEF(KaxBlockDuration, 0x9B, 1, KaxBlockGroup, "BlockDuration", DefaultDuration)
-DEFINE_MKX_BINARY (KaxBlockVirtual, 0xA2, 1, KaxBlockGroup, "BlockVirtual")
+DEFINE_MKX_UINTEGER(KaxBlockDuration, 0x9B, 1, KaxBlockGroup, "BlockDuration")
+DEFINE_MKX_BINARY_CONS(KaxBlockVirtual, 0xA2, 1, KaxBlockGroup, "BlockVirtual")
 
 DEFINE_MKX_BINARY (KaxCodecState, 0xA4, 1, KaxBlockGroup, "CodecState")
 
 DEFINE_MKX_SINTEGER(KaxDiscardPadding, 0x75A2, 2, KaxBlockGroup, "DiscardPadding")
-DEFINE_MKX_SINTEGER(KaxReferenceBlock, 0xFB, 1, KaxBlockGroup, "ReferenceBlock")
+DEFINE_MKX_SINTEGER_CONS(KaxReferenceBlock, 0xFB, 1, KaxBlockGroup, "ReferenceBlock")
 DEFINE_START_SEMANTIC(KaxReferenceFrame)
 DEFINE_SEMANTIC_ITEM(true, true, KaxReferenceOffset) // DivX specific
 DEFINE_SEMANTIC_ITEM(true, true, KaxReferenceTimeCode) // DivX specific
@@ -717,9 +717,9 @@ DEFINE_MKX_UINTEGER(KaxVideoColourMaxFALL, 0x55BD, 2, KaxVideoColour, "VideoColo
 DEFINE_MKX_UINTEGER_DEF(KaxVideoColourPrimaries, 0x55BB, 2, KaxVideoColour, "VideoColourPrimaries", 2)
 DEFINE_MKX_UINTEGER_DEF(KaxVideoColourRange, 0x55B9, 2, KaxVideoColour, "VideoColourRange", 0)
 DEFINE_MKX_UINTEGER_DEF(KaxVideoColourTransferCharacter, 0x55BA, 2, KaxVideoColour, "VideoColourTransferCharacter", 2)
-DEFINE_MKX_UINTEGER_DEF(KaxVideoDisplayHeight, 0x54BA, 2, KaxTrackVideo, "VideoDisplayHeight", PixelHeight - PixelCropTop - PixelCropBottom)
+DEFINE_MKX_UINTEGER(KaxVideoDisplayHeight, 0x54BA, 2, KaxTrackVideo, "VideoDisplayHeight")
 DEFINE_MKX_UINTEGER_DEF(KaxVideoDisplayUnit, 0x54B2, 2, KaxTrackVideo, "VideoDisplayUnit", 0)
-DEFINE_MKX_UINTEGER_DEF(KaxVideoDisplayWidth, 0x54B0, 2, KaxTrackVideo, "VideoDisplayWidth", PixelWidth - PixelCropLeft - PixelCropRight)
+DEFINE_MKX_UINTEGER(KaxVideoDisplayWidth, 0x54B0, 2, KaxTrackVideo, "VideoDisplayWidth")
 DEFINE_MKX_UINTEGER_DEF(KaxVideoFieldOrder, 0x9D, 1, KaxTrackVideo, "VideoFieldOrder", 2)
 DEFINE_MKX_UINTEGER_DEF(KaxVideoFlagInterlaced, 0x9A, 1, KaxTrackVideo, "VideoFlagInterlaced", 0)
 DEFINE_MKX_FLOAT(KaxVideoFrameRate, 0x2383E3, 3, KaxTrackVideo, "FrameRate")

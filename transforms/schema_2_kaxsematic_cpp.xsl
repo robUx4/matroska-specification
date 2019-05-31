@@ -109,7 +109,7 @@ END_LIBMATROSKA_NAMESPACE
                 <xsl:text>&#10;DEFINE_MKX_BINARY</xsl:text>
                 <xsl:choose>
                     <!-- Needs a special constructor -->
-                    <xsl:when test="@name='Block'"><xsl:text>_CONS</xsl:text></xsl:when>
+                    <xsl:when test="@name='Block' or @name='BlockVirtual'"><xsl:text>_CONS</xsl:text></xsl:when>
                     <xsl:otherwise><xsl:text> </xsl:text></xsl:otherwise>
                 </xsl:choose>
                 <xsl:text>(Kax</xsl:text>
@@ -134,7 +134,7 @@ END_LIBMATROSKA_NAMESPACE
             </xsl:when>
             <xsl:when test="@type='uinteger'">
                 <xsl:text>&#10;DEFINE_MKX_UINTEGER</xsl:text>
-                <xsl:if test="@default"><xsl:text>_DEF</xsl:text></xsl:if>
+                <xsl:if test="@default and (number(@default)=number(@default))"><xsl:text>_DEF</xsl:text></xsl:if>
                 <xsl:text>(Kax</xsl:text>
                 <xsl:choose>
                     <xsl:when test="@cppname"><xsl:value-of select="@cppname" /></xsl:when>
@@ -154,12 +154,14 @@ END_LIBMATROSKA_NAMESPACE
                     <xsl:otherwise><xsl:value-of select="@name" /></xsl:otherwise>
                 </xsl:choose>
                 <xsl:text>"</xsl:text>
-                <xsl:if test="@default"><xsl:text>, </xsl:text><xsl:value-of select="@default" /></xsl:if>
+                <xsl:if test="@default and (number(@default)=number(@default))"><xsl:text>, </xsl:text><xsl:value-of select="@default" /></xsl:if>
                 <xsl:text>)</xsl:text>
             </xsl:when>
             <xsl:when test="@type='integer'">
                 <xsl:text>&#10;DEFINE_MKX_SINTEGER</xsl:text>
-                <xsl:if test="@default"><xsl:text>_DEF</xsl:text></xsl:if>
+                <xsl:if test="@default and (number(@default)=number(@default))"><xsl:text>_DEF</xsl:text></xsl:if>
+                <!-- Needs a special constructor -->
+                <xsl:if test="@name='ReferenceBlock'"><xsl:text>_CONS</xsl:text></xsl:if>
                 <xsl:text>(Kax</xsl:text>
                 <xsl:choose>
                     <xsl:when test="@cppname"><xsl:value-of select="@cppname" /></xsl:when>
@@ -179,7 +181,7 @@ END_LIBMATROSKA_NAMESPACE
                     <xsl:otherwise><xsl:value-of select="@name" /></xsl:otherwise>
                 </xsl:choose>
                 <xsl:text>"</xsl:text>
-                <xsl:if test="@default"><xsl:text>, </xsl:text><xsl:value-of select="@default" /></xsl:if>
+                <xsl:if test="@default and (number(@default)=number(@default))"><xsl:text>, </xsl:text><xsl:value-of select="@default" /></xsl:if>
                 <xsl:text>)</xsl:text>
             </xsl:when>
             <xsl:when test="@type='utf-8'">
@@ -200,7 +202,7 @@ END_LIBMATROSKA_NAMESPACE
                     </xsl:call-template>
                 <xsl:text>, "</xsl:text>
                 <xsl:value-of select="@name" /><xsl:text>"</xsl:text>
-                <xsl:if test="@default"><xsl:text>, </xsl:text><xsl:value-of select="@default" /></xsl:if>
+                <xsl:if test="@default"><xsl:text>, "</xsl:text><xsl:value-of select="@default" />"</xsl:if>
                 <xsl:text>)</xsl:text>
             </xsl:when>
             <xsl:when test="@type='string'">
@@ -247,7 +249,7 @@ END_LIBMATROSKA_NAMESPACE
             </xsl:when>
             <xsl:when test="@type='date'">
                 <xsl:text>&#10;DEFINE_MKX_DATE</xsl:text>
-                <xsl:if test="@default"><xsl:text>_DEF</xsl:text></xsl:if>
+                <xsl:if test="@default and (number(@default)=number(@default))"><xsl:text>_DEF</xsl:text></xsl:if>
                 <xsl:text>(Kax</xsl:text>
                 <xsl:choose>
                     <xsl:when test="@cppname"><xsl:value-of select="@cppname" /></xsl:when>
@@ -263,7 +265,7 @@ END_LIBMATROSKA_NAMESPACE
                     </xsl:call-template>
                 <xsl:text>, "</xsl:text>
                 <xsl:value-of select="@name" /><xsl:text>"</xsl:text>
-                <xsl:if test="@default"><xsl:text>, </xsl:text><xsl:value-of select="@default" /></xsl:if>
+                <xsl:if test="@default and (number(@default)=number(@default))"><xsl:text>, </xsl:text><xsl:value-of select="@default" /></xsl:if>
                 <xsl:text>)</xsl:text>
             </xsl:when>
         </xsl:choose>
