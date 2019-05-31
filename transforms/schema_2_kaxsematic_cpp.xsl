@@ -214,7 +214,7 @@ END_LIBMATROSKA_NAMESPACE
                     </xsl:call-template>
                 <xsl:text>, "</xsl:text>
                 <xsl:value-of select="@name" /><xsl:text>"</xsl:text>
-                <xsl:if test="@default"><xsl:text>, </xsl:text><xsl:value-of select="@default" /></xsl:if>
+                <xsl:if test="@default"><xsl:text>, "</xsl:text><xsl:value-of select="@default" /><xsl:text>"</xsl:text></xsl:if>
                 <xsl:text>)</xsl:text>
             </xsl:when>
             <xsl:when test="@type='float'">
