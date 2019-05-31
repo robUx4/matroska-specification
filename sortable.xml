@@ -101,7 +101,7 @@
   <element name="PrevSize" path="0*1(\Segment\Cluster\PrevSize)" id="0xAB" type="uinteger" cppname="ClusterPrevSize" sortPath="\Segment\Cluster\PrevSize" maxOccurs="1">
     <documentation lang="en">Size of the previous Cluster, in octets. Can be useful for backward playing.</documentation>
   </element>
-  <element name="SimpleBlock" path="0*(\Segment\Cluster\SimpleBlock)" id="0xA3" type="binary" sortPath="\Segment\Cluster\SimpleBlock" divx="1">
+  <element name="SimpleBlock" path="0*(\Segment\Cluster\SimpleBlock)" id="0xA3" type="binary" sortPath="\Segment\Cluster\SimpleBlock" divx="1" minver="2">
     <documentation lang="en">Similar to <a href="https://www.matroska.org/technical/specs/index.html#Block">Block</a> but without all the extra information, mostly used to reduced overhead when no extra feature is needed. (see <a href="https://www.matroska.org/technical/specs/index.html#simpleblock_structure">SimpleBlock Structure</a>)</documentation>
   </element>
   <element name="BlockGroup" path="0*(\Segment\Cluster\BlockGroup)" id="0xA0" type="master" sortPath="\Segment\Cluster\BlockGroup">

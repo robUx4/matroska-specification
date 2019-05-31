@@ -143,12 +143,14 @@ DEFINE_SEMANTIC_ITEM(true, true, KaxClusterTimecode)
 DEFINE_SEMANTIC_ITEM(false, true, KaxClusterSilentTracks)
 DEFINE_SEMANTIC_ITEM(false, true, KaxClusterPosition)
 DEFINE_SEMANTIC_ITEM(false, true, KaxClusterPrevSize)
+#if MATROSKA_VERSION >= 2
 DEFINE_SEMANTIC_ITEM(false, false, KaxSimpleBlock)
+#endif // MATROSKA_VERSION
 DEFINE_SEMANTIC_ITEM(false, false, KaxBlockGroup)
 DEFINE_SEMANTIC_ITEM(false, false, KaxEncryptedBlock) // not supported
 DEFINE_END_SEMANTIC(KaxCluster)
 
-DEFINE_MKX_MASTER(KaxCluster, 0x1F43B675, 4, KaxSegment, "Cluster")
+DEFINE_MKX_MASTER_CONS(KaxCluster, 0x1F43B675, 4, KaxSegment, "Cluster")
 
 DEFINE_START_SEMANTIC(KaxBlockGroup)
 DEFINE_SEMANTIC_ITEM(true, true, KaxBlock)

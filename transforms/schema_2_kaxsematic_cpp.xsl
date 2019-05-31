@@ -76,7 +76,7 @@ END_LIBMATROSKA_NAMESPACE
 
                 <xsl:text>&#10;DEFINE_MKX_MASTER</xsl:text>
                 <xsl:if test="not(contains(substring(@sortPath,2),'\'))"><xsl:text>_ORPHAN</xsl:text></xsl:if>
-                <xsl:if test="@name='Attachments' or @name='AttachedFile'"><xsl:text>_CONS</xsl:text></xsl:if>
+                <xsl:if test="@name='Attachments' or @name='AttachedFile' or @name='Cluster'"><xsl:text>_CONS</xsl:text></xsl:if>
                 <xsl:text>(Kax</xsl:text>
                 <xsl:choose>
                     <xsl:when test="@cppname"><xsl:value-of select="@cppname" /></xsl:when>
@@ -268,6 +268,7 @@ END_LIBMATROSKA_NAMESPACE
     <xsl:param name="findPath"/>
     <xsl:for-each select="../element">
         <xsl:if test="@sortPath=concat(concat($findPath,'\'),@name) or (@sortPath=$findPath and contains(@path,'(1*(\'))">
+            <xsl:if test="@minver and @minver!='1'">#if MATROSKA_VERSION >= 2&#10;</xsl:if>
             <xsl:text>DEFINE_SEMANTIC_ITEM(</xsl:text>
             <xsl:choose>
                 <xsl:when test="@sortPath=$findPath and contains(@path,'(1*(\')"><xsl:text>false</xsl:text></xsl:when>
@@ -293,6 +294,7 @@ END_LIBMATROSKA_NAMESPACE
                 </xsl:choose>
             </xsl:if>
             <xsl:text>&#10;</xsl:text>
+            <xsl:if test="@minver and @minver!='1'">#endif // MATROSKA_VERSION&#10;</xsl:if>
         </xsl:if>
     </xsl:for-each>
   </xsl:template>
