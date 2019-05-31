@@ -56,11 +56,15 @@ END_LIBMATROSKA_NAMESPACE
   <xsl:template match="element">
     <xsl:variable name="plainPath"><xsl:value-of select="translate(substring-before(substring-after(@path,'('),')'), '(1*(', '')" /></xsl:variable>
 <!-- <xsl:text>plainPath = </xsl:text><xsl:value-of select="$plainPath" /><xsl:text>&#10;</xsl:text> -->
+    <!-- Ignore EBML extra constraints -->
     <xsl:if test="not(starts-with($plainPath,'\EBML\'))">
     <xsl:copy>
+        <xsl:if test="@minver and @minver!='1'">#if MATROSKA_VERSION >= 2&#10;</xsl:if>
         <xsl:choose>
             <xsl:when test="@type='master'">
-                <xsl:text>&#10;DEFINE_START_SEMANTIC(Kax</xsl:text>
+                <xsl:text>&#10;</xsl:text>
+                
+                <xsl:text>DEFINE_START_SEMANTIC(Kax</xsl:text>
                 <xsl:choose>
                     <xsl:when test="@cppname"><xsl:value-of select="@cppname" /></xsl:when>
                     <xsl:otherwise><xsl:value-of select="@name" /></xsl:otherwise>
@@ -89,7 +93,7 @@ END_LIBMATROSKA_NAMESPACE
                 <xsl:value-of select="@id" /><xsl:text>, </xsl:text>
                 <xsl:value-of select="((string-length(@id) - 2) * 0.5)" /> 
                 <xsl:choose>
-                    <xsl:when test="$plainPath='\Segment'">
+                    <xsl:when test="not(contains(substring($plainPath,2),'\'))">
                         <xsl:text>, "</xsl:text>
                     </xsl:when>
                     <xsl:otherwise>
@@ -106,12 +110,14 @@ END_LIBMATROSKA_NAMESPACE
                     <xsl:otherwise><xsl:value-of select="@name" /></xsl:otherwise>
                 </xsl:choose>
                 <xsl:text>")&#10;</xsl:text>
+                
             </xsl:when>
             <xsl:when test="@type='binary'">
+                
                 <xsl:text>DEFINE_MKX_BINARY</xsl:text>
                 <xsl:choose>
                     <!-- Needs a special constructor -->
-                    <xsl:when test="@name='Block' or @name='SimpleBlock' or @name='BlockVirtual'"><xsl:text>_CONS</xsl:text></xsl:when>
+                    <xsl:when test="@name='Block' or @name='SimpleBlock' or @name='BlockVirtual' or @name='NextUID' or @name='PrevUID'"><xsl:text>_CONS</xsl:text></xsl:when>
                     <xsl:otherwise><xsl:text> </xsl:text></xsl:otherwise>
                 </xsl:choose>
                 <xsl:text>(Kax</xsl:text>
@@ -133,8 +139,10 @@ END_LIBMATROSKA_NAMESPACE
                     <xsl:otherwise><xsl:value-of select="@name" /></xsl:otherwise>
                 </xsl:choose>
                 <xsl:text>")&#10;</xsl:text>
+                
             </xsl:when>
             <xsl:when test="@type='uinteger'">
+                
                 <xsl:text>DEFINE_MKX_UINTEGER</xsl:text>
                 <xsl:if test="@default and (number(@default)=number(@default))"><xsl:text>_DEF</xsl:text></xsl:if>
                 <xsl:text>(Kax</xsl:text>
@@ -158,8 +166,10 @@ END_LIBMATROSKA_NAMESPACE
                 <xsl:text>"</xsl:text>
                 <xsl:if test="@default and (number(@default)=number(@default))"><xsl:text>, </xsl:text><xsl:value-of select="@default" /></xsl:if>
                 <xsl:text>)&#10;</xsl:text>
+                
             </xsl:when>
             <xsl:when test="@type='integer'">
+                
                 <xsl:text>DEFINE_MKX_SINTEGER</xsl:text>
                 <xsl:if test="@default and (number(@default)=number(@default))"><xsl:text>_DEF</xsl:text></xsl:if>
                 <!-- Needs a special constructor -->
@@ -185,8 +195,10 @@ END_LIBMATROSKA_NAMESPACE
                 <xsl:text>"</xsl:text>
                 <xsl:if test="@default and (number(@default)=number(@default))"><xsl:text>, </xsl:text><xsl:value-of select="@default" /></xsl:if>
                 <xsl:text>)&#10;</xsl:text>
+                
             </xsl:when>
             <xsl:when test="@type='utf-8'">
+                
                 <xsl:text>DEFINE_MKX_UNISTRING</xsl:text>
                 <xsl:if test="@default"><xsl:text>_DEF</xsl:text></xsl:if>
                 <xsl:text>(Kax</xsl:text>
@@ -206,8 +218,10 @@ END_LIBMATROSKA_NAMESPACE
                 <xsl:value-of select="@name" /><xsl:text>"</xsl:text>
                 <xsl:if test="@default"><xsl:text>, "</xsl:text><xsl:value-of select="@default" />"</xsl:if>
                 <xsl:text>)&#10;</xsl:text>
+                
             </xsl:when>
             <xsl:when test="@type='string'">
+                
                 <xsl:text>DEFINE_MKX_STRING</xsl:text>
                 <xsl:if test="@default"><xsl:text>_DEF</xsl:text></xsl:if>
                 <xsl:text>(Kax</xsl:text>
@@ -227,10 +241,12 @@ END_LIBMATROSKA_NAMESPACE
                 <xsl:value-of select="@name" /><xsl:text>"</xsl:text>
                 <xsl:if test="@default"><xsl:text>, "</xsl:text><xsl:value-of select="@default" /><xsl:text>"</xsl:text></xsl:if>
                 <xsl:text>)&#10;</xsl:text>
+                
             </xsl:when>
             <xsl:when test="@type='float'">
+                
                 <xsl:text>DEFINE_MKX_FLOAT</xsl:text>
-                <xsl:if test="@default"><xsl:text>_DEF</xsl:text></xsl:if>
+                <xsl:if test="@default and starts-with(@default,'0x')"><xsl:text>_DEF</xsl:text></xsl:if>
                 <xsl:text>(Kax</xsl:text>
                 <xsl:choose>
                     <xsl:when test="@cppname"><xsl:value-of select="@cppname" /></xsl:when>
@@ -246,12 +262,23 @@ END_LIBMATROSKA_NAMESPACE
                     </xsl:call-template>
                 <xsl:text>, "</xsl:text>
                 <xsl:value-of select="@name" /><xsl:text>"</xsl:text>
-                <xsl:if test="@default"><xsl:text>, </xsl:text><xsl:value-of select="@default" /></xsl:if>
+                <xsl:if test="@default and starts-with(@default,'0x')">
+                    <xsl:choose>
+                        <xsl:when test="@default='0x1p+0'">, 1</xsl:when>
+                        <xsl:when test="@default='0x0p+0'">, 0</xsl:when>
+                        <xsl:when test="@default='0x1.f4p+12'">, 8000</xsl:when>
+                        <xsl:otherwise><xsl:text>, </xsl:text><xsl:value-of select="@default" /></xsl:otherwise>>
+                    </xsl:choose>
+                </xsl:if>
                 <xsl:text>)&#10;</xsl:text>
+                
             </xsl:when>
             <xsl:when test="@type='date'">
                 <xsl:text>DEFINE_MKX_DATE</xsl:text>
-                <xsl:if test="@default and (number(@default)=number(@default))"><xsl:text>_DEF</xsl:text></xsl:if>
+                <xsl:choose>
+                    <xsl:when test="@default and (number(@default)=number(@default))"><xsl:text>_DEF</xsl:text></xsl:when>
+                    <xsl:otherwise><xsl:text>    </xsl:text></xsl:otherwise>
+                </xsl:choose>
                 <xsl:text>(Kax</xsl:text>
                 <xsl:choose>
                     <xsl:when test="@cppname"><xsl:value-of select="@cppname" /></xsl:when>
@@ -271,6 +298,18 @@ END_LIBMATROSKA_NAMESPACE
                 <xsl:text>)&#10;</xsl:text>
             </xsl:when>
         </xsl:choose>
+        <xsl:if test="@maxver">
+            <xsl:text>&#10;filepos_t Kax</xsl:text>
+            <xsl:choose>
+                <xsl:when test="@cppname"><xsl:value-of select="@cppname" /></xsl:when>
+                <xsl:otherwise><xsl:value-of select="@name" /></xsl:otherwise>
+            </xsl:choose>
+            <xsl:text>::RenderData(IOCallback &amp; /* output */, bool /* bForceRender */, bool /* bSaveDefault */) {&#10;</xsl:text>
+            <xsl:text>  assert(false); // no you are not allowed to use this element !&#10;</xsl:text>
+            <xsl:text>  return 0;&#10;</xsl:text>
+            <xsl:text>}&#10;</xsl:text>
+        </xsl:if>
+        <xsl:if test="@minver and @minver!='1'">#endif&#10;</xsl:if>
     </xsl:copy>
     </xsl:if>
   </xsl:template>
