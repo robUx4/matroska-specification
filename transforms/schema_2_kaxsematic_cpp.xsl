@@ -54,7 +54,7 @@ END_LIBMATROSKA_NAMESPACE
 
 </xsl:template>
   <xsl:template match="element">
-    <xsl:if test="@type='master'">
+    <xsl:if test="not(starts-with(@sortPath,'\EBML\'))">
     <xsl:copy>
         <xsl:choose>
             <xsl:when test="@type='master'">
@@ -76,7 +76,7 @@ END_LIBMATROSKA_NAMESPACE
 
                 <xsl:text>&#10;DEFINE_MKX_MASTER</xsl:text>
                 <xsl:if test="not(contains(substring(@sortPath,2),'\'))"><xsl:text>_ORPHAN</xsl:text></xsl:if>
-                <xsl:if test="@name='Attachments' or @name='AttachedFile' or @name='Cluster'"><xsl:text>_CONS</xsl:text></xsl:if>
+                <xsl:if test="@name='Attachments' or @name='AttachedFile' or @name='Cluster' or @name='BlockGroup' or @name='TrackEntry'"><xsl:text>_CONS</xsl:text></xsl:if>
                 <xsl:text>(Kax</xsl:text>
                 <xsl:choose>
                     <xsl:when test="@cppname"><xsl:value-of select="@cppname" /></xsl:when>
@@ -105,7 +105,7 @@ END_LIBMATROSKA_NAMESPACE
                 <xsl:text>")&#10;</xsl:text>
             </xsl:when>
             <xsl:when test="@type='binary'">
-                <xsl:text>&#10;DEFINE_MKX_BINARY(Kax</xsl:text>
+                <xsl:text>&#10;DEFINE_MKX_BINARY (Kax</xsl:text>
                 <xsl:choose>
                     <xsl:when test="@cppname"><xsl:value-of select="@cppname" /></xsl:when>
                     <xsl:otherwise><xsl:value-of select="@name" /></xsl:otherwise>
@@ -113,12 +113,17 @@ END_LIBMATROSKA_NAMESPACE
                 <xsl:text>, </xsl:text>
                 <xsl:value-of select="@id" /><xsl:text>, </xsl:text>
                 <xsl:value-of select="((string-length(@id) - 2) * 0.5)" /> 
-                <xsl:text>, KaxParent, "</xsl:text>
+                <xsl:text>, Kax</xsl:text>
+                    <xsl:call-template name="output-master-parent">
+                        <xsl:with-param name="findPath"><xsl:value-of select="@sortPath" /></xsl:with-param>
+                        <xsl:with-param name="name"><xsl:value-of select="@name" /></xsl:with-param>
+                    </xsl:call-template>
+                <xsl:text>, "</xsl:text>
                 <xsl:choose>
                     <xsl:when test="@cppname"><xsl:value-of select="@cppname" /></xsl:when>
                     <xsl:otherwise><xsl:value-of select="@name" /></xsl:otherwise>
                 </xsl:choose>
-                <xsl:value-of select="@name" /><xsl:text>")&#10;</xsl:text>
+                <xsl:text>")&#10;</xsl:text>
             </xsl:when>
             <xsl:when test="@type='uinteger'">
                 <xsl:text>&#10;DEFINE_MKX_UINTEGER</xsl:text>
@@ -131,7 +136,12 @@ END_LIBMATROSKA_NAMESPACE
                 <xsl:text>, </xsl:text>
                 <xsl:value-of select="@id" /><xsl:text>, </xsl:text>
                 <xsl:value-of select="((string-length(@id) - 2) * 0.5)" /> 
-                <xsl:text>, KaxParent, "</xsl:text>
+                <xsl:text>, Kax</xsl:text>
+                    <xsl:call-template name="output-master-parent">
+                        <xsl:with-param name="findPath"><xsl:value-of select="@sortPath" /></xsl:with-param>
+                        <xsl:with-param name="name"><xsl:value-of select="@name" /></xsl:with-param>
+                    </xsl:call-template>
+                <xsl:text>, "</xsl:text>
                 <xsl:choose>
                     <xsl:when test="@cppname"><xsl:value-of select="@cppname" /></xsl:when>
                     <xsl:otherwise><xsl:value-of select="@name" /></xsl:otherwise>
@@ -151,7 +161,12 @@ END_LIBMATROSKA_NAMESPACE
                 <xsl:text>, </xsl:text>
                 <xsl:value-of select="@id" /><xsl:text>, </xsl:text>
                 <xsl:value-of select="((string-length(@id) - 2) * 0.5)" /> 
-                <xsl:text>, KaxParent, "</xsl:text>
+                <xsl:text>, Kax</xsl:text>
+                    <xsl:call-template name="output-master-parent">
+                        <xsl:with-param name="findPath"><xsl:value-of select="@sortPath" /></xsl:with-param>
+                        <xsl:with-param name="name"><xsl:value-of select="@name" /></xsl:with-param>
+                    </xsl:call-template>
+                <xsl:text>, "</xsl:text>
                 <xsl:choose>
                     <xsl:when test="@cppname"><xsl:value-of select="@cppname" /></xsl:when>
                     <xsl:otherwise><xsl:value-of select="@name" /></xsl:otherwise>
@@ -171,7 +186,12 @@ END_LIBMATROSKA_NAMESPACE
                 <xsl:text>, </xsl:text>
                 <xsl:value-of select="@id" /><xsl:text>, </xsl:text>
                 <xsl:value-of select="((string-length(@id) - 2) * 0.5)" /> 
-                <xsl:text>, KaxParent, "</xsl:text>
+                <xsl:text>, Kax</xsl:text>
+                    <xsl:call-template name="output-master-parent">
+                        <xsl:with-param name="findPath"><xsl:value-of select="@sortPath" /></xsl:with-param>
+                        <xsl:with-param name="name"><xsl:value-of select="@name" /></xsl:with-param>
+                    </xsl:call-template>
+                <xsl:text>, "</xsl:text>
                 <xsl:value-of select="@name" /><xsl:text>"</xsl:text>
                 <xsl:if test="@default"><xsl:text>, </xsl:text><xsl:value-of select="@default" /></xsl:if>
                 <xsl:text>)</xsl:text>
@@ -187,7 +207,12 @@ END_LIBMATROSKA_NAMESPACE
                 <xsl:text>, </xsl:text>
                 <xsl:value-of select="@id" /><xsl:text>, </xsl:text>
                 <xsl:value-of select="((string-length(@id) - 2) * 0.5)" /> 
-                <xsl:text>, KaxParent, "</xsl:text>
+                <xsl:text>, Kax</xsl:text>
+                    <xsl:call-template name="output-master-parent">
+                        <xsl:with-param name="findPath"><xsl:value-of select="@sortPath" /></xsl:with-param>
+                        <xsl:with-param name="name"><xsl:value-of select="@name" /></xsl:with-param>
+                    </xsl:call-template>
+                <xsl:text>, "</xsl:text>
                 <xsl:value-of select="@name" /><xsl:text>"</xsl:text>
                 <xsl:if test="@default"><xsl:text>, </xsl:text><xsl:value-of select="@default" /></xsl:if>
                 <xsl:text>)</xsl:text>
@@ -203,7 +228,12 @@ END_LIBMATROSKA_NAMESPACE
                 <xsl:text>, </xsl:text>
                 <xsl:value-of select="@id" /><xsl:text>, </xsl:text>
                 <xsl:value-of select="((string-length(@id) - 2) * 0.5)" /> 
-                <xsl:text>, KaxParent, "</xsl:text>
+                <xsl:text>, Kax</xsl:text>
+                    <xsl:call-template name="output-master-parent">
+                        <xsl:with-param name="findPath"><xsl:value-of select="@sortPath" /></xsl:with-param>
+                        <xsl:with-param name="name"><xsl:value-of select="@name" /></xsl:with-param>
+                    </xsl:call-template>
+                <xsl:text>, "</xsl:text>
                 <xsl:value-of select="@name" /><xsl:text>"</xsl:text>
                 <xsl:if test="@default"><xsl:text>, </xsl:text><xsl:value-of select="@default" /></xsl:if>
                 <xsl:text>)</xsl:text>
@@ -219,7 +249,12 @@ END_LIBMATROSKA_NAMESPACE
                 <xsl:text>, </xsl:text>
                 <xsl:value-of select="@id" /><xsl:text>, </xsl:text>
                 <xsl:value-of select="((string-length(@id) - 2) * 0.5)" /> 
-                <xsl:text>, KaxParent, "</xsl:text>
+                <xsl:text>, Kax</xsl:text>
+                    <xsl:call-template name="output-master-parent">
+                        <xsl:with-param name="findPath"><xsl:value-of select="@sortPath" /></xsl:with-param>
+                        <xsl:with-param name="name"><xsl:value-of select="@name" /></xsl:with-param>
+                    </xsl:call-template>
+                <xsl:text>, "</xsl:text>
                 <xsl:value-of select="@name" /><xsl:text>"</xsl:text>
                 <xsl:if test="@default"><xsl:text>, </xsl:text><xsl:value-of select="@default" /></xsl:if>
                 <xsl:text>)</xsl:text>
