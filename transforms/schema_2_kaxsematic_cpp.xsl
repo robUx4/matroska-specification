@@ -63,8 +63,11 @@ END_LIBMATROSKA_NAMESPACE
                     <xsl:when test="@cppname"><xsl:value-of select="@cppname" /></xsl:when>
                     <xsl:otherwise><xsl:value-of select="@name" /></xsl:otherwise>
                 </xsl:choose>
-                <xsl:text>)</xsl:text>
-                <xsl:text>&#10;DEFINE_END_SEMANTIC(Kax</xsl:text>
+                <xsl:text>)&#10;</xsl:text>
+                <xsl:call-template name="list-master-children">
+                    <xsl:with-param name="findPath"><xsl:value-of select="@sortPath" /></xsl:with-param>
+                </xsl:call-template>
+                <xsl:text>DEFINE_END_SEMANTIC(Kax</xsl:text>
                 <xsl:choose>
                     <xsl:when test="@cppname"><xsl:value-of select="@cppname" /></xsl:when>
                     <xsl:otherwise><xsl:value-of select="@name" /></xsl:otherwise>
@@ -254,6 +257,30 @@ END_LIBMATROSKA_NAMESPACE
     <xsl:comment>
       <xsl:value-of select="."/>
     </xsl:comment>
+  </xsl:template>
+
+  <xsl:template name="list-master-children">
+    <xsl:param name="findPath"/>
+    <xsl:for-each select="../element">
+        <xsl:if test="@sortPath=concat(concat($findPath,'\'),@name)">
+            <xsl:text>DEFINE_SEMANTIC_ITEM(</xsl:text>
+            <xsl:choose>
+                <xsl:when test="@minOccurs and @minOccurs!='0'"><xsl:text>true</xsl:text></xsl:when>
+                <xsl:otherwise><xsl:text>false</xsl:text></xsl:otherwise>
+            </xsl:choose>
+            <xsl:text>, </xsl:text>
+            <xsl:choose>
+                <xsl:when test="@maxOccurs='1'"><xsl:text>true</xsl:text></xsl:when>
+                <xsl:otherwise><xsl:text>false</xsl:text></xsl:otherwise>
+            </xsl:choose>
+            <xsl:text>, Kax</xsl:text>
+            <xsl:choose>
+                <xsl:when test="@cppname"><xsl:value-of select="@cppname" /></xsl:when>
+                <xsl:otherwise><xsl:value-of select="@name" /></xsl:otherwise>
+            </xsl:choose>
+            <xsl:text>)&#10;</xsl:text>
+        </xsl:if>
+    </xsl:for-each>
   </xsl:template>
 
   <xsl:template name="get-element-name">
