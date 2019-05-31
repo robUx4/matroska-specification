@@ -7,7 +7,7 @@
             "label": "Compile XSD",
             "type": "shell",
             "command": "C:\\msys64\\usr\\bin\\env.exe",
-            "args": ["xsltproc", "--output", "${workspaceFolder}\\KaxSemantic.cpp", "${file}", "${workspaceFolder}\\sortable.xml"],
+            "args": ["xsltproc", "--output", "${workspaceFolder}\\KaxSemantic.cpp", "${file}", "${workspaceFolder}\\ebml_matroska.xml"],
             "group": {
                 "kind": "build",
                 "isDefault": true
