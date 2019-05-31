@@ -48,9 +48,7 @@
 
 START_LIBMATROSKA_NAMESPACE
 <xsl:apply-templates select="element">
-    <!-- Sort when we don't need MATROSKA_VERSION
-         <xsl:sort select="translate(substring-before(substring-after(@path,'('),')'), '(1*(', '')" />
-    -->
+    <xsl:sort select="translate(substring-before(substring-after(@path,'('),')'), '(1*(', '')" />
 </xsl:apply-templates>
 END_LIBMATROSKA_NAMESPACE
 
@@ -61,16 +59,7 @@ END_LIBMATROSKA_NAMESPACE
     <!-- Ignore EBML extra constraints -->
     <xsl:if test="not(starts-with($plainPath,'\EBML\'))">
     <xsl:copy>
-        <xsl:choose>
-            <xsl:when test="@minver &gt;= 2 and (not(preceding-sibling::element[1]/@minver) or preceding-sibling::element[1]/@minver &lt; 2)">
-                <!-- New element with version >= 2 -->
-                <xsl:text>#if MATROSKA_VERSION >= 2&#10;</xsl:text>
-            </xsl:when>
-            <xsl:when test="preceding-sibling::element[1]/@minver &gt;=2 and (not(@minver) or @minver &lt; 2)">
-                <!-- Previous version was >= 2 but we're not -->
-                <xsl:text>#endif&#10;</xsl:text>
-            </xsl:when>
-        </xsl:choose>
+        <xsl:if test="@minver and @minver!='1'">#if MATROSKA_VERSION >= 2&#10;</xsl:if>
         <xsl:choose>
             <xsl:when test="@type='master'">
                 <xsl:text>&#10;</xsl:text>
@@ -320,6 +309,7 @@ END_LIBMATROSKA_NAMESPACE
             <xsl:text>  return 0;&#10;</xsl:text>
             <xsl:text>}&#10;</xsl:text>
         </xsl:if>
+        <xsl:if test="@minver and @minver!='1'">#endif&#10;</xsl:if>
     </xsl:copy>
     </xsl:if>
   </xsl:template>
