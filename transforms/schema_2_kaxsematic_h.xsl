@@ -67,182 +67,55 @@ END_LIBMATROSKA_NAMESPACE
         <xsl:if test="@minver and @minver!='1'">#if MATROSKA_VERSION >= 2&#10;</xsl:if>
         <xsl:choose>
             <xsl:when test="@type='master'">
-                <xsl:text>DECLARE_MKX_MASTER</xsl:text>
-                <xsl:text>(Kax</xsl:text>
-                <xsl:choose>
-                    <xsl:when test="@cppname"><xsl:value-of select="@cppname" /></xsl:when>
-                    <xsl:otherwise><xsl:value-of select="@name" /></xsl:otherwise>
-                </xsl:choose>
-                <xsl:text>)&#10;</xsl:text>
+                <xsl:text>DECLARE_MKX_MASTER(Kax</xsl:text>
             </xsl:when>
             <xsl:when test="@type='binary'">
-                <xsl:text>DECLARE_MKX_BINARY</xsl:text>
-                <xsl:text> (Kax</xsl:text>
-                <xsl:choose>
-                    <xsl:when test="@cppname"><xsl:value-of select="@cppname" /></xsl:when>
-                    <xsl:otherwise><xsl:value-of select="@name" /></xsl:otherwise>
-                </xsl:choose>
-                <xsl:text>)&#10;</xsl:text>
-                <xsl:if test="@name='SegmentUID'">
-                    <xsl:text>#if defined(HAVE_EBML2) || defined(HAS_EBML2)&#10;</xsl:text>
-                    <xsl:text>public:&#10;</xsl:text>
-                    <xsl:text>  KaxSegmentUID(EBML_DEF_CONS EBML_DEF_SEP EBML_EXTRA_PARAM);&#10;</xsl:text>
-                    <xsl:text>#endif&#10;</xsl:text>
-                </xsl:if>
-                <xsl:if test="@maxver or @length">
-                    <xsl:text>public:&#10;</xsl:text>
-                </xsl:if>
-                <xsl:if test="@maxver">
-                    <xsl:text>  filepos_t RenderData(IOCallback &amp; output, bool bForceRender, bool bSaveDefault);&#10;</xsl:text>
-                </xsl:if>
-                <xsl:if test="@length">
-                    <xsl:text>  virtual bool ValidateSize() const {return IsFiniteSize() &amp;&amp; GetSize() </xsl:text>
-                    <xsl:choose>
-                        <xsl:when test="contains(@length, '=') or contains(@length, '&lt;') or contains(@length, '&gt;')"><xsl:value-of select="@length"/></xsl:when>
-                        <xsl:otherwise><xsl:text>== </xsl:text><xsl:value-of select="@length"/></xsl:otherwise>
-                    </xsl:choose>
-                    <xsl:text>;}&#10;</xsl:text>
-                </xsl:if>
+                <xsl:text>DECLARE_MKX_BINARY (Kax</xsl:text>
             </xsl:when>
             <xsl:when test="@type='uinteger'">
-                <xsl:text>DECLARE_MKX_UINTEGER</xsl:text>
-                <xsl:text>(Kax</xsl:text>
-                <xsl:choose>
-                    <xsl:when test="@cppname"><xsl:value-of select="@cppname" /></xsl:when>
-                    <xsl:otherwise><xsl:value-of select="@name" /></xsl:otherwise>
-                </xsl:choose>
-                <xsl:text>)&#10;</xsl:text>
-                <xsl:if test="@maxver or @length">
-                    <xsl:text>public:&#10;</xsl:text>
-                </xsl:if>
-                <xsl:if test="@maxver">
-                    <xsl:text>  filepos_t RenderData(IOCallback &amp; output, bool bForceRender, bool bSaveDefault);&#10;</xsl:text>
-                </xsl:if>
-                <xsl:if test="@length">
-                    <xsl:text>  virtual bool ValidateSize() const {return IsFiniteSize() &amp;&amp; GetSize() </xsl:text>
-                    <xsl:choose>
-                        <xsl:when test="contains(@length, '=') or contains(@length, '&lt;') or contains(@length, '&gt;')"><xsl:value-of select="@length"/></xsl:when>
-                        <xsl:otherwise><xsl:text>== </xsl:text><xsl:value-of select="@length"/></xsl:otherwise>
-                    </xsl:choose>
-                    <xsl:text>;}&#10;</xsl:text>
-                </xsl:if>
+                <xsl:text>DECLARE_MKX_UINTEGER(Kax</xsl:text>
             </xsl:when>
             <xsl:when test="@type='integer'">
-                <xsl:text>DECLARE_MKX_SINTEGER</xsl:text>
-                <xsl:text>(Kax</xsl:text>
-                <xsl:choose>
-                    <xsl:when test="@cppname"><xsl:value-of select="@cppname" /></xsl:when>
-                    <xsl:otherwise><xsl:value-of select="@name" /></xsl:otherwise>
-                </xsl:choose>
-                <xsl:text>)&#10;</xsl:text>
-                <xsl:if test="@maxver or @length">
-                    <xsl:text>public:&#10;</xsl:text>
-                </xsl:if>
-                <xsl:if test="@maxver">
-                    <xsl:text>  filepos_t RenderData(IOCallback &amp; output, bool bForceRender, bool bSaveDefault);&#10;</xsl:text>
-                </xsl:if>
-                <xsl:if test="@length">
-                    <xsl:text>  virtual bool ValidateSize() const {return IsFiniteSize() &amp;&amp; GetSize() </xsl:text>
-                    <xsl:choose>
-                        <xsl:when test="contains(@length, '=') or contains(@length, '&lt;') or contains(@length, '&gt;')"><xsl:value-of select="@length"/></xsl:when>
-                        <xsl:otherwise><xsl:text>== </xsl:text><xsl:value-of select="@length"/></xsl:otherwise>
-                    </xsl:choose>
-                    <xsl:text>;}&#10;</xsl:text>
-                </xsl:if>
+                <xsl:text>DECLARE_MKX_SINTEGER(Kax</xsl:text>
             </xsl:when>
             <xsl:when test="@type='utf-8'">
-                <xsl:text>DECLARE_MKX_UNISTRING</xsl:text>
-                <xsl:text>(Kax</xsl:text>
-                <xsl:choose>
-                    <xsl:when test="@cppname"><xsl:value-of select="@cppname" /></xsl:when>
-                    <xsl:otherwise><xsl:value-of select="@name" /></xsl:otherwise>
-                </xsl:choose>
-                <xsl:text>)&#10;</xsl:text>
-                <xsl:if test="@maxver or @length">
-                    <xsl:text>public:&#10;</xsl:text>
-                </xsl:if>
-                <xsl:if test="@maxver">
-                    <xsl:text>  filepos_t RenderData(IOCallback &amp; output, bool bForceRender, bool bSaveDefault);&#10;</xsl:text>
-                </xsl:if>
-                <xsl:if test="@length">
-                    <xsl:text>  virtual bool ValidateSize() const {return IsFiniteSize() &amp;&amp; GetSize() </xsl:text>
-                    <xsl:choose>
-                        <xsl:when test="contains(@length, '=') or contains(@length, '&lt;') or contains(@length, '&gt;')"><xsl:value-of select="@length"/></xsl:when>
-                        <xsl:otherwise><xsl:text>== </xsl:text><xsl:value-of select="@length"/></xsl:otherwise>
-                    </xsl:choose>
-                    <xsl:text>;}&#10;</xsl:text>
-                </xsl:if>
+                <xsl:text>DECLARE_MKX_UNISTRING(Kax</xsl:text>
             </xsl:when>
             <xsl:when test="@type='string'">
-                <xsl:text>DECLARE_MKX_STRING</xsl:text>
-                <xsl:text>(Kax</xsl:text>
-                <xsl:choose>
-                    <xsl:when test="@cppname"><xsl:value-of select="@cppname" /></xsl:when>
-                    <xsl:otherwise><xsl:value-of select="@name" /></xsl:otherwise>
-                </xsl:choose>
-                <xsl:text>)&#10;</xsl:text>
-                <xsl:if test="@maxver or @length">
-                    <xsl:text>public:&#10;</xsl:text>
-                </xsl:if>
-                <xsl:if test="@maxver">
-                    <xsl:text>  filepos_t RenderData(IOCallback &amp; output, bool bForceRender, bool bSaveDefault);&#10;</xsl:text>
-                </xsl:if>
-                <xsl:if test="@length">
-                    <xsl:text>  virtual bool ValidateSize() const {return IsFiniteSize() &amp;&amp; GetSize() </xsl:text>
-                    <xsl:choose>
-                        <xsl:when test="contains(@length, '=') or contains(@length, '&lt;') or contains(@length, '&gt;')"><xsl:value-of select="@length"/></xsl:when>
-                        <xsl:otherwise><xsl:text>== </xsl:text><xsl:value-of select="@length"/></xsl:otherwise>
-                    </xsl:choose>
-                    <xsl:text>;}&#10;</xsl:text>
-                </xsl:if>
+                <xsl:text>DECLARE_MKX_STRING(Kax</xsl:text>
             </xsl:when>
             <xsl:when test="@type='float'">
-                <xsl:text>DECLARE_MKX_FLOAT</xsl:text>
-                <xsl:text>(Kax</xsl:text>
-                <xsl:choose>
-                    <xsl:when test="@cppname"><xsl:value-of select="@cppname" /></xsl:when>
-                    <xsl:otherwise><xsl:value-of select="@name" /></xsl:otherwise>
-                </xsl:choose>
-                <xsl:text>)&#10;</xsl:text>
-                <xsl:if test="@maxver or @length">
-                    <xsl:text>public:&#10;</xsl:text>
-                </xsl:if>
-                <xsl:if test="@maxver">
-                    <xsl:text>  filepos_t RenderData(IOCallback &amp; output, bool bForceRender, bool bSaveDefault);&#10;</xsl:text>
-                </xsl:if>
-                <xsl:if test="@length">
-                    <xsl:text>  virtual bool ValidateSize() const {return IsFiniteSize() &amp;&amp; GetSize() </xsl:text>
-                    <xsl:choose>
-                        <xsl:when test="contains(@length, '=') or contains(@length, '&lt;') or contains(@length, '&gt;')"><xsl:value-of select="@length"/></xsl:when>
-                        <xsl:otherwise><xsl:text>== </xsl:text><xsl:value-of select="@length"/></xsl:otherwise>
-                    </xsl:choose>
-                    <xsl:text>;}&#10;</xsl:text>
-                </xsl:if>
+                <xsl:text>DECLARE_MKX_FLOAT(Kax</xsl:text>
             </xsl:when>
             <xsl:when test="@type='date'">
-                <xsl:text>DECLARE_MKX_DATE</xsl:text>
-                <xsl:text>    (Kax</xsl:text>
-                <xsl:choose>
-                    <xsl:when test="@cppname"><xsl:value-of select="@cppname" /></xsl:when>
-                    <xsl:otherwise><xsl:value-of select="@name" /></xsl:otherwise>
-                </xsl:choose>
-                <xsl:text>)&#10;</xsl:text>
-                <xsl:if test="@maxver or @length">
-                    <xsl:text>public:&#10;</xsl:text>
-                </xsl:if>
-                <xsl:if test="@maxver">
-                    <xsl:text>  filepos_t RenderData(IOCallback &amp; output, bool bForceRender, bool bSaveDefault);&#10;</xsl:text>
-                </xsl:if>
-                <xsl:if test="@length">
-                    <xsl:text>  virtual bool ValidateSize() const {return IsFiniteSize() &amp;&amp; GetSize() </xsl:text>
-                    <xsl:choose>
-                        <xsl:when test="contains(@length, '=') or contains(@length, '&lt;') or contains(@length, '&gt;')"><xsl:value-of select="@length"/></xsl:when>
-                        <xsl:otherwise><xsl:text>== </xsl:text><xsl:value-of select="@length"/></xsl:otherwise>
-                    </xsl:choose>
-                    <xsl:text>;}&#10;</xsl:text>
-                </xsl:if>
+                <xsl:text>DECLARE_MKX_DATE    (Kax</xsl:text>
             </xsl:when>
         </xsl:choose>
+        <xsl:choose>
+            <xsl:when test="@cppname"><xsl:value-of select="@cppname" /></xsl:when>
+            <xsl:otherwise><xsl:value-of select="@name" /></xsl:otherwise>
+        </xsl:choose>
+        <xsl:text>)&#10;</xsl:text>
+        <xsl:if test="@name='SegmentUID'">
+            <xsl:text>#if defined(HAVE_EBML2) || defined(HAS_EBML2)&#10;</xsl:text>
+            <xsl:text>public:&#10;</xsl:text>
+            <xsl:text>  KaxSegmentUID(EBML_DEF_CONS EBML_DEF_SEP EBML_EXTRA_PARAM);&#10;</xsl:text>
+            <xsl:text>#endif&#10;</xsl:text>
+        </xsl:if>
+        <xsl:if test="@maxver or @length">
+            <xsl:text>public:&#10;</xsl:text>
+        </xsl:if>
+        <xsl:if test="@maxver">
+            <xsl:text>  filepos_t RenderData(IOCallback &amp; output, bool bForceRender, bool bSaveDefault);&#10;</xsl:text>
+        </xsl:if>
+        <xsl:if test="@length">
+            <xsl:text>  virtual bool ValidateSize() const {return IsFiniteSize() &amp;&amp; GetSize() </xsl:text>
+            <xsl:choose>
+                <xsl:when test="contains(@length, '=') or contains(@length, '&lt;') or contains(@length, '&gt;')"><xsl:value-of select="@length"/></xsl:when>
+                <xsl:otherwise><xsl:text>== </xsl:text><xsl:value-of select="@length"/></xsl:otherwise>
+            </xsl:choose>
+            <xsl:text>;}&#10;</xsl:text>
+        </xsl:if>
         <xsl:text>};&#10;</xsl:text>
         <xsl:if test="@minver and @minver!='1'">#endif&#10;</xsl:if>
         <xsl:text>&#10;</xsl:text>
@@ -283,59 +156,6 @@ END_LIBMATROSKA_NAMESPACE
     <xsl:comment>
       <xsl:value-of select="."/>
     </xsl:comment>
-  </xsl:template>
-
-  <xsl:template name="list-master-children">
-    <xsl:param name="findPath"/>
-    <xsl:for-each select="../element">
-        <xsl:variable name="plainPath"><xsl:value-of select="translate(substring-before(substring-after(@path,'('),')'), '(1*(', '')" /></xsl:variable>
-        <xsl:if test="$plainPath=concat(concat($findPath,'\'),@name) or ($plainPath=$findPath and contains(@path,'(1*(\'))">
-            <xsl:variable name="EBMLElementOccurrence" select="substring-before(@path,'(')"/>
-            <xsl:variable name="EBMLMinOccurrence"     select="substring-before($EBMLElementOccurrence,'*')"/>
-            <xsl:variable name="EBMLMaxOccurrence"     select="substring-after($EBMLElementOccurrence,'*')"/>
-            <xsl:if test="@minver and @minver!='1'">#if MATROSKA_VERSION >= 2&#10;</xsl:if>
-            <xsl:text>DEFINE_SEMANTIC_ITEM(</xsl:text>
-            <xsl:choose>
-                <xsl:when test="$plainPath=$findPath and contains(@path,'(1*(\')"><xsl:text>false</xsl:text></xsl:when>
-                <xsl:when test="$EBMLMinOccurrence!='' and $EBMLMinOccurrence!='0'"><xsl:text>true</xsl:text></xsl:when>
-                <xsl:otherwise><xsl:text>false</xsl:text></xsl:otherwise>
-            </xsl:choose>
-            
-            <xsl:choose>
-                <xsl:when test="$EBMLMaxOccurrence='1'"><xsl:text>true</xsl:text></xsl:when>
-                <xsl:otherwise><xsl:text>false</xsl:text></xsl:otherwise>
-            </xsl:choose>
-            <xsl:text>, Kax</xsl:text>
-            <xsl:choose>
-                <xsl:when test="@cppname"><xsl:value-of select="@cppname" /></xsl:when>
-                <xsl:otherwise><xsl:value-of select="@name" /></xsl:otherwise>
-            </xsl:choose>
-            <xsl:text>)</xsl:text>
-            <xsl:if test="$plainPath=$findPath and contains(@path,'(1*(\')"><xsl:text> // recursive</xsl:text></xsl:if>
-            <xsl:if test="@maxver='0'">
-                <xsl:choose>
-                    <xsl:when test="@divx='1'"><xsl:text> // DivX specific</xsl:text></xsl:when>
-                    <xsl:otherwise><xsl:text> // not supported</xsl:text></xsl:otherwise>
-                </xsl:choose>
-            </xsl:if>
-            <xsl:text>&#10;</xsl:text>
-            <xsl:if test="@minver and @minver!='1'">#endif // MATROSKA_VERSION&#10;</xsl:if>
-        </xsl:if>
-    </xsl:for-each>
-  </xsl:template>
-
-  <xsl:template name="output-master-parent">
-    <xsl:param name="findPath"/>
-    <xsl:param name="name"/>
-    <xsl:for-each select="../element">
-        <xsl:variable name="plainPath"><xsl:value-of select="translate(substring-before(substring-after(@path,'('),')'), '(1*(', '')" /></xsl:variable>
-        <xsl:if test="$findPath=concat(concat($plainPath,'\'),$name)">
-            <xsl:choose>
-                <xsl:when test="@cppname"><xsl:value-of select="@cppname" /></xsl:when>
-                <xsl:otherwise><xsl:value-of select="@name" /></xsl:otherwise>
-            </xsl:choose>
-        </xsl:if>
-    </xsl:for-each>
   </xsl:template>
 
   <xsl:template match="@* | node()">
