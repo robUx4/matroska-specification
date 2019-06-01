@@ -1,8 +1,6 @@
 <?xml version="1.0"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0" xmlns:str="http://exslt.org/strings" exclude-result-prefixes="str">
-    <!-- TODO: get the parent from the Path: See KaxChapterAtom -->
-    <!-- TODO: fill the semantic tables -->
-    <!-- TODO: get VERSION 2 ifdef -->
+  <!-- File used to generate KaxSemantic.cpp -->
   <xsl:output encoding="UTF-8" method="text" version="1.0" indent="yes" />
   <xsl:template match="EBMLSchema">/**********************************************************************
 **  DO NOT EDIT, GENERATED WITH schema_2_kaxsemantic_cpp.xsl
