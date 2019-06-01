@@ -1,75 +1,186 @@
 <?xml version="1.0"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0" xmlns:str="http://exslt.org/strings" exclude-result-prefixes="str">
-    <!-- TODO: make purpose mandatory or default to "definition" -->
-  <xsl:output encoding="UTF-8" method="xml" version="1.0" indent="yes" />
-  <xsl:template match="EBMLSchema">
-    <EBMLSchema docType="matroska" version="4">
-    <xsl:apply-templates select="element|comment()"/>
-    </EBMLSchema>
-  </xsl:template>
+    <!-- TODO: get the parent from the Path: See KaxChapterAtom -->
+    <!-- TODO: fill the semantic tables -->
+    <!-- TODO: get VERSION 2 ifdef -->
+  <xsl:output encoding="UTF-8" method="text" version="1.0" indent="yes" />
+  <xsl:template match="EBMLSchema">/**********************************************************************
+**  DO NOT EDIT, GENERATED WITH DATA2LIB
+**  https://github.com/Matroska-Org/foundation-source/tree/master/spectool
+**
+**  libmatroska : parse Matroska files, see http://www.matroska.org/
+**
+**  Copyright (c) 2002-2017, Matroska (non-profit organisation)
+**  All rights reserved.
+**
+** This file is part of libmatroska.
+**
+** This library is free software; you can redistribute it and/or
+** modify it under the terms of the GNU Lesser General Public
+** License as published by the Free Software Foundation; either
+** version 2.1 of the License, or (at your option) any later version.
+**
+** This library is distributed in the hope that it will be useful,
+** but WITHOUT ANY WARRANTY; without even the implied warranty of
+** MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+** Lesser General Public License for more details.
+**
+** You should have received a copy of the GNU Lesser General Public
+** License along with this library; if not, write to the Free Software
+** Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+**
+** See http://www.gnu.org/licenses/lgpl-2.1.html for LGPL licensing information.**
+** Contact license@matroska.org if any conditions of this licensing are
+** not clear to you.
+**
+**********************************************************************/
+
+
+#ifndef LIBMATROSKA_SEMANTIC_H
+#define LIBMATROSKA_SEMANTIC_H
+
+#include "matroska/KaxTypes.h"
+#include "ebml/EbmlUInteger.h"
+#include "ebml/EbmlSInteger.h"
+#include "ebml/EbmlDate.h"
+#include "ebml/EbmlFloat.h"
+#include "ebml/EbmlString.h"
+#include "ebml/EbmlUnicodeString.h"
+#include "ebml/EbmlBinary.h"
+#include "ebml/EbmlMaster.h"
+#include "matroska/KaxDefines.h"
+
+using namespace LIBEBML_NAMESPACE;
+
+START_LIBMATROSKA_NAMESPACE
+<xsl:apply-templates select="element">
+    <xsl:sort select="translate(substring-before(substring-after(@path,'('),')'), '(1*(', '')" />
+</xsl:apply-templates>
+
+END_LIBMATROSKA_NAMESPACE
+
+#endif // LIBMATROSKA_SEMANTIC_H
+</xsl:template>
   <xsl:template match="element">
-    <element>
-        <xsl:attribute name="name">placeholder before parsePath is called</xsl:attribute>
-        <xsl:attribute name="path"><xsl:value-of select="@path" /></xsl:attribute>
-        <xsl:attribute name="id"><xsl:value-of select="@id" /></xsl:attribute>
-        <xsl:attribute name="type"><xsl:value-of select="@type" /></xsl:attribute>
-        <xsl:if test="@minver and minver!='1'">
-            <xsl:attribute name="minver"><xsl:value-of select="@minver" /></xsl:attribute>
-        </xsl:if>
-        <xsl:if test="@maxver">
-            <xsl:attribute name="maxver"><xsl:value-of select="@maxver" /></xsl:attribute>
-        </xsl:if>
-        <xsl:if test="@range">
-            <xsl:attribute name="range"><xsl:value-of select="@range" /></xsl:attribute>
-        </xsl:if>
-        <xsl:if test="@length">
-            <xsl:attribute name="length"><xsl:value-of select="@length" /></xsl:attribute>
-        </xsl:if>
-        <xsl:if test="@default">
-            <xsl:attribute name="default"><xsl:value-of select="@default" /></xsl:attribute>
-        </xsl:if>
-        <xsl:call-template name="parsePath">
-            <xsl:with-param name="Path"><xsl:value-of select="@path" /></xsl:with-param>
-        </xsl:call-template>
-        <xsl:if test="@recurring">
-            <xsl:attribute name="recurring"><xsl:value-of select="@recurring" /></xsl:attribute>
-        </xsl:if>
-        <xsl:if test="@unknownsizeallowed">
-            <xsl:attribute name="unknownsizeallowed"><xsl:value-of select="@unknownsizeallowed" /></xsl:attribute>
-        </xsl:if>
-        <!-- REMOVE THIS tag -->
-        <xsl:if test="@webm">
-            <xsl:attribute name="webm"><xsl:value-of select="@webm" /></xsl:attribute>
-        </xsl:if>
-        <!-- REMOVE THIS tag -->
-        <xsl:if test="@divx">
-            <xsl:attribute name="divx"><xsl:value-of select="@divx" /></xsl:attribute>
-        </xsl:if>
-        <!-- REMOVE THIS tag -->
-        <xsl:if test="@cppname">
-            <xsl:attribute name="cppname"><xsl:value-of select="@cppname" /></xsl:attribute>
-        </xsl:if>
-        <xsl:apply-templates select="documentation"/>
-        <xsl:if test="restriction">
-            <restriction>
-                <xsl:for-each select="restriction/enum">
-                    <xsl:sort select="value"/>
-                    <enum value="{@value}">
-                        <xsl:if test="@label">
-                            <xsl:attribute name="label"><xsl:value-of select="@label" /></xsl:attribute>
-                        </xsl:if>
-                        <xsl:apply-templates select="documentation"/>
-                    </enum>
-                </xsl:for-each>
-            </restriction>
-        </xsl:if>
-    </element>
+    <xsl:variable name="plainPath"><xsl:value-of select="translate(substring-before(substring-after(@path,'('),')'), '(1*(', '')" /></xsl:variable>
+<!-- <xsl:text>plainPath = </xsl:text><xsl:value-of select="$plainPath" /><xsl:text>&#10;</xsl:text> -->
+    <!-- Ignore EBML extra constraints -->
+    <xsl:if test="not(starts-with($plainPath,'\EBML\'))">
+    <xsl:copy>
+        <xsl:if test="@minver and @minver!='1'">#if MATROSKA_VERSION >= 2&#10;</xsl:if>
+        <xsl:choose>
+            <xsl:when test="@type='master'">
+                <xsl:text>&#10;</xsl:text>
+                <xsl:text>DECLARE_MKX_MASTER</xsl:text>
+                <xsl:text>(Kax</xsl:text>
+                <xsl:choose>
+                    <xsl:when test="@cppname"><xsl:value-of select="@cppname" /></xsl:when>
+                    <xsl:otherwise><xsl:value-of select="@name" /></xsl:otherwise>
+                </xsl:choose>
+                <xsl:text>)&#10;</xsl:text>
+            </xsl:when>
+            <xsl:when test="@type='binary'">
+                <xsl:text>DECLARE_MKX_BINARY</xsl:text>
+                <xsl:text> (Kax</xsl:text>
+                <xsl:choose>
+                    <xsl:when test="@cppname"><xsl:value-of select="@cppname" /></xsl:when>
+                    <xsl:otherwise><xsl:value-of select="@name" /></xsl:otherwise>
+                </xsl:choose>
+                <xsl:text>)&#10;</xsl:text>
+                <xsl:if test="@maxver">
+                    <xsl:text>public:&#10;</xsl:text>
+                    <xsl:text>  filepos_t RenderData(IOCallback &amp; output, bool bForceRender, bool bSaveDefault);&#10;</xsl:text>
+                </xsl:if>
+            </xsl:when>
+            <xsl:when test="@type='uinteger'">
+                <xsl:text>DECLARE_MKX_UINTEGER</xsl:text>
+                <xsl:text> (Kax</xsl:text>
+                <xsl:choose>
+                    <xsl:when test="@cppname"><xsl:value-of select="@cppname" /></xsl:when>
+                    <xsl:otherwise><xsl:value-of select="@name" /></xsl:otherwise>
+                </xsl:choose>
+                <xsl:text>)&#10;</xsl:text>
+                <xsl:if test="@maxver">
+                    <xsl:text>public:&#10;</xsl:text>
+                    <xsl:text>  filepos_t RenderData(IOCallback &amp; output, bool bForceRender, bool bSaveDefault);&#10;</xsl:text>
+                </xsl:if>
+            </xsl:when>
+            <xsl:when test="@type='integer'">
+                <xsl:text>DECLARE_MKX_SINTEGER</xsl:text>
+                <xsl:text> (Kax</xsl:text>
+                <xsl:choose>
+                    <xsl:when test="@cppname"><xsl:value-of select="@cppname" /></xsl:when>
+                    <xsl:otherwise><xsl:value-of select="@name" /></xsl:otherwise>
+                </xsl:choose>
+                <xsl:text>)&#10;</xsl:text>
+                <xsl:if test="@maxver">
+                    <xsl:text>public:&#10;</xsl:text>
+                    <xsl:text>  filepos_t RenderData(IOCallback &amp; output, bool bForceRender, bool bSaveDefault);&#10;</xsl:text>
+                </xsl:if>
+            </xsl:when>
+            <xsl:when test="@type='utf-8'">
+                <xsl:text>DECLARE_MKX_UNISTRING</xsl:text>
+                <xsl:text> (Kax</xsl:text>
+                <xsl:choose>
+                    <xsl:when test="@cppname"><xsl:value-of select="@cppname" /></xsl:when>
+                    <xsl:otherwise><xsl:value-of select="@name" /></xsl:otherwise>
+                </xsl:choose>
+                <xsl:text>)&#10;</xsl:text>
+                <xsl:if test="@maxver">
+                    <xsl:text>public:&#10;</xsl:text>
+                    <xsl:text>  filepos_t RenderData(IOCallback &amp; output, bool bForceRender, bool bSaveDefault);&#10;</xsl:text>
+                </xsl:if>
+            </xsl:when>
+            <xsl:when test="@type='string'">
+                <xsl:text>DECLARE_MKX_STRING</xsl:text>
+                <xsl:text> (Kax</xsl:text>
+                <xsl:choose>
+                    <xsl:when test="@cppname"><xsl:value-of select="@cppname" /></xsl:when>
+                    <xsl:otherwise><xsl:value-of select="@name" /></xsl:otherwise>
+                </xsl:choose>
+                <xsl:text>)&#10;</xsl:text>
+                <xsl:if test="@maxver">
+                    <xsl:text>public:&#10;</xsl:text>
+                    <xsl:text>  filepos_t RenderData(IOCallback &amp; output, bool bForceRender, bool bSaveDefault);&#10;</xsl:text>
+                </xsl:if>
+            </xsl:when>
+            <xsl:when test="@type='float'">
+                <xsl:text>DECLARE_MKX_FLOAT</xsl:text>
+                <xsl:text> (Kax</xsl:text>
+                <xsl:choose>
+                    <xsl:when test="@cppname"><xsl:value-of select="@cppname" /></xsl:when>
+                    <xsl:otherwise><xsl:value-of select="@name" /></xsl:otherwise>
+                </xsl:choose>
+                <xsl:text>)&#10;</xsl:text>
+                <xsl:if test="@maxver">
+                    <xsl:text>public:&#10;</xsl:text>
+                    <xsl:text>  filepos_t RenderData(IOCallback &amp; output, bool bForceRender, bool bSaveDefault);&#10;</xsl:text>
+                </xsl:if>
+            </xsl:when>
+            <xsl:when test="@type='date'">
+                <xsl:text>DECLARE_MKX_DATE</xsl:text>
+                <xsl:text> (Kax</xsl:text>
+                <xsl:choose>
+                    <xsl:when test="@cppname"><xsl:value-of select="@cppname" /></xsl:when>
+                    <xsl:otherwise><xsl:value-of select="@name" /></xsl:otherwise>
+                </xsl:choose>
+                <xsl:text>)&#10;</xsl:text>
+                <xsl:if test="@maxver">
+                    <xsl:text>public:&#10;</xsl:text>
+                    <xsl:text>  filepos_t RenderData(IOCallback &amp; output, bool bForceRender, bool bSaveDefault);&#10;</xsl:text>
+                </xsl:if>
+            </xsl:when>
+        </xsl:choose>
+        <xsl:text>};&#10;</xsl:text>
+        <xsl:if test="@minver and @minver!='1'">#endif&#10;</xsl:if>
+    </xsl:copy>
+    </xsl:if>
   </xsl:template>
   <xsl:template match="documentation">
     <documentation>
         <xsl:attribute name="lang"><xsl:value-of select="@lang" /></xsl:attribute>
-        <xsl:if test="@purpose">
-            <xsl:attribute name="purpose"><xsl:value-of select="@purpose" /></xsl:attribute>
+        <xsl:if test="@type">
+            <xsl:attribute name="type"><xsl:value-of select="@type" /></xsl:attribute>
         </xsl:if>
         <!-- <xsl:attribute name="type">
             <xsl:choose>
@@ -101,35 +212,62 @@
     </xsl:comment>
   </xsl:template>
 
-  <xsl:template name="parsePath">
-    <xsl:param name="Path"/>
-    <xsl:variable name="EBMLElementOccurrence" select="substring-before($Path,'(')"/>
-    <xsl:variable name="EBMLMinOccurrence"     select="substring-before($EBMLElementOccurrence,'*')"/>
-    <xsl:variable name="EBMLMaxOccurrence"     select="substring-after($EBMLElementOccurrence,'*')"/>
-    <xsl:variable name="EBMLMasterPath"   select="substring-before(substring-after($Path,'('),')')"/>
-    <xsl:call-template name="get-element-name">
-        <xsl:with-param name="value"><xsl:value-of select="$EBMLMasterPath" /></xsl:with-param>
-    </xsl:call-template>
-    <xsl:if test="$EBMLMinOccurrence and $EBMLMinOccurrence!='0'">
-      <xsl:attribute name="minOccurs"><xsl:value-of select="$EBMLMinOccurrence" /></xsl:attribute>
-    </xsl:if>
-    <xsl:if test="$EBMLMaxOccurrence">
-      <xsl:attribute name="maxOccurs"><xsl:value-of select="$EBMLMaxOccurrence" /></xsl:attribute>
-    </xsl:if>
+  <xsl:template name="list-master-children">
+    <xsl:param name="findPath"/>
+    <xsl:for-each select="../element">
+        <xsl:variable name="plainPath"><xsl:value-of select="translate(substring-before(substring-after(@path,'('),')'), '(1*(', '')" /></xsl:variable>
+        <xsl:if test="$plainPath=concat(concat($findPath,'\'),@name) or ($plainPath=$findPath and contains(@path,'(1*(\'))">
+            <xsl:variable name="EBMLElementOccurrence" select="substring-before(@path,'(')"/>
+            <xsl:variable name="EBMLMinOccurrence"     select="substring-before($EBMLElementOccurrence,'*')"/>
+            <xsl:variable name="EBMLMaxOccurrence"     select="substring-after($EBMLElementOccurrence,'*')"/>
+            <xsl:if test="@minver and @minver!='1'">#if MATROSKA_VERSION >= 2&#10;</xsl:if>
+            <xsl:text>DEFINE_SEMANTIC_ITEM(</xsl:text>
+            <xsl:choose>
+                <xsl:when test="$plainPath=$findPath and contains(@path,'(1*(\')"><xsl:text>false</xsl:text></xsl:when>
+                <xsl:when test="$EBMLMinOccurrence!='' and $EBMLMinOccurrence!='0'"><xsl:text>true</xsl:text></xsl:when>
+                <xsl:otherwise><xsl:text>false</xsl:text></xsl:otherwise>
+            </xsl:choose>
+            
+            <xsl:choose>
+                <xsl:when test="$EBMLMaxOccurrence='1'"><xsl:text>true</xsl:text></xsl:when>
+                <xsl:otherwise><xsl:text>false</xsl:text></xsl:otherwise>
+            </xsl:choose>
+            <xsl:text>, Kax</xsl:text>
+            <xsl:choose>
+                <xsl:when test="@cppname"><xsl:value-of select="@cppname" /></xsl:when>
+                <xsl:otherwise><xsl:value-of select="@name" /></xsl:otherwise>
+            </xsl:choose>
+            <xsl:text>)</xsl:text>
+            <xsl:if test="$plainPath=$findPath and contains(@path,'(1*(\')"><xsl:text> // recursive</xsl:text></xsl:if>
+            <xsl:if test="@maxver='0'">
+                <xsl:choose>
+                    <xsl:when test="@divx='1'"><xsl:text> // DivX specific</xsl:text></xsl:when>
+                    <xsl:otherwise><xsl:text> // not supported</xsl:text></xsl:otherwise>
+                </xsl:choose>
+            </xsl:if>
+            <xsl:text>&#10;</xsl:text>
+            <xsl:if test="@minver and @minver!='1'">#endif // MATROSKA_VERSION&#10;</xsl:if>
+        </xsl:if>
+    </xsl:for-each>
   </xsl:template>
 
-  <xsl:template name="get-element-name">
-    <xsl:param name="value"/>
-    <xsl:param name="separator"/>
-    <xsl:choose>
-        <xsl:when test="contains($value, '\')">
-            <xsl:call-template name="get-element-name">
-                <xsl:with-param name="value"><xsl:value-of select="substring-after($value, '\')" /></xsl:with-param>
-            </xsl:call-template>
-        </xsl:when>
-        <xsl:otherwise>
-            <xsl:attribute name="name"><xsl:value-of select="$value" /></xsl:attribute>
-        </xsl:otherwise>
-    </xsl:choose>
+  <xsl:template name="output-master-parent">
+    <xsl:param name="findPath"/>
+    <xsl:param name="name"/>
+    <xsl:for-each select="../element">
+        <xsl:variable name="plainPath"><xsl:value-of select="translate(substring-before(substring-after(@path,'('),')'), '(1*(', '')" /></xsl:variable>
+        <xsl:if test="$findPath=concat(concat($plainPath,'\'),$name)">
+            <xsl:choose>
+                <xsl:when test="@cppname"><xsl:value-of select="@cppname" /></xsl:when>
+                <xsl:otherwise><xsl:value-of select="@name" /></xsl:otherwise>
+            </xsl:choose>
+        </xsl:if>
+    </xsl:for-each>
+  </xsl:template>
+
+  <xsl:template match="@* | node()">
+    <xsl:copy>
+      <xsl:apply-templates select="@* | node()"/>
+    </xsl:copy>
   </xsl:template>
 </xsl:stylesheet>
