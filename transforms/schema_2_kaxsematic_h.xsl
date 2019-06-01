@@ -54,7 +54,6 @@ START_LIBMATROSKA_NAMESPACE
 <xsl:apply-templates select="element">
     <xsl:sort select="translate(substring-before(substring-after(@path,'('),')'), '(1*(', '')" />
 </xsl:apply-templates>
-
 END_LIBMATROSKA_NAMESPACE
 
 #endif // LIBMATROSKA_SEMANTIC_H
