@@ -60,8 +60,6 @@ END_LIBMATROSKA_NAMESPACE
         <xsl:if test="@minver and @minver!='1'">#if MATROSKA_VERSION >= 2&#10;</xsl:if>
         <xsl:choose>
             <xsl:when test="@type='master'">
-                <xsl:text>&#10;</xsl:text>
-                
                 <xsl:text>DEFINE_START_SEMANTIC(Kax</xsl:text>
                 <xsl:choose>
                     <xsl:when test="@cppname"><xsl:value-of select="@cppname" /></xsl:when>
