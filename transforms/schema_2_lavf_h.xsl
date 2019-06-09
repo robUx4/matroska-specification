@@ -69,6 +69,7 @@
                 <xsl:when test="@name='PrevSize'"><xsl:text>ClusterPrevSize</xsl:text></xsl:when>
                 <xsl:when test="@name='Timestamp'"><xsl:text>ClusterTimecode</xsl:text></xsl:when>
                 <xsl:when test="@name='CuePoint'"><xsl:text>PointEntry</xsl:text></xsl:when>
+                <xsl:when test="@name='CueTrackPositions'"><xsl:text>CueTrackPosition</xsl:text></xsl:when>
                 <xsl:when test="@name='TimestampScale'"><xsl:text>TimecodeScale</xsl:text></xsl:when>
                 <xsl:when test="@name='Seek'"><xsl:text>SeekEntry</xsl:text></xsl:when>
                 <xsl:when test="@name='TagLanguage'"><xsl:text>TagLang</xsl:text></xsl:when>
@@ -145,6 +146,8 @@
             <xsl:when test="@name='TrackEntry'"><xsl:text>&#10;/* IDs in the trackentry master */&#10;</xsl:text></xsl:when>
             <xsl:when test="@name='Audio'"><xsl:text>&#10;/* IDs in the trackaudio master */&#10;</xsl:text></xsl:when>
             <xsl:when test="@name='Video'"><xsl:text>&#10;/* IDs in the trackvideo master */&#10;</xsl:text></xsl:when>
+
+            <xsl:when test="@name='TagDefault'"><xsl:text>#define MATROSKA_ID_TAGDEFAULT_BUG             0x44B4&#10;</xsl:text></xsl:when>
         </xsl:choose>
     <!-- </xsl:copy> -->
     </xsl:if>
