@@ -44,14 +44,59 @@
 <!-- <xsl:text>plainPath = </xsl:text><xsl:value-of select="$plainPath" /><xsl:text>&#10;</xsl:text> -->
     <!-- Ignore EBML extra constraints -->
     <xsl:if test="not(starts-with($plainPath,'\EBML\'))">
-    <!-- <xsl:copy> -->
+    <xsl:copy>
+        <xsl:variable name="lavfName">
+            <xsl:choose>
+                <xsl:when test="@name='FileDescription'"><xsl:text>FileDesc</xsl:text></xsl:when>
+                <xsl:when test="@name='ChapLanguage'"><xsl:text>ChapLang</xsl:text></xsl:when>
+                <xsl:when test="@name='ReferenceBlock'"><xsl:text>BlockReference</xsl:text></xsl:when>
+                <xsl:when test="@name='Position'"><xsl:text>ClusterPosition</xsl:text></xsl:when>
+                <xsl:when test="@name='PrevSize'"><xsl:text>ClusterPrevSize</xsl:text></xsl:when>
+                <xsl:when test="@name='Timestamp'"><xsl:text>ClusterTimecode</xsl:text></xsl:when>
+                <xsl:when test="@name='CuePoint'"><xsl:text>PointEntry</xsl:text></xsl:when>
+                <xsl:when test="@name='TimestampScale'"><xsl:text>TimecodeScale</xsl:text></xsl:when>
+                <xsl:when test="@name='Seek'"><xsl:text>SeekEntry</xsl:text></xsl:when>
+                <xsl:when test="@name='TagLanguage'"><xsl:text>TagLang</xsl:text></xsl:when>
+                <xsl:when test="@name='Targets'"><xsl:text>TagTargets</xsl:text></xsl:when>
+                <xsl:when test="@name='TagAttachmentUID'"><xsl:text>TagTargets_AttachUID</xsl:text></xsl:when>
+                <xsl:when test="@name='TagChapterUID'"><xsl:text>TagTargets_ChapterUID</xsl:text></xsl:when>
+                <xsl:when test="@name='TagTrackUID'"><xsl:text>TagTargets_TrackUID</xsl:text></xsl:when>
+                <xsl:when test="@name='TargetType'"><xsl:text>TagTargets_Type</xsl:text></xsl:when>
+                <xsl:when test="@name='TargetTypeValue'"><xsl:text>TagTargets_TypeValue</xsl:text></xsl:when>
+                <xsl:when test="@name='Audio'"><xsl:text>TrackAudio</xsl:text></xsl:when>
+                <xsl:when test="@name='BitDepth'"><xsl:text>AudioBitDepth</xsl:text></xsl:when>
+                <xsl:when test="@name='Channels'"><xsl:text>AudioChannels</xsl:text></xsl:when>
+                <xsl:when test="@name='OutputSamplingFrequency'"><xsl:text>AudioOutSamplingFreq</xsl:text></xsl:when>
+                <xsl:when test="@name='SamplingFrequency'"><xsl:text>AudioSamplingFreq</xsl:text></xsl:when>
+                <xsl:when test="@name='Video'"><xsl:text>TrackVideo</xsl:text></xsl:when>
+                <xsl:when test="@name='ContentEncodings'"><xsl:text>TrackContentEncodings</xsl:text></xsl:when>
+                <xsl:when test="@name='ContentEncoding'"><xsl:text>TrackContentEncoding</xsl:text></xsl:when>
+                <xsl:when test="@name='ContentCompression'"><xsl:text>EncodingCompression</xsl:text></xsl:when>
+                <xsl:when test="@name='ContentCompAlgo'"><xsl:text>EncodingCompAlgo</xsl:text></xsl:when>
+                <xsl:when test="@name='ContentCompSettings'"><xsl:text>EncodingCompSettings</xsl:text></xsl:when>
+                <xsl:when test="@name='ContentEncodingOrder'"><xsl:text>EncodingOrder</xsl:text></xsl:when>
+                <xsl:when test="@name='ContentEncodingScope'"><xsl:text>EncodingScope</xsl:text></xsl:when>
+                <xsl:when test="@name='ContentEncodingType'"><xsl:text>EncodingType</xsl:text></xsl:when>
+                <xsl:when test="@name='ContentEncryption'"><xsl:text>EncodingEncryption</xsl:text></xsl:when>
+                <xsl:when test="@name='ContentEncAESSettings'"><xsl:text>EncodingEncAESSettings</xsl:text></xsl:when>
+                <xsl:when test="@name='ContentEncAlgo'"><xsl:text>EncodingEncAlgo</xsl:text></xsl:when>
+                <xsl:when test="@name='ContentEncKeyID'"><xsl:text>EncodingEncKeyId</xsl:text></xsl:when>
+                <xsl:when test="@name='ContentSigAlgo'"><xsl:text>EncodingSigAlgo</xsl:text></xsl:when>
+                <xsl:when test="@name='ContentSignature'"><xsl:text>EncodingSignature</xsl:text></xsl:when>
+                <xsl:when test="@name='ContentSigKeyID'"><xsl:text>EncodingSigKeyId</xsl:text></xsl:when>
+                <xsl:when test="@name='ContentSigHashAlgo'"><xsl:text>EncodingSigHashAlgo</xsl:text></xsl:when>
+                <xsl:otherwise><xsl:value-of select="@name"/></xsl:otherwise>
+            </xsl:choose>
+        </xsl:variable>
         <xsl:choose>
             <xsl:when test="@name='Segment'"><xsl:text>/* toplevel segment */&#10;</xsl:text></xsl:when>
         </xsl:choose>
         <xsl:text>#define MATROSKA_ID_</xsl:text>
-        <xsl:call-template name="outputName">
-            <xsl:with-param name="baseName" select="@name"/>
+<!-- <xsl:value-of select="$lavfName"/><xsl:text>&#10;</xsl:text> -->
+        <xsl:call-template name="outputRenamed">
+            <xsl:with-param name="renamed" select="$lavfName"/>
         </xsl:call-template>
+
         <xsl:text> </xsl:text>
         <xsl:value-of select="@id" />
         <xsl:text>&#10;</xsl:text>
@@ -69,7 +114,7 @@
             <xsl:when test="@name='Audio'"><xsl:text>&#10;/* IDs in the trackaudio master */&#10;</xsl:text></xsl:when>
             <xsl:when test="@name='Video'"><xsl:text>&#10;/* IDs in the trackvideo master */&#10;</xsl:text></xsl:when>
         </xsl:choose>
-    <!-- </xsl:copy> -->
+    </xsl:copy>
     </xsl:if>
   </xsl:template>
   <xsl:template match="documentation">
@@ -80,212 +125,6 @@
         </xsl:if>
         <xsl:apply-templates/>
     </documentation>
-  </xsl:template>
-
-  <xsl:template name="outputName">
-    <xsl:param name="baseName"/>
-    <xsl:choose>
-        <xsl:when test="$baseName='FileDescription'">
-            <xsl:call-template name="outputRenamed">
-                <xsl:with-param name="renamed" select="'FileDesc'"/>
-            </xsl:call-template>
-        </xsl:when>
-        <xsl:when test="$baseName='ChapLanguage'">
-            <xsl:call-template name="outputRenamed">
-                <xsl:with-param name="renamed" select="'ChapLang'"/>
-            </xsl:call-template>
-        </xsl:when>
-        <xsl:when test="$baseName='ChapLanguage'">
-            <xsl:call-template name="outputRenamed">
-                <xsl:with-param name="renamed" select="'ChapLang'"/>
-            </xsl:call-template>
-        </xsl:when>
-        <xsl:when test="$baseName='ReferenceBlock'">
-            <xsl:call-template name="outputRenamed">
-                <xsl:with-param name="renamed" select="'BlockReference'"/>
-            </xsl:call-template>
-        </xsl:when>
-        <xsl:when test="$baseName='Position'">
-            <xsl:call-template name="outputRenamed">
-                <xsl:with-param name="renamed" select="'ClusterPosition'"/>
-            </xsl:call-template>
-        </xsl:when>
-        <xsl:when test="$baseName='PrevSize'">
-            <xsl:call-template name="outputRenamed">
-                <xsl:with-param name="renamed" select="'ClusterPrevSize'"/>
-            </xsl:call-template>
-        </xsl:when>
-        <xsl:when test="$baseName='Timestamp'">
-            <xsl:call-template name="outputRenamed">
-                <xsl:with-param name="renamed" select="'ClusterTimecode'"/>
-            </xsl:call-template>
-        </xsl:when>
-        <xsl:when test="$baseName='CuePoint'">
-            <xsl:call-template name="outputRenamed">
-                <xsl:with-param name="renamed" select="'PointEntry'"/>
-            </xsl:call-template>
-        </xsl:when>
-        <xsl:when test="$baseName='TimestampScale'">
-            <xsl:call-template name="outputRenamed">
-                <xsl:with-param name="renamed" select="'TimecodeScale'"/>
-            </xsl:call-template>
-        </xsl:when>
-        <xsl:when test="$baseName='Seek'">
-            <xsl:call-template name="outputRenamed">
-                <xsl:with-param name="renamed" select="'SeekEntry'"/>
-            </xsl:call-template>
-        </xsl:when>
-        <xsl:when test="$baseName='TagLanguage'">
-            <xsl:call-template name="outputRenamed">
-                <xsl:with-param name="renamed" select="'TagLang'"/>
-            </xsl:call-template>
-        </xsl:when>
-        <xsl:when test="$baseName='Targets'">
-            <xsl:call-template name="outputRenamed">
-                <xsl:with-param name="renamed" select="'TagTargets'"/>
-            </xsl:call-template>
-        </xsl:when>
-        <xsl:when test="$baseName='TagAttachmentUID'">
-            <xsl:call-template name="outputRenamed">
-                <xsl:with-param name="renamed" select="'TagTargets_AttachUID'"/>
-            </xsl:call-template>
-        </xsl:when>
-        <xsl:when test="$baseName='TagChapterUID'">
-            <xsl:call-template name="outputRenamed">
-                <xsl:with-param name="renamed" select="'TagTargets_ChapterUID'"/>
-            </xsl:call-template>
-        </xsl:when>
-        <xsl:when test="$baseName='TagTrackUID'">
-            <xsl:call-template name="outputRenamed">
-                <xsl:with-param name="renamed" select="'TagTargets_TrackUID'"/>
-            </xsl:call-template>
-        </xsl:when>
-        <xsl:when test="$baseName='TargetType'">
-            <xsl:call-template name="outputRenamed">
-                <xsl:with-param name="renamed" select="'TagTargets_Type'"/>
-            </xsl:call-template>
-        </xsl:when>
-        <xsl:when test="$baseName='TargetTypeValue'">
-            <xsl:call-template name="outputRenamed">
-                <xsl:with-param name="renamed" select="'TagTargets_TypeValue'"/>
-            </xsl:call-template>
-        </xsl:when>
-        <xsl:when test="$baseName='Audio'">
-            <xsl:call-template name="outputRenamed">
-                <xsl:with-param name="renamed" select="'TrackAudio'"/>
-            </xsl:call-template>
-        </xsl:when>
-        <xsl:when test="$baseName='BitDepth'">
-            <xsl:call-template name="outputRenamed">
-                <xsl:with-param name="renamed" select="'AudioBitDepth'"/>
-            </xsl:call-template>
-        </xsl:when>
-        <xsl:when test="$baseName='Channels'">
-            <xsl:call-template name="outputRenamed">
-                <xsl:with-param name="renamed" select="'AudioChannels'"/>
-            </xsl:call-template>
-        </xsl:when>
-        <xsl:when test="$baseName='OutputSamplingFrequency'">
-            <xsl:call-template name="outputRenamed">
-                <xsl:with-param name="renamed" select="'AudioOutSamplingFreq'"/>
-            </xsl:call-template>
-        </xsl:when>
-        <xsl:when test="$baseName='SamplingFrequency'">
-            <xsl:call-template name="outputRenamed">
-                <xsl:with-param name="renamed" select="'AudioSamplingFreq'"/>
-            </xsl:call-template>
-        </xsl:when>
-        <xsl:when test="$baseName='Video'">
-            <xsl:call-template name="outputRenamed">
-                <xsl:with-param name="renamed" select="'TrackVideo'"/>
-            </xsl:call-template>
-        </xsl:when>
-        <xsl:when test="$baseName='ContentEncodings'">
-            <xsl:call-template name="outputRenamed">
-                <xsl:with-param name="renamed" select="'TrackContentEncodings'"/>
-            </xsl:call-template>
-        </xsl:when>
-        <xsl:when test="$baseName='ContentEncoding'">
-            <xsl:call-template name="outputRenamed">
-                <xsl:with-param name="renamed" select="'TrackContentEncoding'"/>
-            </xsl:call-template>
-        </xsl:when>
-        <xsl:when test="$baseName='ContentCompression'">
-            <xsl:call-template name="outputRenamed">
-                <xsl:with-param name="renamed" select="'EncodingCompression'"/>
-            </xsl:call-template>
-        </xsl:when>
-        <xsl:when test="$baseName='ContentCompAlgo'">
-            <xsl:call-template name="outputRenamed">
-                <xsl:with-param name="renamed" select="'EncodingCompAlgo'"/>
-            </xsl:call-template>
-        </xsl:when>
-        <xsl:when test="$baseName='ContentCompSettings'">
-            <xsl:call-template name="outputRenamed">
-                <xsl:with-param name="renamed" select="'EncodingCompSettings'"/>
-            </xsl:call-template>
-        </xsl:when>
-        <xsl:when test="$baseName='ContentEncodingOrder'">
-            <xsl:call-template name="outputRenamed">
-                <xsl:with-param name="renamed" select="'EncodingOrder'"/>
-            </xsl:call-template>
-        </xsl:when>
-        <xsl:when test="$baseName='ContentEncodingScope'">
-            <xsl:call-template name="outputRenamed">
-                <xsl:with-param name="renamed" select="'EncodingScope'"/>
-            </xsl:call-template>
-        </xsl:when>
-        <xsl:when test="$baseName='ContentEncodingType'">
-            <xsl:call-template name="outputRenamed">
-                <xsl:with-param name="renamed" select="'EncodingType'"/>
-            </xsl:call-template>
-        </xsl:when>
-        <xsl:when test="$baseName='ContentEncryption'">
-            <xsl:call-template name="outputRenamed">
-                <xsl:with-param name="renamed" select="'EncodingEncryption'"/>
-            </xsl:call-template>
-        </xsl:when>
-        <xsl:when test="$baseName='ContentEncAESSettings'">
-            <xsl:call-template name="outputRenamed">
-                <xsl:with-param name="renamed" select="'EncodingEncAESSettings'"/>
-            </xsl:call-template>
-        </xsl:when>
-        <xsl:when test="$baseName='ContentEncAlgo'">
-            <xsl:call-template name="outputRenamed">
-                <xsl:with-param name="renamed" select="'EncodingEncAlgo'"/>
-            </xsl:call-template>
-        </xsl:when>
-        <xsl:when test="$baseName='ContentEncKeyID'">
-            <xsl:call-template name="outputRenamed">
-                <xsl:with-param name="renamed" select="'EncodingEncKeyId'"/>
-            </xsl:call-template>
-        </xsl:when>
-        <xsl:when test="$baseName='ContentSigAlgo'">
-            <xsl:call-template name="outputRenamed">
-                <xsl:with-param name="renamed" select="'EncodingSigAlgo'"/>
-            </xsl:call-template>
-        </xsl:when>
-        <xsl:when test="$baseName='ContentSignature'">
-            <xsl:call-template name="outputRenamed">
-                <xsl:with-param name="renamed" select="'EncodingSignature'"/>
-            </xsl:call-template>
-        </xsl:when>
-        <xsl:when test="$baseName='ContentSigKeyID'">
-            <xsl:call-template name="outputRenamed">
-                <xsl:with-param name="renamed" select="'EncodingSigKeyId'"/>
-            </xsl:call-template>
-        </xsl:when>
-        <xsl:when test="$baseName='ContentSigHashAlgo'">
-            <xsl:call-template name="outputRenamed">
-                <xsl:with-param name="renamed" select="'EncodingSigHashAlgo'"/>
-            </xsl:call-template>
-        </xsl:when>
-        <xsl:otherwise>
-            <xsl:call-template name="outputRenamed">
-                <xsl:with-param name="renamed" select="$baseName"/>
-            </xsl:call-template>
-        </xsl:otherwise>
-    </xsl:choose>
   </xsl:template>
 
   <xsl:template name="outputRenamed">
