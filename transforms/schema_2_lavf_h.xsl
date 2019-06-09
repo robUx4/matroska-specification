@@ -2,8 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0" xmlns:str="http://exslt.org/strings" exclude-result-prefixes="str">
   <!-- File used to generate KaxSemantic.h -->
   <xsl:output encoding="UTF-8" method="text" version="1.0" indent="yes" />
-  <xsl:template match="EBMLSchema">/**********************************************************************
-/*
+  <xsl:template match="EBMLSchema">/*
  * Matroska Semantic constants
  *  DO NOT EDIT, GENERATED WITH schema_2_lavf_h.xsl
  *
@@ -35,16 +34,32 @@
 
 <xsl:apply-templates select="element">
     <xsl:sort select="translate(substring-before(substring-after(@path,'('),')'), '(1*(', '')" />
+    <!-- <xsl:sort select="concat(
+        substring( translate(substring-before(substring-after(@path,'('),')'), '(1*(', ''),
+                   1, 
+                   string-length(translate(substring-before(substring-after(@path,'('),')'), '(1*(', ''))-string-length(@name)
+                 ),
+        @id
+    )" /> -->
 </xsl:apply-templates>
 
 #endif /* AVFORMAT_MATROSKA_IDS_H */
 </xsl:template>
   <xsl:template match="element">
     <xsl:variable name="plainPath"><xsl:value-of select="translate(substring-before(substring-after(@path,'('),')'), '(1*(', '')" /></xsl:variable>
+<!-- <xsl:variable name="plainPath"><xsl:value-of select="translate(translate(substring-before(substring-after(@path,'('),')'), '(1*(', ''),  concat('\',@name) , concat('\',concat(@id,@name))  )" /></xsl:variable> -->
+<!-- <xsl:variable name="plainPath">
+    <xsl:value-of select="concat(
+        substring( translate(substring-before(substring-after(@path,'('),')'), '(1*(', ''),
+                   1, 
+                   string-length(translate(substring-before(substring-after(@path,'('),')'), '(1*(', ''))-string-length(@name)
+                 ),
+        @id
+    )" /></xsl:variable> -->
 <!-- <xsl:text>plainPath = </xsl:text><xsl:value-of select="$plainPath" /><xsl:text>&#10;</xsl:text> -->
     <!-- Ignore EBML extra constraints -->
     <xsl:if test="not(starts-with($plainPath,'\EBML\'))">
-    <xsl:copy>
+    <!-- <xsl:copy> -->
         <xsl:variable name="lavfName">
             <xsl:choose>
                 <xsl:when test="@name='FileDescription'"><xsl:text>FileDesc</xsl:text></xsl:when>
@@ -63,12 +78,8 @@
                 <xsl:when test="@name='TagTrackUID'"><xsl:text>TagTargets_TrackUID</xsl:text></xsl:when>
                 <xsl:when test="@name='TargetType'"><xsl:text>TagTargets_Type</xsl:text></xsl:when>
                 <xsl:when test="@name='TargetTypeValue'"><xsl:text>TagTargets_TypeValue</xsl:text></xsl:when>
-                <xsl:when test="@name='Audio'"><xsl:text>TrackAudio</xsl:text></xsl:when>
-                <xsl:when test="@name='BitDepth'"><xsl:text>AudioBitDepth</xsl:text></xsl:when>
-                <xsl:when test="@name='Channels'"><xsl:text>AudioChannels</xsl:text></xsl:when>
                 <xsl:when test="@name='OutputSamplingFrequency'"><xsl:text>AudioOutSamplingFreq</xsl:text></xsl:when>
                 <xsl:when test="@name='SamplingFrequency'"><xsl:text>AudioSamplingFreq</xsl:text></xsl:when>
-                <xsl:when test="@name='Video'"><xsl:text>TrackVideo</xsl:text></xsl:when>
                 <xsl:when test="@name='ContentEncodings'"><xsl:text>TrackContentEncodings</xsl:text></xsl:when>
                 <xsl:when test="@name='ContentEncoding'"><xsl:text>TrackContentEncoding</xsl:text></xsl:when>
                 <xsl:when test="@name='ContentCompression'"><xsl:text>EncodingCompression</xsl:text></xsl:when>
@@ -85,6 +96,13 @@
                 <xsl:when test="@name='ContentSignature'"><xsl:text>EncodingSignature</xsl:text></xsl:when>
                 <xsl:when test="@name='ContentSigKeyID'"><xsl:text>EncodingSigKeyId</xsl:text></xsl:when>
                 <xsl:when test="@name='ContentSigHashAlgo'"><xsl:text>EncodingSigHashAlgo</xsl:text></xsl:when>
+                <xsl:when test="@name='MaxBlockAdditionID'"><xsl:text>TrackMaxBlkAddID</xsl:text></xsl:when>
+                <xsl:when test="@name='SeekPreRoll'"><xsl:text>SeekPreRoll</xsl:text></xsl:when>
+                <xsl:when test="@name='TrackTimestampScale'"><xsl:text>TrackTimecodeScale</xsl:text></xsl:when>
+                <xsl:when test="contains(@path,'\TrackEntry\Audio\')"><xsl:text>Audio</xsl:text><xsl:value-of select="@name"/></xsl:when>
+                <xsl:when test="contains(@path,'\TrackEntry\Video\Colour\')"><xsl:text>VideoColor</xsl:text><xsl:value-of select="@name"/></xsl:when>
+                <xsl:when test="contains(@path,'\TrackEntry\Video\')"><xsl:text>Video</xsl:text><xsl:value-of select="@name"/></xsl:when>
+                <xsl:when test="contains(@path,'\TrackEntry\') and not(contains(@name,'Track')) and not(contains(@name,'Codec'))"><xsl:text>Track</xsl:text><xsl:value-of select="@name"/></xsl:when>
                 <xsl:otherwise><xsl:value-of select="@name"/></xsl:otherwise>
             </xsl:choose>
         </xsl:variable>
@@ -114,7 +132,7 @@
             <xsl:when test="@name='Audio'"><xsl:text>&#10;/* IDs in the trackaudio master */&#10;</xsl:text></xsl:when>
             <xsl:when test="@name='Video'"><xsl:text>&#10;/* IDs in the trackvideo master */&#10;</xsl:text></xsl:when>
         </xsl:choose>
-    </xsl:copy>
+    <!-- </xsl:copy> -->
     </xsl:if>
   </xsl:template>
   <xsl:template match="documentation">
