@@ -475,7 +475,7 @@
       <enum value="0" label="unspecified"/>
       <enum value="1" label="broadcast range"/>
       <enum value="2" label="full range (no clipping)"/>
-      <enum value="3" label="defined by MatrixCoefficients/TransferCharacteristics"/>
+      <enum value="3" label="defined by MatrixCoefficients / TransferCharacteristics"/>
     </restriction>
   </element>
   <element name="TransferCharacteristics" path="0*1(\Segment\Tracks\TrackEntry\Video\Colour\TransferCharacteristics)" id="0x55BA" type="uinteger" minver="4" default="2" maxOccurs="1" webm="0" cppname="VideoColourTransferCharacter">
