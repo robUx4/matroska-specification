@@ -146,6 +146,9 @@
                 </xsl:choose>
             </xsl:variable>
             <xsl:text>&#10;typedef enum {&#10;</xsl:text>
+
+            <xsl:if test="@name='TrackType'"><xsl:text>  MATROSKA_TRACK_TYPE_NONE = 0,&#10;</xsl:text></xsl:if>
+
             <xsl:for-each select="restriction/enum">
                 <xsl:sort select="value"/>
                 <xsl:text>  MATROSKA_</xsl:text>
