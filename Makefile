@@ -58,9 +58,12 @@ website:
 	jekyll b
 
 clean:
-	$(RM) -f $(OUTPUT_MATROSKA).txt $(OUTPUT_MATROSKA).html $(OUTPUT_MATROSKA).md $(OUTPUT_MATROSKA).xml ebml_matroska_valid.xml ebml_matroska_elements4rfc.md matroska_tagging_registry.md
+	$(RM) -f $(OUTPUT_MATROSKA).txt $(OUTPUT_MATROSKA).html $(OUTPUT_MATROSKA).md $(OUTPUT_MATROSKA).xml matroska_xsd.xml ebml_matroska_elements4rfc.md matroska_tagging_registry.md
 	$(RM) -f $(OUTPUT_CODEC).txt $(OUTPUT_CODEC).html $(OUTPUT_CODEC).md $(OUTPUT_CODEC).xml
 	$(RM) -f $(OUTPUT_TAGS).txt $(OUTPUT_TAGS).html $(OUTPUT_TAGS).md $(OUTPUT_TAGS).xml
 	$(RM) -rf _site
 
-.PHONY: clean check website matroska codecs tags
+ffmpeg: matroska_xsd.xml transforms/schema_2_lavf_h.xsl
+	xsltproc --output matroska_ids.h transforms/schema_2_lavf_h.xsl  $<
+
+.PHONY: clean check website matroska codecs tags ffmpeg
