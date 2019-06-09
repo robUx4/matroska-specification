@@ -41,9 +41,7 @@
                  ),
         @id
     )" /> -->
-</xsl:apply-templates>
-
-#endif /* AVFORMAT_MATROSKA_IDS_H */
+</xsl:apply-templates>#endif /* AVFORMAT_MATROSKA_IDS_H */
 </xsl:template>
   <xsl:template match="element">
     <xsl:variable name="plainPath"><xsl:value-of select="translate(substring-before(substring-after(@path,'('),')'), '(1*(', '')" /></xsl:variable>
@@ -133,6 +131,54 @@
         <xsl:text> </xsl:text>
         <xsl:value-of select="@id" />
         <xsl:text>&#10;</xsl:text>
+
+        <xsl:if test="restriction/enum and @type!='string'">
+            <xsl:variable name="prefix">
+                <xsl:choose>
+                    <xsl:when test="@name='ContentCompAlgo'">TRACK_ENCODING_COMP</xsl:when>
+                    <xsl:when test="@name='TrackType'">TRACK_TYPE</xsl:when>
+                    <xsl:when test="@name='ProjectionType'">VIDEO_PROJECTION_TYPE</xsl:when>
+                    <xsl:when test="@name='FlagInterlaced'">VIDEO_INTERLACE_FLAG</xsl:when>
+                    <xsl:when test="@name='StereoMode'">VIDEO_STEREOMODE_TYPE</xsl:when>
+                    <xsl:when test="contains(@path,'\TrackEntry\Video\Colour\')"><xsl:text>COLOUR_</xsl:text><xsl:value-of select="@name"/></xsl:when>
+                    <xsl:when test="contains(@path,'\TrackEntry\Video\')"><xsl:text>VIDEO_</xsl:text><xsl:value-of select="@name"/></xsl:when>
+                    <xsl:otherwise><xsl:value-of select="@name"/></xsl:otherwise>
+                </xsl:choose>
+            </xsl:variable>
+            <xsl:text>&#10;typedef enum {&#10;</xsl:text>
+            <xsl:for-each select="restriction/enum">
+                <xsl:sort select="value"/>
+                <xsl:text>  MATROSKA_</xsl:text>
+                <xsl:value-of select="translate($prefix, 'abcdefghijklmnopqrstuvwxyz', 'ABCDEFGHIJKLMNOPQRSTUVWXYZ')"/>
+                <xsl:text>_</xsl:text>
+                <xsl:call-template name="outputEnumLabel">
+                    <xsl:with-param name="label" select="@label"/>
+                </xsl:call-template>
+
+                <xsl:text> = </xsl:text>
+                <xsl:value-of select="@value"/><xsl:text>,&#10;</xsl:text>
+            </xsl:for-each>
+
+            <!-- Extra enum count -->
+            <xsl:choose>
+                <xsl:when test="@name='ChromaSitingHorz'"><xsl:text>  MATROSKA_COLOUR_CHROMASITINGHORZ_NB&#10;</xsl:text></xsl:when>
+                <xsl:when test="@name='ChromaSitingVert'"><xsl:text>  MATROSKA_COLOUR_CHROMASITINGVERT_NB&#10;</xsl:text></xsl:when>
+                <xsl:when test="@name='StereoMode'"><xsl:text>  MATROSKA_VIDEO_STEREOMODE_TYPE_NB,&#10;</xsl:text></xsl:when>
+            </xsl:choose>
+
+            <xsl:text>} Matroska</xsl:text>
+            <xsl:choose>
+                <xsl:when test="@name='ContentCompAlgo'"><xsl:text>TrackEncodingCompAlgo</xsl:text></xsl:when>
+                <xsl:when test="@name='ChromaSitingHorz'"><xsl:text>ColourChromaSitingHorz</xsl:text></xsl:when>
+                <xsl:when test="@name='ChromaSitingVert'"><xsl:text>ColourChromaSitingVert</xsl:text></xsl:when>
+                <xsl:when test="@name='FlagInterlaced'"><xsl:text>VideoInterlaceFlag</xsl:text></xsl:when>
+                <xsl:when test="@name='StereoMode'"><xsl:text>VideoStereoModeType</xsl:text></xsl:when>
+                <xsl:when test="contains(@path,'\TrackEntry\Video\')"><xsl:text>Video</xsl:text><xsl:value-of select="@name"/></xsl:when>
+                <xsl:otherwise><xsl:value-of select="@name"/></xsl:otherwise>
+            </xsl:choose>
+            <xsl:text>;&#10;&#10;</xsl:text>
+        </xsl:if>
+
         <xsl:choose>
             <xsl:when test="@name='Attachments'"><xsl:text>&#10;/* IDs in the attachments master */&#10;</xsl:text></xsl:when>
             <xsl:when test="@name='Chapters'"><xsl:text>&#10;/* IDs in the chapters master */&#10;</xsl:text></xsl:when>
@@ -147,6 +193,7 @@
             <xsl:when test="@name='Audio'"><xsl:text>&#10;/* IDs in the trackaudio master */&#10;</xsl:text></xsl:when>
             <xsl:when test="@name='Video'"><xsl:text>&#10;/* IDs in the trackvideo master */&#10;</xsl:text></xsl:when>
 
+            Extra element that may be found in some files
             <xsl:when test="@name='TagDefault'"><xsl:text>#define MATROSKA_ID_TAGDEFAULT_BUG             0x44B4&#10;</xsl:text></xsl:when>
         </xsl:choose>
     <!-- </xsl:copy> -->
@@ -160,6 +207,116 @@
         </xsl:if>
         <xsl:apply-templates/>
     </documentation>
+  </xsl:template>
+
+  <xsl:template name="outputEnumLabel">
+    <xsl:param name="label"/>
+<!-- <xsl:text>&#10;</xsl:text><xsl:value-of select="$label"/> -->
+    <xsl:choose>
+        <xsl:when test="$label='lzo1x'">
+            <xsl:call-template name="outputEnumLabel"><xsl:with-param name="label" select="'LZO'"/></xsl:call-template>
+        </xsl:when>
+        <xsl:when test="$label='Header Stripping'">
+            <xsl:call-template name="outputEnumLabel"><xsl:with-param name="label" select="'HeaderStrip'"/></xsl:call-template>
+        </xsl:when>
+        <xsl:when test="$label='unspecified'">
+            <xsl:call-template name="outputEnumLabel"><xsl:with-param name="label" select="'undetermined'"/></xsl:call-template>
+        </xsl:when>
+        <xsl:when test="$label='display aspect ratio'">
+            <xsl:call-template name="outputEnumLabel"><xsl:with-param name="label" select="'dar'"/></xsl:call-template>
+        </xsl:when>
+        <!-- Field Order -->
+        <xsl:when test="$label='tff'">
+            <xsl:call-template name="outputEnumLabel"><xsl:with-param name="label" select="'tt'"/></xsl:call-template>
+        </xsl:when>
+        <xsl:when test="$label='bff'">
+            <xsl:call-template name="outputEnumLabel"><xsl:with-param name="label" select="'bb'"/></xsl:call-template>
+        </xsl:when>
+        <xsl:when test="$label='tff(swapped)'">
+            <xsl:call-template name="outputEnumLabel"><xsl:with-param name="label" select="'bt'"/></xsl:call-template>
+        </xsl:when>
+        <xsl:when test="$label='bff(swapped)'">
+            <xsl:call-template name="outputEnumLabel"><xsl:with-param name="label" select="'tb'"/></xsl:call-template>
+        </xsl:when>
+
+        <!-- Stereo Mode -->
+        <xsl:when test="contains($label,'top - bottom (left eye is first)')">
+            <xsl:call-template name="outputEnumLabel"><xsl:with-param name="label" select="'top bottom'"/></xsl:call-template>
+        </xsl:when>
+        <xsl:when test="contains($label,'top - bottom (right eye is first)')">
+            <xsl:call-template name="outputEnumLabel"><xsl:with-param name="label" select="'bottom top'"/></xsl:call-template>
+        </xsl:when>
+        <xsl:when test="contains($label,'anaglyph (cyan/red)')">
+            <xsl:call-template name="outputEnumLabel"><xsl:with-param name="label" select="'anaglyph cyan red'"/></xsl:call-template>
+        </xsl:when>
+        <xsl:when test="contains($label,'anaglyph (green/magenta)')">
+            <xsl:call-template name="outputEnumLabel"><xsl:with-param name="label" select="'anaglyph green mag'"/></xsl:call-template>
+        </xsl:when>
+        <xsl:when test="contains($label,'side by side (')">
+            <xsl:call-template name="outputEnumLabel"><xsl:with-param name="label" select="substring-after($label, 'side by side (')"/></xsl:call-template>
+        </xsl:when>
+        <xsl:when test="contains($label,'(right eye is first)')">
+            <xsl:call-template name="outputEnumLabel"><xsl:with-param name="label" select="concat(substring-before($label,'(right eye is first)'), 'rl')"/></xsl:call-template>
+        </xsl:when>
+        <xsl:when test="contains($label,'(left eye is first)')">
+            <xsl:call-template name="outputEnumLabel"><xsl:with-param name="label" select="concat(substring-before($label,'(left eye is first)'), 'lr')"/></xsl:call-template>
+        </xsl:when>
+        <xsl:when test="contains($label,'left eye first')">
+            <xsl:call-template name="outputEnumLabel"><xsl:with-param name="label" select="'left right'"/></xsl:call-template>
+        </xsl:when>
+        <xsl:when test="contains($label,'right eye first')">
+            <xsl:call-template name="outputEnumLabel"><xsl:with-param name="label" select="'right left'"/></xsl:call-template>
+        </xsl:when>
+        <xsl:when test="contains($label,'column ')">
+            <xsl:call-template name="outputEnumLabel"><xsl:with-param name="label" select="concat(concat(substring-before($label, 'column '), 'col '), substring-after($label, 'column '))"/></xsl:call-template>
+            <!-- <xsl:call-template name="outputEnumLabel"><xsl:with-param name="label" select="'col'"/></xsl:call-template> -->
+        </xsl:when>
+        <xsl:when test="contains($label,'checkboard ')">
+            <xsl:call-template name="outputEnumLabel"><xsl:with-param name="label" select="concat(concat(substring-before($label, 'checkboard '), 'checkerboard '), substring-after($label, 'checkboard '))"/></xsl:call-template>
+            <!-- <xsl:call-template name="outputEnumLabel"><xsl:with-param name="label" select="'checkerboard'"/></xsl:call-template> -->
+        </xsl:when>
+        <xsl:when test="contains($label,'laced in one ')">
+            <xsl:call-template name="outputEnumLabel"><xsl:with-param name="label" select="concat(substring-before($label, 'laced in one '), substring-after($label, 'laced in one '))"/></xsl:call-template>
+        </xsl:when>
+
+        <xsl:when test="contains($label,',')">
+            <xsl:call-template name="outputEnumLabel"><xsl:with-param name="label" select="substring-before($label, ',')"/></xsl:call-template>
+        </xsl:when>
+        <xsl:when test="contains($label,')')">
+            <xsl:call-template name="outputEnumLabel"><xsl:with-param name="label" select="substring-before($label, ')')"/></xsl:call-template>
+        </xsl:when>
+        <xsl:when test="contains($label,' collocated')">
+            <xsl:call-template name="outputEnumLabel"><xsl:with-param name="label" select="substring-before($label, ' collocated')"/></xsl:call-template>
+        </xsl:when>
+        <xsl:when test="contains($label,' (')">
+            <xsl:call-template name="outputEnumLabel"><xsl:with-param name="label" select="substring-before($label, ' (')"/></xsl:call-template>
+        </xsl:when>
+        <xsl:when test="contains($label,' /')">
+            <xsl:call-template name="outputEnumLabel"><xsl:with-param name="label" select="substring-before($label, ' /')"/></xsl:call-template>
+        </xsl:when>
+        <xsl:when test="contains($label,'__')">
+            <xsl:call-template name="outputEnumLabel"><xsl:with-param name="label" select="concat(substring-before($label, '__'), substring-after($label, '__'))"/></xsl:call-template>
+        </xsl:when>
+        <xsl:when test="contains($label,' - ')">
+            <xsl:call-template name="outputEnumLabel"><xsl:with-param name="label" select="concat(concat(substring-before($label, ' - '), '_'), substring-after($label, ' - '))"/></xsl:call-template>
+        </xsl:when>
+        <xsl:when test="contains($label,' -')">
+            <xsl:call-template name="outputEnumLabel"><xsl:with-param name="label" select="concat(concat(substring-before($label, ' -'), '_'), substring-after($label, ' -'))"/></xsl:call-template>
+        </xsl:when>
+        <!-- <xsl:when test="contains($label, &apos;)">
+            <xsl:call-template name="outputEnumLabel"><xsl:with-param name="label" select="concat(substring-before($label, &apos;), substring-after($label, '&apos;'))"/></xsl:call-template>
+        </xsl:when> -->
+        <xsl:when test="contains($label,'-')">
+            <xsl:call-template name="outputEnumLabel"><xsl:with-param name="label" select="translate($label, '-', '_')"/></xsl:call-template>
+        </xsl:when>
+        <xsl:when test="contains($label,' ')">
+            <xsl:call-template name="outputEnumLabel"><xsl:with-param name="label" select="translate($label, ' ', '_')"/></xsl:call-template>
+        </xsl:when>
+        <xsl:when test="contains($label,'.')">
+            <xsl:call-template name="outputEnumLabel"><xsl:with-param name="label" select="translate($label, '.', '_')"/></xsl:call-template>
+        </xsl:when>
+        <xsl:otherwise><xsl:value-of select="translate($label, 'abcdefghijklmnopqrstuvwxyz', 'ABCDEFGHIJKLMNOPQRSTUVWXYZ')"/></xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
 
   <xsl:template name="outputRenamed">
