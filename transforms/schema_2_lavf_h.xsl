@@ -33,16 +33,19 @@
  */
 
 <xsl:apply-templates select="element">
-    <xsl:sort select="translate(substring-before(substring-after(@path,'('),')'), '(1*(', '')" />
-    <!-- <xsl:sort select="concat(
+    <!-- <xsl:sort select="translate(substring-before(substring-after(@path,'('),')'), '(1*(', '')" /> -->
+    
+    <!-- <Parent path>/<id> -->
+    <xsl:sort select="concat(
         substring( translate(substring-before(substring-after(@path,'('),')'), '(1*(', ''),
                    1, 
                    string-length(translate(substring-before(substring-after(@path,'('),')'), '(1*(', ''))-string-length(@name)
                  ),
         @id
-    )" /> -->
+    )" />
 </xsl:apply-templates>#endif /* AVFORMAT_MATROSKA_IDS_H */
 </xsl:template>
+
   <xsl:template match="element">
     <xsl:variable name="plainPath"><xsl:value-of select="translate(substring-before(substring-after(@path,'('),')'), '(1*(', '')" /></xsl:variable>
 <!-- <xsl:variable name="plainPath"><xsl:value-of select="translate(translate(substring-before(substring-after(@path,'('),')'), '(1*(', ''),  concat('\',@name) , concat('\',concat(@id,@name))  )" /></xsl:variable> -->
@@ -121,12 +124,19 @@
         </xsl:variable>
         <xsl:choose>
             <xsl:when test="@name='Segment'"><xsl:text>/* toplevel segment */&#10;</xsl:text></xsl:when>
+            <xsl:when test="@name='AttachedFile'"><xsl:text>&#10;/* IDs in the attachments master */&#10;</xsl:text></xsl:when>
+            <xsl:when test="@name='EditionEntry'"><xsl:text>&#10;/* IDs in the chapters master */&#10;</xsl:text></xsl:when>
+            <xsl:when test="@name='BlockGroup'"><xsl:text>&#10;/* IDs in the cluster master */&#10;</xsl:text></xsl:when>
         </xsl:choose>
         <xsl:text>#define MATROSKA_ID_</xsl:text>
 <!-- <xsl:value-of select="$lavfName"/><xsl:text>&#10;</xsl:text> -->
         <xsl:call-template name="outputRenamed">
             <xsl:with-param name="renamed" select="$lavfName"/>
         </xsl:call-template>
+        <!-- <xsl:call-template name="outputRenameddd">
+            <xsl:with-param name="whodis" select="."/>
+            <xsl:with-param name="lavfName" select="$lavfName"/>
+        </xsl:call-template> -->
 
         <xsl:text> </xsl:text>
         <xsl:value-of select="@id" />
@@ -185,15 +195,13 @@
         </xsl:if>
 
         <xsl:choose>
-            <xsl:when test="@name='Attachments'"><xsl:text>&#10;/* IDs in the attachments master */&#10;</xsl:text></xsl:when>
-            <xsl:when test="@name='Chapters'"><xsl:text>&#10;/* IDs in the chapters master */&#10;</xsl:text></xsl:when>
-            <xsl:when test="@name='Cluster'"><xsl:text>&#10;/* IDs in the cluster master */&#10;</xsl:text></xsl:when>
-            <xsl:when test="@name='Cues'"><xsl:text>&#10;/* IDs in the cues master */&#10;</xsl:text></xsl:when>
-            <xsl:when test="@name='BlockGroup'"><xsl:text>&#10;/* IDs in the blockgroup master */&#10;</xsl:text></xsl:when>
+            <xsl:when test="@name='Segment'"><xsl:text>&#10;/* Matroska top-level master IDs */&#10;</xsl:text></xsl:when>
+            <!-- <xsl:when test="@name='Cluster'"><xsl:text>&#10;/* IDs in the cluster master */&#10;</xsl:text></xsl:when> -->
+            <!-- <xsl:when test="@name='Cues'"><xsl:text>&#10;/* IDs in the cues master */&#10;</xsl:text></xsl:when> -->
             <xsl:when test="@name='Seek'"><xsl:text>&#10;/* IDs in the seekpoint master */&#10;</xsl:text></xsl:when>
-            <xsl:when test="@name='SeekHead'"><xsl:text>&#10;/* IDs in the seekhead master */&#10;</xsl:text></xsl:when>
-            <xsl:when test="@name='Tags'"><xsl:text>&#10;/* IDs in the tags master */&#10;</xsl:text></xsl:when>
-            <xsl:when test="@name='Tracks'"><xsl:text>&#10;/* IDs in the tracks master */&#10;</xsl:text></xsl:when>
+            <!-- <xsl:when test="@name='SeekHead'"><xsl:text>&#10;/* IDs in the seekhead master */&#10;</xsl:text></xsl:when> -->
+            <!-- <xsl:when test="@name='Tags'"><xsl:text>&#10;/* IDs in the tags master */&#10;</xsl:text></xsl:when> -->
+            <!-- <xsl:when test="@name='Tracks'"><xsl:text>&#10;/* IDs in the tracks master */&#10;</xsl:text></xsl:when> -->
             <xsl:when test="@name='TrackEntry'"><xsl:text>&#10;/* IDs in the trackentry master */&#10;</xsl:text></xsl:when>
             <xsl:when test="@name='Audio'"><xsl:text>&#10;/* IDs in the trackaudio master */&#10;</xsl:text></xsl:when>
             <xsl:when test="@name='Video'"><xsl:text>&#10;/* IDs in the trackvideo master */&#10;</xsl:text></xsl:when>
@@ -329,6 +337,16 @@
         <xsl:otherwise><xsl:value-of select="translate($label, 'abcdefghijklmnopqrstuvwxyz', 'ABCDEFGHIJKLMNOPQRSTUVWXYZ')"/></xsl:otherwise>
     </xsl:choose>
   </xsl:template>
+
+<!-- <xsl:template name="outputRenameddd">
+    <xsl:param name="whodis"/>
+    <xsl:param name="lavfName"/> -->
+<!-- <xsl:text>whodis/name=</xsl:text><xsl:value-of select="$whodis/@name" /><xsl:text>&#10;</xsl:text> -->
+<!-- <xsl:text>whodis/lavfName=</xsl:text><xsl:value-of select="$lavfName" /><xsl:text>&#10;</xsl:text> -->
+    <!-- <xsl:call-template name="outputRenamed">
+        <xsl:with-param name="renamed" select="$lavfName"/>
+    </xsl:call-template>
+</xsl:template> -->
 
   <xsl:template name="outputRenamed">
     <xsl:param name="renamed"/>
