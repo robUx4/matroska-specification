@@ -47,3 +47,6 @@ clean:
 	$(RM) -f $(OUTPUT_CODEC).txt $(OUTPUT_CODEC).html $(OUTPUT_CODEC).md $(OUTPUT_CODEC).xml
 	$(RM) -f $(OUTPUT_TAGS).txt $(OUTPUT_TAGS).html $(OUTPUT_TAGS).md $(OUTPUT_TAGS).xml
 	$(RM) -rf _site
+
+ffmpeg: ebml_matroska_valid.xml transforms/schema_2_lavf_h.xsl
+	xsltproc --output matroska_ids.h transforms/schema_2_lavf_h.xsl  $<

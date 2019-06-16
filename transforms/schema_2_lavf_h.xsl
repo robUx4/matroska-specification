@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0" xmlns:str="http://exslt.org/strings" exclude-result-prefixes="str">
-  <!-- File used to generate KaxSemantic.h -->
+  <!-- File used to generate matroska_ids.h -->
   <xsl:output encoding="UTF-8" method="text" version="1.0" indent="yes" />
   <xsl:template match="EBMLSchema">/*
  * Matroska Semantic constants
@@ -147,6 +147,7 @@
             </xsl:variable>
             <xsl:text>&#10;typedef enum {&#10;</xsl:text>
 
+            <!-- Internal value not found in the specs -->
             <xsl:if test="@name='TrackType'"><xsl:text>  MATROSKA_TRACK_TYPE_NONE = 0,&#10;</xsl:text></xsl:if>
 
             <xsl:for-each select="restriction/enum">
@@ -159,7 +160,8 @@
                 </xsl:call-template>
 
                 <xsl:text> = </xsl:text>
-                <xsl:value-of select="@value"/><xsl:text>,&#10;</xsl:text>
+                <xsl:value-of select="@value"/>
+                <xsl:text>,&#10;</xsl:text>
             </xsl:for-each>
 
             <!-- Extra enum count -->
@@ -280,6 +282,12 @@
         </xsl:when>
         <xsl:when test="contains($label,'laced in one ')">
             <xsl:call-template name="outputEnumLabel"><xsl:with-param name="label" select="concat(substring-before($label, 'laced in one '), substring-after($label, 'laced in one '))"/></xsl:call-template>
+        </xsl:when>
+        <xsl:when test="contains($label,'The ')">
+            <xsl:call-template name="outputEnumLabel"><xsl:with-param name="label" select="concat(substring-before($label, 'The '), substring-after($label, 'The '))"/></xsl:call-template>
+        </xsl:when>
+        <xsl:when test="contains($label,' private data')">
+            <xsl:call-template name="outputEnumLabel"><xsl:with-param name="label" select="'private data'"/></xsl:call-template>
         </xsl:when>
 
         <xsl:when test="contains($label,',')">
