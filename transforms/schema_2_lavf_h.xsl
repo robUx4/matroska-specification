@@ -39,10 +39,10 @@
  */
 </xsl:text>
 
-    <xsl:apply-templates select="element[@name='Segment']"/>
+    <xsl:apply-templates select="ebml:element[@name='Segment']"/>
     <!-- TODO even closer ordering with a "sort score"  https://stackoverflow.com/questions/1287651/xslt-custom-sort -->
 
-    <xsl:for-each select="element">
+    <xsl:for-each select="ebml:element">
         <!-- <Parent path>/<id> -->
         <xsl:sort select="concat(
             substring( translate(substring-before(substring-after(@path,'('),')'), '(1*(', ''),
@@ -63,7 +63,7 @@
 
   </xsl:template>
 
-    <xsl:template match="element">
+    <xsl:template match="ebml:element">
         <xsl:call-template name="parsePath">
             <xsl:with-param name="node" select="."/>
         </xsl:call-template>
@@ -113,7 +113,7 @@
             </xsl:choose>
         </xsl:if>
 
-        <xsl:for-each select="/EBMLSchema/element[translate(substring-before(substring-after(@path,'('),')'), '(1*(', '') = concat(concat($plainPath, '\'), @name)]">
+        <xsl:for-each select="/ebml:EBMLSchema/ebml:element[translate(substring-before(substring-after(@path,'('),')'), '(1*(', '') = concat(concat($plainPath, '\'), @name)]">
             <xsl:sort select="not(@name='Info')" />
             <xsl:sort select="not(@name='Tracks')" />
             <xsl:sort select="not(@name='Cues')" />
@@ -193,7 +193,7 @@
         </xsl:for-each>
         <xsl:text>&#10;</xsl:text>
 
-        <xsl:for-each select="../element[translate(substring-before(substring-after(@path,'('),')'), '(1*(', '') = concat(concat($plainPath, '\'), @name)]">
+        <xsl:for-each select="../ebml:element[translate(substring-before(substring-after(@path,'('),')'), '(1*(', '') = concat(concat($plainPath, '\'), @name)]">
             <xsl:sort select="not(@name='Info')" />
             <xsl:sort select="not(@name='Tracks')" />
             <xsl:sort select="not(@name='Cues')" />
@@ -211,7 +211,7 @@
     </xsl:template>
 
     <xsl:template name="outputAllEnums">
-        <xsl:if test="restriction/enum and @type!='string'">
+        <xsl:if test="ebml:restriction/ebml:enum and @type!='string'">
             <xsl:variable name="prefix">
                 <xsl:choose>
                     <xsl:when test="@name='ContentCompAlgo'">TRACK_ENCODING_COMP</xsl:when>
@@ -229,7 +229,7 @@
             <!-- Internal value not found in the specs -->
             <xsl:if test="@name='TrackType'"><xsl:text>  MATROSKA_TRACK_TYPE_NONE = 0,&#10;</xsl:text></xsl:if>
 
-            <xsl:for-each select="restriction/enum">
+            <xsl:for-each select="ebml:restriction/ebml:enum">
                 <xsl:sort select="value"/>
                 <xsl:text>  MATROSKA_</xsl:text>
                 <xsl:value-of select="translate($prefix, 'abcdefghijklmnopqrstuvwxyz', 'ABCDEFGHIJKLMNOPQRSTUVWXYZ')"/>
