@@ -64,6 +64,9 @@
   </xsl:template>
 
     <xsl:template match="ebml:element">
+<!-- <xsl:text>
+In match element, name:</xsl:text>
+<xsl:value-of select="@name"/><xsl:text>&#10;</xsl:text> -->
         <xsl:call-template name="parsePath">
             <xsl:with-param name="node" select="."/>
         </xsl:call-template>
@@ -72,6 +75,10 @@
             <xsl:value-of select="translate(substring-before(substring-after(@path,'('),')'), '(1*(', '')" />
         </xsl:variable>
         <xsl:variable name="myPath" select="@path"/>
+<!-- <xsl:text>variable plainPath:</xsl:text>
+<xsl:value-of select="$plainPath"/><xsl:text>&#10;</xsl:text>
+<xsl:text>variable myPath:</xsl:text>
+<xsl:value-of select="$myPath"/><xsl:text>&#10;</xsl:text> -->
 
         <!-- <xsl:value-of select="@name"/><xsl:text> - </xsl:text>
         <xsl:for-each select="../element[translate(substring-before(substring-after(@path,'('),')'), '(1*(', '') = concat(concat($plainPath, '\'), @name)]">
@@ -82,6 +89,13 @@
 
     <xsl:template name="parsePath">
         <xsl:param name="node"/>
+<!-- <xsl:text>
+In parsePath, path:</xsl:text>
+<xsl:value-of select="$node/@path"/><xsl:text>&#10;</xsl:text>
+<xsl:text>variable type:</xsl:text>
+<xsl:value-of select="@type"/><xsl:text>&#10;</xsl:text>
+<xsl:text>variable name:</xsl:text>
+<xsl:value-of select="@name"/><xsl:text>&#10;</xsl:text> -->
         <xsl:variable name="plainPath">
             <xsl:value-of select="translate(substring-before(substring-after($node/@path,'('),')'), '(1*(', '')" />
         </xsl:variable>
@@ -113,6 +127,12 @@
             </xsl:choose>
         </xsl:if>
 
+<!-- <xsl:text>variable plainPath:</xsl:text>
+<xsl:value-of select="$plainPath"/><xsl:text>&#10;</xsl:text>
+<xsl:text>variable substring1:</xsl:text>
+<xsl:value-of select="translate(substring-before(substring-after(@path,'('),')'), '(1*(', '')"/><xsl:text>&#10;</xsl:text>
+<xsl:text>variable substring2:</xsl:text>
+<xsl:value-of select="concat(concat($plainPath, '\'), @name)"/><xsl:text>&#10;</xsl:text> -->
         <xsl:for-each select="/ebml:EBMLSchema/ebml:element[translate(substring-before(substring-after(@path,'('),')'), '(1*(', '') = concat(concat($plainPath, '\'), @name)]">
             <xsl:sort select="not(@name='Info')" />
             <xsl:sort select="not(@name='Tracks')" />
@@ -212,6 +232,9 @@
 
     <xsl:template name="outputAllEnums">
         <xsl:if test="ebml:restriction/ebml:enum and @type!='string'">
+<!-- <xsl:text>
+In outputAllEnums element, type:</xsl:text>
+<xsl:value-of select="@type"/><xsl:text>&#10;</xsl:text> -->
             <xsl:variable name="prefix">
                 <xsl:choose>
                     <xsl:when test="@name='ContentCompAlgo'">TRACK_ENCODING_COMP</xsl:when>
