@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- File used to generate matroska_ids.h from ebml_matroska.xml -->
+<!-- File used to generate matroska_ids.h from ebml_matroska.xml or matroska_xsd.xml (the cleaned normative version) -->
 <!-- Usage: xsltproc -o matroska_ids.h schema_2_lavf_h.xsl ebml_matroska.xml -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0" 
     xmlns:str="http://exslt.org/strings"
@@ -73,12 +73,6 @@
             <xsl:value-of select="translate(substring-before(substring-after(@path,'('),')'), '(1*(', '')" />
         </xsl:variable>
         <xsl:variable name="myPath" select="@path"/>
-
-        <!-- <xsl:value-of select="@name"/><xsl:text> - </xsl:text>
-        <xsl:for-each select="../element[translate(substring-before(substring-after(@path,'('),')'), '(1*(', '') = concat(concat($plainPath, '\'), @name)]">
-            <xsl:value-of select="@name"/><xsl:text> | </xsl:text>
-            <xsl:apply-templates select="element[@name = 'SeekHead']"/>
-        </xsl:for-each> -->
     </xsl:template>
 
     <xsl:template name="parsePath">
@@ -122,7 +116,6 @@
             <xsl:sort select="@name='Chapters'" />
             <xsl:sort select="@name='Audio'" />
             <xsl:sort select="string-length(@id)" />
-            <!-- <xsl:sort select="@name" /> -->
             <xsl:sort select="@id" />
             <xsl:variable name="lavfName">
                 <!-- Transform the ebml_matroska.xml name into the libavformat name -->
@@ -227,6 +220,7 @@
                 </xsl:choose>
             </xsl:variable>
             <xsl:variable name="align" as="xs:integer">
+                <!-- padding added in structures to have fancy alignment -->
                 <xsl:choose>
                     <xsl:when test="@name='ContentCompAlgo'">12</xsl:when>
                     <xsl:when test="@name='TrackType'">9</xsl:when>
@@ -282,7 +276,6 @@
   <xsl:template name="outputEnumLabel">
     <xsl:param name="label"/>
     <xsl:param name="align" as="xs:integer"/>
-<!-- <xsl:text>&#10;</xsl:text><xsl:value-of select="$label"/> -->
     <!-- Turn the ebml_matroska.xml enum labels into the names used in libavformat -->
     <!-- Recursive calls until we end up with a matching name with no space, parenthesis, comas, etc -->
     <xsl:choose>
@@ -342,11 +335,9 @@
         </xsl:when>
         <xsl:when test="contains($label,'column ')">
             <xsl:call-template name="outputEnumLabel"><xsl:with-param name="align" select="$align"/><xsl:with-param name="label" select="concat(concat(substring-before($label, 'column '), 'col '), substring-after($label, 'column '))"/></xsl:call-template>
-            <!-- <xsl:call-template name="outputEnumLabel"><xsl:with-param name="align" select="$align"/><xsl:with-param name="label" select="'col'"/></xsl:call-template> -->
         </xsl:when>
         <xsl:when test="contains($label,'checkboard ')">
             <xsl:call-template name="outputEnumLabel"><xsl:with-param name="align" select="$align"/><xsl:with-param name="label" select="concat(concat(substring-before($label, 'checkboard '), 'checkerboard '), substring-after($label, 'checkboard '))"/></xsl:call-template>
-            <!-- <xsl:call-template name="outputEnumLabel"><xsl:with-param name="align" select="$align"/><xsl:with-param name="label" select="'checkerboard'"/></xsl:call-template> -->
         </xsl:when>
         <xsl:when test="contains($label,'laced in one ')">
             <xsl:call-template name="outputEnumLabel"><xsl:with-param name="align" select="$align"/><xsl:with-param name="label" select="concat(substring-before($label, 'laced in one '), substring-after($label, 'laced in one '))"/></xsl:call-template>
@@ -395,7 +386,7 @@
             <xsl:call-template name="outputEnumLabel"><xsl:with-param name="align" select="$align"/><xsl:with-param name="label" select="translate($label, '.', '_')"/></xsl:call-template>
         </xsl:when>
         <xsl:otherwise>
-            <!-- Now we have a suitable name -->
+            <!-- Now we have a suitable name, output it in upper case with padding -->
             <xsl:call-template name="finalOutputEnumLabel">
                 <xsl:with-param name="label" select="translate($label, 'abcdefghijklmnopqrstuvwxyz', 'ABCDEFGHIJKLMNOPQRSTUVWXYZ')"/>
                 <xsl:with-param name="align" select="$align"/>
