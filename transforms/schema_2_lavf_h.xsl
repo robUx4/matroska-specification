@@ -182,12 +182,22 @@
                     <xsl:otherwise><xsl:value-of select="@name"/></xsl:otherwise>
                 </xsl:choose>
             </xsl:variable>
+            <xsl:variable name="lavfNameUpper">
+                <xsl:value-of select="translate($lavfName, 'abcdefghijklmnopqrstuvwxyz', 'ABCDEFGHIJKLMNOPQRSTUVWXYZ')"/>
+            </xsl:variable>
             <xsl:text>#define MATROSKA_ID_</xsl:text>
-            <xsl:value-of select="translate($lavfName, 'abcdefghijklmnopqrstuvwxyz', 'ABCDEFGHIJKLMNOPQRSTUVWXYZ')"/>
+            <xsl:choose>
+                <xsl:when test="string-length($lavfNameUpper) &lt; 25">
+                    <xsl:value-of select="substring(concat($lavfNameUpper, '                          '),0,25)"/>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:value-of select="$lavfNameUpper"/>
+                </xsl:otherwise>
+            </xsl:choose>
             <xsl:text>  </xsl:text>
             <xsl:value-of select="@id"/>
             <xsl:text>&#10;</xsl:text>
-            <xsl:if test="@name='TagDefault'"><xsl:text>#define MATROSKA_ID_TAGDEFAULT_BUG  0x44B4&#10;</xsl:text></xsl:if>
+            <xsl:if test="@name='TagDefault'"><xsl:text>#define MATROSKA_ID_TAGDEFAULT_BUG            0x44B4&#10;</xsl:text></xsl:if>
         </xsl:for-each>
         <xsl:text>&#10;</xsl:text>
 
