@@ -1,6 +1,8 @@
 <?xml version="1.0"?>
-<!-- File used to generate matroska_ids.h from ebml_matroska.xml or matroska_xsd.xml (the cleaned normative version) -->
-<!-- Usage: xsltproc -o matroska_ids.h schema_2_lavf_h.xsl ebml_matroska.xml -->
+<!--
+    File used to generate matroska_ids.h from ebml_matroska.xml or matroska_xsd.xml (the cleaned normative version)
+    Usage: xsltproc -o matroska_ids.h schema_2_lavf_h.xsl ebml_matroska.xml
+-->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0" 
     xmlns:str="http://exslt.org/strings"
     exclude-result-prefixes="str xhtml ebml"
