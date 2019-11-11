@@ -100,6 +100,7 @@
                             <xsl:when test="$node/@name='Audio'"><xsl:text>TrackAudio</xsl:text></xsl:when>
                             <xsl:when test="$node/@name='Video'"><xsl:text>TrackVideo</xsl:text></xsl:when>
                             <xsl:when test="$node/@name='Seek'"><xsl:text>SeekPoint</xsl:text></xsl:when>
+                            <xsl:when test="$node/@name='ContentEncoding'"><xsl:text>Content Encoding</xsl:text></xsl:when>
                             <xsl:otherwise><xsl:value-of select="$node/@name"/></xsl:otherwise>
                         </xsl:choose>
                     </xsl:variable>
@@ -207,6 +208,40 @@
 
     </xsl:template>
 
+    <xsl:template name="ConvertDecToHex">
+        <xsl:param name="index" />
+        <xsl:if test="$index > 0">
+        <xsl:call-template name="ConvertDecToHex">
+            <xsl:with-param name="index" select="floor($index div 16)" />
+        </xsl:call-template>
+        <xsl:choose>
+            <xsl:when test="$index mod 16 &lt; 10">
+                <xsl:value-of select="$index mod 16" />
+            </xsl:when>
+            <xsl:otherwise>
+            <xsl:choose>
+                <xsl:when test="$index mod 16 = 10">A</xsl:when>
+                <xsl:when test="$index mod 16 = 11">B</xsl:when>
+                <xsl:when test="$index mod 16 = 12">C</xsl:when>
+                <xsl:when test="$index mod 16 = 13">D</xsl:when>
+                <xsl:when test="$index mod 16 = 14">E</xsl:when>
+                <xsl:when test="$index mod 16 = 15">F</xsl:when>
+                <xsl:otherwise>A</xsl:otherwise>
+            </xsl:choose>
+            </xsl:otherwise>
+        </xsl:choose>
+        </xsl:if>
+    </xsl:template>
+
+    <xsl:template name="ConvertToHex">
+        <xsl:param name="index" />
+        <xsl:text>0x</xsl:text>
+        <xsl:call-template name="ConvertDecToHex">
+            <xsl:with-param name="index" select="$index" />
+        </xsl:call-template>
+    </xsl:template>
+
+
     <xsl:template name="outputAllEnums">
         <xsl:if test="ebml:restriction/ebml:enum and @type!='string'">
             <xsl:variable name="prefix">
@@ -234,10 +269,10 @@
                     <xsl:otherwise>17</xsl:otherwise>
                 </xsl:choose>
             </xsl:variable>
-            <xsl:text>&#10;typedef enum {&#10;</xsl:text>
+            <xsl:text>typedef enum {&#10;</xsl:text>
 
             <!-- Internal value not found in the specs -->
-            <xsl:if test="@name='TrackType'"><xsl:text>  MATROSKA_TRACK_TYPE_NONE     = 0,&#10;</xsl:text></xsl:if>
+            <xsl:if test="@name='TrackType'"><xsl:text>  MATROSKA_TRACK_TYPE_NONE     = 0x0,&#10;</xsl:text></xsl:if>
 
             <xsl:for-each select="ebml:restriction/ebml:enum">
                 <xsl:sort select="value"/>
@@ -250,7 +285,14 @@
                 </xsl:call-template>
 
                 <xsl:text> = </xsl:text>
-                <xsl:value-of select="@value"/>
+                <xsl:choose>
+                    <xsl:when test="$prefix='TRACK_TYPE'">
+                        <xsl:call-template name="ConvertToHex">
+                            <xsl:with-param name="index" select="@value"/>
+                        </xsl:call-template>
+                    </xsl:when>
+                    <xsl:otherwise><xsl:value-of select="@value"/></xsl:otherwise>
+                </xsl:choose>
                 <xsl:text>,&#10;</xsl:text>
             </xsl:for-each>
 
