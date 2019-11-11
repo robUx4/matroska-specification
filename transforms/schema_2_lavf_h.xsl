@@ -1,10 +1,11 @@
 <?xml version="1.0"?>
+<!-- File used to generate matroska_ids.h from ebml_matroska.xml -->
+<!-- Usage: xsltproc -o matroska_ids.h schema_2_lavf_h.xsl ebml_matroska.xml -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0" 
     xmlns:str="http://exslt.org/strings"
     exclude-result-prefixes="str xhtml ebml"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     xmlns="https://ietf.org/cellar/ebml" xmlns:ebml="https://ietf.org/cellar/ebml">
-  <!-- File used to generate matroska_ids.h -->
   <xsl:output encoding="UTF-8" method="text" version="1.0" indent="yes" />
 
   <xsl:template match="ebml:EBMLSchema">
@@ -144,6 +145,7 @@ In parsePath, path:</xsl:text>
             <!-- <xsl:sort select="@name" /> -->
             <xsl:sort select="@id" />
             <xsl:variable name="lavfName">
+                <!-- Transform the ebml_matroska.xml name into the libavformat name -->
                 <xsl:choose>
                     <xsl:when test="@name='FileDescription'"><xsl:text>FileDesc</xsl:text></xsl:when>
                     <xsl:when test="@name='ChapLanguage'"><xsl:text>ChapLang</xsl:text></xsl:when>
@@ -247,10 +249,22 @@ In outputAllEnums element, type:</xsl:text>
                     <xsl:otherwise><xsl:value-of select="@name"/></xsl:otherwise>
                 </xsl:choose>
             </xsl:variable>
+            <xsl:variable name="align" as="xs:integer">
+                <xsl:choose>
+                    <xsl:when test="@name='ContentCompAlgo'">12</xsl:when>
+                    <xsl:when test="@name='TrackType'">9</xsl:when>
+                    <xsl:when test="@name='ProjectionType'">19</xsl:when>
+                    <xsl:when test="@name='FlagInterlaced'">13</xsl:when>
+                    <xsl:when test="@name='StereoMode'">19</xsl:when>
+                    <xsl:when test="@name='DisplayUnit'">12</xsl:when>
+                    <xsl:when test="@name='FieldOrder'">13</xsl:when>
+                    <xsl:otherwise>17</xsl:otherwise>
+                </xsl:choose>
+            </xsl:variable>
             <xsl:text>&#10;typedef enum {&#10;</xsl:text>
 
             <!-- Internal value not found in the specs -->
-            <xsl:if test="@name='TrackType'"><xsl:text>  MATROSKA_TRACK_TYPE_NONE = 0,&#10;</xsl:text></xsl:if>
+            <xsl:if test="@name='TrackType'"><xsl:text>  MATROSKA_TRACK_TYPE_NONE     = 0,&#10;</xsl:text></xsl:if>
 
             <xsl:for-each select="ebml:restriction/ebml:enum">
                 <xsl:sort select="value"/>
@@ -259,6 +273,7 @@ In outputAllEnums element, type:</xsl:text>
                 <xsl:text>_</xsl:text>
                 <xsl:call-template name="outputEnumLabel">
                     <xsl:with-param name="label" select="@label"/>
+                    <xsl:with-param name="align" select="$align"/>
                 </xsl:call-template>
 
                 <xsl:text> = </xsl:text>
@@ -289,118 +304,140 @@ In outputAllEnums element, type:</xsl:text>
 
   <xsl:template name="outputEnumLabel">
     <xsl:param name="label"/>
+    <xsl:param name="align" as="xs:integer"/>
 <!-- <xsl:text>&#10;</xsl:text><xsl:value-of select="$label"/> -->
+    <!-- Turn the ebml_matroska.xml enum labels into the names used in libavformat -->
+    <!-- Recursive calls until we end up with a matching name with no space, parenthesis, comas, etc -->
     <xsl:choose>
         <xsl:when test="$label='lzo1x'">
-            <xsl:call-template name="outputEnumLabel"><xsl:with-param name="label" select="'LZO'"/></xsl:call-template>
+            <xsl:call-template name="outputEnumLabel"><xsl:with-param name="align" select="$align"/><xsl:with-param name="label" select="'LZO'"/></xsl:call-template>
         </xsl:when>
         <xsl:when test="$label='Header Stripping'">
-            <xsl:call-template name="outputEnumLabel"><xsl:with-param name="label" select="'HeaderStrip'"/></xsl:call-template>
+            <xsl:call-template name="outputEnumLabel"><xsl:with-param name="align" select="$align"/><xsl:with-param name="label" select="'HeaderStrip'"/></xsl:call-template>
         </xsl:when>
         <xsl:when test="$label='unspecified'">
-            <xsl:call-template name="outputEnumLabel"><xsl:with-param name="label" select="'undetermined'"/></xsl:call-template>
+            <xsl:call-template name="outputEnumLabel"><xsl:with-param name="align" select="$align"/><xsl:with-param name="label" select="'undetermined'"/></xsl:call-template>
         </xsl:when>
         <xsl:when test="$label='display aspect ratio'">
-            <xsl:call-template name="outputEnumLabel"><xsl:with-param name="label" select="'dar'"/></xsl:call-template>
+            <xsl:call-template name="outputEnumLabel"><xsl:with-param name="align" select="$align"/><xsl:with-param name="label" select="'dar'"/></xsl:call-template>
         </xsl:when>
         <!-- Field Order -->
         <xsl:when test="$label='tff'">
-            <xsl:call-template name="outputEnumLabel"><xsl:with-param name="label" select="'tt'"/></xsl:call-template>
+            <xsl:call-template name="outputEnumLabel"><xsl:with-param name="align" select="$align"/><xsl:with-param name="label" select="'tt'"/></xsl:call-template>
         </xsl:when>
         <xsl:when test="$label='bff'">
-            <xsl:call-template name="outputEnumLabel"><xsl:with-param name="label" select="'bb'"/></xsl:call-template>
+            <xsl:call-template name="outputEnumLabel"><xsl:with-param name="align" select="$align"/><xsl:with-param name="label" select="'bb'"/></xsl:call-template>
         </xsl:when>
         <xsl:when test="$label='tff(swapped)'">
-            <xsl:call-template name="outputEnumLabel"><xsl:with-param name="label" select="'bt'"/></xsl:call-template>
+            <xsl:call-template name="outputEnumLabel"><xsl:with-param name="align" select="$align"/><xsl:with-param name="label" select="'bt'"/></xsl:call-template>
         </xsl:when>
         <xsl:when test="$label='bff(swapped)'">
-            <xsl:call-template name="outputEnumLabel"><xsl:with-param name="label" select="'tb'"/></xsl:call-template>
+            <xsl:call-template name="outputEnumLabel"><xsl:with-param name="align" select="$align"/><xsl:with-param name="label" select="'tb'"/></xsl:call-template>
         </xsl:when>
 
         <!-- Stereo Mode -->
         <xsl:when test="contains($label,'top - bottom (left eye is first)')">
-            <xsl:call-template name="outputEnumLabel"><xsl:with-param name="label" select="'top bottom'"/></xsl:call-template>
+            <xsl:call-template name="outputEnumLabel"><xsl:with-param name="align" select="$align"/><xsl:with-param name="label" select="'top bottom'"/></xsl:call-template>
         </xsl:when>
         <xsl:when test="contains($label,'top - bottom (right eye is first)')">
-            <xsl:call-template name="outputEnumLabel"><xsl:with-param name="label" select="'bottom top'"/></xsl:call-template>
+            <xsl:call-template name="outputEnumLabel"><xsl:with-param name="align" select="$align"/><xsl:with-param name="label" select="'bottom top'"/></xsl:call-template>
         </xsl:when>
         <xsl:when test="contains($label,'anaglyph (cyan/red)')">
-            <xsl:call-template name="outputEnumLabel"><xsl:with-param name="label" select="'anaglyph cyan red'"/></xsl:call-template>
+            <xsl:call-template name="outputEnumLabel"><xsl:with-param name="align" select="$align"/><xsl:with-param name="label" select="'anaglyph cyan red'"/></xsl:call-template>
         </xsl:when>
         <xsl:when test="contains($label,'anaglyph (green/magenta)')">
-            <xsl:call-template name="outputEnumLabel"><xsl:with-param name="label" select="'anaglyph green mag'"/></xsl:call-template>
+            <xsl:call-template name="outputEnumLabel"><xsl:with-param name="align" select="$align"/><xsl:with-param name="label" select="'anaglyph green mag'"/></xsl:call-template>
         </xsl:when>
         <xsl:when test="contains($label,'side by side (')">
-            <xsl:call-template name="outputEnumLabel"><xsl:with-param name="label" select="substring-after($label, 'side by side (')"/></xsl:call-template>
+            <xsl:call-template name="outputEnumLabel"><xsl:with-param name="align" select="$align"/><xsl:with-param name="label" select="substring-after($label, 'side by side (')"/></xsl:call-template>
         </xsl:when>
         <xsl:when test="contains($label,'(right eye is first)')">
-            <xsl:call-template name="outputEnumLabel"><xsl:with-param name="label" select="concat(substring-before($label,'(right eye is first)'), 'rl')"/></xsl:call-template>
+            <xsl:call-template name="outputEnumLabel"><xsl:with-param name="align" select="$align"/><xsl:with-param name="label" select="concat(substring-before($label,'(right eye is first)'), 'rl')"/></xsl:call-template>
         </xsl:when>
         <xsl:when test="contains($label,'(left eye is first)')">
-            <xsl:call-template name="outputEnumLabel"><xsl:with-param name="label" select="concat(substring-before($label,'(left eye is first)'), 'lr')"/></xsl:call-template>
+            <xsl:call-template name="outputEnumLabel"><xsl:with-param name="align" select="$align"/><xsl:with-param name="label" select="concat(substring-before($label,'(left eye is first)'), 'lr')"/></xsl:call-template>
         </xsl:when>
         <xsl:when test="contains($label,'left eye first')">
-            <xsl:call-template name="outputEnumLabel"><xsl:with-param name="label" select="'left right'"/></xsl:call-template>
+            <xsl:call-template name="outputEnumLabel"><xsl:with-param name="align" select="$align"/><xsl:with-param name="label" select="'left right'"/></xsl:call-template>
         </xsl:when>
         <xsl:when test="contains($label,'right eye first')">
-            <xsl:call-template name="outputEnumLabel"><xsl:with-param name="label" select="'right left'"/></xsl:call-template>
+            <xsl:call-template name="outputEnumLabel"><xsl:with-param name="align" select="$align"/><xsl:with-param name="label" select="'right left'"/></xsl:call-template>
         </xsl:when>
         <xsl:when test="contains($label,'column ')">
-            <xsl:call-template name="outputEnumLabel"><xsl:with-param name="label" select="concat(concat(substring-before($label, 'column '), 'col '), substring-after($label, 'column '))"/></xsl:call-template>
-            <!-- <xsl:call-template name="outputEnumLabel"><xsl:with-param name="label" select="'col'"/></xsl:call-template> -->
+            <xsl:call-template name="outputEnumLabel"><xsl:with-param name="align" select="$align"/><xsl:with-param name="label" select="concat(concat(substring-before($label, 'column '), 'col '), substring-after($label, 'column '))"/></xsl:call-template>
+            <!-- <xsl:call-template name="outputEnumLabel"><xsl:with-param name="align" select="$align"/><xsl:with-param name="label" select="'col'"/></xsl:call-template> -->
         </xsl:when>
         <xsl:when test="contains($label,'checkboard ')">
-            <xsl:call-template name="outputEnumLabel"><xsl:with-param name="label" select="concat(concat(substring-before($label, 'checkboard '), 'checkerboard '), substring-after($label, 'checkboard '))"/></xsl:call-template>
-            <!-- <xsl:call-template name="outputEnumLabel"><xsl:with-param name="label" select="'checkerboard'"/></xsl:call-template> -->
+            <xsl:call-template name="outputEnumLabel"><xsl:with-param name="align" select="$align"/><xsl:with-param name="label" select="concat(concat(substring-before($label, 'checkboard '), 'checkerboard '), substring-after($label, 'checkboard '))"/></xsl:call-template>
+            <!-- <xsl:call-template name="outputEnumLabel"><xsl:with-param name="align" select="$align"/><xsl:with-param name="label" select="'checkerboard'"/></xsl:call-template> -->
         </xsl:when>
         <xsl:when test="contains($label,'laced in one ')">
-            <xsl:call-template name="outputEnumLabel"><xsl:with-param name="label" select="concat(substring-before($label, 'laced in one '), substring-after($label, 'laced in one '))"/></xsl:call-template>
+            <xsl:call-template name="outputEnumLabel"><xsl:with-param name="align" select="$align"/><xsl:with-param name="label" select="concat(substring-before($label, 'laced in one '), substring-after($label, 'laced in one '))"/></xsl:call-template>
         </xsl:when>
         <xsl:when test="contains($label,'The ')">
-            <xsl:call-template name="outputEnumLabel"><xsl:with-param name="label" select="concat(substring-before($label, 'The '), substring-after($label, 'The '))"/></xsl:call-template>
+            <xsl:call-template name="outputEnumLabel"><xsl:with-param name="align" select="$align"/><xsl:with-param name="label" select="concat(substring-before($label, 'The '), substring-after($label, 'The '))"/></xsl:call-template>
         </xsl:when>
         <xsl:when test="contains($label,' private data')">
-            <xsl:call-template name="outputEnumLabel"><xsl:with-param name="label" select="'private data'"/></xsl:call-template>
+            <xsl:call-template name="outputEnumLabel"><xsl:with-param name="align" select="$align"/><xsl:with-param name="label" select="'private data'"/></xsl:call-template>
         </xsl:when>
 
         <xsl:when test="contains($label,',')">
-            <xsl:call-template name="outputEnumLabel"><xsl:with-param name="label" select="substring-before($label, ',')"/></xsl:call-template>
+            <xsl:call-template name="outputEnumLabel"><xsl:with-param name="align" select="$align"/><xsl:with-param name="label" select="substring-before($label, ',')"/></xsl:call-template>
         </xsl:when>
         <xsl:when test="contains($label,')')">
-            <xsl:call-template name="outputEnumLabel"><xsl:with-param name="label" select="substring-before($label, ')')"/></xsl:call-template>
+            <xsl:call-template name="outputEnumLabel"><xsl:with-param name="align" select="$align"/><xsl:with-param name="label" select="substring-before($label, ')')"/></xsl:call-template>
         </xsl:when>
         <xsl:when test="contains($label,' collocated')">
-            <xsl:call-template name="outputEnumLabel"><xsl:with-param name="label" select="substring-before($label, ' collocated')"/></xsl:call-template>
+            <xsl:call-template name="outputEnumLabel"><xsl:with-param name="align" select="$align"/><xsl:with-param name="label" select="substring-before($label, ' collocated')"/></xsl:call-template>
         </xsl:when>
         <xsl:when test="contains($label,' (')">
-            <xsl:call-template name="outputEnumLabel"><xsl:with-param name="label" select="substring-before($label, ' (')"/></xsl:call-template>
+            <xsl:call-template name="outputEnumLabel"><xsl:with-param name="align" select="$align"/><xsl:with-param name="label" select="substring-before($label, ' (')"/></xsl:call-template>
         </xsl:when>
         <xsl:when test="contains($label,' /')">
-            <xsl:call-template name="outputEnumLabel"><xsl:with-param name="label" select="substring-before($label, ' /')"/></xsl:call-template>
+            <xsl:call-template name="outputEnumLabel"><xsl:with-param name="align" select="$align"/><xsl:with-param name="label" select="substring-before($label, ' /')"/></xsl:call-template>
         </xsl:when>
         <xsl:when test="contains($label,'__')">
-            <xsl:call-template name="outputEnumLabel"><xsl:with-param name="label" select="concat(substring-before($label, '__'), substring-after($label, '__'))"/></xsl:call-template>
+            <xsl:call-template name="outputEnumLabel"><xsl:with-param name="align" select="$align"/><xsl:with-param name="label" select="concat(substring-before($label, '__'), substring-after($label, '__'))"/></xsl:call-template>
         </xsl:when>
         <xsl:when test="contains($label,' - ')">
-            <xsl:call-template name="outputEnumLabel"><xsl:with-param name="label" select="concat(concat(substring-before($label, ' - '), '_'), substring-after($label, ' - '))"/></xsl:call-template>
+            <xsl:call-template name="outputEnumLabel"><xsl:with-param name="align" select="$align"/><xsl:with-param name="label" select="concat(concat(substring-before($label, ' - '), '_'), substring-after($label, ' - '))"/></xsl:call-template>
         </xsl:when>
         <xsl:when test="contains($label,' -')">
-            <xsl:call-template name="outputEnumLabel"><xsl:with-param name="label" select="concat(concat(substring-before($label, ' -'), '_'), substring-after($label, ' -'))"/></xsl:call-template>
+            <xsl:call-template name="outputEnumLabel"><xsl:with-param name="align" select="$align"/><xsl:with-param name="label" select="concat(concat(substring-before($label, ' -'), '_'), substring-after($label, ' -'))"/></xsl:call-template>
         </xsl:when>
         <!-- <xsl:when test="contains($label, &apos;)">
-            <xsl:call-template name="outputEnumLabel"><xsl:with-param name="label" select="concat(substring-before($label, &apos;), substring-after($label, '&apos;'))"/></xsl:call-template>
+            <xsl:call-template name="outputEnumLabel"><xsl:with-param name="align" select="$align"/><xsl:with-param name="label" select="concat(substring-before($label, &apos;), substring-after($label, '&apos;'))"/></xsl:call-template>
         </xsl:when> -->
         <xsl:when test="contains($label,'-')">
-            <xsl:call-template name="outputEnumLabel"><xsl:with-param name="label" select="translate($label, '-', '_')"/></xsl:call-template>
+            <xsl:call-template name="outputEnumLabel"><xsl:with-param name="align" select="$align"/><xsl:with-param name="label" select="translate($label, '-', '_')"/></xsl:call-template>
         </xsl:when>
         <xsl:when test="contains($label,' ')">
-            <xsl:call-template name="outputEnumLabel"><xsl:with-param name="label" select="translate($label, ' ', '_')"/></xsl:call-template>
+            <xsl:call-template name="outputEnumLabel"><xsl:with-param name="align" select="$align"/><xsl:with-param name="label" select="translate($label, ' ', '_')"/></xsl:call-template>
         </xsl:when>
         <xsl:when test="contains($label,'.')">
-            <xsl:call-template name="outputEnumLabel"><xsl:with-param name="label" select="translate($label, '.', '_')"/></xsl:call-template>
+            <xsl:call-template name="outputEnumLabel"><xsl:with-param name="align" select="$align"/><xsl:with-param name="label" select="translate($label, '.', '_')"/></xsl:call-template>
         </xsl:when>
-        <xsl:otherwise><xsl:value-of select="translate($label, 'abcdefghijklmnopqrstuvwxyz', 'ABCDEFGHIJKLMNOPQRSTUVWXYZ')"/></xsl:otherwise>
+        <xsl:otherwise>
+            <!-- Now we have a suitable name -->
+            <xsl:call-template name="finalOutputEnumLabel">
+                <xsl:with-param name="label" select="translate($label, 'abcdefghijklmnopqrstuvwxyz', 'ABCDEFGHIJKLMNOPQRSTUVWXYZ')"/>
+                <xsl:with-param name="align" select="$align"/>
+            </xsl:call-template>
+        </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
   
+  <xsl:template name="finalOutputEnumLabel">
+    <xsl:param name="label"/>
+    <xsl:param name="align" as="xs:integer"/>
+    <xsl:choose>
+        <xsl:when test="string-length($label) &lt; $align">
+            <xsl:value-of select="substring(concat($label, '                          '),0,$align)"/>
+        </xsl:when>
+        <xsl:otherwise>
+            <xsl:value-of select="$label"/>
+        </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
+
 </xsl:stylesheet>
