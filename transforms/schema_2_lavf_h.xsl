@@ -48,10 +48,7 @@
     <xsl:for-each select="ebml:element">
         <!-- <Parent path>/<id> -->
         <xsl:sort select="concat(
-            substring( translate(substring-before(substring-after(@path,'('),')'), '(1*(', ''),
-                    1, 
-                    string-length(translate(substring-before(substring-after(@path,'('),')'), '(1*(', ''))-string-length(@name)
-                    ),
+            substring( @path, 1, string-length(@path)-string-length(@name) ),
             @id
         )" />
 
@@ -70,18 +67,15 @@
         <xsl:call-template name="parsePath">
             <xsl:with-param name="node" select="."/>
         </xsl:call-template>
-
-        <xsl:variable name="plainPath">
-            <xsl:value-of select="translate(substring-before(substring-after(@path,'('),')'), '(1*(', '')" />
-        </xsl:variable>
-        <xsl:variable name="myPath" select="@path"/>
     </xsl:template>
 
     <xsl:template name="parsePath">
         <xsl:param name="node"/>
         <xsl:variable name="plainPath">
-            <xsl:value-of select="translate(substring-before(substring-after($node/@path,'('),')'), '(1*(', '')" />
+            <xsl:value-of select="translate($node/@path, '\+', '\')" />
         </xsl:variable>
+
+        <!-- Master element comment header -->
         <xsl:if test="@type='master'">
             <xsl:choose>
                 <xsl:when test="@name='Segment'">
@@ -111,7 +105,7 @@
             </xsl:choose>
         </xsl:if>
 
-        <xsl:for-each select="/ebml:EBMLSchema/ebml:element[translate(substring-before(substring-after(@path,'('),')'), '(1*(', '') = concat(concat($plainPath, '\'), @name)]">
+        <xsl:for-each select="/ebml:EBMLSchema/ebml:element[translate(@path, '\+', '\') = concat(concat($plainPath, '\'), @name)]">
             <xsl:sort select="not(@name='Info')" />
             <xsl:sort select="not(@name='Tracks')" />
             <xsl:sort select="not(@name='Cues')" />
@@ -201,7 +195,7 @@
         </xsl:for-each>
         <xsl:text>&#10;</xsl:text>
 
-        <xsl:for-each select="../ebml:element[translate(substring-before(substring-after(@path,'('),')'), '(1*(', '') = concat(concat($plainPath, '\'), @name)]">
+        <xsl:for-each select="../ebml:element[translate(@path, '\+', '\') = concat(concat($plainPath, '\'), @name)]">
             <xsl:sort select="not(@name='Info')" />
             <xsl:sort select="not(@name='Tracks')" />
             <xsl:sort select="not(@name='Cues')" />
