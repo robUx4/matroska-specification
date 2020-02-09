@@ -65,5 +65,6 @@ clean:
 
 ffmpeg: matroska_xsd.xml transforms/schema_2_lavf_h.xsl
 	xsltproc --output matroska_ids.h transforms/schema_2_lavf_h.xsl  $<
+	xsltproc --output matroskasem.c  transforms/schema_2_lavf_sem_c.xsl  $<
 
 .PHONY: clean check website matroska codecs tags ffmpeg
