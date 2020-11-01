@@ -3,6 +3,7 @@
 #include <math.h>
 
 #define SHOW_ALL_TICKS 0
+#define WITH_AUDIO_PACKING   0
 
 static inline uint64_t GCD ( uint64_t a, uint64_t b )
 {
@@ -40,17 +41,25 @@ static const struct {
 } audio_frequency_nums[] = {
     {1, 8000}, 
     {1,11025},
+#if WITH_AUDIO_PACKING
     {128,11025},
+#endif // WITH_AUDIO_PACKING
     {1,22050}, {1,37800}, {1,44056}, 
     {1,44100}, 
+#if WITH_AUDIO_PACKING
     {40,44100}, 
+#endif // WITH_AUDIO_PACKING
     {1,48000}, 
+#if WITH_AUDIO_PACKING
     {40,48000}, 
+#endif // WITH_AUDIO_PACKING
     {1,50400}, {1,88200}, {1,96000}, {1,176400}, {1,192000}, 
     {1,352800},
+#if WITH_AUDIO_PACKING
     {40,352800},
     {128,352800},
     {1152,352800},
+#endif // WITH_AUDIO_PACKING
 };
 
 #define ARRAY_SIZE(a)  (sizeof(a)/sizeof(a[0]))
