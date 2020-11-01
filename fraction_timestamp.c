@@ -65,12 +65,12 @@ static const struct {
 #define ARRAY_SIZE(a)  (sizeof(a)/sizeof(a[0]))
 
 
-static int CheckError(int64_t tick, uint64_t TimestampScale, uint64_t TrackTimestampScale,
+static int CheckError(int64_t tick, uint64_t TimestampScale, float TrackTimestampScale,
                        uint64_t SamplingFreqDenominator,
                        float *error, int display)
 {
-    float real_timestamp = tick * (float) MATROSKA_SCALE/ (float) SamplingFreqDenominator;
-    uint64_t block_value = RoundedDivision(real_timestamp, TrackTimestampScale * TimestampScale);
+    float real_timestamp = (float) (tick * MATROSKA_SCALE) / (float) SamplingFreqDenominator;
+    uint64_t block_value = round((float)real_timestamp / (TrackTimestampScale * TimestampScale));
     float reconstructed = block_value * TrackTimestampScale * TimestampScale;
     *error = real_timestamp - reconstructed;
 
@@ -110,7 +110,7 @@ int main(void)
             // TimestampScale to set in the file
             const uint64_t rounded_timestamp_scale = RoundedDivision( MATROSKA_SCALE, av_global_den );
             // TrackTimestampScale to set on the audio track (rounded integer value stored in a float)
-            uint64_t audio_track_scale = RoundedDivision( MATROSKA_SCALE * audio_frequency_num, audio_frequency_den * rounded_timestamp_scale);
+            float audio_track_scale = (float) (MATROSKA_SCALE * audio_frequency_num) /  (float)(audio_frequency_den * rounded_timestamp_scale);
 
             const int display_all = SHOW_ALL_TICKS;
 
@@ -122,7 +122,7 @@ int main(void)
                 printf("%6.0f Hz / %6.2f fps |", (float) audio_frequency_den, (float) video_frequency_den / video_frequency_num);
             printf("%12llu ns |", rounded_timestamp_scale);
             printf(" %5llu |", av_den_gcd);
-            printf("%12llu |", audio_track_scale);
+            printf("%12.3f |", audio_track_scale);
 
             const float audio_ticks = (float)MATROSKA_SCALE * audio_frequency_num / audio_frequency_den;
             float audio_max_error = 0.0f;
@@ -156,9 +156,9 @@ int main(void)
                 }
             }
             // TrackTimestampScale to set on the video track (rounded integer value stored in a float)
-            const uint64_t video_track_scale = RoundedDivision( MATROSKA_SCALE * video_frequency_num, video_frequency_den * rounded_timestamp_scale);
+            const float video_track_scale = (float) (MATROSKA_SCALE * video_frequency_num) / (float) (video_frequency_den * rounded_timestamp_scale);
 
-            printf("%12llu |", video_track_scale);
+            printf("%12.3f |", video_track_scale);
 
             const float video_ticks = (float)MATROSKA_SCALE * video_frequency_num / video_frequency_den;
             float video_max_error = 0.0f;
