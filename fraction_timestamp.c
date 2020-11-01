@@ -154,10 +154,9 @@ int main(void)
             printf( "max audio duration in Cluster: %8.2f seconds\r\n", (float)audio_tick * audio_frequency_num / audio_frequency_den );
             CheckError(audio_max_error_tick, rounded_timestamp_scale, audio_track_scale, audio_frequency_den, &audio_max_error, display_all);
             printf( "max audio error: %8.0f ns (tick %.0f ns)\r\n", audio_max_error, audio_ticks );
-            if (audio_max_error > audio_ticks / 2.f)
-                printf( "> error larger than half a tick %zu times\r\n", audio_errors );
             if (first_audio_error != 0)
             {
+                printf( "> error larger than half a tick %zu times\r\n", audio_errors );
                 float difference;
                 CheckError(first_audio_error, rounded_timestamp_scale, audio_track_scale, audio_frequency_den, &difference, display_all);
                 printf( "first audio error: at %zu ticks or %f seconds\r\n", first_audio_error, (float)first_audio_error * audio_frequency_num / audio_frequency_den );
@@ -204,10 +203,9 @@ int main(void)
             printf( "max video duration in Cluster: %8.2f seconds\r\n", (float)video_tick * video_frequency_num / video_frequency_den );
             CheckError(video_error_tick, rounded_timestamp_scale, video_track_scale, video_frequency_den, &video_max_error, display_all);
             printf( "max video error: %8.0f ns (tick %.0f ns)\r\n", video_max_error, video_ticks );
-            if (video_max_error > video_ticks / 2.f)
-                printf( "> error larger than half a tick %zu times\r\n", video_errors );
             if (first_video_error != 0)
             {
+                printf( "> error larger than half a tick %zu times\r\n", video_errors );
                 float difference;
                 CheckError(first_video_error, rounded_timestamp_scale, video_track_scale, video_frequency_den, &difference, display_all);
                 printf( "first video error: at %zu ticks or %f seconds\r\n", first_video_error, (float)first_video_error * video_frequency_num / video_frequency_den );
