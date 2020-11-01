@@ -118,7 +118,7 @@ int main(void)
             printf(" Audio Tick | Real timestamp (ns) | Block Value | Timestamp (ns) | Difference\r\n");
             printf("------------|---------------------|-------------|----------------|-----------\r\n");
 #endif
-            int64_t audio_error_tick = 0;
+            int64_t audio_max_error_tick = 0;
             size_t audio_errors = 0;
             size_t first_audio_error = 0;
             int64_t audio_tick;
@@ -128,7 +128,7 @@ int main(void)
                 if (!CheckError(audio_tick, rounded_timestamp_scale, audio_track_scale, audio_frequency_den, &difference, display_all))
                     break;
 
-                if (difference > audio_ticks / 2.f)
+                if (fabs(difference) > audio_ticks / 2.f)
                 {
                     // the rounding of the read timestamp to clock ticks will hit the wrong one
                     audio_errors++;
@@ -139,11 +139,11 @@ int main(void)
                 if (audio_max_error < fabs(difference))
                 {
                     audio_max_error = fabs(difference);
-                    audio_error_tick = audio_tick;
+                    audio_max_error_tick = audio_tick;
                 }
             }
             printf( "max audio duration in Cluster: %8.2f seconds\r\n", (float)audio_tick * audio_frequency_num / audio_frequency_den );
-            CheckError(audio_error_tick, rounded_timestamp_scale, audio_track_scale, audio_frequency_den, &audio_max_error, display_all);
+            CheckError(audio_max_error_tick, rounded_timestamp_scale, audio_track_scale, audio_frequency_den, &audio_max_error, display_all);
             printf( "max audio error: %8.0f ns (tick %.0f ns)\r\n", audio_max_error, audio_ticks );
             if (audio_max_error > audio_ticks / 2.f)
                 printf( "> error larger than half a tick %zu times\r\n", audio_errors );

@@ -16,7 +16,7 @@ TimestampScale 227 ns (GCD 75)
 TrackTimestampScale Audio: 400
 max audio duration in Cluster:     5.94 seconds
 max audio error:    45568 ns (tick 90703 ns)
-> error larger than half a tick 27 times
+> error larger than half a tick 53 times
 first audio error: at 468 ticks or 0.042449 seconds
 
 TrackTimestampScale Video: 146990
@@ -42,7 +42,7 @@ TimestampScale 227 ns (GCD 150)
 TrackTimestampScale Audio: 200
 max audio duration in Cluster:     2.97 seconds
 max audio error:    22784 ns (tick 45351 ns)
-> error larger than half a tick 27 times
+> error larger than half a tick 53 times
 first audio error: at 468 ticks or 0.021224 seconds
 
 TrackTimestampScale Video: 146990
@@ -56,7 +56,7 @@ TimestampScale 529 ns (GCD 600)
 TrackTimestampScale Audio: 50
 max audio duration in Cluster:     1.73 seconds
 max audio error:   -13248 ns (tick 26455 ns)
-first audio error: at 23674 ticks or 0.626296 seconds
+first audio error: at 23670 ticks or 0.626190 seconds
 
 TrackTimestampScale Video: 63075
 max video duration in Cluster:  2186.72 seconds
@@ -81,7 +81,7 @@ TimestampScale 227 ns (GCD 300)
 TrackTimestampScale Audio: 100
 max audio duration in Cluster:     1.49 seconds
 max audio error:    11392 ns (tick 22676 ns)
-> error larger than half a tick 27 times
+> error larger than half a tick 53 times
 first audio error: at 468 ticks or 0.010612 seconds
 
 TrackTimestampScale Video: 146990
@@ -95,6 +95,7 @@ TimestampScale 227 ns (GCD 300)
 TrackTimestampScale Audio: 3996
 max audio duration in Cluster:    59.44 seconds
 max audio error:  -453536 ns (tick 907030 ns)
+first audio error: at 14501 ticks or 13.152835 seconds
 
 TrackTimestampScale Video: 146990
 max video duration in Cluster:  2186.72 seconds
@@ -107,7 +108,7 @@ TimestampScale 4167 ns (GCD 6000)
 TrackTimestampScale Audio: 5
 max audio duration in Cluster:     1.37 seconds
 max audio error:   -10432 ns (tick 20833 ns)
-first audio error: at 31230 ticks or 0.650625 seconds
+first audio error: at 18748 ticks or 0.390583 seconds
 
 TrackTimestampScale Video: 8007
 max video duration in Cluster:  2186.72 seconds
@@ -120,6 +121,7 @@ TimestampScale 4167 ns (GCD 6000)
 TrackTimestampScale Audio: 200
 max audio duration in Cluster:    54.61 seconds
 max audio error:  -416704 ns (tick 833333 ns)
+first audio error: at 12501 ticks or 10.417500 seconds
 
 TrackTimestampScale Video: 8007
 max video duration in Cluster:  2186.72 seconds
@@ -147,7 +149,7 @@ TimestampScale 227 ns (GCD 600)
 TrackTimestampScale Audio: 50
 max audio duration in Cluster:     0.74 seconds
 max audio error:     5696 ns (tick 11338 ns)
-> error larger than half a tick 27 times
+> error larger than half a tick 53 times
 first audio error: at 468 ticks or 0.005306 seconds
 
 TrackTimestampScale Video: 146990
@@ -161,7 +163,7 @@ TimestampScale 2083 ns (GCD 6000)
 TrackTimestampScale Audio: 5
 max audio duration in Cluster:     0.68 seconds
 max audio error:     5216 ns (tick 10417 ns)
-> error larger than half a tick 19 times
+> error larger than half a tick 38 times
 first audio error: at 28110 ticks or 0.292812 seconds
 
 TrackTimestampScale Video: 16019
@@ -177,7 +179,7 @@ TimestampScale 227 ns (GCD 1200)
 TrackTimestampScale Audio: 25
 max audio duration in Cluster:     0.37 seconds
 max audio error:     2848 ns (tick 5669 ns)
-> error larger than half a tick 27 times
+> error larger than half a tick 53 times
 first audio error: at 468 ticks or 0.002653 seconds
 
 TrackTimestampScale Video: 146990
@@ -191,7 +193,7 @@ TimestampScale 1042 ns (GCD 6000)
 TrackTimestampScale Audio: 5
 max audio duration in Cluster:     0.34 seconds
 max audio error:    -2608 ns (tick 5208 ns)
-first audio error: at 17192 ticks or 0.089542 seconds
+first audio error: at 1563 ticks or 0.008141 seconds
 
 TrackTimestampScale Video: 32022
 max video duration in Cluster:  2186.72 seconds
@@ -228,7 +230,7 @@ TimestampScale 113 ns (GCD 1200)
 TrackTimestampScale Audio: 3211
 max audio duration in Cluster:    23.78 seconds
 max audio error:  -181416 ns (tick 362812 ns)
-first audio error: at 46532 ticks or 16.882359 seconds
+first audio error: at 11585 ticks or 4.203175 seconds
 
 TrackTimestampScale Video: 295280
 max video duration in Cluster:  2186.72 seconds
@@ -241,6 +243,7 @@ TimestampScale 113 ns (GCD 1200)
 TrackTimestampScale Audio: 28897
 max audio duration in Cluster:   214.00 seconds
 max audio error: -1632672 ns (tick 3265306 ns)
+first audio error: at 59329 ticks or 193.727341 seconds
 
 TrackTimestampScale Video: 295280
 max video duration in Cluster:  2186.72 seconds
@@ -350,7 +353,7 @@ TimestampScale 20833 ns (GCD 16)
 TrackTimestampScale Audio: 1
 max audio duration in Cluster:     1.37 seconds
 max audio error:    10432 ns (tick 20833 ns)
-> error larger than half a tick 50 times
+> error larger than half a tick 100 times
 first audio error: at 31070 ticks or 0.647292 seconds
 
 TrackTimestampScale Video: 3000
@@ -400,7 +403,7 @@ TimestampScale 10417 ns (GCD 16)
 TrackTimestampScale Audio: 1
 max audio duration in Cluster:     0.68 seconds
 max audio error:     5216 ns (tick 10417 ns)
-> error larger than half a tick 27 times
+> error larger than half a tick 51 times
 first audio error: at 15625 ticks or 0.162760 seconds
 
 TrackTimestampScale Video: 6000
@@ -427,7 +430,7 @@ TimestampScale 5208 ns (GCD 16)
 TrackTimestampScale Audio: 1
 max audio duration in Cluster:     0.34 seconds
 max audio error:     2608 ns (tick 5208 ns)
-> error larger than half a tick 12 times
+> error larger than half a tick 23 times
 first audio error: at 39005 ticks or 0.203151 seconds
 
 TrackTimestampScale Video: 12001
@@ -441,7 +444,7 @@ TimestampScale 2834 ns (GCD 16)
 TrackTimestampScale Audio: 1
 max audio duration in Cluster:     0.19 seconds
 max audio error:     1424 ns (tick 2834 ns)
-> error larger than half a tick 7 times
+> error larger than half a tick 16 times
 first audio error: at 51548 ticks or 0.146111 seconds
 
 TrackTimestampScale Video: 22054
@@ -505,7 +508,7 @@ TimestampScale 283 ns (GCD 75)
 TrackTimestampScale Audio: 321
 max audio duration in Cluster:     5.94 seconds
 max audio error:   -45568 ns (tick 90703 ns)
-first audio error: at 973 ticks or 0.088254 seconds
+first audio error: at 324 ticks or 0.029388 seconds
 
 TrackTimestampScale Video: 147379
 max video duration in Cluster:  2733.40 seconds
@@ -542,7 +545,7 @@ TimestampScale 661 ns (GCD 600)
 TrackTimestampScale Audio: 40
 max audio duration in Cluster:     1.73 seconds
 max audio error:    13248 ns (tick 26455 ns)
-> error larger than half a tick 1 times
+> error larger than half a tick 6 times
 first audio error: at 21992 ticks or 0.581799 seconds
 
 TrackTimestampScale Video: 63099
@@ -556,7 +559,7 @@ TimestampScale 8 ns (GCD 8)
 TrackTimestampScale Audio: 2837
 max audio duration in Cluster:     1.49 seconds
 max audio error:    11392 ns (tick 22698 ns)
-> error larger than half a tick 19 times
+> error larger than half a tick 40 times
 first audio error: at 14273 ticks or 0.323974 seconds
 
 TrackTimestampScale Video: 5213542
@@ -594,7 +597,7 @@ TimestampScale 20833 ns (GCD 24000)
 TrackTimestampScale Audio: 1
 max audio duration in Cluster:     1.37 seconds
 max audio error:    10432 ns (tick 20833 ns)
-> error larger than half a tick 50 times
+> error larger than half a tick 100 times
 first audio error: at 31070 ticks or 0.647292 seconds
 
 TrackTimestampScale Video: 2002
@@ -644,7 +647,7 @@ TimestampScale 10417 ns (GCD 24000)
 TrackTimestampScale Audio: 1
 max audio duration in Cluster:     0.68 seconds
 max audio error:     5216 ns (tick 10417 ns)
-> error larger than half a tick 27 times
+> error larger than half a tick 51 times
 first audio error: at 15625 ticks or 0.162760 seconds
 
 TrackTimestampScale Video: 4004
@@ -670,7 +673,7 @@ TimestampScale 5208 ns (GCD 24000)
 TrackTimestampScale Audio: 1
 max audio duration in Cluster:     0.34 seconds
 max audio error:     2608 ns (tick 5208 ns)
-> error larger than half a tick 12 times
+> error larger than half a tick 23 times
 first audio error: at 39005 ticks or 0.203151 seconds
 
 TrackTimestampScale Video: 8009
@@ -840,7 +843,7 @@ TimestampScale 20833 ns (GCD 24)
 TrackTimestampScale Audio: 1
 max audio duration in Cluster:     1.37 seconds
 max audio error:    10432 ns (tick 20833 ns)
-> error larger than half a tick 50 times
+> error larger than half a tick 100 times
 first audio error: at 31070 ticks or 0.647292 seconds
 
 TrackTimestampScale Video: 2000
@@ -897,7 +900,7 @@ TimestampScale 10417 ns (GCD 24)
 TrackTimestampScale Audio: 1
 max audio duration in Cluster:     0.68 seconds
 max audio error:     5216 ns (tick 10417 ns)
-> error larger than half a tick 27 times
+> error larger than half a tick 51 times
 first audio error: at 15625 ticks or 0.162760 seconds
 
 TrackTimestampScale Video: 4000
@@ -925,7 +928,7 @@ TimestampScale 5208 ns (GCD 24)
 TrackTimestampScale Audio: 1
 max audio duration in Cluster:     0.34 seconds
 max audio error:     2608 ns (tick 5208 ns)
-> error larger than half a tick 12 times
+> error larger than half a tick 23 times
 first audio error: at 39005 ticks or 0.203151 seconds
 
 TrackTimestampScale Video: 8001
@@ -940,7 +943,7 @@ TimestampScale 2834 ns (GCD 24)
 TrackTimestampScale Audio: 1
 max audio duration in Cluster:     0.19 seconds
 max audio error:     1424 ns (tick 2834 ns)
-> error larger than half a tick 7 times
+> error larger than half a tick 16 times
 first audio error: at 51548 ticks or 0.146111 seconds
 
 TrackTimestampScale Video: 14702
@@ -1010,7 +1013,7 @@ TimestampScale 283 ns (GCD 75)
 TrackTimestampScale Audio: 321
 max audio duration in Cluster:     5.94 seconds
 max audio error:   -45568 ns (tick 90703 ns)
-first audio error: at 973 ticks or 0.088254 seconds
+first audio error: at 324 ticks or 0.029388 seconds
 
 TrackTimestampScale Video: 147232
 max video duration in Cluster:  2730.67 seconds
@@ -1047,7 +1050,7 @@ TimestampScale 661 ns (GCD 600)
 TrackTimestampScale Audio: 40
 max audio duration in Cluster:     1.73 seconds
 max audio error:    13248 ns (tick 26455 ns)
-> error larger than half a tick 1 times
+> error larger than half a tick 6 times
 first audio error: at 21992 ticks or 0.581799 seconds
 
 TrackTimestampScale Video: 63036
@@ -1061,7 +1064,7 @@ TimestampScale 8 ns (GCD 8)
 TrackTimestampScale Audio: 2837
 max audio duration in Cluster:     1.49 seconds
 max audio error:    11392 ns (tick 22698 ns)
-> error larger than half a tick 19 times
+> error larger than half a tick 40 times
 first audio error: at 14273 ticks or 0.323974 seconds
 
 TrackTimestampScale Video: 5208333
@@ -1100,7 +1103,7 @@ TimestampScale 20833 ns (GCD 24000)
 TrackTimestampScale Audio: 1
 max audio duration in Cluster:     1.37 seconds
 max audio error:    10432 ns (tick 20833 ns)
-> error larger than half a tick 50 times
+> error larger than half a tick 100 times
 first audio error: at 31070 ticks or 0.647292 seconds
 
 TrackTimestampScale Video: 2000
@@ -1150,7 +1153,7 @@ TimestampScale 10417 ns (GCD 24000)
 TrackTimestampScale Audio: 1
 max audio duration in Cluster:     0.68 seconds
 max audio error:     5216 ns (tick 10417 ns)
-> error larger than half a tick 27 times
+> error larger than half a tick 51 times
 first audio error: at 15625 ticks or 0.162760 seconds
 
 TrackTimestampScale Video: 4000
@@ -1177,7 +1180,7 @@ TimestampScale 5208 ns (GCD 24000)
 TrackTimestampScale Audio: 1
 max audio duration in Cluster:     0.34 seconds
 max audio error:     2608 ns (tick 5208 ns)
-> error larger than half a tick 12 times
+> error larger than half a tick 23 times
 first audio error: at 39005 ticks or 0.203151 seconds
 
 TrackTimestampScale Video: 8001
@@ -1256,8 +1259,8 @@ TimestampScale 142 ns (GCD 75)
 TrackTimestampScale Audio: 639
 max audio duration in Cluster:     5.94 seconds
 max audio error:    45568 ns (tick 90703 ns)
-> error larger than half a tick 13 times
-first audio error: at 6471 ticks or 0.586939 seconds
+> error larger than half a tick 31 times
+first audio error: at 1294 ticks or 0.117370 seconds
 
 TrackTimestampScale Video: 293427
 max video duration in Cluster:  2730.67 seconds
@@ -1294,8 +1297,8 @@ TimestampScale 331 ns (GCD 600)
 TrackTimestampScale Audio: 80
 max audio duration in Cluster:     1.73 seconds
 max audio error:    13248 ns (tick 26455 ns)
-> error larger than half a tick 27 times
-first audio error: at 1591 ticks or 0.042090 seconds
+> error larger than half a tick 53 times
+first audio error: at 530 ticks or 0.014021 seconds
 
 TrackTimestampScale Video: 125881
 max video duration in Cluster:  2730.67 seconds
@@ -1308,7 +1311,7 @@ TimestampScale 4 ns (GCD 8)
 TrackTimestampScale Audio: 5675
 max audio duration in Cluster:     1.49 seconds
 max audio error:   -11392 ns (tick 22698 ns)
-first audio error: at 21067 ticks or 0.478187 seconds
+first audio error: at 21056 ticks or 0.477937 seconds
 
 TrackTimestampScale Video: 10416667
 max video duration in Cluster:  2730.67 seconds
@@ -1322,7 +1325,7 @@ TimestampScale 142 ns (GCD 300)
 TrackTimestampScale Audio: 160
 max audio duration in Cluster:     1.49 seconds
 max audio error:    11392 ns (tick 22676 ns)
-> error larger than half a tick 36 times
+> error larger than half a tick 89 times
 first audio error: at 257 ticks or 0.005828 seconds
 
 TrackTimestampScale Video: 293427
@@ -1336,6 +1339,7 @@ TimestampScale 142 ns (GCD 300)
 TrackTimestampScale Audio: 6388
 max audio duration in Cluster:    59.44 seconds
 max audio error:  -453568 ns (tick 907030 ns)
+first audio error: at 13621 ticks or 12.354649 seconds
 
 TrackTimestampScale Video: 293427
 max video duration in Cluster:  2730.67 seconds
@@ -1348,7 +1352,7 @@ TimestampScale 20833 ns (GCD 48000)
 TrackTimestampScale Audio: 1
 max audio duration in Cluster:     1.37 seconds
 max audio error:    10432 ns (tick 20833 ns)
-> error larger than half a tick 50 times
+> error larger than half a tick 100 times
 first audio error: at 31070 ticks or 0.647292 seconds
 
 TrackTimestampScale Video: 2000
@@ -1386,7 +1390,7 @@ TimestampScale 142 ns (GCD 600)
 TrackTimestampScale Audio: 80
 max audio duration in Cluster:     0.74 seconds
 max audio error:     5696 ns (tick 11338 ns)
-> error larger than half a tick 36 times
+> error larger than half a tick 89 times
 first audio error: at 257 ticks or 0.002914 seconds
 
 TrackTimestampScale Video: 293427
@@ -1400,7 +1404,7 @@ TimestampScale 10417 ns (GCD 48000)
 TrackTimestampScale Audio: 1
 max audio duration in Cluster:     0.68 seconds
 max audio error:     5216 ns (tick 10417 ns)
-> error larger than half a tick 27 times
+> error larger than half a tick 51 times
 first audio error: at 15625 ticks or 0.162760 seconds
 
 TrackTimestampScale Video: 4000
@@ -1415,7 +1419,7 @@ TimestampScale 142 ns (GCD 1200)
 TrackTimestampScale Audio: 40
 max audio duration in Cluster:     0.37 seconds
 max audio error:     2848 ns (tick 5669 ns)
-> error larger than half a tick 36 times
+> error larger than half a tick 89 times
 first audio error: at 257 ticks or 0.001457 seconds
 
 TrackTimestampScale Video: 293427
@@ -1429,7 +1433,7 @@ TimestampScale 5208 ns (GCD 48000)
 TrackTimestampScale Audio: 1
 max audio duration in Cluster:     0.34 seconds
 max audio error:     2608 ns (tick 5208 ns)
-> error larger than half a tick 12 times
+> error larger than half a tick 23 times
 first audio error: at 39005 ticks or 0.203151 seconds
 
 TrackTimestampScale Video: 8001
@@ -1445,7 +1449,7 @@ TimestampScale 142 ns (GCD 2400)
 TrackTimestampScale Audio: 20
 max audio duration in Cluster:     0.19 seconds
 max audio error:     1424 ns (tick 2834 ns)
-> error larger than half a tick 36 times
+> error larger than half a tick 89 times
 first audio error: at 257 ticks or 0.000728 seconds
 
 TrackTimestampScale Video: 293427
@@ -1507,7 +1511,7 @@ TimestampScale 45351 ns (GCD 15)
 TrackTimestampScale Audio: 2
 max audio duration in Cluster:     5.94 seconds
 max audio error:    45568 ns (tick 90703 ns)
-> error larger than half a tick 39 times
+> error larger than half a tick 78 times
 first audio error: at 47455 ticks or 4.304308 seconds
 
 TrackTimestampScale Video: 735
@@ -1533,7 +1537,7 @@ TimestampScale 45351 ns (GCD 30)
 TrackTimestampScale Audio: 1
 max audio duration in Cluster:     2.97 seconds
 max audio error:    22784 ns (tick 45351 ns)
-> error larger than half a tick 39 times
+> error larger than half a tick 78 times
 first audio error: at 47455 ticks or 2.152154 seconds
 
 TrackTimestampScale Video: 735
@@ -1559,8 +1563,8 @@ TimestampScale 1513 ns (GCD 2)
 TrackTimestampScale Audio: 15
 max audio duration in Cluster:     1.49 seconds
 max audio error:    11392 ns (tick 22698 ns)
-> error larger than half a tick 20 times
-first audio error: at 16768 ticks or 0.380607 seconds
+> error larger than half a tick 38 times
+first audio error: at 16763 ticks or 0.380493 seconds
 
 TrackTimestampScale Video: 22031
 max video duration in Cluster:  2184.50 seconds
@@ -1597,7 +1601,7 @@ TimestampScale 20833 ns (GCD 30)
 TrackTimestampScale Audio: 1
 max audio duration in Cluster:     1.37 seconds
 max audio error:    10432 ns (tick 20833 ns)
-> error larger than half a tick 50 times
+> error larger than half a tick 100 times
 first audio error: at 31070 ticks or 0.647292 seconds
 
 TrackTimestampScale Video: 1600
@@ -1647,7 +1651,7 @@ TimestampScale 10417 ns (GCD 30)
 TrackTimestampScale Audio: 1
 max audio duration in Cluster:     0.68 seconds
 max audio error:     5216 ns (tick 10417 ns)
-> error larger than half a tick 27 times
+> error larger than half a tick 51 times
 first audio error: at 15625 ticks or 0.162760 seconds
 
 TrackTimestampScale Video: 3200
@@ -1675,7 +1679,7 @@ TimestampScale 5208 ns (GCD 30)
 TrackTimestampScale Audio: 1
 max audio duration in Cluster:     0.34 seconds
 max audio error:     2608 ns (tick 5208 ns)
-> error larger than half a tick 12 times
+> error larger than half a tick 23 times
 first audio error: at 39005 ticks or 0.203151 seconds
 
 TrackTimestampScale Video: 6400
@@ -1689,7 +1693,7 @@ TimestampScale 2834 ns (GCD 30)
 TrackTimestampScale Audio: 1
 max audio duration in Cluster:     0.19 seconds
 max audio error:     1424 ns (tick 2834 ns)
-> error larger than half a tick 7 times
+> error larger than half a tick 16 times
 first audio error: at 51548 ticks or 0.146111 seconds
 
 TrackTimestampScale Video: 11762
@@ -1751,7 +1755,7 @@ TimestampScale 113 ns (GCD 75)
 TrackTimestampScale Audio: 803
 max audio duration in Cluster:     5.94 seconds
 max audio error:   -45568 ns (tick 90703 ns)
-first audio error: at 1259 ticks or 0.114195 seconds
+first audio error: at 1258 ticks or 0.114104 seconds
 
 TrackTimestampScale Video: 147640
 max video duration in Cluster:  1093.36 seconds
@@ -1776,6 +1780,7 @@ TimestampScale 113 ns (GCD 150)
 TrackTimestampScale Audio: 401
 max audio duration in Cluster:     2.97 seconds
 max audio error:   -22784 ns (tick 45351 ns)
+first audio error: at 53586 ticks or 2.430204 seconds
 
 TrackTimestampScale Video: 147640
 max video duration in Cluster:  1093.36 seconds
@@ -1838,7 +1843,7 @@ TimestampScale 4167 ns (GCD 12000)
 TrackTimestampScale Audio: 5
 max audio duration in Cluster:     1.37 seconds
 max audio error:   -10432 ns (tick 20833 ns)
-first audio error: at 31230 ticks or 0.650625 seconds
+first audio error: at 18748 ticks or 0.390583 seconds
 
 TrackTimestampScale Video: 4004
 max video duration in Cluster:  1093.36 seconds
@@ -1852,6 +1857,7 @@ TimestampScale 4167 ns (GCD 12000)
 TrackTimestampScale Audio: 200
 max audio duration in Cluster:    54.61 seconds
 max audio error:  -416704 ns (tick 833333 ns)
+first audio error: at 12501 ticks or 10.417500 seconds
 
 TrackTimestampScale Video: 4004
 max video duration in Cluster:  1093.36 seconds
@@ -1892,7 +1898,7 @@ TimestampScale 2083 ns (GCD 12000)
 TrackTimestampScale Audio: 5
 max audio duration in Cluster:     0.68 seconds
 max audio error:     5216 ns (tick 10417 ns)
-> error larger than half a tick 19 times
+> error larger than half a tick 38 times
 first audio error: at 28110 ticks or 0.292812 seconds
 
 TrackTimestampScale Video: 8009
@@ -1918,7 +1924,7 @@ TimestampScale 1042 ns (GCD 12000)
 TrackTimestampScale Audio: 5
 max audio duration in Cluster:     0.34 seconds
 max audio error:    -2608 ns (tick 5208 ns)
-first audio error: at 17192 ticks or 0.089542 seconds
+first audio error: at 1563 ticks or 0.008141 seconds
 
 TrackTimestampScale Video: 16011
 max video duration in Cluster:  1093.36 seconds
@@ -1955,7 +1961,7 @@ TimestampScale 113 ns (GCD 2400)
 TrackTimestampScale Audio: 3211
 max audio duration in Cluster:    23.78 seconds
 max audio error:  -181416 ns (tick 362812 ns)
-first audio error: at 46532 ticks or 16.882359 seconds
+first audio error: at 11585 ticks or 4.203175 seconds
 
 TrackTimestampScale Video: 147640
 max video duration in Cluster:  1093.36 seconds
@@ -1968,6 +1974,7 @@ TimestampScale 113 ns (GCD 2400)
 TrackTimestampScale Audio: 28897
 max audio duration in Cluster:   214.00 seconds
 max audio error: -1632672 ns (tick 3265306 ns)
+first audio error: at 59329 ticks or 193.727341 seconds
 
 TrackTimestampScale Video: 147640
 max video duration in Cluster:  1093.36 seconds
@@ -2084,7 +2091,7 @@ TimestampScale 20833 ns (GCD 48)
 TrackTimestampScale Audio: 1
 max audio duration in Cluster:     1.37 seconds
 max audio error:    10432 ns (tick 20833 ns)
-> error larger than half a tick 50 times
+> error larger than half a tick 100 times
 first audio error: at 31070 ticks or 0.647292 seconds
 
 TrackTimestampScale Video: 1000
@@ -2141,7 +2148,7 @@ TimestampScale 10417 ns (GCD 48)
 TrackTimestampScale Audio: 1
 max audio duration in Cluster:     0.68 seconds
 max audio error:     5216 ns (tick 10417 ns)
-> error larger than half a tick 27 times
+> error larger than half a tick 51 times
 first audio error: at 15625 ticks or 0.162760 seconds
 
 TrackTimestampScale Video: 2000
@@ -2169,7 +2176,7 @@ TimestampScale 5208 ns (GCD 48)
 TrackTimestampScale Audio: 1
 max audio duration in Cluster:     0.34 seconds
 max audio error:     2608 ns (tick 5208 ns)
-> error larger than half a tick 12 times
+> error larger than half a tick 23 times
 first audio error: at 39005 ticks or 0.203151 seconds
 
 TrackTimestampScale Video: 4000
@@ -2185,7 +2192,7 @@ TimestampScale 2834 ns (GCD 48)
 TrackTimestampScale Audio: 1
 max audio duration in Cluster:     0.19 seconds
 max audio error:     1424 ns (tick 2834 ns)
-> error larger than half a tick 7 times
+> error larger than half a tick 16 times
 first audio error: at 51548 ticks or 0.146111 seconds
 
 TrackTimestampScale Video: 7351
@@ -2303,8 +2310,8 @@ TimestampScale 1513 ns (GCD 4)
 TrackTimestampScale Audio: 15
 max audio duration in Cluster:     1.49 seconds
 max audio error:    11392 ns (tick 22698 ns)
-> error larger than half a tick 20 times
-first audio error: at 16768 ticks or 0.380607 seconds
+> error larger than half a tick 38 times
+first audio error: at 16763 ticks or 0.380493 seconds
 
 TrackTimestampScale Video: 11016
 max video duration in Cluster:  1092.27 seconds
@@ -2343,7 +2350,7 @@ TimestampScale 20833 ns (GCD 60)
 TrackTimestampScale Audio: 1
 max audio duration in Cluster:     1.37 seconds
 max audio error:    10432 ns (tick 20833 ns)
-> error larger than half a tick 50 times
+> error larger than half a tick 100 times
 first audio error: at 31070 ticks or 0.647292 seconds
 
 TrackTimestampScale Video: 800
@@ -2393,7 +2400,7 @@ TimestampScale 10417 ns (GCD 60)
 TrackTimestampScale Audio: 1
 max audio duration in Cluster:     0.68 seconds
 max audio error:     5216 ns (tick 10417 ns)
-> error larger than half a tick 27 times
+> error larger than half a tick 51 times
 first audio error: at 15625 ticks or 0.162760 seconds
 
 TrackTimestampScale Video: 1600
@@ -2421,7 +2428,7 @@ TimestampScale 5208 ns (GCD 60)
 TrackTimestampScale Audio: 1
 max audio duration in Cluster:     0.34 seconds
 max audio error:     2608 ns (tick 5208 ns)
-> error larger than half a tick 12 times
+> error larger than half a tick 23 times
 first audio error: at 39005 ticks or 0.203151 seconds
 
 TrackTimestampScale Video: 3200
@@ -2435,7 +2442,7 @@ TimestampScale 2834 ns (GCD 60)
 TrackTimestampScale Audio: 1
 max audio duration in Cluster:     0.19 seconds
 max audio error:     1424 ns (tick 2834 ns)
-> error larger than half a tick 7 times
+> error larger than half a tick 16 times
 first audio error: at 51548 ticks or 0.146111 seconds
 
 TrackTimestampScale Video: 5881
@@ -2498,7 +2505,7 @@ TimestampScale 45351 ns (GCD 45)
 TrackTimestampScale Audio: 2
 max audio duration in Cluster:     5.94 seconds
 max audio error:    45568 ns (tick 90703 ns)
-> error larger than half a tick 39 times
+> error larger than half a tick 78 times
 first audio error: at 47455 ticks or 4.304308 seconds
 
 TrackTimestampScale Video: 245
@@ -2528,7 +2535,7 @@ TimestampScale 45351 ns (GCD 90)
 TrackTimestampScale Audio: 1
 max audio duration in Cluster:     2.97 seconds
 max audio error:    22784 ns (tick 45351 ns)
-> error larger than half a tick 39 times
+> error larger than half a tick 78 times
 first audio error: at 47455 ticks or 2.152154 seconds
 
 TrackTimestampScale Video: 245
@@ -2556,7 +2563,7 @@ TimestampScale 504 ns (GCD 2)
 TrackTimestampScale Audio: 45
 max audio duration in Cluster:     1.49 seconds
 max audio error:    11392 ns (tick 22698 ns)
-> error larger than half a tick 10 times
+> error larger than half a tick 19 times
 first audio error: at 48726 ticks or 1.106001 seconds
 
 TrackTimestampScale Video: 22046
@@ -2598,7 +2605,7 @@ TimestampScale 6944 ns (GCD 30)
 TrackTimestampScale Audio: 3
 max audio duration in Cluster:     1.37 seconds
 max audio error:    10432 ns (tick 20833 ns)
-> error larger than half a tick 12 times
+> error larger than half a tick 23 times
 first audio error: at 39005 ticks or 0.812604 seconds
 
 TrackTimestampScale Video: 1600
@@ -2654,7 +2661,7 @@ TimestampScale 3472 ns (GCD 30)
 TrackTimestampScale Audio: 3
 max audio duration in Cluster:     0.68 seconds
 max audio error:     5216 ns (tick 10417 ns)
-> error larger than half a tick 12 times
+> error larger than half a tick 23 times
 first audio error: at 39005 ticks or 0.406302 seconds
 
 TrackTimestampScale Video: 3200
@@ -2683,7 +2690,7 @@ TimestampScale 1736 ns (GCD 30)
 TrackTimestampScale Audio: 3
 max audio duration in Cluster:     0.34 seconds
 max audio error:     2608 ns (tick 5208 ns)
-> error larger than half a tick 12 times
+> error larger than half a tick 23 times
 first audio error: at 39005 ticks or 0.203151 seconds
 
 TrackTimestampScale Video: 6400
@@ -2698,7 +2705,7 @@ TimestampScale 2834 ns (GCD 90)
 TrackTimestampScale Audio: 1
 max audio duration in Cluster:     0.19 seconds
 max audio error:     1424 ns (tick 2834 ns)
-> error larger than half a tick 7 times
+> error larger than half a tick 16 times
 first audio error: at 51548 ticks or 0.146111 seconds
 
 TrackTimestampScale Video: 3921
@@ -2818,7 +2825,7 @@ TimestampScale 908 ns (GCD 4)
 TrackTimestampScale Audio: 25
 max audio duration in Cluster:     1.49 seconds
 max audio error:   -11392 ns (tick 22698 ns)
-first audio error: at 21067 ticks or 0.478187 seconds
+first audio error: at 21056 ticks or 0.477937 seconds
 
 TrackTimestampScale Video: 11013
 max video duration in Cluster:   655.35 seconds
@@ -2859,7 +2866,7 @@ TimestampScale 20833 ns (GCD 100)
 TrackTimestampScale Audio: 1
 max audio duration in Cluster:     1.37 seconds
 max audio error:    10432 ns (tick 20833 ns)
-> error larger than half a tick 50 times
+> error larger than half a tick 100 times
 first audio error: at 31070 ticks or 0.647292 seconds
 
 TrackTimestampScale Video: 480
@@ -2914,7 +2921,7 @@ TimestampScale 10417 ns (GCD 100)
 TrackTimestampScale Audio: 1
 max audio duration in Cluster:     0.68 seconds
 max audio error:     5216 ns (tick 10417 ns)
-> error larger than half a tick 27 times
+> error larger than half a tick 51 times
 first audio error: at 15625 ticks or 0.162760 seconds
 
 TrackTimestampScale Video: 960
@@ -2943,7 +2950,7 @@ TimestampScale 5208 ns (GCD 100)
 TrackTimestampScale Audio: 1
 max audio duration in Cluster:     0.34 seconds
 max audio error:     2608 ns (tick 5208 ns)
-> error larger than half a tick 12 times
+> error larger than half a tick 23 times
 first audio error: at 39005 ticks or 0.203151 seconds
 
 TrackTimestampScale Video: 1920
@@ -2958,7 +2965,7 @@ TimestampScale 2834 ns (GCD 100)
 TrackTimestampScale Audio: 1
 max audio duration in Cluster:     0.19 seconds
 max audio error:     1424 ns (tick 2834 ns)
-> error larger than half a tick 7 times
+> error larger than half a tick 16 times
 first audio error: at 51548 ticks or 0.146111 seconds
 
 TrackTimestampScale Video: 3529
@@ -3028,7 +3035,7 @@ TimestampScale 57 ns (GCD 75)
 TrackTimestampScale Audio: 1591
 max audio duration in Cluster:     5.94 seconds
 max audio error:    45568 ns (tick 90703 ns)
-> error larger than half a tick 13 times
+> error larger than half a tick 16 times
 first audio error: at 48327 ticks or 4.383401 seconds
 
 TrackTimestampScale Video: 146345
@@ -3054,7 +3061,7 @@ TimestampScale 57 ns (GCD 150)
 TrackTimestampScale Audio: 796
 max audio duration in Cluster:     2.97 seconds
 max audio error:   -22784 ns (tick 45351 ns)
-first audio error: at 7737 ticks or 0.350884 seconds
+first audio error: at 1105 ticks or 0.050113 seconds
 
 TrackTimestampScale Video: 146345
 max video duration in Cluster:   546.68 seconds
@@ -3091,7 +3098,7 @@ TimestampScale 57 ns (GCD 300)
 TrackTimestampScale Audio: 398
 max audio duration in Cluster:     1.49 seconds
 max audio error:   -11392 ns (tick 22676 ns)
-first audio error: at 7737 ticks or 0.175442 seconds
+first audio error: at 1105 ticks or 0.025057 seconds
 
 TrackTimestampScale Video: 146345
 max video duration in Cluster:   546.68 seconds
@@ -3116,7 +3123,7 @@ TimestampScale 4167 ns (GCD 24000)
 TrackTimestampScale Audio: 5
 max audio duration in Cluster:     1.37 seconds
 max audio error:   -10432 ns (tick 20833 ns)
-first audio error: at 31230 ticks or 0.650625 seconds
+first audio error: at 18748 ticks or 0.390583 seconds
 
 TrackTimestampScale Video: 2002
 max video duration in Cluster:   546.68 seconds
@@ -3130,6 +3137,7 @@ TimestampScale 4167 ns (GCD 24000)
 TrackTimestampScale Audio: 200
 max audio duration in Cluster:    54.61 seconds
 max audio error:  -416704 ns (tick 833333 ns)
+first audio error: at 12501 ticks or 10.417500 seconds
 
 TrackTimestampScale Video: 2002
 max video duration in Cluster:   546.68 seconds
@@ -3158,7 +3166,7 @@ TimestampScale 57 ns (GCD 600)
 TrackTimestampScale Audio: 199
 max audio duration in Cluster:     0.74 seconds
 max audio error:    -5696 ns (tick 11338 ns)
-first audio error: at 7737 ticks or 0.087721 seconds
+first audio error: at 1105 ticks or 0.012528 seconds
 
 TrackTimestampScale Video: 146345
 max video duration in Cluster:   546.68 seconds
@@ -3171,7 +3179,7 @@ TimestampScale 2083 ns (GCD 24000)
 TrackTimestampScale Audio: 5
 max audio duration in Cluster:     0.68 seconds
 max audio error:     5216 ns (tick 10417 ns)
-> error larger than half a tick 19 times
+> error larger than half a tick 38 times
 first audio error: at 28110 ticks or 0.292812 seconds
 
 TrackTimestampScale Video: 4005
@@ -3198,7 +3206,7 @@ TimestampScale 1042 ns (GCD 24000)
 TrackTimestampScale Audio: 5
 max audio duration in Cluster:     0.34 seconds
 max audio error:    -2608 ns (tick 5208 ns)
-first audio error: at 17192 ticks or 0.089542 seconds
+first audio error: at 1563 ticks or 0.008141 seconds
 
 TrackTimestampScale Video: 8005
 max video duration in Cluster:   546.68 seconds
@@ -3236,6 +3244,7 @@ TimestampScale 57 ns (GCD 2400)
 TrackTimestampScale Audio: 6365
 max audio duration in Cluster:    23.78 seconds
 max audio error:  -181408 ns (tick 362812 ns)
+first audio error: at 53439 ticks or 19.388300 seconds
 
 TrackTimestampScale Video: 146345
 max video duration in Cluster:   546.68 seconds
@@ -3320,8 +3329,8 @@ TimestampScale 1513 ns (GCD 8)
 TrackTimestampScale Audio: 15
 max audio duration in Cluster:     1.49 seconds
 max audio error:    11392 ns (tick 22698 ns)
-> error larger than half a tick 20 times
-first audio error: at 16768 ticks or 0.380607 seconds
+> error larger than half a tick 38 times
+first audio error: at 16763 ticks or 0.380493 seconds
 
 TrackTimestampScale Video: 5508
 max video duration in Cluster:   546.13 seconds
@@ -3360,7 +3369,7 @@ TimestampScale 20833 ns (GCD 120)
 TrackTimestampScale Audio: 1
 max audio duration in Cluster:     1.37 seconds
 max audio error:    10432 ns (tick 20833 ns)
-> error larger than half a tick 50 times
+> error larger than half a tick 100 times
 first audio error: at 31070 ticks or 0.647292 seconds
 
 TrackTimestampScale Video: 400
@@ -3410,7 +3419,7 @@ TimestampScale 10417 ns (GCD 120)
 TrackTimestampScale Audio: 1
 max audio duration in Cluster:     0.68 seconds
 max audio error:     5216 ns (tick 10417 ns)
-> error larger than half a tick 27 times
+> error larger than half a tick 51 times
 first audio error: at 15625 ticks or 0.162760 seconds
 
 TrackTimestampScale Video: 800
@@ -3438,7 +3447,7 @@ TimestampScale 5208 ns (GCD 120)
 TrackTimestampScale Audio: 1
 max audio duration in Cluster:     0.34 seconds
 max audio error:     2608 ns (tick 5208 ns)
-> error larger than half a tick 12 times
+> error larger than half a tick 23 times
 first audio error: at 39005 ticks or 0.203151 seconds
 
 TrackTimestampScale Video: 1600
@@ -3452,7 +3461,7 @@ TimestampScale 2834 ns (GCD 120)
 TrackTimestampScale Audio: 1
 max audio duration in Cluster:     0.19 seconds
 max audio error:     1424 ns (tick 2834 ns)
-> error larger than half a tick 7 times
+> error larger than half a tick 16 times
 first audio error: at 51548 ticks or 0.146111 seconds
 
 TrackTimestampScale Video: 2940
