@@ -66,10 +66,10 @@ static const struct {
 
 
 static int CheckError(int64_t tick, uint64_t TimestampScale, float TrackTimestampScale,
-                       uint64_t SamplingFreqDenominator,
+                       uint64_t SamplingFreqNumerator, uint64_t SamplingFreqDenominator,
                        float *error, int display)
 {
-    float real_timestamp = (float) (tick * MATROSKA_SCALE) / (float) SamplingFreqDenominator;
+    float real_timestamp = (float) (tick * SamplingFreqNumerator * MATROSKA_SCALE) / (float) SamplingFreqDenominator;
     uint64_t block_value = round((float)real_timestamp / (TrackTimestampScale * TimestampScale));
     float reconstructed = block_value * TrackTimestampScale * TimestampScale;
     *error = real_timestamp - reconstructed;
@@ -138,7 +138,7 @@ int main(void)
             for (audio_tick=0; audio_tick<0x10000; audio_tick++)
             {
                 float difference;
-                if (!CheckError(audio_tick, rounded_timestamp_scale, audio_track_scale, audio_frequency_den, &difference, display_all))
+                if (!CheckError(audio_tick, rounded_timestamp_scale, audio_track_scale, audio_frequency_num, audio_frequency_den, &difference, display_all))
                     break;
 
                 if (fabs(difference) > audio_ticks / 2.f)
@@ -174,7 +174,7 @@ int main(void)
             for (video_tick=0; video_tick<0x10000; video_tick++)
             {
                 float difference;
-                if (!CheckError(video_tick, rounded_timestamp_scale, video_track_scale, video_frequency_den, &difference, display_all))
+                if (!CheckError(video_tick, rounded_timestamp_scale, video_track_scale, video_frequency_num, video_frequency_den, &difference, display_all))
                     break;
 
                 if (fabs(difference) > video_ticks / 2.f)
@@ -195,7 +195,7 @@ int main(void)
             printf( "%9.2f s|", (float)audio_tick * audio_frequency_num / audio_frequency_den );
             printf( "%9.2f s|", (float)video_tick * video_frequency_num / video_frequency_den );
 
-            CheckError(audio_max_error_tick, rounded_timestamp_scale, audio_track_scale, audio_frequency_den, &audio_max_error, display_all);
+            CheckError(audio_max_error_tick, rounded_timestamp_scale, audio_track_scale, audio_frequency_num, audio_frequency_den, &audio_max_error, display_all);
             // printf( "max audio error: %8.0f ns (tick %.0f ns)\r\n", audio_max_error, audio_ticks );
             if (audio_errors == 0)
                 printf( "              |");
@@ -203,11 +203,11 @@ int main(void)
             {
                 printf( "%13zu |", audio_errors );
                 float difference;
-                CheckError(first_audio_error, rounded_timestamp_scale, audio_track_scale, audio_frequency_den, &difference, display_all);
+                CheckError(first_audio_error, rounded_timestamp_scale, audio_track_scale, audio_frequency_num, audio_frequency_den, &difference, display_all);
                 // printf( "first audio error: at %zu ticks or %f seconds\r\n", first_audio_error, (float)first_audio_error * audio_frequency_num / audio_frequency_den );
             }
 
-            CheckError(video_error_tick, rounded_timestamp_scale, video_track_scale, video_frequency_den, &video_max_error, display_all);
+            CheckError(video_error_tick, rounded_timestamp_scale, video_track_scale, video_frequency_num, video_frequency_den, &video_max_error, display_all);
             // printf( "max video error: %8.0f ns (tick %.0f ns)\r\n", video_max_error, video_ticks );
             if (video_errors == 0)
                 printf( "              |");
@@ -215,7 +215,7 @@ int main(void)
             {
                 printf( "%13zu |", video_errors );
                 float difference;
-                CheckError(first_video_error, rounded_timestamp_scale, video_track_scale, video_frequency_den, &difference, display_all);
+                CheckError(first_video_error, rounded_timestamp_scale, video_track_scale, video_frequency_num, video_frequency_den, &difference, display_all);
                 // printf( "first video error: at %zu ticks or %f seconds\r\n", first_video_error, (float)first_video_error * video_frequency_num / video_frequency_den );
             }
 
@@ -224,7 +224,7 @@ int main(void)
             else
             {
                 float difference;
-                CheckError(first_audio_error, rounded_timestamp_scale, audio_track_scale, audio_frequency_den, &difference, display_all);
+                CheckError(first_audio_error, rounded_timestamp_scale, audio_track_scale, audio_frequency_num, audio_frequency_den, &difference, display_all);
                 printf( "%11zu (%5.3f s) |", first_audio_error, (float)first_audio_error * audio_frequency_num / audio_frequency_den );
             }
             if (video_errors == 0)
@@ -232,7 +232,7 @@ int main(void)
             else
             {
                 float difference;
-                CheckError(first_video_error, rounded_timestamp_scale, video_track_scale, video_frequency_den, &difference, display_all);
+                CheckError(first_video_error, rounded_timestamp_scale, video_track_scale, video_frequency_num, video_frequency_den, &difference, display_all);
                 printf( "%7zu (%5.3f s)", first_video_error, (float)first_video_error * video_frequency_num / video_frequency_den );
             }
 
