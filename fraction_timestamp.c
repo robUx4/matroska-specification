@@ -177,7 +177,7 @@ int main(void)
                 if (!CheckError(video_tick, rounded_timestamp_scale, video_track_scale, video_frequency_den, &difference, display_all))
                     break;
 
-                if (difference > video_ticks / 2.f)
+                if (fabs(difference) > video_ticks / 2.f)
                 {
                     // the rounding of the read timestamp to clock ticks will hit the wrong one
                     video_errors++;
