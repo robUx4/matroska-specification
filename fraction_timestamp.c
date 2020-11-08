@@ -2,7 +2,7 @@
 #include <stdint.h>
 #include <math.h>
 
-#define SHOW_ALL_TICKS 0
+#define SHOW_ALL_TICKS 1
 #define WITH_AUDIO_PACKING   0
 
 static inline uint64_t GCD ( uint64_t a, uint64_t b )
@@ -128,6 +128,7 @@ int main(void)
             float audio_max_error = 0.0f;
 
 #if SHOW_ALL_TICKS
+            printf("\r\n");
             printf(" Audio Tick | Real timestamp (ns) | Block Value | Timestamp (ns) | Difference\r\n");
             printf("------------|---------------------|-------------|----------------|-----------\r\n");
 #endif
@@ -158,12 +159,17 @@ int main(void)
             // TrackTimestampScale to set on the video track (rounded integer value stored in a float)
             const float video_track_scale = (float) (MATROSKA_SCALE * video_frequency_num) / (float) (video_frequency_den * rounded_timestamp_scale);
 
+#if SHOW_ALL_TICKS
+            printf("%llu / %llu * %llu = %f", video_frequency_num, video_frequency_den, rounded_timestamp_scale, video_track_scale);
+#else // SHOW_ALL_TICKS
             printf("%12.3f |", video_track_scale);
+#endif // SHOW_ALL_TICKS
 
             const float video_ticks = (float)MATROSKA_SCALE * video_frequency_num / video_frequency_den;
             float video_max_error = 0.0f;
 
 #if SHOW_ALL_TICKS
+            printf("\r\n");
             printf(" Video Tick | Real timestamp (ns) | Block Value | Timestamp (ns) | Difference\r\n");
             printf("------------|---------------------|-------------|----------------|-----------\r\n");
 #endif
@@ -196,7 +202,9 @@ int main(void)
             printf( "%9.2f s|", (float)video_tick * video_frequency_num / video_frequency_den );
 
             CheckError(audio_max_error_tick, rounded_timestamp_scale, audio_track_scale, audio_frequency_num, audio_frequency_den, &audio_max_error, display_all);
-            // printf( "max audio error: %8.0f ns (tick %.0f ns)\r\n", audio_max_error, audio_ticks );
+#if SHOW_ALL_TICKS
+            printf( "max audio error: %8.0f ns (1 tick = %.0f ns)\r\n", audio_max_error, audio_ticks );
+#endif
             if (audio_errors == 0)
                 printf( "              |");
             else
@@ -208,7 +216,9 @@ int main(void)
             }
 
             CheckError(video_error_tick, rounded_timestamp_scale, video_track_scale, video_frequency_num, video_frequency_den, &video_max_error, display_all);
-            // printf( "max video error: %8.0f ns (tick %.0f ns)\r\n", video_max_error, video_ticks );
+#if SHOW_ALL_TICKS
+            printf( "max video error: %8.0f ns (1 tick = %.0f ns)\r\n", video_max_error, video_ticks );
+#endif
             if (video_errors == 0)
                 printf( "              |");
             else
