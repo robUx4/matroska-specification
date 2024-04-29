@@ -10,9 +10,10 @@ keyword = ["binary","storage","matroska","ebml","webm"]
 
 [seriesInfo]
 name = "RFC"
-value = "9559"
+number = "9559"
 stream = "IETF"
 status = "standard"
+value = "@BUILD_VERSION@"
 
 [[author]]
 initials="S."

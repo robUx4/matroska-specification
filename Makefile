@@ -44,7 +44,7 @@ MATROSKA_IANA_CSV := matroska-element-ids.csv \
 all: matroska codecs tags chapter_codecs control matroska_iana.xml $(MATROSKA_IANA_CSV)
 	$(info RFC rendering has been tested with mmark version 2.2.8 and xml2rfc 2.46.0, please ensure these are installed and recent enough.)
 
-matroska: $(OUTPUT_MATROSKA).html $(OUTPUT_MATROSKA).txt $(OUTPUT_MATROSKA).xml
+matroska: rfc9559.txt rfc9559.html $(OUTPUT_MATROSKA).html $(OUTPUT_MATROSKA).txt $(OUTPUT_MATROSKA).xml
 codecs: $(OUTPUT_CODEC).html $(OUTPUT_CODEC).txt $(OUTPUT_CODEC).xml
 tags: $(OUTPUT_TAGS).html $(OUTPUT_TAGS).txt $(OUTPUT_TAGS).xml
 chapter_codecs: $(OUTPUT_CHAPTER_CODECS).html $(OUTPUT_CHAPTER_CODECS).txt $(OUTPUT_CHAPTER_CODECS).xml
@@ -125,6 +125,23 @@ $(OUTPUT_CONTROL).md: index_control.md control.md control_elements4rfc.md menu.m
 %.xml: %.md
 	$(MMARK) $< | sed -e "s/submissionType=/sortRefs=\"true\" tocDepth=\"4\" submissionType=/" \
 		> $@
+
+rfc9559.xml: $(OUTPUT_MATROSKA).xml
+	sed -e 's@<!\[CDATA\[@\n@' \
+	-e 's@\]\]>@@' \
+	-e 's@&quot;@"@g' \
+	-e 's@^<reference @\n<reference @g' \
+	-e 's@</table></section>@</table>\n</section>@' \
+	-e 's@historic-deprecated-elements@appendix-a-historic-deprecated-elements@' \
+	$< > $@
+
+	# -e 's@$$</name><@</name>@g' \
+	# -e 's@$$</artwork><@</artwork>@g' \
+# -e 's@<date></date>@@' \
+# 	-e 's@<!--@&lt;!--@g' \
+# 	-e 's@-->@--&gt;@g' \
+# -e 's@<li><t>@<li>@g' \
+# -e 's@</t>$</li>@</li>@g' \
 
 %.html: %.xml
 	$(XML2RFC) --html $< -o $@
