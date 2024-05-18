@@ -67,9 +67,9 @@ vocabulary, and application.</t>
 
 <section anchor="introduction"><name>Introduction</name>
 <t>Matroska is an audiovisual data container format. It was derived from a
-project called <xref target="MCF"></xref> but diverges from it
+project called <xref target="MCF"/> but diverges from it
 significantly because it is based on EBML (Extensible Binary Meta Language)
-<xref target="RFC8794"></xref>, a binary derivative of XML. EBML
+<xref target="RFC8794"/>, a binary derivative of XML. EBML
 provides significant advantages in terms of future format extensibility,
 without breaking file support in parsers reading the previous versions.</t>
 
@@ -90,8 +90,8 @@ allowing the user to store a complete movie or CD in a single file.</li>
 <li>Selectable subtitle/audio/video streams</li>
 <li>Modularly expandable</li>
 <li>Error resilience (can recover playback even when the stream is damaged)</li>
-<li>Streamable over the Internet and local networks (HTTP <xref target="RFC9110"></xref>, FTP <xref target="RFC0959"></xref>, SMB <xref target="SMB-CIFS"></xref>, etc.)</li>
-<li>Menus (like menus that DVDs have <xref target="DVD-Video"></xref>)</li>
+<li>Streamable over the Internet and local networks (HTTP <xref target="RFC9110"/>, FTP <xref target="RFC0959"/>, SMB <xref target="SMB-CIFS"/>, etc.)</li>
+<li>Menus (like menus that DVDs have <xref target="DVD-Video"/>)</li>
 </ul>
 </section>
 
@@ -131,7 +131,7 @@ Matroska versions 1 to 3 are no longer maintained. No new elements are expected 
 
 <section anchor="principles"><name>Principles</name>
 <t>Matroska is a Document Type of EBML.
-This specification is dependent on the EBML specification <xref target="RFC8794"></xref>.
+This specification is dependent on the EBML specification <xref target="RFC8794"/>.
 For an understanding of Matroska's EBML Schema, see in particular the sections of the EBML specification that cover
 EBML Element Types (Section <xref target="RFC8794" sectionFormat="bare" section="7"/>),
 EBML Schema (Section <xref target="RFC8794" sectionFormat="bare" section="11.1"/>),
@@ -139,9 +139,9 @@ and EBML Structure (Section <xref target="RFC8794" sectionFormat="bare" section=
 </section>
 
 <section anchor="updates-to-rfc-8794"><name>Updates to RFC 8794</name>
-<t>Because of an oversight, <xref target="RFC8794"></xref> reserved EBML ID 0x80, which is used by deployed Matroska implementations.
+<t>Because of an oversight, <xref target="RFC8794"/> reserved EBML ID 0x80, which is used by deployed Matroska implementations.
 
-For this reason, this specification updates <xref target="RFC8794"></xref> to make 0x80 a legal EBML ID. Additionally, this specification makes the following updates:</t>
+For this reason, this specification updates <xref target="RFC8794"/> to make 0x80 a legal EBML ID. Additionally, this specification makes the following updates:</t>
 
 <ul>
 <li><t><xref target="RFC8794" sectionFormat="of" section="17.1"/> (per Erratum ID #7189 <xref target="Err7189"/>)</t>
@@ -193,7 +193,7 @@ For this reason, this specification updates <xref target="RFC8794"></xref> to ma
 </section>
 
 <section anchor="added-ebml-constraints"><name>Added EBML Constraints</name>
-<t>As an EBML Document Type, Matroska adds the following constraints to the EBML specification <xref target="RFC8794"></xref>:</t>
+<t>As an EBML Document Type, Matroska adds the following constraints to the EBML specification <xref target="RFC8794"/>:</t>
 
 <ul>
 <li>The <tt>docType</tt> of the <tt>EBML Header</tt> <bcp14>MUST</bcp14> be "matroska".</li>
@@ -208,7 +208,7 @@ For this reason, this specification updates <xref target="RFC8794"></xref> to ma
 
 
 <t>Legacy EBML/Matroska parsers did not handle Empty Elements properly; elements were present in the file but had a length of 0.
-They always assumed the value was 0 for integers/dates or 0x0p+0, the textual expression of floats using the format in <xref target="ISO9899"></xref>, no matter the default value of the element that should have been used instead.
+They always assumed the value was 0 for integers/dates or 0x0p+0, the textual expression of floats using the format in <xref target="ISO9899"/>, no matter the default value of the element that should have been used instead.
 Therefore, Matroska Writers <bcp14>MUST NOT</bcp14> use EBML Empty Elements if the element has a default value that is not 0 for integers/dates and 0x0p+0 for floats.</t>
 <t>When adding new elements to Matroska, these rules apply:</t>
 
@@ -268,14 +268,14 @@ the <tt>Segment Element</tt>), whereas vertical alignment represents the storage
 <t>The Matroska <tt>EBML Schema</tt> defines eight <tt>Top-Level Elements</tt>:</t>
 
 <ul>
-<li><tt>SeekHead</tt> (<xref target="seekhead"></xref>)</li>
-<li><tt>Info</tt> (<xref target="info"></xref>)</li>
-<li><tt>Tracks</tt> (<xref target="track-flags"></xref>)</li>
-<li><tt>Chapters</tt> (<xref target="chapters"></xref>)</li>
-<li><tt>Cluster</tt> (<xref target="cluster-blocks"></xref>)</li>
-<li><tt>Cues</tt> (<xref target="cues"></xref>)</li>
-<li><tt>Attachments</tt> (<xref target="attachments-1"></xref>)</li>
-<li><tt>Tags</tt> (<xref target="tags"></xref>)</li>
+<li><tt>SeekHead</tt> (<xref target="seekhead"/>)</li>
+<li><tt>Info</tt> (<xref target="info"/>)</li>
+<li><tt>Tracks</tt> (<xref target="track-flags"/>)</li>
+<li><tt>Chapters</tt> (<xref target="chapters"/>)</li>
+<li><tt>Cluster</tt> (<xref target="cluster-blocks"/>)</li>
+<li><tt>Cues</tt> (<xref target="cues"/>)</li>
+<li><tt>Attachments</tt> (<xref target="attachments-1"/>)</li>
+<li><tt>Tags</tt> (<xref target="tags"/>)</li>
 </ul>
 <t>The <tt>SeekHead Element</tt> (also known as <tt>MetaSeek</tt>) contains an index of <tt>Top-Level Elements</tt>
 locations within the <tt>Segment</tt>. Use of the <tt>SeekHead Element</tt> is <bcp14>RECOMMENDED</bcp14>. Without a <tt>SeekHead Element</tt>,
@@ -417,12 +417,12 @@ points to jump to in video or audio.</t>
 <t><tt>Cluster Elements</tt> contain the content for each track, e.g., video frames. A Matroska file
 <bcp14>SHOULD</bcp14> contain at least one <tt>Cluster Element</tt>.
 In the rare case it doesn't, there should be a method for <tt>Segments</tt> to link
-together, possibly using <tt>Chapters</tt>; see <xref target="linked-segments"></xref>.</t>
+together, possibly using <tt>Chapters</tt>; see <xref target="linked-segments"/>.</t>
 <t>The <tt>Cluster Element</tt> helps to break up
 <tt>SimpleBlock</tt> or <tt>BlockGroup Elements</tt> and helps with seeking and error protection.
 Every <tt>Cluster Element</tt> <bcp14>MUST</bcp14> contain a <tt>Timestamp Element</tt>.
 This <bcp14>SHOULD</bcp14> be the <tt>Timestamp Element</tt> used to play the first <tt>Block</tt> in the <tt>Cluster Element</tt>,
-unless a different value is needed to accommodate for more <tt>Blocks</tt>; see <xref target="block-timestamps"></xref>.</t>
+unless a different value is needed to accommodate for more <tt>Blocks</tt>; see <xref target="block-timestamps"/>.</t>
 <t><tt>Cluster Elements</tt> contain one or more <tt>Block</tt> element, such as <tt>BlockGroup</tt> or <tt>SimpleBlock</tt> elements.
 In some situations, a <tt>Cluster Element</tt> <bcp14>MAY</bcp14> contain no <tt>Block</tt> element, for example, in a live recording
 when no data has been collected.</t>
@@ -468,7 +468,7 @@ when no data has been collected.</t>
 <t>Each <tt>Cluster</tt> <bcp14>MUST</bcp14> contain exactly one <tt>Timestamp Element</tt>. The <tt>Timestamp Element</tt> value <bcp14>MUST</bcp14>
 be stored once per <tt>Cluster</tt>. The <tt>Timestamp Element</tt> in the <tt>Cluster</tt> is relative to the entire <tt>Segment</tt>.
 The <tt>Timestamp Element</tt> <bcp14>SHOULD</bcp14> be the first Element in the <tt>Cluster</tt> it belongs to
-or the second Element if that <tt>Cluster</tt> contains a <tt>CRC-32</tt> element (<xref target="crc-32"></xref>)</t>
+or the second Element if that <tt>Cluster</tt> contains a <tt>CRC-32</tt> element (<xref target="crc-32"/>)</t>
 <t>Additionally, the <tt>Block</tt> contains an offset that, when added to the <tt>Cluster</tt>'s <tt>Timestamp Element</tt> value,
 yields the <tt>Block</tt>'s effective timestamp. Therefore, the timestamp in the <tt>Block</tt> itself is relative to
 the <tt>Timestamp Element</tt> in the <tt>Cluster</tt>. For example, if the <tt>Timestamp Element</tt> in the <tt>Cluster</tt>
@@ -533,7 +533,7 @@ its <tt>Tracks</tt>, <tt>Chapters</tt>, and <tt>Attachments</tt>. Each <tt>Track
 applies to has its UID listed in the <tt>Tags</tt>. The <tt>Tags</tt> contain all extra information about
 the file: scriptwriters, singers, actors, directors, titles, edition, price, dates, genre, comments,
 etc. <tt>Tags</tt> can contain their values in multiple languages.
-   For example, a movie's "TITLE" <tt>Tag</tt> might contain both the original                                                                           
+   For example, a movie's "TITLE" <tt>Tag</tt> might contain both the original
    English title as well as the German title.</t>
 <figure><name>Representation of a <tt>Tags Element</tt> and Three Levels of Its <tt>Children Elements</tt>
 </name>
@@ -586,7 +586,7 @@ of Matroska using the EBML Schema elements and attributes defined in <xref targe
 <dt>minOccurs / maxOccurs:</dt>
 <dd>1 / 1</dd>
 <dt>definition:</dt>
-<dd>The <tt>Root Element</tt> that contains all other <tt>Top-Level Elements</tt>; see <xref target="data-layout"></xref>.</dd>
+<dd>The <tt>Root Element</tt> that contains all other <tt>Top-Level Elements</tt>; see <xref target="data-layout"/>.</dd>
 </dl>
 
 <section anchor="seekhead-element"><name>SeekHead Element</name>
@@ -599,7 +599,7 @@ of Matroska using the EBML Schema elements and attributes defined in <xref targe
 <dt>maxOccurs:</dt>
 <dd>2</dd>
 <dt>definition:</dt>
-<dd>Contains seeking information of <tt>Top-Level Elements</tt>; see <xref target="data-layout"></xref>.</dd>
+<dd>Contains seeking information of <tt>Top-Level Elements</tt>; see <xref target="data-layout"/>.</dd>
 </dl>
 
 <section anchor="seek-element"><name>Seek Element</name>
@@ -641,7 +641,7 @@ of Matroska using the EBML Schema elements and attributes defined in <xref targe
 <dt>minOccurs / maxOccurs:</dt>
 <dd>1 / 1</dd>
 <dt>definition:</dt>
-<dd>The <tt>Segment Position</tt> (<xref target="segment-position"></xref>) of a Top-Level Element.</dd>
+<dd>The <tt>Segment Position</tt> (<xref target="segment-position"/>) of a Top-Level Element.</dd>
 </dl>
 </section>
 </section>
@@ -672,7 +672,7 @@ of Matroska using the EBML Schema elements and attributes defined in <xref targe
 <dt>maxOccurs:</dt>
 <dd>1</dd>
 <dt>definition:</dt>
-<dd>A randomly generated UID that identifies the <tt>Segment</tt> amongst many others (128 bits). It is equivalent to a Universally Unique Identifier (UUID) v4 <xref target="RFC4122"></xref> with all bits randomly (or pseudorandomly) chosen.  An actual UUID v4 value, where some bits are not random, <bcp14>MAY</bcp14> also be used.</dd>
+<dd>A randomly generated UID that identifies the <tt>Segment</tt> amongst many others (128 bits). It is equivalent to a Universally Unique Identifier (UUID) v4 <xref target="RFC4122"/> with all bits randomly (or pseudorandomly) chosen.  An actual UUID v4 value, where some bits are not random, <bcp14>MAY</bcp14> also be used.</dd>
 <dt>usage notes:</dt>
 <dd>If the <tt>Segment</tt> is a part of a <tt>Linked Segment</tt>, then this Element is <bcp14>REQUIRED</bcp14>.
 The value of the UID <bcp14>MUST</bcp14> contain at least one bit set to 1.</dd>
@@ -708,7 +708,7 @@ The value of the UID <bcp14>MUST</bcp14> contain at least one bit set to 1.</dd>
 <dd>An ID that identifies the previous <tt>Segment</tt> of a <tt>Linked Segment</tt>.</dd>
 <dt>usage notes:</dt>
 <dd>If the <tt>Segment</tt> is a part of a <tt>Linked Segment</tt> that uses
-Hard Linking (<xref target="hard-linking"></xref>), then either the
+Hard Linking (<xref target="hard-linking"/>), then either the
 <tt>PrevUUID</tt> or the <tt>NextUUID</tt> Element is
 <bcp14>REQUIRED</bcp14>. If a <tt>Segment</tt> contains a <tt>PrevUUID</tt>
 but not a <tt>NextUUID</tt>, then it <bcp14>MAY</bcp14> be considered as the
@@ -748,7 +748,7 @@ but <tt>PrevUUID</tt> <bcp14>SHOULD</bcp14> be considered authoritative for iden
 <dt>definition:</dt>
 <dd>An ID that identifies the next <tt>Segment</tt> of a <tt>Linked Segment</tt>.</dd>
 <dt>usage notes:</dt>
-<dd>If the <tt>Segment</tt> is a part of a <tt>Linked Segment</tt> that uses Hard Linking (<xref target="hard-linking"></xref>),
+<dd>If the <tt>Segment</tt> is a part of a <tt>Linked Segment</tt> that uses Hard Linking (<xref target="hard-linking"/>),
 then either the <tt>PrevUUID</tt> or the <tt>NextUUID</tt> Element is <bcp14>REQUIRED</bcp14>. If a <tt>Segment</tt> contains a <tt>NextUUID</tt> but not a <tt>PrevUUID</tt>,
 then it <bcp14>MAY</bcp14> be considered as the first <tt>Segment</tt> of the <tt>Linked Segment</tt>. The <tt>NextUUID</tt> <bcp14>MUST NOT</bcp14> be equal to the <tt>SegmentUUID</tt>.</dd>
 </dl>
@@ -781,7 +781,7 @@ but <tt>NextUUID</tt> <bcp14>SHOULD</bcp14> be considered authoritative for iden
 <dt>path:</dt>
 <dd><tt>\Segment\Info\SegmentFamily</tt></dd>
 <dt>definition:</dt>
-<dd>A UID that all <tt>Segments</tt> of a <tt>Linked Segment</tt> <bcp14>MUST</bcp14> share (128 bits). It is equivalent to a UUID v4 <xref target="RFC4122"></xref> with all bits randomly (or pseudorandomly) chosen. An actual UUID v4 value, where some bits are not random, <bcp14>MAY</bcp14> also be used.</dd>
+<dd>A UID that all <tt>Segments</tt> of a <tt>Linked Segment</tt> <bcp14>MUST</bcp14> share (128 bits). It is equivalent to a UUID v4 <xref target="RFC4122"/> with all bits randomly (or pseudorandomly) chosen. An actual UUID v4 value, where some bits are not random, <bcp14>MAY</bcp14> also be used.</dd>
 <dt>usage notes:</dt>
 <dd>If the <tt>Segment</tt> <tt>Info</tt> contains a <tt>ChapterTranslate</tt> element, this Element is <bcp14>REQUIRED</bcp14>.</dd>
 </dl>
@@ -814,7 +814,7 @@ This allows remuxing a file with Chapter Codec without changing the content of t
 <dd>1 / 1</dd>
 <dt>definition:</dt>
 <dd>The binary value used to represent this <tt>Segment</tt> in the chapter codec data.
-The format depends on the <tt>ChapProcessCodecID</tt> used; see <xref target="chapprocesscodecid-element"></xref>.</dd>
+The format depends on the <tt>ChapProcessCodecID</tt> used; see <xref target="chapprocesscodecid-element"/>.</dd>
 </dl>
 </section>
 
@@ -828,7 +828,7 @@ The format depends on the <tt>ChapProcessCodecID</tt> used; see <xref target="ch
 <dt>minOccurs / maxOccurs:</dt>
 <dd>1 / 1</dd>
 <dt>definition:</dt>
-<dd>This <tt>ChapterTranslate</tt> applies to the chapter codec of the given chapter edition(s); see <xref target="chapprocesscodecid-element"></xref>.</dd>
+<dd>This <tt>ChapterTranslate</tt> applies to the chapter codec of the given chapter edition(s); see <xref target="chapprocesscodecid-element"/>.</dd>
 
 <dt>defined values:</dt>
 <dd>See <xref target="ChapterTranslateCodecValues"/>.</dd>
@@ -885,7 +885,7 @@ The format depends on the <tt>ChapProcessCodecID</tt> used; see <xref target="ch
 <dt>minOccurs / maxOccurs:</dt>
 <dd>1 / 1</dd>
 <dt>definition:</dt>
-<dd>Base unit for Segment Ticks and Track Ticks, in nanoseconds. A <tt>TimestampScale</tt> value of 1000000 means scaled timestamps in the <tt>Segment</tt> are expressed in milliseconds; see <xref target="timestamps"></xref> on how to interpret timestamps.</dd>
+<dd>Base unit for Segment Ticks and Track Ticks, in nanoseconds. A <tt>TimestampScale</tt> value of 1000000 means scaled timestamps in the <tt>Segment</tt> are expressed in milliseconds; see <xref target="timestamps"/> on how to interpret timestamps.</dd>
 </dl>
 </section>
 
@@ -901,7 +901,7 @@ The format depends on the <tt>ChapProcessCodecID</tt> used; see <xref target="ch
 <dt>maxOccurs:</dt>
 <dd>1</dd>
 <dt>definition:</dt>
-<dd>Duration of the <tt>Segment</tt>, expressed in Segment Ticks, which are based on <tt>TimestampScale</tt>; see <xref target="timestamp-ticks"></xref>.</dd>
+<dd>Duration of the <tt>Segment</tt>, expressed in Segment Ticks, which are based on <tt>TimestampScale</tt>; see <xref target="timestamp-ticks"/>.</dd>
 </dl>
 </section>
 
@@ -989,9 +989,9 @@ The format depends on the <tt>ChapProcessCodecID</tt> used; see <xref target="ch
 <dt>minOccurs / maxOccurs:</dt>
 <dd>1 / 1</dd>
 <dt>definition:</dt>
-<dd>Absolute timestamp of the cluster, expressed in Segment Ticks, which are based on <tt>TimestampScale</tt>; see <xref target="timestamp-ticks"></xref>.</dd>
+<dd>Absolute timestamp of the cluster, expressed in Segment Ticks, which are based on <tt>TimestampScale</tt>; see <xref target="timestamp-ticks"/>.</dd>
 <dt>usage notes:</dt>
-<dd>This element <bcp14>SHOULD</bcp14> be the first child element of the <tt>Cluster</tt> it belongs to or the second if that <tt>Cluster</tt> contains a CRC-32 element (<xref target="crc-32"></xref>).</dd>
+<dd>This element <bcp14>SHOULD</bcp14> be the first child element of the <tt>Cluster</tt> it belongs to or the second if that <tt>Cluster</tt> contains a CRC-32 element (<xref target="crc-32"/>).</dd>
 </dl>
 </section>
 
@@ -1037,8 +1037,8 @@ It might help to resynchronize the offset on damaged streams.</dd>
 <dd>2</dd>
 <dt>definition:</dt>
 
-<dd>Similar to <tt>Block</tt> (see <xref target="block-structure"></xref>) but without all the extra information.
-Mostly used to reduce overhead when no extra feature is needed; see <xref target="simpleblock-structure"></xref> on <tt>SimpleBlock</tt> Structure.</dd>
+<dd>Similar to <tt>Block</tt> (see <xref target="block-structure"/>) but without all the extra information.
+Mostly used to reduce overhead when no extra feature is needed; see <xref target="simpleblock-structure"/> on <tt>SimpleBlock</tt> Structure.</dd>
 </dl>
 </section>
 
@@ -1064,7 +1064,7 @@ Mostly used to reduce overhead when no extra feature is needed; see <xref target
 <dd>1 / 1</dd>
 <dt>definition:</dt>
 <dd><tt>Block</tt> containing the actual data to be rendered and a timestamp relative to the <tt>Cluster</tt> Timestamp;
-see <xref target="block-structure"></xref> on <tt>Block</tt> Structure.</dd>
+see <xref target="block-structure"/> on <tt>Block</tt> Structure.</dd>
 </dl>
 </section>
 
@@ -1079,7 +1079,7 @@ see <xref target="block-structure"></xref> on <tt>Block</tt> Structure.</dd>
 <dd>1</dd>
 <dt>definition:</dt>
 <dd>Contains additional binary data to complete the <tt>Block</tt> element; see <xref
-target="I-D.ietf-cellar-codec" sectionFormat="of" section="4.1.5" ></xref> for more information.
+target="I-D.ietf-cellar-codec" sectionFormat="of" section="4.1.5" /> for more information.
 An EBML parser that has no knowledge of the <tt>Block</tt> structure could still see and use/skip these data.</dd>
 </dl>
 
@@ -1124,7 +1124,7 @@ An EBML parser that has no knowledge of the <tt>Block</tt> structure could still
 <dd>1 / 1</dd>
 <dt>definition:</dt>
 <dd>An ID that identifies how to interpret the <tt>BlockAdditional</tt> data; see <xref
-target="I-D.ietf-cellar-codec" sectionFormat="of" section="4.1.5" ></xref> for
+target="I-D.ietf-cellar-codec" sectionFormat="of" section="4.1.5" /> for
 more information. A value of 1 indicates that the <tt>BlockAdditional</tt> data is
 defined by the codec. Any other value indicates that the <tt>BlockAdditional</tt> data
 should be handled according to the <tt>BlockAddIDType</tt> that is located in the
@@ -1146,7 +1146,7 @@ should be handled according to the <tt>BlockAddIDType</tt> that is located in th
 <dt>minOccurs / maxOccurs:</dt>
 <dd>See <xref target="BlockDurationNotes"/> / 1</dd>
 <dt>definition:</dt>
-<dd>The duration of the <tt>Block</tt>, expressed in Track Ticks; see <xref target="timestamp-ticks"></xref>.
+<dd>The duration of the <tt>Block</tt>, expressed in Track Ticks; see <xref target="timestamp-ticks"/>.
 The <tt>BlockDuration</tt> Element can be useful at the end of a <tt>Track</tt> to define the duration of the last frame (as there is no subsequent <tt>Block</tt> available)
 or when there is a break in a track like for subtitle tracks.</dd>
 <dt>notes:</dt>
@@ -1163,7 +1163,7 @@ or when there is a break in a track like for subtitle tracks.</dd>
 <tbody>
 <tr>
 <td align="left">minOccurs</td>
-<td align="left">BlockDuration <bcp14>MUST</bcp14> be set (minOccurs=1) if the associated 
+<td align="left">BlockDuration <bcp14>MUST</bcp14> be set (minOccurs=1) if the associated
 TrackEntry stores a DefaultDuration value.</td>
 </tr>
 
@@ -1201,7 +1201,7 @@ In the cache, only a frame of the same or higher priority can replace this frame
 <dt>path:</dt>
 <dd><tt>\Segment\Cluster\BlockGroup\ReferenceBlock</tt></dd>
 <dt>definition:</dt>
-<dd><t>A timestamp value, relative to the timestamp of the <tt>Block</tt> in this <tt>BlockGroup</tt>, expressed in Track Ticks; see <xref target="timestamp-ticks"></xref>.
+<dd><t>A timestamp value, relative to the timestamp of the <tt>Block</tt> in this <tt>BlockGroup</tt>, expressed in Track Ticks; see <xref target="timestamp-ticks"/>.
 This is used to reference other frames necessary to decode this frame.
 The relative value <bcp14>SHOULD</bcp14> correspond to a valid <tt>Block</tt> that this <tt>Block</tt> depends on.
 Historically, Matroska Writers didn't write the actual <tt>Block(s)</tt> that this <tt>Block</tt> depends on, but they did write <em>some</em> <tt>Block(s)</tt> in the past.
@@ -1238,7 +1238,7 @@ This information <bcp14>SHOULD</bcp14> always be referenced by a seek entry.</dd
 <dt>minver:</dt>
 <dd>4</dd>
 <dt>definition:</dt>
-<dd>Duration of the silent data added to the Block, expressed in Matroska Ticks -- i.e., in nanoseconds; see <xref target="timestamp-ticks"></xref>
+<dd>Duration of the silent data added to the Block, expressed in Matroska Ticks -- i.e., in nanoseconds; see <xref target="timestamp-ticks"/>
 (padding at the end of the <tt>Block</tt> for positive values and at the beginning of the <tt>Block</tt> for negative values).
 The duration of <tt>DiscardPadding</tt> is not calculated in the duration of the <tt>TrackEntry</tt>and <bcp14>SHOULD</bcp14> be discarded during playback.</dd>
 </dl>
@@ -1301,7 +1301,8 @@ The duration of <tt>DiscardPadding</tt> is not calculated in the duration of the
 <dd>1 / 1</dd>
 <dt>definition:</dt>
 <dd>A UID that identifies the <tt>Track</tt>.</dd>
-<dt>stream copy:</dt><dd>True (<xref target="stream-copy"></xref>)</dd>
+<dt>stream copy:</dt>
+<dd>True (<xref target="stream-copy"/>)</dd>
 </dl>
 </section>
 
@@ -1320,7 +1321,7 @@ The value <bcp14>SHOULD</bcp14> be stored on 1 octet.</dd>
 <dt>defined values:</dt>
 <dd>See <xref target="TrackTypeValues"/>.</dd>
 <dt>stream copy:</dt>
-<dd>True (<xref target="stream-copy"></xref>)</dd>
+<dd>True (<xref target="stream-copy"/>)</dd>
 </dl>
 <table anchor="TrackTypeValues"><name>TrackType Values</name>
 <thead>
@@ -1413,7 +1414,7 @@ The value <bcp14>SHOULD</bcp14> be stored on 1 octet.</dd>
 <dt>minOccurs / maxOccurs:</dt>
 <dd>1 / 1</dd>
 <dt>definition:</dt>
-<dd>Set to 1 if the track (audio, video, or subtitles) is eligible for automatic selection by the player; see <xref target="default-track-selection"></xref> for more details.</dd>
+<dd>Set to 1 if the track (audio, video, or subtitles) is eligible for automatic selection by the player; see <xref target="default-track-selection"/> for more details.</dd>
 </dl>
 </section>
 
@@ -1432,7 +1433,7 @@ The value <bcp14>SHOULD</bcp14> be stored on 1 octet.</dd>
 <dd>Applies only to subtitles. Set to 1 if the track is eligible for automatic selection by the player if it matches the user's language preference,
 even if the user's preferences would not normally enable subtitles with the selected audio track;
 this can be used for tracks containing only translations of audio in foreign languages or on-screen text.
-See <xref target="default-track-selection"></xref> for more details.</dd>
+See <xref target="default-track-selection"/> for more details.</dd>
 </dl>
 </section>
 
@@ -1539,7 +1540,7 @@ See <xref target="default-track-selection"></xref> for more details.</dd>
 <dd>1 / 1</dd>
 <dt>definition:</dt>
 <dd>Set to 1 if the track <bcp14>MAY</bcp14> contain blocks that use lacing.
-When set to 0, all blocks <bcp14>MUST</bcp14> have their lacing flags set to "no lacing"; see <xref target="block-lacing"></xref> on <tt>Block</tt> Lacing.</dd>
+When set to 0, all blocks <bcp14>MUST</bcp14> have their lacing flags set to "no lacing"; see <xref target="block-lacing"/> on <tt>Block</tt> Lacing.</dd>
 </dl>
 </section>
 
@@ -1555,9 +1556,10 @@ When set to 0, all blocks <bcp14>MUST</bcp14> have their lacing flags set to "no
 <dt>maxOccurs:</dt>
 <dd>1</dd>
 <dt>definition:</dt>
-<dd>Number of nanoseconds per frame, expressed in Matroska Ticks -- i.e., in nanoseconds; see <xref target="timestamp-ticks"></xref>
+<dd>Number of nanoseconds per frame, expressed in Matroska Ticks -- i.e., in nanoseconds; see <xref target="timestamp-ticks"/>
 ("frame" in the Matroska sense -- one Element put into a (Simple)Block).</dd>
-<dt>stream copy:</dt><dd>True (<xref target="stream-copy"></xref>)</dd>
+<dt>stream copy:</dt>
+<dd>True (<xref target="stream-copy"/>)</dd>
 </dl>
 </section>
 
@@ -1575,10 +1577,11 @@ When set to 0, all blocks <bcp14>MUST</bcp14> have their lacing flags set to "no
 <dt>minver:</dt>
 <dd>4</dd>
 <dt>definition:</dt>
-<dd>The period between two successive fields at the output of the decoding process, expressed in Matroska Ticks -- i.e., in nanoseconds; see <xref target="timestamp-ticks"></xref>.
-See <xref target="defaultdecodedfieldduration"></xref> for more information.</dd>
+<dd>The period between two successive fields at the output of the decoding process, expressed in Matroska Ticks -- i.e., in nanoseconds; see <xref target="timestamp-ticks"/>.
+See <xref target="defaultdecodedfieldduration"/> for more information.</dd>
 
-<dt>stream copy:</dt><dd>True (<xref target="stream-copy"></xref>)</dd>
+<dt>stream copy:</dt>
+<dd>True (<xref target="stream-copy"/>)</dd>
 </dl>
 </section>
 
@@ -1598,7 +1601,8 @@ See <xref target="defaultdecodedfieldduration"></xref> for more information.</dd
 <dt>definition:</dt>
 <dd>The scale to apply on this track to work at normal speed in relation with other tracks
 (mostly used to adjust video speed when the audio length differs).</dd>
-<dt>stream copy:</dt><dd>True (<xref target="stream-copy"></xref>)</dd>
+<dt>stream copy:</dt>
+<dd>True (<xref target="stream-copy"/>)</dd>
 </dl>
 </section>
 
@@ -1612,8 +1616,8 @@ See <xref target="defaultdecodedfieldduration"></xref> for more information.</dd
 <dt>minOccurs / maxOccurs:</dt>
 <dd>1 / 1</dd>
 <dt>definition:</dt>
-<dd>The maximum value of <tt>BlockAddID</tt> (<xref target="blockaddid-element"></xref>).
-A value of 0 means there is no <tt>BlockAdditions</tt> (<xref target="blockadditions-element"></xref>) for this track.</dd>
+<dd>The maximum value of <tt>BlockAddID</tt> (<xref target="blockaddid-element"/>).
+A value of 0 means there is no <tt>BlockAdditions</tt> (<xref target="blockadditions-element"/>) for this track.</dd>
 </dl>
 </section>
 
@@ -1628,7 +1632,7 @@ A value of 0 means there is no <tt>BlockAdditions</tt> (<xref target="blockaddit
 <dd>4</dd>
 <dt>definition:</dt>
 <dd>Contains elements that extend the track format by adding content either to each frame,
-with <tt>BlockAddID</tt> (<xref target="blockaddid-element"></xref>), or to the track as a whole
+with <tt>BlockAddID</tt> (<xref target="blockaddid-element"/>), or to the track as a whole
 with <tt>BlockAddIDExtraData</tt>.</dd>
 </dl>
 
@@ -1648,7 +1652,7 @@ with <tt>BlockAddIDExtraData</tt>.</dd>
 <dt>definition:</dt>
 
 <dd>If the track format extension needs content beside frames,
-the value refers to the <tt>BlockAddID</tt> (<xref target="blockaddid-element"></xref>) value being described.</dd>
+the value refers to the <tt>BlockAddID</tt> (<xref target="blockaddid-element"/>) value being described.</dd>
 <dt>usage notes:</dt>
 <dd>To keep <tt>MaxBlockAdditionID</tt> as low as possible, small values <bcp14>SHOULD</bcp14> be used.</dd>
 </dl>
@@ -1734,7 +1738,7 @@ The interpretation of the binary data depends on the <tt>BlockAddIDType</tt> val
 <dd>1 / 1</dd>
 <dt>definition:</dt>
 <dd>The language of the track,
-in the Matroska languages form; see <xref target="language-codes"></xref> on language codes.
+in the Matroska languages form; see <xref target="language-codes"/> on language codes.
 This Element <bcp14>MUST</bcp14> be ignored if the <tt>LanguageBCP47</tt> Element is used in the same <tt>TrackEntry</tt>.</dd>
 </dl>
 </section>
@@ -1752,7 +1756,7 @@ This Element <bcp14>MUST</bcp14> be ignored if the <tt>LanguageBCP47</tt> Elemen
 <dd>4</dd>
 <dt>definition:</dt>
 <dd>The language of the track,
-in the form defined in <xref target="RFC5646"></xref>; see <xref target="language-codes"></xref> on language codes.
+in the form defined in <xref target="RFC5646"/>; see <xref target="language-codes"/> on language codes.
 If this Element is used, then any <tt>Language</tt> Elements used in the same <tt>TrackEntry</tt><bcp14>MUST</bcp14> be ignored.</dd>
 </dl>
 </section>
@@ -1768,8 +1772,9 @@ If this Element is used, then any <tt>Language</tt> Elements used in the same <t
 <dd>1 / 1</dd>
 <dt>definition:</dt>
 <dd>An ID corresponding to the codec;
-see <xref target="I-D.ietf-cellar-codec"></xref> for more info.</dd>
-<dt>stream copy:</dt><dd>True (<xref target="stream-copy"></xref>)</dd>
+see <xref target="I-D.ietf-cellar-codec"/> for more info.</dd>
+<dt>stream copy:</dt>
+<dd>True (<xref target="stream-copy"/>)</dd>
 </dl>
 </section>
 
@@ -1784,7 +1789,8 @@ see <xref target="I-D.ietf-cellar-codec"></xref> for more info.</dd>
 <dd>1</dd>
 <dt>definition:</dt>
 <dd>Private data only known to the codec.</dd>
-<dt>stream copy:</dt><dd>True (<xref target="stream-copy"></xref>)</dd>
+<dt>stream copy:</dt>
+<dd>True (<xref target="stream-copy"/>)</dd>
 </dl>
 </section>
 
@@ -1834,11 +1840,12 @@ see <xref target="I-D.ietf-cellar-codec"></xref> for more info.</dd>
 <dt>minver:</dt>
 <dd>4</dd>
 <dt>definition:</dt>
-<dd>The built-in delay for the codec, expressed in Matroska Ticks -- i.e., in nanoseconds; see <xref target="timestamp-ticks"></xref>.
+<dd>The built-in delay for the codec, expressed in Matroska Ticks -- i.e., in nanoseconds; see <xref target="timestamp-ticks"/>.
 It represents the number of codec samples that will be discarded by the decoder during playback.
 This timestamp value <bcp14>MUST</bcp14> be subtracted from each frame timestamp in order to get the timestamp that will be actually played.
 The value <bcp14>SHOULD</bcp14> be small so the muxing of tracks with the same actual timestamp are in the same <tt>Cluster</tt>.</dd>
-<dt>stream copy:</dt><dd>True (<xref target="stream-copy"></xref>)</dd>
+<dt>stream copy:</dt>
+<dd>True (<xref target="stream-copy"/>)</dd>
 </dl>
 </section>
 
@@ -1855,8 +1862,9 @@ The value <bcp14>SHOULD</bcp14> be small so the muxing of tracks with the same a
 <dd>4</dd>
 <dt>definition:</dt>
 <dd>After a discontinuity, the duration of the data
-that the decoder <bcp14>MUST</bcp14> decode before the decoded data is valid, expressed in Matroska Ticks -- i.e., in nanoseconds; see <xref target="timestamp-ticks"></xref>.</dd>
-<dt>stream copy:</dt><dd>True (<xref target="stream-copy"></xref>)</dd>
+that the decoder <bcp14>MUST</bcp14> decode before the decoded data is valid, expressed in Matroska Ticks -- i.e., in nanoseconds; see <xref target="timestamp-ticks"/>.</dd>
+<dt>stream copy:</dt>
+<dd>True (<xref target="stream-copy"/>)</dd>
 </dl>
 </section>
 
@@ -1886,7 +1894,7 @@ This allows remuxing a file with Chapter Codec without changing the content of t
 <dd>1 / 1</dd>
 <dt>definition:</dt>
 <dd>The binary value used to represent this <tt>TrackEntry</tt> in the chapter codec data.
-The format depends on the <tt>ChapProcessCodecID</tt> used; see <xref target="chapprocesscodecid-element"></xref>.</dd>
+The format depends on the <tt>ChapProcessCodecID</tt> used; see <xref target="chapprocesscodecid-element"/>.</dd>
 </dl>
 </section>
 
@@ -1900,7 +1908,7 @@ The format depends on the <tt>ChapProcessCodecID</tt> used; see <xref target="ch
 <dt>minOccurs / maxOccurs:</dt>
 <dd>1 / 1</dd>
 <dt>definition:</dt>
-<dd>Applies to the chapter codec of the given chapter edition(s); see <xref target="chapprocesscodecid-element"></xref>.</dd>
+<dd>Applies to the chapter codec of the given chapter edition(s); see <xref target="chapprocesscodecid-element"/>.</dd>
 <dt>defined values:</dt>
 <dd>See <xref target="TrackTranslateCodecValues"/>.</dd>
 </dl>
@@ -1974,7 +1982,7 @@ The format depends on the <tt>ChapProcessCodecID</tt> used; see <xref target="ch
 <dt>defined values:</dt>
 <dd>See <xref target="FlagInterlacedValues"/>.</dd>
 <dt>stream copy:</dt>
-<dd>True (<xref target="stream-copy"></xref>)</dd>
+<dd>True (<xref target="stream-copy"/>)</dd>
 </dl>
 
 <table anchor="FlagInterlacedValues"><name>FlagInterlaced Values</name>
@@ -2026,7 +2034,7 @@ The format depends on the <tt>ChapProcessCodecID</tt> used; see <xref target="ch
 <dt>usage notes:</dt>
 <dd>If <tt>FlagInterlaced</tt> is not set to 1, this Element <bcp14>MUST</bcp14> be ignored.</dd>
 <dt>stream copy:</dt>
-<dd>True (<xref target="stream-copy"></xref>)</dd>
+<dd>True (<xref target="stream-copy"/>)</dd>
 </dl>
 
 <table anchor="FieldOrderValues"><name>FieldOrder Values</name>
@@ -2097,11 +2105,11 @@ in https://github.com/ietf-wg-cellar/matroska-specification/pull/819
 <dt>minver:</dt>
 <dd>3</dd>
 <dt>definition:</dt>
-<dd>Stereo-3D video mode. See <xref target="multi-planar-and-3d-videos"></xref> for more details.</dd>
+<dd>Stereo-3D video mode. See <xref target="multi-planar-and-3d-videos"/> for more details.</dd>
 <dt>restrictions:</dt>
 <dd>See <xref target="StereoModeValues"/>.</dd>
 <dt>stream copy:</dt>
-<dd>True (<xref target="stream-copy"></xref>)</dd>
+<dd>True (<xref target="stream-copy"/>)</dd>
 </dl>
 
 <table anchor="StereoModeValues"><name>StereoMode Values</name>
@@ -2210,7 +2218,7 @@ behavior of known implementations is different.</dd>
 <dt>defined values:</dt>
 <dd>See <xref target="AlphaModeValues"/>.</dd>
 <dt>stream copy:</dt>
-<dd>True (<xref target="stream-copy"></xref>)</dd>
+<dd>True (<xref target="stream-copy"/>)</dd>
 </dl>
 <table anchor="AlphaModeValues"><name>AlphaMode Values</name>
 <thead>
@@ -2250,7 +2258,7 @@ behavior of known implementations is different.</dd>
 <dd>2</dd>
 <dt>definition:</dt>
 
-<dd>Bogus <tt>StereoMode</tt> value used in old versions of <xref target="libmatroska"></xref>.</dd>
+<dd>Bogus <tt>StereoMode</tt> value used in old versions of <xref target="libmatroska"/>.</dd>
 <dt>restrictions:</dt>
 <dd>See <xref target="OldStereoModeValues"/>.</dd>
 <dt>usage notes:</dt>
@@ -2301,7 +2309,8 @@ behavior of known implementations is different.</dd>
 <dd>1 / 1</dd>
 <dt>definition:</dt>
 <dd>Width of the encoded video frames in pixels.</dd>
-<dt>stream copy:</dt><dd>True (<xref target="stream-copy"></xref>)</dd>
+<dt>stream copy:</dt>
+<dd>True (<xref target="stream-copy"/>)</dd>
 </dl>
 </section>
 
@@ -2318,7 +2327,8 @@ behavior of known implementations is different.</dd>
 <dd>1 / 1</dd>
 <dt>definition:</dt>
 <dd>Height of the encoded video frames in pixels.</dd>
-<dt>stream copy:</dt><dd>True (<xref target="stream-copy"></xref>)</dd>
+<dt>stream copy:</dt>
+<dd>True (<xref target="stream-copy"/>)</dd>
 </dl>
 </section>
 
@@ -2333,7 +2343,8 @@ behavior of known implementations is different.</dd>
 <dd>1 / 1</dd>
 <dt>definition:</dt>
 <dd>The number of video pixels to remove at the bottom of the image.</dd>
-<dt>stream copy:</dt><dd>True (<xref target="stream-copy"></xref>)</dd>
+<dt>stream copy:</dt>
+<dd>True (<xref target="stream-copy"/>)</dd>
 </dl>
 </section>
 
@@ -2348,7 +2359,8 @@ behavior of known implementations is different.</dd>
 <dd>1 / 1</dd>
 <dt>definition:</dt>
 <dd>The number of video pixels to remove at the top of the image.</dd>
-<dt>stream copy:</dt><dd>True (<xref target="stream-copy"></xref>)</dd>
+<dt>stream copy:</dt>
+<dd>True (<xref target="stream-copy"/>)</dd>
 </dl>
 </section>
 
@@ -2363,7 +2375,8 @@ behavior of known implementations is different.</dd>
 <dd>1 / 1</dd>
 <dt>definition:</dt>
 <dd>The number of video pixels to remove on the left of the image.</dd>
-<dt>stream copy:</dt><dd>True (<xref target="stream-copy"></xref>)</dd>
+<dt>stream copy:</dt>
+<dd>True (<xref target="stream-copy"/>)</dd>
 </dl>
 </section>
 
@@ -2378,7 +2391,8 @@ behavior of known implementations is different.</dd>
 <dd>1 / 1</dd>
 <dt>definition:</dt>
 <dd>The number of video pixels to remove on the right of the image.</dd>
-<dt>stream copy:</dt><dd>True (<xref target="stream-copy"></xref>)</dd>
+<dt>stream copy:</dt>
+<dd>True (<xref target="stream-copy"/>)</dd>
 </dl>
 </section>
 
@@ -2398,7 +2412,7 @@ behavior of known implementations is different.</dd>
 <dt>notes:</dt>
 <dd>See <xref target="DisplayWidthNotes"/>.</dd>
 <dt>stream copy:</dt>
-<dd>True (<xref target="stream-copy"></xref>)</dd>
+<dd>True (<xref target="stream-copy"/>)</dd>
 </dl>
 
 <table anchor="DisplayWidthNotes"><name>DisplayWidth Implementation Notes</name>
@@ -2434,7 +2448,7 @@ behavior of known implementations is different.</dd>
 <dt>notes:</dt>
 <dd>See <xref target="DisplayHeightNotes"/>.</dd>
 <dt>stream copy:</dt>
-<dd>True (<xref target="stream-copy"></xref>)</dd>
+<dd>True (<xref target="stream-copy"/>)</dd>
 </dl>
 <table anchor="DisplayHeightNotes"><name>DisplayHeight Implementation Notes</name>
 <thead>
@@ -2517,11 +2531,11 @@ behavior of known implementations is different.</dd>
 <dd>See <xref target="UncompressedFourCCNotes"/> / 1</dd>
 <dt>definition:</dt>
 <dd>Specifies the uncompressed pixel format used for the <tt>Track</tt>'s data as a FourCC.
-This value is similar in scope to the biCompression value of AVI's <tt>BITMAPINFO</tt> <xref target="AVIFormat"></xref>. There is neither a definitive list of FourCC values nor an official registry. Some common values for YUV pixel formats can be found at <xref target="MSYUV8"></xref>, <xref target="MSYUV16"></xref>, and <xref target="FourCC-YUV"></xref>. Some common values for uncompressed RGB pixel formats can be found at <xref target="MSRGB"></xref> and <xref target="FourCC-RGB"></xref>.</dd>
+This value is similar in scope to the biCompression value of AVI's <tt>BITMAPINFO</tt> <xref target="AVIFormat"/>. There is neither a definitive list of FourCC values nor an official registry. Some common values for YUV pixel formats can be found at <xref target="MSYUV8"/>, <xref target="MSYUV16"/>, and <xref target="FourCC-YUV"/>. Some common values for uncompressed RGB pixel formats can be found at <xref target="MSRGB"/> and <xref target="FourCC-RGB"/>.</dd>
 <dt>notes:</dt>
 <dd>See <xref target="UncompressedFourCCNotes"/>.</dd>
 <dt>stream copy:</dt>
-<dd>True (<xref target="stream-copy"></xref>)</dd>
+<dd>True (<xref target="stream-copy"/>)</dd>
 
 </dl>
 <table anchor="UncompressedFourCCNotes"><name>UncompressedFourCC Implementation Notes</name>
@@ -2554,7 +2568,8 @@ This value is similar in scope to the biCompression value of AVI's <tt>BITMAPINF
 <dd>4</dd>
 <dt>definition:</dt>
 <dd>Settings describing the color format.</dd>
-<dt>stream copy:</dt><dd>True (<xref target="stream-copy"></xref>)</dd>
+<dt>stream copy:</dt>
+<dd>True (<xref target="stream-copy"/>)</dd>
 </dl>
 </section>
 
@@ -2571,11 +2586,11 @@ This value is similar in scope to the biCompression value of AVI's <tt>BITMAPINF
 <dd>4</dd>
 <dt>definition:</dt>
 <dd>The Matrix Coefficients of the video used to derive luma and chroma values from red, green, and blue color primaries.
-For clarity, the value and meanings for <tt>MatrixCoefficients</tt> are adopted from Table 4 of <xref target="ITU-H.273"></xref>.</dd>
+For clarity, the value and meanings for <tt>MatrixCoefficients</tt> are adopted from Table 4 of <xref target="ITU-H.273"/>.</dd>
 <dt>restrictions:</dt>
 <dd>See <xref target="MatrixCoefficientsValues"/>.</dd>
 <dt>stream copy:</dt>
-<dd>True (<xref target="stream-copy"></xref>)</dd>
+<dd>True (<xref target="stream-copy"/>)</dd>
 </dl>
 <table anchor="MatrixCoefficientsValues"><name>MatrixCoefficients Values</name>
 <thead>
@@ -2677,7 +2692,8 @@ For clarity, the value and meanings for <tt>MatrixCoefficients</tt> are adopted 
 <dd>4</dd>
 <dt>definition:</dt>
 <dd>Number of decoded bits per channel. A value of 0 indicates that the <tt>BitsPerChannel</tt> is unspecified.</dd>
-<dt>stream copy:</dt><dd>True (<xref target="stream-copy"></xref>)</dd>
+<dt>stream copy:</dt>
+<dd>True (<xref target="stream-copy"/>)</dd>
 </dl>
 </section>
 
@@ -2696,7 +2712,8 @@ For clarity, the value and meanings for <tt>MatrixCoefficients</tt> are adopted 
 <dd>The number of pixels to remove in the Cr and Cb channels for every pixel not removed horizontally. Example: For video with 4:2:0 chroma subsampling, the <tt>ChromaSubsamplingHorz</tt>
 <bcp14>SHOULD</bcp14> be set to 1.
 </dd>
-<dt>stream copy:</dt><dd>True (<xref target="stream-copy"></xref>)</dd>
+<dt>stream copy:</dt>
+<dd>True (<xref target="stream-copy"/>)</dd>
 </dl></section>
 
 <section anchor="chromasubsamplingvert-element"><name>ChromaSubsamplingVert Element</name>
@@ -2714,7 +2731,8 @@ For clarity, the value and meanings for <tt>MatrixCoefficients</tt> are adopted 
 <dd>The number of pixels to remove in the Cr and Cb channels for every pixel not removed vertically. Example: For video with 4:2:0 chroma subsampling, the <tt>ChromaSubsamplingVert</tt>
 <bcp14>SHOULD</bcp14> be set to 1.
 </dd>
-<dt>stream copy:</dt><dd>True (<xref target="stream-copy"></xref>)</dd>
+<dt>stream copy:</dt>
+<dd>True (<xref target="stream-copy"/>)</dd>
 </dl>
 </section>
 
@@ -2735,7 +2753,8 @@ This is additive with <tt>ChromaSubsamplingHorz</tt>.
 Example: For video with 4:2:1 chroma
 subsampling, the <tt>ChromaSubsamplingHorz</tt> <bcp14>SHOULD</bcp14> be set to 1, and <tt>CbSubsamplingHorz</tt> <bcp14>SHOULD</bcp14> be set to 1.
 </dd>
-<dt>stream copy:</dt><dd>True (<xref target="stream-copy"></xref>)</dd>
+<dt>stream copy:</dt>
+<dd>True (<xref target="stream-copy"/>)</dd>
 </dl></section>
 
 <section anchor="cbsubsamplingvert-element"><name>CbSubsamplingVert Element</name>
@@ -2752,7 +2771,8 @@ subsampling, the <tt>ChromaSubsamplingHorz</tt> <bcp14>SHOULD</bcp14> be set to 
 <dt>definition:</dt>
 <dd>The number of pixels to remove in the Cb channel for every pixel not removed vertically.
 This is additive with <tt>ChromaSubsamplingVert</tt>.</dd>
-<dt>stream copy:</dt><dd>True (<xref target="stream-copy"></xref>)</dd>
+<dt>stream copy:</dt>
+<dd>True (<xref target="stream-copy"/>)</dd>
 </dl>
 </section>
 
@@ -2772,7 +2792,7 @@ This is additive with <tt>ChromaSubsamplingVert</tt>.</dd>
 <dt>restrictions:</dt>
 <dd>See <xref target="ChromaSitingHorzValues"/>.</dd>
 <dt>stream copy:</dt>
-<dd>True (<xref target="stream-copy"></xref>)</dd>
+<dd>True (<xref target="stream-copy"/>)</dd>
 </dl>
 <table anchor="ChromaSitingHorzValues"><name>ChromaSitingHorz Values</name>
 <thead>
@@ -2817,7 +2837,7 @@ This is additive with <tt>ChromaSubsamplingVert</tt>.</dd>
 <dt>restrictions:</dt>
 <dd>See <xref target="ChromaSitingVertValues"/>.</dd>
 <dt>stream copy:</dt>
-<dd>True (<xref target="stream-copy"></xref>)</dd>
+<dd>True (<xref target="stream-copy"/>)</dd>
 </dl>
 <table anchor="ChromaSitingVertValues"><name>ChromaSitingVert Values</name>
 <thead>
@@ -2862,7 +2882,7 @@ This is additive with <tt>ChromaSubsamplingVert</tt>.</dd>
 <dt>restrictions:</dt>
 <dd>See <xref target="RangeValues"/>.</dd>
 <dt>stream copy:</dt>
-<dd>True (<xref target="stream-copy"></xref>)</dd>
+<dd>True (<xref target="stream-copy"/>)</dd>
 </dl>
 
 <table anchor="RangeValues"><name>Range Values</name>
@@ -2910,11 +2930,11 @@ This is additive with <tt>ChromaSubsamplingVert</tt>.</dd>
 <dd>4</dd>
 <dt>definition:</dt>
 <dd>The transfer characteristics of the video. For clarity,
-the value and meanings for <tt>TransferCharacteristics</tt> are adopted from Table 3 of <xref target="ITU-H.273"></xref>.</dd>
+the value and meanings for <tt>TransferCharacteristics</tt> are adopted from Table 3 of <xref target="ITU-H.273"/>.</dd>
 <dt>restrictions:</dt>
 <dd>See <xref target="TransferCharacteristicsValues"/>.</dd>
 <dt>stream copy:</dt>
-<dd>True (<xref target="stream-copy"></xref>)</dd>
+<dd>True (<xref target="stream-copy"/>)</dd>
 </dl>
 <table anchor="TransferCharacteristicsValues"><name>TransferCharacteristics Values</name>
 <thead>
@@ -3036,11 +3056,11 @@ the value and meanings for <tt>TransferCharacteristics</tt> are adopted from Tab
 <dd>4</dd>
 <dt>definition:</dt>
 <dd>The color primaries of the video. For clarity,
-the value and meanings for <tt>Primaries</tt> are adopted from Table 2 of <xref target="ITU-H.273"></xref>.</dd>
+the value and meanings for <tt>Primaries</tt> are adopted from Table 2 of <xref target="ITU-H.273"/>.</dd>
 <dt>restrictions:</dt>
 <dd>See <xref target="PrimariesValues"/>.</dd>
 <dt>stream copy:</dt>
-<dd>True (<xref target="stream-copy"></xref>)</dd>
+<dd>True (<xref target="stream-copy"/>)</dd>
 </dl>
 
 <table anchor="PrimariesValues"><name>Primaries Values</name>
@@ -3139,7 +3159,8 @@ the value and meanings for <tt>Primaries</tt> are adopted from Table 2 of <xref 
 <dt>definition:</dt>
 <dd>Maximum brightness of a single pixel (Maximum Content Light Level)
 in candelas per square meter (cd/m<sup>2</sup>).</dd>
-<dt>stream copy:</dt><dd>True (<xref target="stream-copy"></xref>)</dd>
+<dt>stream copy:</dt>
+<dd>True (<xref target="stream-copy"/>)</dd>
 </dl>
 </section>
 
@@ -3157,7 +3178,8 @@ in candelas per square meter (cd/m<sup>2</sup>).</dd>
 <dt>definition:</dt>
 <dd>Maximum brightness of a single full frame (Maximum Frame-Average Light Level)
 in candelas per square meter (cd/m<sup>2</sup>).</dd>
-<dt>stream copy:</dt><dd>True (<xref target="stream-copy"></xref>)</dd>
+<dt>stream copy:</dt>
+<dd>True (<xref target="stream-copy"/>)</dd>
 </dl>
 </section>
 
@@ -3174,7 +3196,8 @@ in candelas per square meter (cd/m<sup>2</sup>).</dd>
 <dd>4</dd>
 <dt>definition:</dt>
 <dd>SMPTE 2086 mastering data.</dd>
-<dt>stream copy:</dt><dd>True (<xref target="stream-copy"></xref>)</dd>
+<dt>stream copy:</dt>
+<dd>True (<xref target="stream-copy"/>)</dd>
 </dl>
 </section>
 
@@ -3192,8 +3215,9 @@ in candelas per square meter (cd/m<sup>2</sup>).</dd>
 <dt>minver:</dt>
 <dd>4</dd>
 <dt>definition:</dt>
-<dd>Red X chromaticity coordinate, as defined by <xref target="CIE-1931"></xref>.</dd>
-<dt>stream copy:</dt><dd>True (<xref target="stream-copy"></xref>)</dd>
+<dd>Red X chromaticity coordinate, as defined by <xref target="CIE-1931"/>.</dd>
+<dt>stream copy:</dt>
+<dd>True (<xref target="stream-copy"/>)</dd>
 </dl>
 </section>
 
@@ -3211,8 +3235,9 @@ in candelas per square meter (cd/m<sup>2</sup>).</dd>
 <dt>minver:</dt>
 <dd>4</dd>
 <dt>definition:</dt>
-<dd>Red Y chromaticity coordinate, as defined by <xref target="CIE-1931"></xref>.</dd>
-<dt>stream copy:</dt><dd>True (<xref target="stream-copy"></xref>)</dd>
+<dd>Red Y chromaticity coordinate, as defined by <xref target="CIE-1931"/>.</dd>
+<dt>stream copy:</dt>
+<dd>True (<xref target="stream-copy"/>)</dd>
 </dl>
 </section>
 
@@ -3230,8 +3255,9 @@ in candelas per square meter (cd/m<sup>2</sup>).</dd>
 <dt>minver:</dt>
 <dd>4</dd>
 <dt>definition:</dt>
-<dd>Green X chromaticity coordinate, as defined by <xref target="CIE-1931"></xref>.</dd>
-<dt>stream copy:</dt><dd>True (<xref target="stream-copy"></xref>)</dd>
+<dd>Green X chromaticity coordinate, as defined by <xref target="CIE-1931"/>.</dd>
+<dt>stream copy:</dt>
+<dd>True (<xref target="stream-copy"/>)</dd>
 </dl>
 </section>
 
@@ -3249,8 +3275,9 @@ in candelas per square meter (cd/m<sup>2</sup>).</dd>
 <dt>minver:</dt>
 <dd>4</dd>
 <dt>definition:</dt>
-<dd>Green Y chromaticity coordinate, as defined by <xref target="CIE-1931"></xref>.</dd>
-<dt>stream copy:</dt><dd>True (<xref target="stream-copy"></xref>)</dd>
+<dd>Green Y chromaticity coordinate, as defined by <xref target="CIE-1931"/>.</dd>
+<dt>stream copy:</dt>
+<dd>True (<xref target="stream-copy"/>)</dd>
 </dl>
 </section>
 
@@ -3268,8 +3295,9 @@ in candelas per square meter (cd/m<sup>2</sup>).</dd>
 <dt>minver:</dt>
 <dd>4</dd>
 <dt>definition:</dt>
-<dd>Blue X chromaticity coordinate, as defined by <xref target="CIE-1931"></xref>.</dd>
-<dt>stream copy:</dt><dd>True (<xref target="stream-copy"></xref>)</dd>
+<dd>Blue X chromaticity coordinate, as defined by <xref target="CIE-1931"/>.</dd>
+<dt>stream copy:</dt>
+<dd>True (<xref target="stream-copy"/>)</dd>
 </dl>
 </section>
 
@@ -3287,8 +3315,9 @@ in candelas per square meter (cd/m<sup>2</sup>).</dd>
 <dt>minver:</dt>
 <dd>4</dd>
 <dt>definition:</dt>
-<dd>Blue Y chromaticity coordinate, as defined by <xref target="CIE-1931"></xref>.</dd>
-<dt>stream copy:</dt><dd>True (<xref target="stream-copy"></xref>)</dd>
+<dd>Blue Y chromaticity coordinate, as defined by <xref target="CIE-1931"/>.</dd>
+<dt>stream copy:</dt>
+<dd>True (<xref target="stream-copy"/>)</dd>
 </dl>
 </section>
 
@@ -3306,8 +3335,9 @@ in candelas per square meter (cd/m<sup>2</sup>).</dd>
 <dt>minver:</dt>
 <dd>4</dd>
 <dt>definition:</dt>
-<dd>White X chromaticity coordinate, as defined by <xref target="CIE-1931"></xref>.</dd>
-<dt>stream copy:</dt><dd>True (<xref target="stream-copy"></xref>)</dd>
+<dd>White X chromaticity coordinate, as defined by <xref target="CIE-1931"/>.</dd>
+<dt>stream copy:</dt>
+<dd>True (<xref target="stream-copy"/>)</dd>
 </dl>
 </section>
 
@@ -3325,8 +3355,9 @@ in candelas per square meter (cd/m<sup>2</sup>).</dd>
 <dt>minver:</dt>
 <dd>4</dd>
 <dt>definition:</dt>
-<dd>White Y chromaticity coordinate, as defined by <xref target="CIE-1931"></xref>.</dd>
-<dt>stream copy:</dt><dd>True (<xref target="stream-copy"></xref>)</dd>
+<dd>White Y chromaticity coordinate, as defined by <xref target="CIE-1931"/>.</dd>
+<dt>stream copy:</dt>
+<dd>True (<xref target="stream-copy"/>)</dd>
 </dl>
 </section>
 
@@ -3345,7 +3376,8 @@ in candelas per square meter (cd/m<sup>2</sup>).</dd>
 <dd>4</dd>
 <dt>definition:</dt>
 <dd>Maximum luminance. Represented in candelas per square meter (cd/m<sup>2</sup>).</dd>
-<dt>stream copy:</dt><dd>True (<xref target="stream-copy"></xref>)</dd>
+<dt>stream copy:</dt>
+<dd>True (<xref target="stream-copy"/>)</dd>
 </dl>
 </section>
 
@@ -3364,7 +3396,8 @@ in candelas per square meter (cd/m<sup>2</sup>).</dd>
 <dd>4</dd>
 <dt>definition:</dt>
 <dd>Minimum luminance. Represented in candelas per square meter (cd/m<sup>2</sup>).</dd>
-<dt>stream copy:</dt><dd>True (<xref target="stream-copy"></xref>)</dd>
+<dt>stream copy:</dt>
+<dd>True (<xref target="stream-copy"/>)</dd>
 </dl>
 </section>
 
@@ -3381,7 +3414,8 @@ in candelas per square meter (cd/m<sup>2</sup>).</dd>
 <dd>4</dd>
 <dt>definition:</dt>
 <dd>Describes the video projection details. Used to render spherical or VR videos or to flip videos horizontally or vertically.</dd>
-<dt>stream copy:</dt><dd>True (<xref target="stream-copy"></xref>)</dd>
+<dt>stream copy:</dt>
+<dd>True (<xref target="stream-copy"/>)</dd>
 </dl></section>
 
 <section anchor="projectiontype-element"><name>ProjectionType Element</name>
@@ -3400,7 +3434,7 @@ in candelas per square meter (cd/m<sup>2</sup>).</dd>
 <dt>restrictions:</dt>
 <dd>See <xref target="ProjectionTypeValues"/>.</dd>
 <dt>stream copy:</dt>
-<dd>True (<xref target="stream-copy"></xref>)</dd>
+<dd>True (<xref target="stream-copy"/>)</dd>
 </dl>
 <table anchor="ProjectionTypeValues"><name>ProjectionType Values</name>
 <thead>
@@ -3465,7 +3499,8 @@ in candelas per square meter (cd/m<sup>2</sup>).</dd>
 <dd>ISOBMFF box size and FourCC fields are not included in the binary data,
 but the FullBox version and flag fields are. This is to avoid
 redundant framing information while preserving versioning and semantics between the two container formats.</dd>
-<dt>stream copy:</dt><dd>True (<xref target="stream-copy"></xref>)</dd>
+<dt>stream copy:</dt>
+<dd>True (<xref target="stream-copy"/>)</dd>
 </dl>
 </section>
 
@@ -3487,7 +3522,8 @@ redundant framing information while preserving versioning and semantics between 
 before any <tt>ProjectionPosePitch</tt> or <tt>ProjectionPoseRoll</tt> rotations.
 The value of this element <bcp14>MUST</bcp14> be in the -180 to 180 degree range, both inclusive.
 Setting <tt>ProjectionPoseYaw</tt> to 180 or -180 degrees with <tt>ProjectionPoseRoll</tt> and <tt>ProjectionPosePitch</tt> set to 0 degrees flips the image horizontally.</t></dd>
-<dt>stream copy:</dt><dd>True (<xref target="stream-copy"></xref>)</dd>
+<dt>stream copy:</dt>
+<dd>True (<xref target="stream-copy"/>)</dd>
 </dl>
 
 </section>
@@ -3510,7 +3546,8 @@ Setting <tt>ProjectionPoseYaw</tt> to 180 or -180 degrees with <tt>ProjectionPos
 after the <tt>ProjectionPoseYaw</tt> rotation and before the <tt>ProjectionPoseRoll</tt> rotation.
 The value of this element <bcp14>MUST</bcp14> be in the -90 to 90 degree range, both inclusive.</t>
 </dd>
-<dt>stream copy:</dt><dd>True (<xref target="stream-copy"></xref>)</dd>
+<dt>stream copy:</dt>
+<dd>True (<xref target="stream-copy"/>)</dd>
 </dl>
 
 </section>
@@ -3539,7 +3576,8 @@ rotation must be applied after the <tt>ProjectionPoseYaw</tt> and
 <t>Setting <tt>ProjectionPoseRoll</tt> to 180 or -180 degrees with
 <tt>ProjectionPoseYaw</tt> and <tt>ProjectionPosePitch</tt> set to 0 degrees
 flips the image horizontally and vertically.</t></dd>
-<dt>stream copy:</dt><dd>True (<xref target="stream-copy"></xref>)</dd>
+<dt>stream copy:</dt>
+<dd>True (<xref target="stream-copy"/>)</dd>
 </dl>
 
 </section>
@@ -3571,7 +3609,8 @@ flips the image horizontally and vertically.</t></dd>
 <dd>1 / 1</dd>
 <dt>definition:</dt>
 <dd>Sampling frequency in Hz.</dd>
-<dt>stream copy:</dt><dd>True (<xref target="stream-copy"></xref>)</dd>
+<dt>stream copy:</dt>
+<dd>True (<xref target="stream-copy"/>)</dd>
 </dl>
 </section>
 
@@ -3622,7 +3661,8 @@ flips the image horizontally and vertically.</t></dd>
 <dd>1 / 1</dd>
 <dt>definition:</dt>
 <dd>Numbers of channels in the track.</dd>
-<dt>stream copy:</dt><dd>True (<xref target="stream-copy"></xref>)</dd>
+<dt>stream copy:</dt>
+<dd>True (<xref target="stream-copy"/>)</dd>
 </dl>
 </section>
 
@@ -3639,7 +3679,8 @@ flips the image horizontally and vertically.</t></dd>
 <dd>1</dd>
 <dt>definition:</dt>
 <dd>Bits per sample, mostly used for PCM.</dd>
-<dt>stream copy:</dt><dd>True (<xref target="stream-copy"></xref>)</dd>
+<dt>stream copy:</dt>
+<dd>True (<xref target="stream-copy"/>)</dd>
 </dl>
 </section>
 </section>
@@ -3656,8 +3697,9 @@ flips the image horizontally and vertically.</t></dd>
 <dt>minver:</dt>
 <dd>3</dd>
 <dt>definition:</dt>
-<dd>Operation that needs to be applied on tracks to create this virtual track. For more details, see <xref target="track-operation"></xref>.</dd>
-<dt>stream copy:</dt><dd>True (<xref target="stream-copy"></xref>)</dd>
+<dd>Operation that needs to be applied on tracks to create this virtual track. For more details, see <xref target="track-operation"/>.</dd>
+<dt>stream copy:</dt>
+<dd>True (<xref target="stream-copy"/>)</dd>
 </dl>
 
 <section anchor="trackcombineplanes-element"><name>TrackCombinePlanes Element</name>
@@ -3673,7 +3715,8 @@ flips the image horizontally and vertically.</t></dd>
 <dd>3</dd>
 <dt>definition:</dt>
 <dd>Contains the list of all video plane tracks that need to be combined to create this 3D track.</dd>
-<dt>stream copy:</dt><dd>True (<xref target="stream-copy"></xref>)</dd>
+<dt>stream copy:</dt>
+<dd>True (<xref target="stream-copy"/>)</dd>
 </dl>
 </section>
 
@@ -3690,7 +3733,8 @@ flips the image horizontally and vertically.</t></dd>
 <dd>3</dd>
 <dt>definition:</dt>
 <dd>Contains a video plane track that needs to be combined to create this 3D track.</dd>
-<dt>stream copy:</dt><dd>True (<xref target="stream-copy"></xref>)</dd>
+<dt>stream copy:</dt>
+<dd>True (<xref target="stream-copy"/>)</dd>
 </dl>
 </section>
 
@@ -3709,7 +3753,8 @@ flips the image horizontally and vertically.</t></dd>
 <dd>3</dd>
 <dt>definition:</dt>
 <dd>The <tt>TrackUID</tt> number of the track representing the plane.</dd>
-<dt>stream copy:</dt><dd>True (<xref target="stream-copy"></xref>)</dd>
+<dt>stream copy:</dt>
+<dd>True (<xref target="stream-copy"/>)</dd>
 </dl>
 </section>
 
@@ -3729,7 +3774,7 @@ flips the image horizontally and vertically.</t></dd>
 <dt>restrictions:</dt>
 <dd>See <xref target="TrackPlaneTypeValues"/>.</dd>
 <dt>stream copy:</dt>
-<dd>True (<xref target="stream-copy"></xref>)</dd>
+<dd>True (<xref target="stream-copy"/>)</dd>
 </dl>
 <table anchor="TrackPlaneTypeValues"><name>TrackPlaneType Values</name>
 <thead>
@@ -3771,7 +3816,8 @@ flips the image horizontally and vertically.</t></dd>
 <dd>3</dd>
 <dt>definition:</dt>
 <dd>Contains the list of all tracks whose Blocks need to be combined to create this virtual track.</dd>
-<dt>stream copy:</dt><dd>True (<xref target="stream-copy"></xref>)</dd>
+<dt>stream copy:</dt>
+<dd>True (<xref target="stream-copy"/>)</dd>
 </dl>
 </section>
 
@@ -3790,7 +3836,8 @@ flips the image horizontally and vertically.</t></dd>
 <dd>3</dd>
 <dt>definition:</dt>
 <dd>The TrackUID number of a track whose blocks are used to create this virtual track.</dd>
-<dt>stream copy:</dt><dd>True (<xref target="stream-copy"></xref>)</dd>
+<dt>stream copy:</dt>
+<dd>True (<xref target="stream-copy"/>)</dd>
 </dl>
 </section>
 </section>
@@ -3806,7 +3853,8 @@ flips the image horizontally and vertically.</t></dd>
 <dd>1</dd>
 <dt>definition:</dt>
 <dd>Settings for several content encoding mechanisms like compression or encryption.</dd>
-<dt>stream copy:</dt><dd>True (<xref target="stream-copy"></xref>)</dd>
+<dt>stream copy:</dt>
+<dd>True (<xref target="stream-copy"/>)</dd>
 </dl>
 <section anchor="contentencoding-element"><name>ContentEncoding Element</name>
 
@@ -3819,7 +3867,8 @@ flips the image horizontally and vertically.</t></dd>
 <dd>1</dd>
 <dt>definition:</dt>
 <dd>Settings for one content encoding like compression or encryption.</dd>
-<dt>stream copy:</dt><dd>True (<xref target="stream-copy"></xref>)</dd>
+<dt>stream copy:</dt>
+<dd>True (<xref target="stream-copy"/>)</dd>
 </dl>
 </section>
 
@@ -3837,7 +3886,8 @@ flips the image horizontally and vertically.</t></dd>
 <dd>Defines the order to apply each <tt>ContentEncoding</tt> of the <tt>ContentEncodings</tt>.
 The decoder/demuxer <bcp14>MUST</bcp14> start with the <tt>ContentEncoding</tt> with the highest <tt>ContentEncodingOrder</tt> and work its way down to the <tt>ContentEncoding</tt> with the lowest <tt>ContentEncodingOrder</tt>.
 This value <bcp14>MUST</bcp14> be unique for each <tt>ContentEncoding</tt> found in the <tt>ContentEncodings</tt> of this <tt>TrackEntry</tt>.</dd>
-<dt>stream copy:</dt><dd>True (<xref target="stream-copy"></xref>)</dd>
+<dt>stream copy:</dt>
+<dd>True (<xref target="stream-copy"/>)</dd>
 </dl>
 </section>
 
@@ -3856,7 +3906,7 @@ Values (big-endian) can be OR'ed.</dd>
 <dt>defined values:</dt>
 <dd>See <xref target="ContentEncodingScopeValues"/>.</dd>
 <dt>stream copy:</dt>
-<dd>True (<xref target="stream-copy"></xref>)</dd>
+<dd>True (<xref target="stream-copy"/>)</dd>
 </dl>
 <table anchor="ContentEncodingScopeValues"><name>ContentEncodingScope Values</name>
 <thead>
@@ -3903,7 +3953,7 @@ Values (big-endian) can be OR'ed.</dd>
 <dt>restrictions:</dt>
 <dd>See <xref target="ContentEncodingTypeValues"/>.</dd>
 <dt>stream copy:</dt>
-<dd>True (<xref target="stream-copy"></xref>)</dd>
+<dd>True (<xref target="stream-copy"/>)</dd>
 </dl>
 
 <table anchor="ContentEncodingTypeValues"><name>ContentEncodingType Values</name>
@@ -3941,7 +3991,8 @@ Values (big-endian) can be OR'ed.</dd>
 <dd>Settings describing the compression used.
 This Element <bcp14>MUST</bcp14> be present if the value of <tt>ContentEncodingType</tt> is 0 and absent otherwise.
 Each block <bcp14>MUST</bcp14> be decompressable, even if no previous block is available in order to not prevent seeking.</dd>
-<dt>stream copy:</dt><dd>True (<xref target="stream-copy"></xref>)</dd>
+<dt>stream copy:</dt>
+<dd>True (<xref target="stream-copy"/>)</dd>
 </dl>
 </section>
 
@@ -3962,7 +4013,7 @@ Each block <bcp14>MUST</bcp14> be decompressable, even if no previous block is a
 <dt>usage notes:</dt>
 <dd>Compression method "1" (bzlib) and "2" (lzo1x) lack proper documentation on the format, which limits implementation possibilities. Due to licensing conflicts on commonly available libraries' compression methods, "2" (lzo1x) does not offer widespread interoperability. A Matroska Writer <bcp14>SHOULD NOT</bcp14> use these compression methods by default. A Matroska Reader <bcp14>MAY</bcp14> support methods "1" and "2" and <bcp14>SHOULD</bcp14> support other methods.</dd>
 <dt>stream copy:</dt>
-<dd>True (<xref target="stream-copy"></xref>)</dd>
+<dd>True (<xref target="stream-copy"/>)</dd>
 </dl>
 
 <table anchor="ContentCompAlgoValues"><name>ContentCompAlgo Values</name>
@@ -3978,25 +4029,25 @@ Each block <bcp14>MUST</bcp14> be decompressable, even if no previous block is a
 <tr>
 <td align="left"><tt>0</tt></td>
 <td align="left">zlib</td>
-<td align="left">zlib compression <xref target="RFC1950"></xref>.</td>
+<td align="left">zlib compression <xref target="RFC1950"/>.</td>
 </tr>
 
 <tr>
 <td align="left"><tt>1</tt></td>
 <td align="left">bzlib</td>
-<td align="left">bzip2 compression <xref target="BZIP2"></xref> <bcp14>SHOULD NOT</bcp14> be used; see usage notes.</td>
+<td align="left">bzip2 compression <xref target="BZIP2"/> <bcp14>SHOULD NOT</bcp14> be used; see usage notes.</td>
 </tr>
 
 <tr>
 <td align="left"><tt>2</tt></td>
 <td align="left">lzo1x</td>
-<td align="left">Lempel-Ziv-Oberhumer compression <xref target="LZO"></xref> <bcp14>SHOULD NOT</bcp14> be used; see usage notes.</td>
+<td align="left">Lempel-Ziv-Oberhumer compression <xref target="LZO"/> <bcp14>SHOULD NOT</bcp14> be used; see usage notes.</td>
 </tr>
 
 <tr>
 <td align="left"><tt>3</tt></td>
 <td align="left">Header Stripping</td>
-<td align="left">Octets in ContentCompSettings (<xref target="contentcompsettings-element"></xref>) have been stripped from each frame.</td>
+<td align="left">Octets in ContentCompSettings (<xref target="contentcompsettings-element"/>) have been stripped from each frame.</td>
 </tr>
 </tbody>
 </table>
@@ -4014,7 +4065,8 @@ Each block <bcp14>MUST</bcp14> be decompressable, even if no previous block is a
 <dt>definition:</dt>
 <dd>Settings that might be needed by the decompressor. For Header Stripping (<tt>ContentCompAlgo</tt>=3),
 the bytes that were removed from the beginning of each frame of the track.</dd>
-<dt>stream copy:</dt><dd>True (<xref target="stream-copy"></xref>)</dd>
+<dt>stream copy:</dt>
+<dd>True (<xref target="stream-copy"/>)</dd>
 </dl>
 </section>
 
@@ -4031,7 +4083,8 @@ the bytes that were removed from the beginning of each frame of the track.</dd>
 <dd>Settings describing the encryption used.
 This Element <bcp14>MUST</bcp14> be present if the value of <tt>ContentEncodingType</tt> is 1 (encryption) and <bcp14>MUST</bcp14> be ignored otherwise.
 A Matroska Player <bcp14>MAY</bcp14> support encryption.</dd>
-<dt>stream copy:</dt><dd>True (<xref target="stream-copy"></xref>)</dd>
+<dt>stream copy:</dt>
+<dd>True (<xref target="stream-copy"/>)</dd>
 </dl>
 </section>
 
@@ -4049,7 +4102,7 @@ A Matroska Player <bcp14>MAY</bcp14> support encryption.</dd>
 <dt>defined values:</dt>
 <dd>See <xref target="ContentEncAlgoValues"/>.</dd>
 <dt>stream copy:</dt>
-<dd>True (<xref target="stream-copy"></xref>)</dd>
+<dd>True (<xref target="stream-copy"/>)</dd>
 </dl>
 <table anchor="ContentEncAlgoValues"><name>ContentEncAlgo Values</name>
 <thead>
@@ -4070,31 +4123,31 @@ A Matroska Player <bcp14>MAY</bcp14> support encryption.</dd>
 <tr>
 <td align="left"><tt>1</tt></td>
 <td align="left">DES</td>
-<td align="left">Data Encryption Standard (DES) <xref target="FIPS46-3"></xref>. This value <bcp14>SHOULD</bcp14> be avoided.</td>
+<td align="left">Data Encryption Standard (DES) <xref target="FIPS46-3"/>. This value <bcp14>SHOULD</bcp14> be avoided.</td>
 </tr>
 
 <tr>
 <td align="left"><tt>2</tt></td>
 <td align="left">3DES</td>
-<td align="left">Triple Data Encryption Algorithm <xref target="SP800-67"></xref>. This value <bcp14>SHOULD</bcp14> be avoided.</td>
+<td align="left">Triple Data Encryption Algorithm <xref target="SP800-67"/>. This value <bcp14>SHOULD</bcp14> be avoided.</td>
 </tr>
 
 <tr>
 <td align="left"><tt>3</tt></td>
 <td align="left">Twofish</td>
-<td align="left">Twofish Encryption Algorithm <xref target="Twofish"></xref>.</td>
+<td align="left">Twofish Encryption Algorithm <xref target="Twofish"/>.</td>
 </tr>
 
 <tr>
 <td align="left"><tt>4</tt></td>
 <td align="left">Blowfish</td>
-<td align="left">Blowfish Encryption Algorithm <xref target="Blowfish"></xref>. This value <bcp14>SHOULD</bcp14> be avoided.</td>
+<td align="left">Blowfish Encryption Algorithm <xref target="Blowfish"/>. This value <bcp14>SHOULD</bcp14> be avoided.</td>
 </tr>
 
 <tr>
 <td align="left"><tt>5</tt></td>
 <td align="left">AES</td>
-<td align="left">Advanced Encryption Standard (AES) <xref target="FIPS197"></xref>.</td>
+<td align="left">Advanced Encryption Standard (AES) <xref target="FIPS197"/>.</td>
 </tr>
 </tbody>
 </table>
@@ -4111,7 +4164,8 @@ A Matroska Player <bcp14>MAY</bcp14> support encryption.</dd>
 <dd>1</dd>
 <dt>definition:</dt>
 <dd>For public key algorithms, the ID of the public key that the data was encrypted with.</dd>
-<dt>stream copy:</dt><dd>True (<xref target="stream-copy"></xref>)</dd>
+<dt>stream copy:</dt>
+<dd>True (<xref target="stream-copy"/>)</dd>
 </dl>
 </section>
 
@@ -4131,7 +4185,7 @@ A Matroska Player <bcp14>MAY</bcp14> support encryption.</dd>
 <dt>notes:</dt>
 <dd>See <xref target="ContentEncAESSettingsNotes"/>.</dd>
 <dt>stream copy:</dt>
-<dd>True (<xref target="stream-copy"></xref>)</dd>
+<dd>True (<xref target="stream-copy"/>)</dd>
 </dl>
 <table anchor="ContentEncAESSettingsNotes"><name>ContentEncAESSettings Implementation Notes</name>
 <thead>
@@ -4168,7 +4222,7 @@ A Matroska Player <bcp14>MAY</bcp14> support encryption.</dd>
 <dt>notes:</dt>
 <dd>See <xref target="AESSettingsCipherModeNotes"/>.</dd>
 <dt>stream copy:</dt>
-<dd>True (<xref target="stream-copy"></xref>)</dd>
+<dd>True (<xref target="stream-copy"/>)</dd>
 </dl>
 <table anchor="AESSettingsCipherModeValues"><name>AESSettingsCipherMode Values</name>
 <thead>
@@ -4183,13 +4237,13 @@ A Matroska Player <bcp14>MAY</bcp14> support encryption.</dd>
 <tr>
 <td align="left"><tt>1</tt></td>
 <td align="left">AES-CTR</td>
-<td align="left">Counter <xref target="SP800-38A"></xref></td>
+<td align="left">Counter <xref target="SP800-38A"/></td>
 </tr>
 
 <tr>
 <td align="left"><tt>2</tt></td>
 <td align="left">AES-CBC</td>
-<td align="left">Cipher Block Chaining <xref target="SP800-38A"></xref></td>
+<td align="left">Cipher Block Chaining <xref target="SP800-38A"/></td>
 </tr>
 </tbody>
 </table>
@@ -4240,7 +4294,7 @@ All entries are local to the <tt>Segment</tt>.</dd>
 <tbody>
 <tr>
 <td align="left">minOccurs</td>
-<td align="left">This Element <bcp14>SHOULD</bcp14> be set when the <tt>Segment</tt> is not transmitted as a live stream; see <xref target="livestreaming"></xref>.</td>
+<td align="left">This Element <bcp14>SHOULD</bcp14> be set when the <tt>Segment</tt> is not transmitted as a live stream; see <xref target="livestreaming"/>.</td>
 </tr>
 </tbody>
 </table>
@@ -4267,7 +4321,7 @@ All entries are local to the <tt>Segment</tt>.</dd>
 <dt>minOccurs / maxOccurs:</dt>
 <dd>1 / 1</dd>
 <dt>definition:</dt>
-<dd>Absolute timestamp of the seek point, expressed in Segment Ticks, which are based on <tt>TimestampScale</tt>; see <xref target="timestamp-ticks"></xref>.</dd>
+<dd>Absolute timestamp of the seek point, expressed in Segment Ticks, which are based on <tt>TimestampScale</tt>; see <xref target="timestamp-ticks"/>.</dd>
 
 <!-- [cellar] changed CueTime from Matroska Ticks to Segment Ticks
 
@@ -4317,7 +4371,7 @@ for a Matroska Tick. We fix the issue in our repository in https://github.com/ie
 <dt>minOccurs / maxOccurs:</dt>
 <dd>1 / 1</dd>
 <dt>definition:</dt>
-<dd>The <tt>Segment Position</tt> (<xref target="segment-position"></xref>) of the <tt>Cluster</tt> containing the associated <tt>Block</tt>.</dd>
+<dd>The <tt>Segment Position</tt> (<xref target="segment-position"/>) of the <tt>Cluster</tt> containing the associated <tt>Block</tt>.</dd>
 </dl>
 </section>
 
@@ -4350,7 +4404,7 @@ with 0 being the first possible position for an Element inside that <tt>Cluster<
 <dt>minver:</dt>
 <dd>4</dd>
 <dt>definition:</dt>
-<dd>The duration of the block, expressed in Segment Ticks, which are based on <tt>TimestampScale</tt>; see <xref target="timestamp-ticks"></xref>.
+<dd>The duration of the block, expressed in Segment Ticks, which are based on <tt>TimestampScale</tt>; see <xref target="timestamp-ticks"/>.
 If missing, the track's <tt>DefaultDuration</tt> does not apply and no duration information is available in terms of the cues.</dd>
 </dl>
 </section>
@@ -4383,7 +4437,7 @@ If missing, the track's <tt>DefaultDuration</tt> does not apply and no duration 
 <dt>minver:</dt>
 <dd>2</dd>
 <dt>definition:</dt>
-<dd>The <tt>Segment Position</tt> (<xref target="segment-position"></xref>) of the Codec State corresponding to this <tt>Cues</tt> Element.
+<dd>The <tt>Segment Position</tt> (<xref target="segment-position"/>) of the Codec State corresponding to this <tt>Cues</tt> Element.
 0 means that the data is taken from the initial <tt>TrackEntry</tt>.</dd>
 </dl>
 </section>
@@ -4414,7 +4468,7 @@ If missing, the track's <tt>DefaultDuration</tt> does not apply and no duration 
 <dt>minver:</dt>
 <dd>2</dd>
 <dt>definition:</dt>
-<dd>Timestamp of the referenced Block, expressed in Segment Ticks which is based on <tt>TimestampScale</tt>; see <xref target="timestamp-ticks"></xref>.</dd>
+<dd>Timestamp of the referenced Block, expressed in Segment Ticks which is based on <tt>TimestampScale</tt>; see <xref target="timestamp-ticks"/>.</dd>
 
 <!-- [cellar] changed CueRefTime from Matroska Ticks to Segment Ticks
 
@@ -4492,8 +4546,9 @@ for a Matroska Tick. We fix the issue in our repository in https://github.com/ie
 <dt>minOccurs / maxOccurs:</dt>
 <dd>1 / 1</dd>
 <dt>definition:</dt>
-<dd>Media type of the file following the format described in <xref target="RFC6838"></xref>.</dd>
-<dt>stream copy:</dt><dd>True (<xref target="stream-copy"></xref>)</dd>
+<dd>Media type of the file following the format described in <xref target="RFC6838"/>.</dd>
+<dt>stream copy:</dt>
+<dd>True (<xref target="stream-copy"/>)</dd>
 </dl>
 </section>
 
@@ -4508,7 +4563,8 @@ for a Matroska Tick. We fix the issue in our repository in https://github.com/ie
 <dd>1 / 1</dd>
 <dt>definition:</dt>
 <dd>The data of the file.</dd>
-<dt>stream copy:</dt><dd>True (<xref target="stream-copy"></xref>)</dd>
+<dt>stream copy:</dt>
+<dd>True (<xref target="stream-copy"/>)</dd>
 </dl>
 </section>
 
@@ -4525,7 +4581,8 @@ for a Matroska Tick. We fix the issue in our repository in https://github.com/ie
 <dd>1 / 1</dd>
 <dt>definition:</dt>
 <dd>UID representing the file, as random as possible.</dd>
-<dt>stream copy:</dt><dd>True (<xref target="stream-copy"></xref>)</dd>
+<dt>stream copy:</dt>
+<dd>True (<xref target="stream-copy"/>)</dd>
 </dl>
 </section>
 </section>
@@ -4543,7 +4600,7 @@ for a Matroska Tick. We fix the issue in our repository in https://github.com/ie
 <dt>recurring:</dt><dd>True</dd>
 <dt>definition:</dt>
 <dd>A system to define basic menus and partition data.
-For more detailed information, see <xref target="chapters"></xref>.</dd>
+For more detailed information, see <xref target="chapters"/>.</dd>
 </dl>
 
 <section anchor="editionentry-element"><name>EditionEntry Element</name>
@@ -4572,7 +4629,8 @@ For more detailed information, see <xref target="chapters"></xref>.</dd>
 <dd>1</dd>
 <dt>definition:</dt>
 <dd>A UID that identifies the edition. It's useful for tagging an edition.</dd>
-<dt>stream copy:</dt><dd>True (<xref target="stream-copy"></xref>)</dd>
+<dt>stream copy:</dt>
+<dd>True (<xref target="stream-copy"/>)</dd>
 </dl>
 </section>
 
@@ -4604,7 +4662,7 @@ For more detailed information, see <xref target="chapters"></xref>.</dd>
 <dt>minOccurs / maxOccurs:</dt>
 <dd>1 / 1</dd>
 <dt>definition:</dt>
-<dd>Set to 1 if the chapters can be defined multiple times and the order to play them is enforced; see <xref target="editionflagordered"></xref>.</dd>
+<dd>Set to 1 if the chapters can be defined multiple times and the order to play them is enforced; see <xref target="editionflagordered"/>.</dd>
 </dl>
 </section>
 
@@ -4636,7 +4694,8 @@ For more detailed information, see <xref target="chapters"></xref>.</dd>
 <dt>definition:</dt>
 <dd>A UID that identifies the <tt>Chapter</tt>.</dd>
 
-<dt>stream copy:</dt><dd>True (<xref target="stream-copy"></xref>)</dd>
+<dt>stream copy:</dt>
+<dd>True (<xref target="stream-copy"/>)</dd>
 </dl>
 </section>
 
@@ -4654,7 +4713,7 @@ For more detailed information, see <xref target="chapters"></xref>.</dd>
 <dt>definition:</dt>
 <dd>A unique string ID that identifies the <tt>Chapter</tt>.
 
-For example, it is used as the storage for cue identifier values <xref target="WebVTT"></xref>.</dd>
+For example, it is used as the storage for cue identifier values <xref target="WebVTT"/>.</dd>
 </dl>
 </section>
 
@@ -4668,7 +4727,7 @@ For example, it is used as the storage for cue identifier values <xref target="W
 <dt>minOccurs / maxOccurs:</dt>
 <dd>1 / 1</dd>
 <dt>definition:</dt>
-<dd>Timestamp of the start of <tt>Chapter</tt>, expressed in Matroska Ticks -- i.e., in nanoseconds; see <xref target="timestamp-ticks"></xref>.</dd>
+<dd>Timestamp of the start of <tt>Chapter</tt>, expressed in Matroska Ticks -- i.e., in nanoseconds; see <xref target="timestamp-ticks"/>.</dd>
 </dl>
 </section>
 
@@ -4681,7 +4740,7 @@ For example, it is used as the storage for cue identifier values <xref target="W
 <dt>minOccurs / maxOccurs:</dt>
 <dd>See <xref target="ChapterTimeEndNotes"/> / 1</dd>
 <dt>definition:</dt>
-<dd>Timestamp of the end of <tt>Chapter</tt>, expressed in Matroska Ticks -- i.e., in nanoseconds; see <xref target="timestamp-ticks"></xref>.
+<dd>Timestamp of the end of <tt>Chapter</tt>, expressed in Matroska Ticks -- i.e., in nanoseconds; see <xref target="timestamp-ticks"/>.
 The value <bcp14>MUST</bcp14> be greater than or equal to the <tt>ChapterTimeStart</tt> of the same <tt>ChapterAtom</tt>.</dd>
 <dt>usage notes:</dt>
 <dd>With the <tt>ChapterTimeEnd</tt> timestamp value being excluded, it <bcp14>MUST</bcp14> take into account the duration of
@@ -4700,7 +4759,7 @@ the last frame it includes, especially for the <tt>ChapterAtom</tt> using the la
 <tbody>
 <tr>
 <td align="left">minOccurs</td>
-<td align="left">ChapterTimeEnd <bcp14>MUST</bcp14> be set (minOccurs=1) if the <tt>Edition</tt> is an ordered edition; see <xref target="editionflagordered"></xref>. If it's a <tt>Parent Chapter</tt>, see <xref target="nested-chapters"></xref>.</td>
+<td align="left">ChapterTimeEnd <bcp14>MUST</bcp14> be set (minOccurs=1) if the <tt>Edition</tt> is an ordered edition; see <xref target="editionflagordered"/>. If it's a <tt>Parent Chapter</tt>, see <xref target="nested-chapters"/>.</td>
 </tr>
 </tbody>
 </table>
@@ -4721,7 +4780,7 @@ the last frame it includes, especially for the <tt>ChapterAtom</tt> using the la
 <dd>Set to 1 if a chapter is hidden.
 
 Hidden chapters <bcp14>SHOULD NOT</bcp14> be available to the user interface
-(but still be available to Control Tracks; see <xref target="chapterflaghidden"></xref> on <tt>Chapter</tt> flags).</dd>
+(but still be available to Control Tracks; see <xref target="chapterflaghidden"/> on <tt>Chapter</tt> flags).</dd>
 </dl>
 </section>
 
@@ -4754,7 +4813,7 @@ Hidden chapters <bcp14>SHOULD NOT</bcp14> be available to the user interface
 <tbody>
 <tr>
 <td align="left">minOccurs</td>
-<td align="left">ChapterSegmentUUID <bcp14>MUST</bcp14> be set (minOccurs=1) if ChapterSegmentEditionUID is used; see <xref target="medium-linking"></xref> on Medium-Linking <tt>Segments</tt>.</td>
+<td align="left">ChapterSegmentUUID <bcp14>MUST</bcp14> be set (minOccurs=1) if ChapterSegmentEditionUID is used; see <xref target="medium-linking"/> on Medium-Linking <tt>Segments</tt>.</td>
 </tr>
 </tbody>
 </table>
@@ -4773,7 +4832,7 @@ Hidden chapters <bcp14>SHOULD NOT</bcp14> be available to the user interface
 <dd>1</dd>
 <dt>definition:</dt>
 <dd>The <tt>EditionUID</tt> to play from the <tt>Segment</tt> linked in <tt>ChapterSegmentUUID</tt>.
-If <tt>ChapterSegmentEditionUID</tt> is undeclared, then no <tt>Edition</tt> of the linked <tt>Segment</tt> is used; see <xref target="medium-linking"></xref> on Medium-Linking <tt>Segments</tt>.</dd>
+If <tt>ChapterSegmentEditionUID</tt> is undeclared, then no <tt>Edition</tt> of the linked <tt>Segment</tt> is used; see <xref target="medium-linking"/> on Medium-Linking <tt>Segments</tt>.</dd>
 </dl>
 </section>
 
@@ -4788,7 +4847,7 @@ If <tt>ChapterSegmentEditionUID</tt> is undeclared, then no <tt>Edition</tt> of 
 <dd>1</dd>
 <dt>definition:</dt>
 <dd>Specifies the physical equivalent of this <tt>ChapterAtom</tt>, e.g., "DVD" (60) or "SIDE" (50);
-see <xref target="physical-types"></xref> for a complete list of values.</dd>
+see <xref target="physical-types"/> for a complete list of values.</dd>
 </dl>
 </section>
 
@@ -4829,7 +4888,7 @@ see <xref target="physical-types"></xref> for a complete list of values.</dd>
 <dd>1</dd>
 <dt>definition:</dt>
 <dd>A language corresponding to the string,
-in the Matroska languages form; see <xref target="language-codes"></xref> on language codes.
+in the Matroska languages form; see <xref target="language-codes"/> on language codes.
 This Element <bcp14>MUST</bcp14> be ignored if a <tt>ChapLanguageBCP47</tt> Element is used within the same <tt>ChapterDisplay</tt> Element.</dd>
 </dl>
 </section>
@@ -4845,7 +4904,7 @@ This Element <bcp14>MUST</bcp14> be ignored if a <tt>ChapLanguageBCP47</tt> Elem
 <dd>4</dd>
 <dt>definition:</dt>
 <dd>A language corresponding to the <tt>ChapString</tt>,
-in the form defined in <xref target="RFC5646"></xref>; see <xref target="language-codes"></xref> on language codes.
+in the form defined in <xref target="RFC5646"/>; see <xref target="language-codes"/> on language codes.
 If a <tt>ChapLanguageBCP47</tt> Element is used, then any <tt>ChapLanguage</tt> and <tt>ChapCountry</tt> Elements used in the same <tt>ChapterDisplay</tt> <bcp14>MUST</bcp14> be ignored.</dd>
 </dl>
 </section>
@@ -4859,7 +4918,7 @@ If a <tt>ChapLanguageBCP47</tt> Element is used, then any <tt>ChapLanguage</tt> 
 <dd><tt>\Segment\Chapters\EditionEntry\+ChapterAtom\ChapterDisplay\ChapCountry</tt></dd>
 <dt>definition:</dt>
 <dd>A country corresponding to the string,
-in the Matroska countries form; see <xref target="country-codes"></xref> on country codes.
+in the Matroska countries form; see <xref target="country-codes"/> on country codes.
 This Element <bcp14>MUST</bcp14> be ignored if a <tt>ChapLanguageBCP47</tt> Element is used within the same <tt>ChapterDisplay</tt> Element.</dd>
 </dl>
 </section>
@@ -4878,16 +4937,16 @@ This Element <bcp14>MUST</bcp14> be ignored if a <tt>ChapLanguageBCP47</tt> Elem
 
 
 <section anchor="chapprocesscodecid-element"><name>ChapProcessCodecID Element</name>
-<!-- [rfced] We have two questions about the definition below:                                                             
-                                                                                                                          
+<!-- [rfced] We have two questions about the definition below:
+
 a) Does "to be defined" need further clarification, perhaps "to be defined in
 future specifications"?
-                                                                                                                          
+
 b) Section 20.3 defines value 0 as "matroska script" and value 1 as "menu
 borrowed from the DVD [DVD-Video]". Should the definitions match? Or is the
 current okay?
-                                                                                                                          
-Original: 
+
+Original:
 definition: Contains the type of the codec used for the processing.
 A value of 0 means built-in Matroska processing (to be defined), a value of 1
 means the DVD command set is used; see Section 20.3 on DVD menus.
@@ -4895,13 +4954,13 @@ means the DVD command set is used; see Section 20.3 on DVD menus.
 
 <!-- [cellar] "to be defined" should actually refer to this CELLAR document:
      https://datatracker.ietf.org/doc/bibxml3/reference.I-D.ietf-cellar-chapter-codecs.xml
-                                                                                                                          
+
 0 should indeed be referred to as Matroska Script. So the new text should be
 something like this:
-                                                                                                                          
+
 definition: Contains the type of the codec used for the processing.  A value
 of 0 means "Matroska Script" processing (see <xref
-target="I-D.ietf-cellar-chapter-codecs"></xref>), a value of 1 means the
+target="I-D.ietf-cellar-chapter-codecs"/>), a value of 1 means the
 "DVD-menu" command set is used; see Section 20.3 on DVD menus.
 -->
 
@@ -4914,7 +4973,7 @@ target="I-D.ietf-cellar-chapter-codecs"></xref>), a value of 1 means the
 <dd>1 / 1</dd>
 <dt>definition:</dt>
 <dd>Contains the type of the codec used for processing.
-A value of 0 means built-in Matroska processing (to be defined), and a value of 1 means the DVD command set is used; see <xref target="menu-features"></xref> on DVD menus.
+A value of 0 means built-in Matroska processing (to be defined), and a value of 1 means the DVD command set is used; see <xref target="menu-features"/> on DVD menus.
 More codec IDs can be added later.</dd>
 </dl>
 </section>
@@ -4930,7 +4989,7 @@ More codec IDs can be added later.</dd>
 <dd>1</dd>
 <dt>definition:</dt>
 <dd>Optional data attached to the <tt>ChapProcessCodecID</tt> information.
-For <tt>ChapProcessCodecID</tt> = 1, it is the "DVD level" equivalent; see <xref target="menu-features"></xref> on DVD menus.</dd>
+For <tt>ChapProcessCodecID</tt> = 1, it is the "DVD level" equivalent; see <xref target="menu-features"/> on DVD menus.</dd>
 </dl>
 </section>
 
@@ -4999,7 +5058,7 @@ For <tt>ChapProcessCodecID</tt> = 1, it is the "DVD level" equivalent; see <xref
 <dt>definition:</dt>
 <dd>Contains the command information.
 The data <bcp14>SHOULD</bcp14> be interpreted depending on the <tt>ChapProcessCodecID</tt> value. For <tt>ChapProcessCodecID</tt> = 1,
-the data correspond to the binary DVD cell pre/post commands; see <xref target="menu-features"></xref> on DVD menus.</dd>
+the data correspond to the binary DVD cell pre/post commands; see <xref target="menu-features"/> on DVD menus.</dd>
 </dl>
 </section>
 </section>
@@ -5015,7 +5074,7 @@ the data correspond to the binary DVD cell pre/post commands; see <xref target="
 <dd><tt>\Segment\Tags</tt></dd>
 <dt>definition:</dt>
 <dd>Element containing metadata describing <tt>Tracks</tt>, <tt>Editions</tt>, <tt>Chapters</tt>, <tt>Attachments</tt>, or the <tt>Segment</tt> as a whole.
-A list of valid tags can be found in <xref target="I-D.ietf-cellar-tags"></xref>.</dd>
+A list of valid tags can be found in <xref target="I-D.ietf-cellar-tags"/>.</dd>
 </dl>
 
 <section anchor="tag-element"><name>Tag Element</name>
@@ -5346,7 +5405,7 @@ the <tt>FileUID</tt> value of an attachment found in this <tt>Segment</tt>.</dd>
 <dt>minOccurs / maxOccurs:</dt>
 <dd>1 / 1</dd>
 <dt>definition:</dt>
-<dd>Specifies the language of the specified tag in the Matroska languages form; see <xref target="language-codes"></xref> on language codes.
+<dd>Specifies the language of the specified tag in the Matroska languages form; see <xref target="language-codes"/> on language codes.
 This Element <bcp14>MUST</bcp14> be ignored if the <tt>TagLanguageBCP47</tt> Element is used within the same <tt>SimpleTag</tt> Element.</dd>
 </dl>
 </section>
@@ -5364,7 +5423,7 @@ This Element <bcp14>MUST</bcp14> be ignored if the <tt>TagLanguageBCP47</tt> Ele
 <dd>4</dd>
 <dt>definition:</dt>
 <dd>The language used in the <tt>TagString</tt>,
-in the form defined in <xref target="RFC5646"></xref>; see <xref target="language-codes"></xref> on language codes.
+in the form defined in <xref target="RFC5646"/>; see <xref target="language-codes"/> on language codes.
 If this Element is used, then any <tt>TagLanguage</tt> Elements used in the same <tt>SimpleTag</tt> <bcp14>MUST</bcp14> be ignored.</dd>
 </dl>
 </section>
@@ -5419,7 +5478,7 @@ If this Element is used, then any <tt>TagLanguage</tt> Elements used in the same
 </section>
 
 <section anchor="matroska-element-ordering"><name>Matroska Element Ordering</name>
-<t>With the exceptions of the <tt>EBML Header</tt> and the <tt>CRC-32 Element</tt>, the EBML specification <xref target="RFC8794"></xref> does not
+<t>With the exceptions of the <tt>EBML Header</tt> and the <tt>CRC-32 Element</tt>, the EBML specification <xref target="RFC8794"/> does not
 require any particular storage order for <tt>Elements</tt>.
 However, this specification defines mandates and recommendations for ordering
 certain <tt>Elements</tt> to facilitate better playback, seeking, and editing
@@ -5432,7 +5491,7 @@ To be playable, Matroska <bcp14>MUST</bcp14> also contain at least one <tt>Track
 The first <tt>Info Element</tt> and the first <tt>Tracks Element</tt> either <bcp14>MUST</bcp14> be stored before the first
 <tt>Cluster Element</tt> or <bcp14>SHALL</bcp14> both be referenced by a <tt>SeekHead Element</tt> occurring before the first <tt>Cluster Element</tt>.</t>
 <t>All <tt>Top-Level Elements</tt> <bcp14>MUST</bcp14> use a 4-octet EBML Element ID.</t>
-<t>When using Medium Linking, chapters are used to reference other <tt>Segments</tt> to play in a given order (see <xref target="medium-linking"></xref>).
+<t>When using Medium Linking, chapters are used to reference other <tt>Segments</tt> to play in a given order (see <xref target="medium-linking"/>).
 A <tt>Segment</tt> containing these <tt>Linked Chapters</tt> does not require a <tt>Track</tt> Element or a <tt>Cluster</tt> Element.</t>
 <t>It is possible to edit a Matroska file after it has been created. For example, chapters,
 tags, or attachments can be added. When new <tt>Top-Level Elements</tt> are added to a Matroska file,
@@ -5446,7 +5505,7 @@ as a method to avoid moving large amounts of data around.</t>
 </section>
 
 <section anchor="crc-32"><name>CRC-32</name>
-<t>As noted by the EBML specification <xref target="RFC8794"></xref>, if a <tt>CRC-32 Element</tt> is used, then the <tt>CRC-32 Element</tt>
+<t>As noted by the EBML specification <xref target="RFC8794"/>, if a <tt>CRC-32 Element</tt> is used, then the <tt>CRC-32 Element</tt>
 <bcp14>MUST</bcp14> be the first ordered Element within its <tt>Parent Element</tt>.</t>
 <t>In Matroska, all <tt>Top-Level Elements</tt> of an EBML Document <bcp14>SHOULD</bcp14> include a <tt>CRC-32 Element</tt>
 as their first <tt>Child Element</tt>.
@@ -5522,9 +5581,9 @@ it back (possibly with a reduced feature set).</t>
 version of Matroska to expect. The <tt>Elements</tt> within the <tt>EBML Header</tt> with jurisdiction
 over this information are <tt>DocTypeVersion</tt> and <tt>DocTypeReadVersion</tt>.</t>
 <t><tt>DocTypeVersion</tt> <bcp14>MUST</bcp14> be equal to or greater than the highest Matroska version number of
-any Element present in the Matroska file. For example, a file using the <tt>SimpleBlock Element</tt> (<xref target="simpleblock-element"></xref>)
+any Element present in the Matroska file. For example, a file using the <tt>SimpleBlock Element</tt> (<xref target="simpleblock-element"/>)
 <bcp14>MUST</bcp14> have a <tt>DocTypeVersion</tt> equal to or greater than 2. A file containing <tt>CueRelativePosition</tt>
-Elements  (<xref target="cuerelativeposition-element"></xref>) <bcp14>MUST</bcp14> have a <tt>DocTypeVersion</tt> equal to or greater than 4.</t>
+Elements  (<xref target="cuerelativeposition-element"/>) <bcp14>MUST</bcp14> have a <tt>DocTypeVersion</tt> equal to or greater than 4.</t>
 <t>The <tt>DocTypeReadVersion</tt> <bcp14>MUST</bcp14> contain the minimum version number that a reading application
 can minimally support in order to play the file back -- optionally with a reduced feature
 set. For example, if a file contains only <tt>Elements</tt> of version 2 or lower except for
@@ -5556,7 +5615,7 @@ If that property is not set, elements may or may not keep the same value between
 <t>The <tt>DefaultDecodedFieldDuration Element</tt> can signal to the displaying application how
 often fields of a video sequence will be available for displaying. It can be used for both
 interlaced and progressive content.</t>
-<t>If the video sequence is signaled as interlaced (<xref target="flaginterlaced-element"></xref>), then <tt>DefaultDecodedFieldDuration</tt> equals
+<t>If the video sequence is signaled as interlaced (<xref target="flaginterlaced-element"/>), then <tt>DefaultDecodedFieldDuration</tt> equals
 the period between two successive fields at the output of the decoding process.
 For video sequences signaled as progressive, <tt>DefaultDecodedFieldDuration</tt> is half of
 the period between two successive frames at the output of the decoding process.</t>
@@ -5596,15 +5655,15 @@ A Matroska Reader <bcp14>MUST</bcp14> support both types of blocks.</t>
 
 <t>The block header starts with the number of the <tt>Track</tt> it corresponds to.
 
-The value <bcp14>MUST</bcp14> correspond to the <tt>TrackNumber</tt> (<xref target="tracknumber-element"></xref>) of a <tt>TrackEntry</tt> of the <tt>Segment</tt>.</t>
-<t>The <tt>TrackNumber</tt> is coded using the Variable-Size Integer (VINT) mechanism described in <xref target="RFC8794" sectionFormat="of" section="4"></xref>.
+The value <bcp14>MUST</bcp14> correspond to the <tt>TrackNumber</tt> (<xref target="tracknumber-element"/>) of a <tt>TrackEntry</tt> of the <tt>Segment</tt>.</t>
+<t>The <tt>TrackNumber</tt> is coded using the Variable-Size Integer (VINT) mechanism described in <xref target="RFC8794" sectionFormat="of" section="4"/>.
 To save space, the shortest VINT form <bcp14>SHOULD</bcp14> be used. The value can be coded using up to 8 octets.
 This is the only element with a variable size in the block header.</t>
-<t>The timestamp is expressed in Track Ticks; see <xref target="timestamp-ticks"></xref>.
+<t>The timestamp is expressed in Track Ticks; see <xref target="timestamp-ticks"/>.
 The value is stored as a signed value on 16 bits.</t>
 
 <section anchor="block-structure"><name>Block Structure</name>
-<t>This section describes the binary data contained in the <tt>Block</tt> Element (<xref target="block-element"></xref>). Bit 0 is the most significant bit.</t>
+<t>This section describes the binary data contained in the <tt>Block</tt> Element (<xref target="block-element"/>). Bit 0 is the most significant bit.</t>
 <t>As the <tt>TrackNumber</tt> size can vary between 1 and 8 octets, there are 8 different sizes for the <tt>Block</tt> header.
 The definitions for <tt>TrackNumber</tt> sizes of 1 and 2 are provided; the other variants can be deduced by extending the size of the <tt>TrackNumber</tt> by multiples of 8 bits.</t>
 <figure><name>Block Header with 1-Octet TrackNumber
@@ -5642,10 +5701,10 @@ The definitions for <tt>TrackNumber</tt> sizes of 1 and 2 are provided; the othe
 <dt>LACING:</dt><dd><t>2 bits. Uses lacing mode.</t>
 
 <dl spacing="compact">
-<dt>00b:</dt><dd>no lacing (<xref target="no-lacing"></xref>)</dd>
-<dt>01b:</dt><dd>Xiph lacing (<xref target="xiph-lacing"></xref>)</dd>
-<dt>11b:</dt><dd>EBML lacing (<xref target="ebml-lacing"></xref>)</dd>
-<dt>10b:</dt><dd>fixed-size lacing (<xref target="fixed-size-lacing"></xref>)</dd>
+<dt>00b:</dt><dd>no lacing (<xref target="no-lacing"/>)</dd>
+<dt>01b:</dt><dd>Xiph lacing (<xref target="xiph-lacing"/>)</dd>
+<dt>11b:</dt><dd>EBML lacing (<xref target="ebml-lacing"/>)</dd>
+<dt>10b:</dt><dd>fixed-size lacing (<xref target="fixed-size-lacing"/>)</dd>
 </dl></dd>
 <dt>UNU:</dt><dd>1 bit. Unused bit.</dd>
 </dl>
@@ -5654,8 +5713,8 @@ The definitions for <tt>TrackNumber</tt> sizes of 1 and 2 are provided; the othe
 </section>
 
 <section anchor="simpleblock-structure"><name>SimpleBlock Structure</name>
-<t>This section describes the binary data contained in the <tt>SimpleBlock</tt> Element (<xref target="simpleblock-element"></xref>). Bit 0 is the most significant bit.</t>
-<t>The <tt>SimpleBlock</tt> structure is inspired by the <tt>Block</tt> structure; see <xref target="block-structure"></xref>.
+<t>This section describes the binary data contained in the <tt>SimpleBlock</tt> Element (<xref target="simpleblock-element"/>). Bit 0 is the most significant bit.</t>
+<t>The <tt>SimpleBlock</tt> structure is inspired by the <tt>Block</tt> structure; see <xref target="block-structure"/>.
 The main differences are the added Keyframe flag and Discardable flag. Otherwise, everything is the same.</t>
 <t>As the <tt>TrackNumber</tt> size can vary between 1 and 8 octets, there are 8 different sizes for the <tt>SimpleBlock</tt> header.
 The definitions for <tt>TrackNumber</tt> sizes of 1 and 2 are provided; the
@@ -5698,10 +5757,10 @@ other variants can be deduced by extending the size of the
 <dt>LACING:</dt><dd><t>2 bits. Uses lacing mode.</t>
 
 <dl spacing="compact">
-<dt>00b:</dt><dd>no lacing (<xref target="no-lacing"></xref>)</dd>
-<dt>01b:</dt><dd>Xiph lacing (<xref target="xiph-lacing"></xref>)</dd>
-<dt>11b:</dt><dd>EBML lacing (<xref target="ebml-lacing"></xref>)</dd>
-<dt>10b:</dt><dd>fixed-size lacing (<xref target="fixed-size-lacing"></xref>)</dd>
+<dt>00b:</dt><dd>no lacing (<xref target="no-lacing"/>)</dd>
+<dt>01b:</dt><dd>Xiph lacing (<xref target="xiph-lacing"/>)</dd>
+<dt>11b:</dt><dd>EBML lacing (<xref target="ebml-lacing"/>)</dd>
+<dt>10b:</dt><dd>fixed-size lacing (<xref target="fixed-size-lacing"/>)</dd>
 </dl></dd>
 <dt>DIS:</dt><dd>1 bit. Discardable. The frames of the <tt>Block</tt> can be discarded during playing if needed.</dd>
 </dl>
@@ -5715,7 +5774,7 @@ of data (referred to as frames in Matroska). It packs multiple frames into a sin
 <t>There are three types of lacing:</t>
 
 <ul>
-<li>Xiph, which is inspired by what is found in the Ogg container <xref target="RFC3533"></xref></li>
+<li>Xiph, which is inspired by what is found in the Ogg container <xref target="RFC3533"/></li>
 <li>EBML, which is the same with sizes coded differently</li>
 <li>Fixed-size, where the size is not coded</li>
 </ul>
@@ -5726,7 +5785,7 @@ the second is 500 octets long, and the third is 1000 octets long.
 Because these frames are small,
 they can be stored in a lace to save space.</t>
 <t>It is possible to not use lacing at all and just store a single frame without any extra data.
-When the <tt>FlagLacing</tt> (<xref target="flaglacing-element"></xref>) is set to 0, all blocks of that track <bcp14>MUST NOT</bcp14> use lacing.</t>
+When the <tt>FlagLacing</tt> (<xref target="flaglacing-element"/>) is set to 0, all blocks of that track <bcp14>MUST NOT</bcp14> use lacing.</t>
 
 <section anchor="no-lacing"><name>No Lacing</name>
 <t>When no lacing is used, the number of frames in the lace is ommitted, and only one frame can be stored in the Block. The LACING bits of the <tt>Block</tt> Header flags are set to <tt>00b</tt>.</t>
@@ -5753,7 +5812,7 @@ When the <tt>FlagLacing</tt> (<xref target="flaglacing-element"></xref>) is set 
 </section>
 
 <section anchor="xiph-lacing"><name>Xiph Lacing</name>
-<t>The Xiph lacing uses the same coding of size as found in the Ogg container <xref target="RFC3533"></xref>.
+<t>The Xiph lacing uses the same coding of size as found in the Ogg container <xref target="RFC3533"/>.
 The LACING bits of the <tt>Block</tt> Header flags are set to <tt>01b</tt>.</t>
 <t>The <tt>Block</tt> data with laced frames is stored as follows:</t>
 
@@ -5818,7 +5877,7 @@ A frame with a size multiple of 255 is coded with a 0 at the end of the size -- 
 </section>
 
 <section anchor="ebml-lacing"><name>EBML Lacing</name>
-<t>The EBML lacing encodes the frame size with an EBML-like encoding <xref target="RFC8794"></xref>.
+<t>The EBML lacing encodes the frame size with an EBML-like encoding <xref target="RFC8794"/>.
 The LACING bits of the <tt>Block</tt> Header flags are set to <tt>11b</tt>.</t>
 <t>The <tt>Block</tt> data with laced frames is stored as follows:</t>
 
@@ -5998,7 +6057,7 @@ They are independent of each other and can be played randomly.</t>
 <t>On the other hand, video tracks often use references to previous and future frames for better
 coding efficiency. Frames with such references <bcp14>MUST</bcp14> either contain one or more
 <tt>ReferenceBlock</tt> Elements in their <tt>BlockGroup</tt> or <bcp14>MUST</bcp14> be marked
-as non-keyframe in a <tt>SimpleBlock</tt>; see <xref target="simpleblock-structure"></xref>.</t>
+as non-keyframe in a <tt>SimpleBlock</tt>; see <xref target="simpleblock-structure"/>.</t>
 
 <figure><name>BlockGroup with a Frame That References Another Frame, with the EBML Tree Shown as XML</name>
 <sourcecode type="xml">&lt;Cluster&gt;
@@ -6159,13 +6218,13 @@ There are three types of ticks possible: Matroska Ticks, Segment Ticks, and Trac
 <t>The elements storing values in Matroska Ticks/nanoseconds are:</t>
 
 <ul>
-<li><tt>TrackEntry\DefaultDuration</tt>; defined in <xref target="defaultduration-element"></xref></li>
-<li><tt>TrackEntry\DefaultDecodedFieldDuration</tt>; defined in <xref target="defaultdecodedfieldduration-element"></xref></li>
-<li><tt>TrackEntry\SeekPreRoll</tt>; defined in <xref target="seekpreroll-element"></xref></li>
-<li><tt>TrackEntry\CodecDelay</tt>; defined in <xref target="codecdelay-element"></xref></li>
-<li><tt>BlockGroup\DiscardPadding</tt>; defined in <xref target="discardpadding-element"></xref></li>
-<li><tt>ChapterAtom\ChapterTimeStart</tt>; defined in <xref target="chaptertimestart-element"></xref></li>
-<li><tt>ChapterAtom\ChapterTimeEnd</tt>; defined in <xref target="chaptertimeend-element"></xref></li>
+<li><tt>TrackEntry\DefaultDuration</tt>; defined in <xref target="defaultduration-element"/></li>
+<li><tt>TrackEntry\DefaultDecodedFieldDuration</tt>; defined in <xref target="defaultdecodedfieldduration-element"/></li>
+<li><tt>TrackEntry\SeekPreRoll</tt>; defined in <xref target="seekpreroll-element"/></li>
+<li><tt>TrackEntry\CodecDelay</tt>; defined in <xref target="codecdelay-element"/></li>
+<li><tt>BlockGroup\DiscardPadding</tt>; defined in <xref target="discardpadding-element"/></li>
+<li><tt>ChapterAtom\ChapterTimeStart</tt>; defined in <xref target="chaptertimestart-element"/></li>
+<li><tt>ChapterAtom\ChapterTimeEnd</tt>; defined in <xref target="chaptertimeend-element"/></li>
 
 <!-- [cellar] changed CueTime from Matroska Ticks to Segment Ticks
 
@@ -6194,9 +6253,9 @@ in nanoseconds of the element, with the following formula:</t>
 <t>The elements storing values in Segment Ticks are:</t>
 
 <ul>
-<li><tt>Cluster\Timestamp</tt>; defined in <xref target="timestamp-element"></xref></li>
-<li><tt>Info\Duration</tt> is stored as a floating-point, but the same formula applies; defined in <xref target="duration-element"></xref></li>
-<li><tt>CuePoint\CueTime</tt>; defined in <xref target="cuetime-element"></xref></li>
+<li><tt>Cluster\Timestamp</tt>; defined in <xref target="timestamp-element"/></li>
+<li><tt>Info\Duration</tt> is stored as a floating-point, but the same formula applies; defined in <xref target="duration-element"/></li>
+<li><tt>CuePoint\CueTime</tt>; defined in <xref target="cuetime-element"/></li>
 
 <!-- [cellar] changed CueTime from Matroska Ticks to Segment Ticks
 
@@ -6204,8 +6263,8 @@ It was brought to our attention after our last submission that this was mistaken
 for a Matroska Tick. We fix the issue in our repository in https://github.com/ietf-wg-cellar/matroska-specification/pull/814
 -->
 
-<li><tt>CuePoint\CueTrackPositions\CueDuration</tt>; defined in <xref target="cueduration-element"></xref></li>
-<li><tt>CueReference\CueRefTime</tt>; defined in <xref target="cuetime-element"></xref></li>
+<li><tt>CuePoint\CueTrackPositions\CueDuration</tt>; defined in <xref target="cueduration-element"/></li>
+<li><tt>CueReference\CueRefTime</tt>; defined in <xref target="cuetime-element"/></li>
 
 <!-- [cellar] changed CueRefTime from Matroska Ticks to Segment Ticks
 
@@ -6229,9 +6288,9 @@ The resulting floating-point values of the timestamps are still expressed in nan
 <t>The elements storing values in Track Ticks are:</t>
 
 <ul>
-<li><tt>Cluster\BlockGroup\Block</tt> and <tt>Cluster\SimpleBlock</tt> timestamps; detailed in <xref target="block-timestamps"></xref></li>
-<li><tt>Cluster\BlockGroup\BlockDuration</tt>; defined in <xref target="blockduration-element"></xref></li>
-<li><tt>Cluster\BlockGroup\ReferenceBlock</tt>; defined in <xref target="referenceblock-element"></xref></li>
+<li><tt>Cluster\BlockGroup\Block</tt> and <tt>Cluster\SimpleBlock</tt> timestamps; detailed in <xref target="block-timestamps"/></li>
+<li><tt>Cluster\BlockGroup\BlockDuration</tt>; defined in <xref target="blockduration-element"/></li>
+<li><tt>Cluster\BlockGroup\ReferenceBlock</tt>; defined in <xref target="referenceblock-element"/></li>
 </ul>
 <t>When the <tt>TrackTimestampScale</tt> is interpreted as "1.0", Track Ticks are equivalent to Segment Ticks
 and give an integer value in nanoseconds. This is the most common case as <tt>TrackTimestampScale</tt> is usually omitted.</t>
@@ -6277,23 +6336,23 @@ to have a more refined timestamp precision per frame.</t>
 <section anchor="language-codes"><name>Language Codes</name>
 
 <t>Matroska versions 1 through 3 use language codes that can be either the three-letter
-bibliographic ISO 639-2 form <xref target="ISO639-2"></xref> (like "fre" for French)
+bibliographic ISO 639-2 form <xref target="ISO639-2"/> (like "fre" for French)
 or such a language code followed by a dash and a country code for specialities in languages (like "fre-ca" for Canadian French).
 The <tt>ISO 639-2 Language Elements</tt> are "<tt>Language</tt> Element", "<tt>TagLanguage</tt> Element", and "<tt>ChapLanguage</tt> Element".</t>
 
-<t>Starting in Matroska version 4, the forms defined in either <xref target="ISO639-2"></xref> or
-<xref target="RFC5646"></xref> <bcp14>MAY</bcp14> be used, although the form in <xref target="RFC5646"></xref> is <bcp14>RECOMMENDED</bcp14>. The <tt>Language Elements</tt> in the <xref target="RFC5646"></xref> form
+<t>Starting in Matroska version 4, the forms defined in either <xref target="ISO639-2"/> or
+<xref target="RFC5646"/> <bcp14>MAY</bcp14> be used, although the form in <xref target="RFC5646"/> is <bcp14>RECOMMENDED</bcp14>. The <tt>Language Elements</tt> in the <xref target="RFC5646"/> form
 are "<tt>LanguageBCP47</tt> Element", "<tt>TagLanguageBCP47</tt> Element", and
-"<tt>ChapLanguageBCP47</tt> Element". If both an <tt><xref target="ISO639-2"></xref> Language Element</tt> and an <tt><xref target="RFC5646"></xref> Language Element</tt> are used within the same <tt>Parent
-Element</tt>, then the <tt>Language Element</tt> in the <xref target="ISO639-2"></xref> form <bcp14>MUST</bcp14>
-be ignored and precedence given to the <tt>Language Element</tt> in the <xref target="RFC5646"></xref> form.</t>
+"<tt>ChapLanguageBCP47</tt> Element". If both an <tt><xref target="ISO639-2"/> Language Element</tt> and an <tt><xref target="RFC5646"/> Language Element</tt> are used within the same <tt>Parent
+Element</tt>, then the <tt>Language Element</tt> in the <xref target="ISO639-2"/> form <bcp14>MUST</bcp14>
+be ignored and precedence given to the <tt>Language Element</tt> in the <xref target="RFC5646"/> form.</t>
 
 <t>In this document, "BCP47" in element names refers specifically to
 <xref target="RFC5646"/>, which is part of BCP 47.</t>
 </section>
 
 <section anchor="country-codes"><name>Country Codes</name>
-<t>Country codes are the <xref target="RFC5646"></xref> two-letter region subtags, without the UK exception.</t>
+<t>Country codes are the <xref target="RFC5646"/> two-letter region subtags, without the UK exception.</t>
 </section>
 
 <section anchor="encryption"><name>Encryption</name>
@@ -6301,9 +6360,9 @@ be ignored and precedence given to the <tt>Language Element</tt> in the <xref ta
 <t>This Matroska specification provides no interoperable solution for
 securing the data container with any assurances of confidentiality, integrity,
 authenticity, or authorization. The <tt>ContentEncryption Element</tt> (<xref
-target="contentencryption-element"></xref>) and associated sub-fields (<xref
-target="contentencalgo-element"></xref> to <xref
-target="aessettingsciphermode-element"></xref>) are defined only for the
+target="contentencryption-element"/>) and associated sub-fields (<xref
+target="contentencalgo-element"/> to <xref
+target="aessettingsciphermode-element"/>) are defined only for the
 benefit of implementers to construct their own proprietary solution or as the
 basis for further standardization activities.  How to use these fields to
 secure a Matroska data container is out of scope, as are any related issues
@@ -6319,15 +6378,15 @@ types of encryption can be used, requiring two separate keys to be able to decry
 <t>Encryption information is stored in the <tt>ContentEncodings Element</tt> under the <tt>ContentEncryption Element</tt>.</t>
 <t>For encryption systems sharing public/private keys, the creation of the keys and the exchange of keys
 are not covered by this document. They have to be handled by the system using Matroska.</t>
-<t>The algorithms described in <xref target="ContentEncAlgoValues"></xref> support
+<t>The algorithms described in <xref target="ContentEncAlgoValues"/> support
 different modes of operations and key sizes.  The specification of these
 parameters is required for a complete solution but is out of scope of this
 document and left to the proprietary implementations using them or subsequent
 profiles of this document.</t>
 <t>The <tt>ContentEncodingScope Element</tt> gives an idea of which part of the track is encrypted, but each <tt>ContentEncAlgo Element</tt> and its sub-elements (like <tt>AESSettingsCipherMode</tt>)
 define exactly how the encrypted track should be interpreted.</t>
-<t>An example of an extension that builds upon these security-related fields in this specification is <xref target="WebM-Enc"></xref>.
-It uses AES-CTR, <tt>ContentEncAlgo</tt> = 5 (<xref target="contentencalgo-element"></xref>), and <tt>AESSettingsCipherMode</tt> = 1 (<xref target="aessettingsciphermode-element"></xref>).</t>
+<t>An example of an extension that builds upon these security-related fields in this specification is <xref target="WebM-Enc"/>.
+It uses AES-CTR, <tt>ContentEncAlgo</tt> = 5 (<xref target="contentencalgo-element"/>), and <tt>AESSettingsCipherMode</tt> = 1 (<xref target="aessettingsciphermode-element"/>).</t>
 <t>A Matroska Writer <bcp14>MUST NOT</bcp14> use insecure cryptographic algorithms to create new
 archives or streams, but a Matroska Reader <bcp14>MAY</bcp14> support these algorithms to read
 previously made archives or streams.</t>
@@ -6353,9 +6412,9 @@ rows of pixels <bcp14>SHOULD</bcp14> be cropped from the top and bottom of the i
 </section>
 
 <section anchor="rotation"><name>Rotation</name>
-<t>The <tt>ProjectionPoseRoll </tt>Element (<xref target="projectionposeroll-element"></xref>) can be used to indicate
+<t>The <tt>ProjectionPoseRoll </tt>Element (<xref target="projectionposeroll-element"/>) can be used to indicate
 that the image from the associated video track <bcp14>SHOULD</bcp14> be rotated for presentation.
-For instance, the following example  of the <tt>Projection</tt> Element (<xref target="projection-element"></xref>)
+For instance, the following example  of the <tt>Projection</tt> Element (<xref target="projection-element"/>)
 and the <tt>ProjectionPoseRoll</tt> Element represents a video track where the image <bcp14>SHOULD</bcp14> be
 presented with a 90-degree counter-clockwise rotation, with the EBML tree shown as XML:</t>
 <figure><name>Rotation Example
@@ -6582,7 +6641,7 @@ cross-referencing each other with <tt>SegmentUUID</tt>, <tt>PrevUUID</tt>, and <
 </table></section>
 
 <section anchor="medium-linking"><name>Medium Linking</name>
-<t>Medium Linking creates relationships between <tt>Segments</tt> using <tt>Ordered Chapters</tt> (<xref target="editionflagordered"></xref>) and the
+<t>Medium Linking creates relationships between <tt>Segments</tt> using <tt>Ordered Chapters</tt> (<xref target="editionflagordered"/>) and the
 <tt>ChapterSegmentUUID Element</tt>. A <tt>Chapter Edition</tt> with <tt>Ordered Chapters</tt> <bcp14>MAY</bcp14> contain
 <tt>Chapters</tt> elements that reference timestamp ranges from other <tt>Segments</tt>. The <tt>Segment</tt>
 referenced by the <tt>Ordered Chapter</tt> via the <tt>ChapterSegmentUUID Element</tt> <bcp14>SHOULD</bcp14> be played as
@@ -6720,13 +6779,13 @@ in a <tt>Block</tt> that uses lacing. The first frame is the left eye and the ot
 on each other (P and B frames).</t>
 <t>For separate tracks, Matroska needs to define exactly which track does what.
 <tt>TrackOperation</tt> with <tt>TrackCombinePlanes</tt> does that. For more details, see
-<xref target="track-operation"></xref> on how <tt>TrackOperation</tt> works.</t>
+<xref target="track-operation"/> on how <tt>TrackOperation</tt> works.</t>
 <t>The 3D support is still in infancy and may evolve to support more features.</t>
 <t>The <tt>StereoMode</tt> used to be part of Matroska v2, but it didn't meet the
 requirement for multiple tracks. There was also a bug in <xref
-target="libmatroska"></xref> prior to 0.9.0 that would save/read it as
+target="libmatroska"/> prior to 0.9.0 that would save/read it as
 <tt>0x53B9</tt> instead of <tt>0x53B8</tt>; see <tt>OldStereoMode</tt> (<xref
-target="oldstereomode-element"></xref>). <tt>Matroska Readers</tt>
+target="oldstereomode-element"/>). <tt>Matroska Readers</tt>
 <bcp14>MAY</bcp14> support these legacy files by checking Matroska v2 or
 <tt>0x53B9</tt>.  The older values of <tt>StereoMode</tt> were 0 (mono), 1 (right eye),
 2 (left eye), and 3 (both eyes); these are the only values that can be found
@@ -7009,7 +7068,7 @@ should be preferred, as the Forced track will not contain captioning for the dia
 <tt>Simple Chapters</tt> where a chapter start time is used as a marker in the timeline only. An
 <tt>Edition</tt> can be more complex with <tt>Ordered Chapters</tt> where a chapter end timestamp is additionally
 used or much more complex with <tt>Linked Chapters</tt>. The Matroska <tt>Chapters</tt> system can also have a menu
-structure borrowed from the DVD-menu system <xref target="DVD-Video"></xref> or have its own built-in Matroska menu structure.</t>
+structure borrowed from the DVD-menu system <xref target="DVD-Video"/> or have its own built-in Matroska menu structure.</t>
 
 <section anchor="editionentry"><name>EditionEntry</name>
 <t>The <tt>EditionEntry</tt> is also called an <tt>Edition</tt>.
@@ -7148,7 +7207,7 @@ evaluates to "1".</t>
 <dt>Medium Linking:</dt><dd><tt>Ordered Chapters</tt> are used in a normal way and can be combined
 with the <tt>ChapterSegmentUUID</tt> element, which establishes a link to another <tt>Segment</tt>.</dd>
 </dl>
-<t>See <xref target="linked-segments"></xref> on <tt>Linked Segment</tt>s for more information
+<t>See <xref target="linked-segments"/> on <tt>Linked Segment</tt>s for more information
 about <tt>Hard Linking</tt> and <tt>Medium Linking</tt>.</t>
 </section>
 </section>
@@ -7171,7 +7230,7 @@ The end timestamp <bcp14>MUST</bcp14> be greater than or equal to the start time
 <t>When the <tt>ChapterTimeEnd</tt> timestamp is equal to the <tt>ChapterTimeStart</tt> timestamp,
 the timestamp is included in the <tt>Chapter</tt>. It can be useful to put markers in
 a file or add chapter commands with ordered chapter commands without having to play anything;
-see <xref target="chapprocess-element"></xref>.</t>
+see <xref target="chapprocess-element"/>.</t>
 <table anchor="ChapterTimeEndUsage"><name>ChapterTimeEnd Usage
 Possibilities</name>
 <thead>
@@ -7290,7 +7349,7 @@ Chapters</tt>.  A <tt>Nested Chapter</tt> with a <tt>ChapterFlagHidden</tt> flag
 <t>The menu features are handled like a <tt>chapter codec</tt>. That means each codec has a type,
 some private data, and some data in the chapters.</t>
 <t>The type of the menu system is defined by the <tt>ChapProcessCodecID</tt> parameter.
-For now, only two values are supported: 0 (Matroska Script) and 1 (menu borrowed from the DVD <xref target="DVD-Video"></xref>).
+For now, only two values are supported: 0 (Matroska Script) and 1 (menu borrowed from the DVD <xref target="DVD-Video"/>).
 
 The private data stored in <tt>ChapProcessPrivate</tt> and
 <tt>ChapProcessData</tt> depends on the <tt>ChapProcessCodecID</tt> value.
@@ -7300,7 +7359,7 @@ depends on the Chapter Codec features and its integration in a Matroska Player.<
 </section>
 
 <section anchor="physical-types"><name>Physical Types</name>
-<t>Each level can have different meanings for audio and video. The <tt>ORIGINAL_MEDIA_TYPE</tt> tag <xref target="I-D.ietf-cellar-tags"></xref> can be used to
+<t>Each level can have different meanings for audio and video. The <tt>ORIGINAL_MEDIA_TYPE</tt> tag <xref target="I-D.ietf-cellar-tags"/> can be used to
 specify a string for ChapterPhysicalEquiv = 60. Here is the list of possible levels for both audio and video:</t>
 <table anchor="ChapterPhysicalEquivMeaning"><name>ChapterPhysicalEquiv Meaning per Track Type</name>
 <thead>
@@ -7573,7 +7632,7 @@ copies of specifications, or other ancillary files related to the <tt>Segment</t
 <t>This section defines a set of guidelines for the storage of cover art in Matroska files.
 A Matroska Reader <bcp14>MAY</bcp14> use embedded cover art to display a representational
 still-image depiction of the multimedia contents of the Matroska file.</t>
-<t>Only <xref target="JPEG"></xref> and PNG <xref target="RFC2083"></xref> image formats <bcp14>SHOULD</bcp14> be used for cover art pictures.</t>
+<t>Only <xref target="JPEG"/> and PNG <xref target="RFC2083"/> image formats <bcp14>SHOULD</bcp14> be used for cover art pictures.</t>
 <t>There can be two different covers for a movie/album: a portrait style (e.g., a DVD case)
 and a landscape style (e.g., a wide banner ad).</t>
 <t>There can be two versions of the same cover: the <tt>normal cover</tt> and
@@ -7644,7 +7703,7 @@ attempt to find a system font whose Font Name matches the one used in the subtit
 loads or installs all the fonts found in attachments so they are ready to be used during playback.
 Failure to use the font attachment might result in incorrect rendering of the subtitles.</t>
 <t>If a selected subtitle track has some <tt>AttachmentLink</tt> elements, the player <bcp14>MAY</bcp14> restrict its font rendering to use only these fonts.</t>
-<t>A Matroska Player <bcp14>SHOULD</bcp14> handle the official font media types from <xref target="RFC8081"></xref> when the system can handle the type:</t>
+<t>A Matroska Player <bcp14>SHOULD</bcp14> handle the official font media types from <xref target="RFC8081"/> when the system can handle the type:</t>
 
 <ul>
 <li>font/sfnt: Generic SFNT Font Type</li>
@@ -7654,7 +7713,7 @@ Failure to use the font attachment might result in incorrect rendering of the su
 <li>font/woff: WOFF 1.0</li>
 <li>font/woff2: WOFF 2.0</li>
 </ul>
-<t>Fonts in Matroska existed long before <xref target="RFC8081"></xref>. A few unofficial media types for fonts were used in existing files.
+<t>Fonts in Matroska existed long before <xref target="RFC8081"/>. A few unofficial media types for fonts were used in existing files.
 Therefore, it is <bcp14>RECOMMENDED</bcp14> for a Matroska Player to support the following legacy media types for font attachments:</t>
 
 <ul>
@@ -7677,7 +7736,7 @@ Common file extensions for fonts are:</t>
 </li>
 </ul>
 <t>The file extension check <bcp14>MUST</bcp14> be case-insensitive.</t>
-<t>Matroska Writers <bcp14>SHOULD</bcp14> use a valid font media type from <xref target="RFC8081"></xref> in the <tt>AttachedFile\FileMediaType</tt> of the font attachment.
+<t>Matroska Writers <bcp14>SHOULD</bcp14> use a valid font media type from <xref target="RFC8081"/> in the <tt>AttachedFile\FileMediaType</tt> of the font attachment.
 They <bcp14>MAY</bcp14> use the media types found in older files when compatibility with older players is necessary.</t>
 </section>
 </section>
@@ -7733,7 +7792,7 @@ are usually safe from reading errors, and seeking in the stream is possible. How
 when a file is stored far away or on a slow server, seeking can be an expensive operation
 and should be avoided.
 When followed, the guidelines in <xref
-target="implementation-recommendations"></xref> help reduce the number of
+target="implementation-recommendations"/> help reduce the number of
 seeking operations for regular playback and also have the playback start
 quickly without needing to read lot of data first (like a <tt>Cues Element</tt>,
 <tt>Attachments Element</tt>, or <tt>SeekHead Element</tt>).</t>
@@ -7773,15 +7832,15 @@ and use the new values instead.</t>
 <section anchor="tags-precedence"><name>Tags Precedence</name>
 
 <t>Tags allow tagging all kinds of Matroska parts with very detailed metadata in multiple languages.</t>
-<t>Some Matroska elements also contain their own string value, like the <tt>Name</tt> element (<xref target="name-element"></xref>) or the <tt>ChapString</tt> element (<xref target="chapstring-element"></xref>).</t>
+<t>Some Matroska elements also contain their own string value, like the <tt>Name</tt> element (<xref target="name-element"/>) or the <tt>ChapString</tt> element (<xref target="chapstring-element"/>).</t>
 <t>The following Matroska elements can also be defined with tags:</t>
 
 <ul>
-<li><t>The <tt>Name</tt> Element (<xref target="name-element"></xref>) corresponds to a tag with the <tt>TagTrackUID</tt> (<xref target="tagtrackuid-element"></xref>) set to the given track, a <tt>TagName</tt> of <tt>TITLE</tt> (<xref target="tagname-element"></xref>), and a <tt>TagLanguage</tt> (<xref target="taglanguage-element"></xref>) or <tt>TagLanguageBCP47</tt> (<xref target="taglanguagebcp47-element"></xref>) of "und".</t>
+<li><t>The <tt>Name</tt> Element (<xref target="name-element"/>) corresponds to a tag with the <tt>TagTrackUID</tt> (<xref target="tagtrackuid-element"/>) set to the given track, a <tt>TagName</tt> of <tt>TITLE</tt> (<xref target="tagname-element"/>), and a <tt>TagLanguage</tt> (<xref target="taglanguage-element"/>) or <tt>TagLanguageBCP47</tt> (<xref target="taglanguagebcp47-element"/>) of "und".</t>
 </li>
-<li><t>The <tt>ChapString</tt> Element (<xref target="chapstring-element"></xref>) corresponds to a tag with the <tt>TagChapterUID</tt> (<xref target="tagchapteruid-element"></xref>) set to the same chapter UID, a <tt>TagName</tt> of <tt>TITLE</tt> (<xref target="tagname-element"></xref>), and a <tt>TagLanguage</tt> (<xref target="taglanguage-element"></xref>) or <tt>TagLanguageBCP47</tt> (<xref target="taglanguagebcp47-element"></xref>) matching the <tt>ChapLanguage</tt> (<xref target="chaplanguage-element"></xref>) or <tt>ChapLanguageBCP47</tt> (<xref target="chaplanguagebcp47-element"></xref>), respectively.</t>
+<li><t>The <tt>ChapString</tt> Element (<xref target="chapstring-element"/>) corresponds to a tag with the <tt>TagChapterUID</tt> (<xref target="tagchapteruid-element"/>) set to the same chapter UID, a <tt>TagName</tt> of <tt>TITLE</tt> (<xref target="tagname-element"/>), and a <tt>TagLanguage</tt> (<xref target="taglanguage-element"/>) or <tt>TagLanguageBCP47</tt> (<xref target="taglanguagebcp47-element"/>) matching the <tt>ChapLanguage</tt> (<xref target="chaplanguage-element"/>) or <tt>ChapLanguageBCP47</tt> (<xref target="chaplanguagebcp47-element"/>), respectively.</t>
 </li>
-<li><t>The <tt>FileDescription</tt> Element (<xref target="filedescription-element"></xref>) of an attachment corresponds to a tag with the <tt>TagAttachmentUID</tt> (<xref target="tagattachmentuid-element"></xref>) set to the given attachment, a <tt>TagName</tt> of <tt>TITLE</tt> (<xref target="tagname-element"></xref>), and a <tt>TagLanguage</tt> (<xref target="taglanguage-element"></xref>) or <tt>TagLanguageBCP47</tt> (<xref target="taglanguagebcp47-element"></xref>) of "und".</t>
+<li><t>The <tt>FileDescription</tt> Element (<xref target="filedescription-element"/>) of an attachment corresponds to a tag with the <tt>TagAttachmentUID</tt> (<xref target="tagattachmentuid-element"/>) set to the given attachment, a <tt>TagName</tt> of <tt>TITLE</tt> (<xref target="tagname-element"/>), and a <tt>TagLanguage</tt> (<xref target="taglanguage-element"/>) or <tt>TagLanguageBCP47</tt> (<xref target="taglanguagebcp47-element"/>) of "und".</t>
 </li>
 </ul>
 <t>When both values exist in the file, the value found in Tags takes precedence over the value found in the original location of the element.
@@ -7792,11 +7851,11 @@ and keep the tags matching these values if tags are also used.</t>
 </section>
 
 <section anchor="tag-levels"><name>Tag Levels</name>
-<t>Tag elements allow tagging information on multiple levels, with each level having a <tt>TargetTypeValue</tt> <xref target="targettypevalue-element"></xref>.
+<t>Tag elements allow tagging information on multiple levels, with each level having a <tt>TargetTypeValue</tt> <xref target="targettypevalue-element"/>.
 An element for a given <tt>TargetTypeValue</tt> also applies to the lower levels denoted by smaller <tt>TargetTypeValue</tt> values. If an upper value
 doesn't apply to a level but the actual value to use is not known,
-an empty <tt>TagString</tt> (<xref target="tagstring-element"></xref>) or an empty <tt>TagBinary</tt> (<xref target="tagbinary-element"></xref>) <bcp14>MUST</bcp14> be used as the tag value for this level.</t>
-<t>See <xref target="I-D.ietf-cellar-tags"></xref> for more details on common tag names, types, and descriptions.</t>
+an empty <tt>TagString</tt> (<xref target="tagstring-element"/>) or an empty <tt>TagBinary</tt> (<xref target="tagbinary-element"/>) <bcp14>MUST</bcp14> be used as the tag value for this level.</t>
+<t>See <xref target="I-D.ietf-cellar-tags"/> for more details on common tag names, types, and descriptions.</t>
 </section>
 </section>
 
@@ -7874,7 +7933,7 @@ Therefore, this layout is rarely used:</t>
 </section>
 
 <section anchor="optimum-layout-for-livestreaming"><name>Optimum Layout for Livestreaming</name>
-<t>In livestreaming (<xref target="livestreaming"></xref>), only a few elements make sense. For example, <tt>SeekHead</tt> and <tt>Cues</tt> are useless.
+<t>In livestreaming (<xref target="livestreaming"/>), only a few elements make sense. For example, <tt>SeekHead</tt> and <tt>Cues</tt> are useless.
 All elements other than the <tt>Clusters</tt> <bcp14>MUST</bcp14> be placed before the <tt>Clusters</tt>.</t>
 
 <ul spacing="compact">
@@ -7899,7 +7958,7 @@ check that the data adheres to expectations or not use the attachment.</t>
 </li>
 <li><t>A <tt>Matroska Attachment</tt> with an inaccurate media type.</t>
 </li>
-<li><t>Damage to the Encryption and Compression fields (<xref target="encryption"></xref>) that would result in bogus binary data
+<li><t>Damage to the Encryption and Compression fields (<xref target="encryption"/>) that would result in bogus binary data
 interpreted by the decoder.</t>
 </li>
 <li><t>Chapter Codecs running unwanted commands on the host system.</t>
@@ -7963,16 +8022,16 @@ registry.</t>
 Element Name, a Change Controller (IETF or email of registrant), and an
 optional Reference to a document describing the Element ID.</t>
 <t>Element IDs are encoded
-using the VINT mechanism described in <xref target="RFC8794" sectionFormat="of" section="4"></xref> and can be between
+using the VINT mechanism described in <xref target="RFC8794" sectionFormat="of" section="4"/> and can be between
 one and five octets long. Five-octet Element IDs are possible
 only if declared in the EBML Header.</t>
-<t>Element IDs are described in <xref target="RFC8794" sectionFormat="of" section="5"></xref>, with the changes in <xref target="Err7189"/> and <xref target="Err7191"/>.</t>
-<t>One-octet Matroska Element IDs (range 0x00-0xFF) are to be allocated according to the "RFC Required" policy <xref target="RFC8126"></xref>.</t>
-<t>Two-octet Matroska Element IDs (range 0x0100-0xFFFF) are to be allocated according to the "Specification Required" policy <xref target="RFC8126"></xref>.</t>
-<t>Three-octet and four-octet Matroska Element IDs (range 0x00010000-0xFFFFFFFF) are to be allocated according to the "First Come First Served" policy <xref target="RFC8126"></xref>.</t>
+<t>Element IDs are described in <xref target="RFC8794" sectionFormat="of" section="5"/>, with the changes in <xref target="Err7189"/> and <xref target="Err7191"/>.</t>
+<t>One-octet Matroska Element IDs (range 0x00-0xFF) are to be allocated according to the "RFC Required" policy <xref target="RFC8126"/>.</t>
+<t>Two-octet Matroska Element IDs (range 0x0100-0xFFFF) are to be allocated according to the "Specification Required" policy <xref target="RFC8126"/>.</t>
+<t>Three-octet and four-octet Matroska Element IDs (range 0x00010000-0xFFFFFFFF) are to be allocated according to the "First Come First Served" policy <xref target="RFC8126"/>.</t>
 <t>The allowed values in the "Matroska Element IDs" registry are similar to the ones found
-in the "EBML Element IDs" registry defined in <xref target="RFC8794" sectionFormat="of" section="17.1"></xref>.</t>
-<t>EBML Element IDs defined for the EBML Header -- as defined in <xref target="RFC8794" sectionFormat="of" section="17.1"></xref> -- <bcp14>MUST NOT</bcp14> be used as Matroska Element IDs.</t>
+in the "EBML Element IDs" registry defined in <xref target="RFC8794" sectionFormat="of" section="17.1"/>.</t>
+<t>EBML Element IDs defined for the EBML Header -- as defined in <xref target="RFC8794" sectionFormat="of" section="17.1"/> -- <bcp14>MUST NOT</bcp14> be used as Matroska Element IDs.</t>
 
 
 <t>Given the scarcity of one-octet Element IDs, they should only be created
@@ -7981,10 +8040,10 @@ or <tt>Chapters</tt>). The four-octet Element IDs are mostly for synchronization
 large elements.  They should only be used for such high-level elements.
 Elements that are not expected to be used often should use three-octet Element
 IDs.</t>
-<t>Elements found in <xref target="appendix-a-historic-deprecated-elements"></xref> have an assigned Matroska Element ID for historical reasons.
+<t>Elements found in <xref target="appendix-a-historic-deprecated-elements"/> have an assigned Matroska Element ID for historical reasons.
 These elements are not in use and <bcp14>SHOULD NOT</bcp14> be reused unless there are no other IDs available with the desired size.
 Such IDs are marked as "Reclaimed" in the "Matroska Element IDs" registry, as they could be used for other things in the future.</t>
-<t><xref target="iana-table"></xref> shows the initial contents of the
+<t><xref target="iana-table"/> shows the initial contents of the
 "Matroska Element IDs" registry. Note that the Change Controller for all
 entries in <xref target="iana-table"/> is "IETF".</t>
 <table anchor="iana-table"><name>Initial Contents of "Matroska Element IDs" Registry
@@ -8001,1511 +8060,1511 @@ entries in <xref target="iana-table"/> is "IETF".</t>
 <tr>
 <td align="right">0x80</td>
 <td align="left">ChapterDisplay</td>
-<td align="left">RFC 9559, <xref target="chapterdisplay-element"></xref></td>
+<td align="left">RFC 9559, <xref target="chapterdisplay-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x83</td>
 <td align="left">TrackType</td>
-<td align="left">RFC 9559, <xref target="tracktype-element"></xref></td>
+<td align="left">RFC 9559, <xref target="tracktype-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x85</td>
 <td align="left">ChapString</td>
-<td align="left">RFC 9559, <xref target="chapstring-element"></xref></td>
+<td align="left">RFC 9559, <xref target="chapstring-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x86</td>
 <td align="left">CodecID</td>
-<td align="left">RFC 9559, <xref target="codecid-element"></xref></td>
+<td align="left">RFC 9559, <xref target="codecid-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x88</td>
 <td align="left">FlagDefault</td>
-<td align="left">RFC 9559, <xref target="flagdefault-element"></xref></td>
+<td align="left">RFC 9559, <xref target="flagdefault-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x8E</td>
 <td align="left">Slices</td>
-<td align="left">Reclaimed (RFC 9559, <xref target="slices-element"></xref>)</td>
+<td align="left">Reclaimed (RFC 9559, <xref target="slices-element"/>)</td>
 </tr>
 
 <tr>
 <td align="right">0x91</td>
 <td align="left">ChapterTimeStart</td>
-<td align="left">RFC 9559, <xref target="chaptertimestart-element"></xref></td>
+<td align="left">RFC 9559, <xref target="chaptertimestart-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x92</td>
 <td align="left">ChapterTimeEnd</td>
-<td align="left">RFC 9559, <xref target="chaptertimeend-element"></xref></td>
+<td align="left">RFC 9559, <xref target="chaptertimeend-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x96</td>
 <td align="left">CueRefTime</td>
-<td align="left">RFC 9559, <xref target="cuereftime-element"></xref></td>
+<td align="left">RFC 9559, <xref target="cuereftime-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x97</td>
 <td align="left">CueRefCluster</td>
-<td align="left">Reclaimed (RFC 9559, <xref target="cuerefcluster-element"></xref>)</td>
+<td align="left">Reclaimed (RFC 9559, <xref target="cuerefcluster-element"/>)</td>
 </tr>
 
 <tr>
 <td align="right">0x98</td>
 <td align="left">ChapterFlagHidden</td>
-<td align="left">RFC 9559, <xref target="chapterflaghidden-element"></xref></td>
+<td align="left">RFC 9559, <xref target="chapterflaghidden-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x9A</td>
 <td align="left">FlagInterlaced</td>
-<td align="left">RFC 9559, <xref target="flaginterlaced-element"></xref></td>
+<td align="left">RFC 9559, <xref target="flaginterlaced-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x9B</td>
 <td align="left">BlockDuration</td>
-<td align="left">RFC 9559, <xref target="blockduration-element"></xref></td>
+<td align="left">RFC 9559, <xref target="blockduration-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x9C</td>
 <td align="left">FlagLacing</td>
-<td align="left">RFC 9559, <xref target="flaglacing-element"></xref></td>
+<td align="left">RFC 9559, <xref target="flaglacing-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x9D</td>
 <td align="left">FieldOrder</td>
-<td align="left">RFC 9559, <xref target="fieldorder-element"></xref></td>
+<td align="left">RFC 9559, <xref target="fieldorder-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x9F</td>
 <td align="left">Channels</td>
-<td align="left">RFC 9559, <xref target="channels-element"></xref></td>
+<td align="left">RFC 9559, <xref target="channels-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0xA0</td>
 <td align="left">BlockGroup</td>
-<td align="left">RFC 9559, <xref target="blockgroup-element"></xref></td>
+<td align="left">RFC 9559, <xref target="blockgroup-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0xA1</td>
 <td align="left">Block</td>
-<td align="left">RFC 9559, <xref target="block-element"></xref></td>
+<td align="left">RFC 9559, <xref target="block-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0xA2</td>
 <td align="left">BlockVirtual</td>
-<td align="left">Reclaimed (RFC 9559, <xref target="blockvirtual-element"></xref>)</td>
+<td align="left">Reclaimed (RFC 9559, <xref target="blockvirtual-element"/>)</td>
 </tr>
 
 <tr>
 <td align="right">0xA3</td>
 <td align="left">SimpleBlock</td>
-<td align="left">RFC 9559, <xref target="simpleblock-element"></xref></td>
+<td align="left">RFC 9559, <xref target="simpleblock-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0xA4</td>
 <td align="left">CodecState</td>
-<td align="left">RFC 9559, <xref target="codecstate-element"></xref></td>
+<td align="left">RFC 9559, <xref target="codecstate-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0xA5</td>
 <td align="left">BlockAdditional</td>
-<td align="left">RFC 9559, <xref target="blockadditional-element"></xref></td>
+<td align="left">RFC 9559, <xref target="blockadditional-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0xA6</td>
 <td align="left">BlockMore</td>
-<td align="left">RFC 9559, <xref target="blockmore-element"></xref></td>
+<td align="left">RFC 9559, <xref target="blockmore-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0xA7</td>
 <td align="left">Position</td>
-<td align="left">RFC 9559, <xref target="position-element"></xref></td>
+<td align="left">RFC 9559, <xref target="position-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0xAA</td>
 <td align="left">CodecDecodeAll</td>
-<td align="left">Reclaimed (RFC 9559, <xref target="codecdecodeall-element"></xref>)</td>
+<td align="left">Reclaimed (RFC 9559, <xref target="codecdecodeall-element"/>)</td>
 </tr>
 
 <tr>
 <td align="right">0xAB</td>
 <td align="left">PrevSize</td>
-<td align="left">RFC 9559, <xref target="prevsize-element"></xref></td>
+<td align="left">RFC 9559, <xref target="prevsize-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0xAE</td>
 <td align="left">TrackEntry</td>
-<td align="left">RFC 9559, <xref target="trackentry-element"></xref></td>
+<td align="left">RFC 9559, <xref target="trackentry-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0xAF</td>
 <td align="left">EncryptedBlock</td>
-<td align="left">Reclaimed (RFC 9559, <xref target="encryptedblock-element"></xref>)</td>
+<td align="left">Reclaimed (RFC 9559, <xref target="encryptedblock-element"/>)</td>
 </tr>
 
 <tr>
 <td align="right">0xB0</td>
 <td align="left">PixelWidth</td>
-<td align="left">RFC 9559, <xref target="pixelwidth-element"></xref></td>
+<td align="left">RFC 9559, <xref target="pixelwidth-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0xB2</td>
 <td align="left">CueDuration</td>
-<td align="left">RFC 9559, <xref target="cueduration-element"></xref></td>
+<td align="left">RFC 9559, <xref target="cueduration-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0xB3</td>
 <td align="left">CueTime</td>
-<td align="left">RFC 9559, <xref target="cuetime-element"></xref></td>
+<td align="left">RFC 9559, <xref target="cuetime-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0xB5</td>
 <td align="left">SamplingFrequency</td>
-<td align="left">RFC 9559, <xref target="samplingfrequency-element"></xref></td>
+<td align="left">RFC 9559, <xref target="samplingfrequency-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0xB6</td>
 <td align="left">ChapterAtom</td>
-<td align="left">RFC 9559, <xref target="chapteratom-element"></xref></td>
+<td align="left">RFC 9559, <xref target="chapteratom-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0xB7</td>
 <td align="left">CueTrackPositions</td>
-<td align="left">RFC 9559, <xref target="cuetrackpositions-element"></xref></td>
+<td align="left">RFC 9559, <xref target="cuetrackpositions-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0xB9</td>
 <td align="left">FlagEnabled</td>
-<td align="left">RFC 9559, <xref target="flagenabled-element"></xref></td>
+<td align="left">RFC 9559, <xref target="flagenabled-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0xBA</td>
 <td align="left">PixelHeight</td>
-<td align="left">RFC 9559, <xref target="pixelheight-element"></xref></td>
+<td align="left">RFC 9559, <xref target="pixelheight-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0xBB</td>
 <td align="left">CuePoint</td>
-<td align="left">RFC 9559, <xref target="cuepoint-element"></xref></td>
+<td align="left">RFC 9559, <xref target="cuepoint-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0xC0</td>
 <td align="left">TrickTrackUID</td>
-<td align="left">Reclaimed (RFC 9559, <xref target="tricktrackuid-element"></xref>)</td>
+<td align="left">Reclaimed (RFC 9559, <xref target="tricktrackuid-element"/>)</td>
 </tr>
 
 <tr>
 <td align="right">0xC1</td>
 <td align="left">TrickTrackSegmentUID</td>
-<td align="left">Reclaimed (RFC 9559, <xref target="tricktracksegmentuid-element"></xref>)</td>
+<td align="left">Reclaimed (RFC 9559, <xref target="tricktracksegmentuid-element"/>)</td>
 </tr>
 
 <tr>
 <td align="right">0xC4</td>
 <td align="left">TrickMasterTrackSegmentUID</td>
-<td align="left">Reclaimed (RFC 9559, <xref target="trickmastertracksegmentuid-element"></xref>)</td>
+<td align="left">Reclaimed (RFC 9559, <xref target="trickmastertracksegmentuid-element"/>)</td>
 </tr>
 
 <tr>
 <td align="right">0xC6</td>
 <td align="left">TrickTrackFlag</td>
-<td align="left">Reclaimed (RFC 9559, <xref target="tricktrackflag-element"></xref>)</td>
+<td align="left">Reclaimed (RFC 9559, <xref target="tricktrackflag-element"/>)</td>
 </tr>
 
 <tr>
 <td align="right">0xC7</td>
 <td align="left">TrickMasterTrackUID</td>
-<td align="left">Reclaimed (RFC 9559, <xref target="trickmastertrackuid-element"></xref>)</td>
+<td align="left">Reclaimed (RFC 9559, <xref target="trickmastertrackuid-element"/>)</td>
 </tr>
 
 <tr>
 <td align="right">0xC8</td>
 <td align="left">ReferenceFrame</td>
-<td align="left">Reclaimed (RFC 9559, <xref target="referenceframe-element"></xref>)</td>
+<td align="left">Reclaimed (RFC 9559, <xref target="referenceframe-element"/>)</td>
 </tr>
 
 <tr>
 <td align="right">0xC9</td>
 <td align="left">ReferenceOffset</td>
-<td align="left">Reclaimed (RFC 9559, <xref target="referenceoffset-element"></xref>)</td>
+<td align="left">Reclaimed (RFC 9559, <xref target="referenceoffset-element"/>)</td>
 </tr>
 
 <tr>
 <td align="right">0xCA</td>
 <td align="left">ReferenceTimestamp</td>
-<td align="left">Reclaimed (RFC 9559, <xref target="referencetimestamp-element"></xref>)</td>
+<td align="left">Reclaimed (RFC 9559, <xref target="referencetimestamp-element"/>)</td>
 </tr>
 
 <tr>
 <td align="right">0xCB</td>
 <td align="left">BlockAdditionID</td>
-<td align="left">Reclaimed (RFC 9559, <xref target="blockadditionid-element"></xref>)</td>
+<td align="left">Reclaimed (RFC 9559, <xref target="blockadditionid-element"/>)</td>
 </tr>
 
 <tr>
 <td align="right">0xCC</td>
 <td align="left">LaceNumber</td>
-<td align="left">Reclaimed (RFC 9559, <xref target="lacenumber-element"></xref>)</td>
+<td align="left">Reclaimed (RFC 9559, <xref target="lacenumber-element"/>)</td>
 </tr>
 
 <tr>
 <td align="right">0xCD</td>
 <td align="left">FrameNumber</td>
-<td align="left">Reclaimed (RFC 9559, <xref target="framenumber-element"></xref>)</td>
+<td align="left">Reclaimed (RFC 9559, <xref target="framenumber-element"/>)</td>
 </tr>
 
 <tr>
 <td align="right">0xCE</td>
 <td align="left">Delay</td>
-<td align="left">Reclaimed (RFC 9559, <xref target="delay-element"></xref>)</td>
+<td align="left">Reclaimed (RFC 9559, <xref target="delay-element"/>)</td>
 </tr>
 
 <tr>
 <td align="right">0xCF</td>
 <td align="left">SliceDuration</td>
-<td align="left">Reclaimed (RFC 9559, <xref target="sliceduration-element"></xref>)</td>
+<td align="left">Reclaimed (RFC 9559, <xref target="sliceduration-element"/>)</td>
 </tr>
 
 <tr>
 <td align="right">0xD7</td>
 <td align="left">TrackNumber</td>
-<td align="left">RFC 9559, <xref target="tracknumber-element"></xref></td>
+<td align="left">RFC 9559, <xref target="tracknumber-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0xDB</td>
 <td align="left">CueReference</td>
-<td align="left">RFC 9559, <xref target="cuereference-element"></xref></td>
+<td align="left">RFC 9559, <xref target="cuereference-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0xE0</td>
 <td align="left">Video</td>
-<td align="left">RFC 9559, <xref target="video-element"></xref></td>
+<td align="left">RFC 9559, <xref target="video-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0xE1</td>
 <td align="left">Audio</td>
-<td align="left">RFC 9559, <xref target="audio-element"></xref></td>
+<td align="left">RFC 9559, <xref target="audio-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0xE2</td>
 <td align="left">TrackOperation</td>
-<td align="left">RFC 9559, <xref target="trackoperation-element"></xref></td>
+<td align="left">RFC 9559, <xref target="trackoperation-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0xE3</td>
 <td align="left">TrackCombinePlanes</td>
-<td align="left">RFC 9559, <xref target="trackcombineplanes-element"></xref></td>
+<td align="left">RFC 9559, <xref target="trackcombineplanes-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0xE4</td>
 <td align="left">TrackPlane</td>
-<td align="left">RFC 9559, <xref target="trackplane-element"></xref></td>
+<td align="left">RFC 9559, <xref target="trackplane-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0xE5</td>
 <td align="left">TrackPlaneUID</td>
-<td align="left">RFC 9559, <xref target="trackplaneuid-element"></xref></td>
+<td align="left">RFC 9559, <xref target="trackplaneuid-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0xE6</td>
 <td align="left">TrackPlaneType</td>
-<td align="left">RFC 9559, <xref target="trackplanetype-element"></xref></td>
+<td align="left">RFC 9559, <xref target="trackplanetype-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0xE7</td>
 <td align="left">Timestamp</td>
-<td align="left">RFC 9559, <xref target="timestamp-element"></xref></td>
+<td align="left">RFC 9559, <xref target="timestamp-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0xE8</td>
 <td align="left">TimeSlice</td>
-<td align="left">Reclaimed (RFC 9559, <xref target="timeslice-element"></xref>)</td>
+<td align="left">Reclaimed (RFC 9559, <xref target="timeslice-element"/>)</td>
 </tr>
 
 <tr>
 <td align="right">0xE9</td>
 <td align="left">TrackJoinBlocks</td>
-<td align="left">RFC 9559, <xref target="trackjoinblocks-element"></xref></td>
+<td align="left">RFC 9559, <xref target="trackjoinblocks-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0xEA</td>
 <td align="left">CueCodecState</td>
-<td align="left">RFC 9559, <xref target="cuecodecstate-element"></xref></td>
+<td align="left">RFC 9559, <xref target="cuecodecstate-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0xEB</td>
 <td align="left">CueRefCodecState</td>
-<td align="left">Reclaimed (RFC 9559, <xref target="cuerefcodecstate-element"></xref>)</td>
+<td align="left">Reclaimed (RFC 9559, <xref target="cuerefcodecstate-element"/>)</td>
 </tr>
 
 <tr>
 <td align="right">0xED</td>
 <td align="left">TrackJoinUID</td>
-<td align="left">RFC 9559, <xref target="trackjoinuid-element"></xref></td>
+<td align="left">RFC 9559, <xref target="trackjoinuid-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0xEE</td>
 <td align="left">BlockAddID</td>
-<td align="left">RFC 9559, <xref target="blockaddid-element"></xref></td>
+<td align="left">RFC 9559, <xref target="blockaddid-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0xF0</td>
 <td align="left">CueRelativePosition</td>
-<td align="left">RFC 9559, <xref target="cuerelativeposition-element"></xref></td>
+<td align="left">RFC 9559, <xref target="cuerelativeposition-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0xF1</td>
 <td align="left">CueClusterPosition</td>
-<td align="left">RFC 9559, <xref target="cueclusterposition-element"></xref></td>
+<td align="left">RFC 9559, <xref target="cueclusterposition-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0xF7</td>
 <td align="left">CueTrack</td>
-<td align="left">RFC 9559, <xref target="cuetrack-element"></xref></td>
+<td align="left">RFC 9559, <xref target="cuetrack-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0xFA</td>
 <td align="left">ReferencePriority</td>
-<td align="left">RFC 9559, <xref target="referencepriority-element"></xref></td>
+<td align="left">RFC 9559, <xref target="referencepriority-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0xFB</td>
 <td align="left">ReferenceBlock</td>
-<td align="left">RFC 9559, <xref target="referenceblock-element"></xref></td>
+<td align="left">RFC 9559, <xref target="referenceblock-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0xFD</td>
 <td align="left">ReferenceVirtual</td>
-<td align="left">Reclaimed (RFC 9559, <xref target="referencevirtual-element"></xref>)</td>
+<td align="left">Reclaimed (RFC 9559, <xref target="referencevirtual-element"/>)</td>
 </tr>
 
 <tr>
 <td align="right">0x41A4</td>
 <td align="left">BlockAddIDName</td>
-<td align="left">RFC 9559, <xref target="blockaddidname-element"></xref></td>
+<td align="left">RFC 9559, <xref target="blockaddidname-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x41E4</td>
 <td align="left">BlockAdditionMapping</td>
-<td align="left">RFC 9559, <xref target="blockadditionmapping-element"></xref></td>
+<td align="left">RFC 9559, <xref target="blockadditionmapping-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x41E7</td>
 <td align="left">BlockAddIDType</td>
-<td align="left">RFC 9559, <xref target="blockaddidtype-element"></xref></td>
+<td align="left">RFC 9559, <xref target="blockaddidtype-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x41ED</td>
 <td align="left">BlockAddIDExtraData</td>
-<td align="left">RFC 9559, <xref target="blockaddidextradata-element"></xref></td>
+<td align="left">RFC 9559, <xref target="blockaddidextradata-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x41F0</td>
 <td align="left">BlockAddIDValue</td>
-<td align="left">RFC 9559, <xref target="blockaddidvalue-element"></xref></td>
+<td align="left">RFC 9559, <xref target="blockaddidvalue-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x4254</td>
 <td align="left">ContentCompAlgo</td>
-<td align="left">RFC 9559, <xref target="contentcompalgo-element"></xref></td>
+<td align="left">RFC 9559, <xref target="contentcompalgo-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x4255</td>
 <td align="left">ContentCompSettings</td>
-<td align="left">RFC 9559, <xref target="contentcompsettings-element"></xref></td>
+<td align="left">RFC 9559, <xref target="contentcompsettings-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x437C</td>
 <td align="left">ChapLanguage</td>
-<td align="left">RFC 9559, <xref target="chaplanguage-element"></xref></td>
+<td align="left">RFC 9559, <xref target="chaplanguage-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x437D</td>
 <td align="left">ChapLanguageBCP47</td>
-<td align="left">RFC 9559, <xref target="chaplanguagebcp47-element"></xref></td>
+<td align="left">RFC 9559, <xref target="chaplanguagebcp47-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x437E</td>
 <td align="left">ChapCountry</td>
-<td align="left">RFC 9559, <xref target="chapcountry-element"></xref></td>
+<td align="left">RFC 9559, <xref target="chapcountry-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x4444</td>
 <td align="left">SegmentFamily</td>
-<td align="left">RFC 9559, <xref target="segmentfamily-element"></xref></td>
+<td align="left">RFC 9559, <xref target="segmentfamily-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x4461</td>
 <td align="left">DateUTC</td>
-<td align="left">RFC 9559, <xref target="dateutc-element"></xref></td>
+<td align="left">RFC 9559, <xref target="dateutc-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x447A</td>
 <td align="left">TagLanguage</td>
-<td align="left">RFC 9559, <xref target="taglanguage-element"></xref></td>
+<td align="left">RFC 9559, <xref target="taglanguage-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x447B</td>
 <td align="left">TagLanguageBCP47</td>
-<td align="left">RFC 9559, <xref target="taglanguagebcp47-element"></xref></td>
+<td align="left">RFC 9559, <xref target="taglanguagebcp47-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x4484</td>
 <td align="left">TagDefault</td>
-<td align="left">RFC 9559, <xref target="tagdefault-element"></xref></td>
+<td align="left">RFC 9559, <xref target="tagdefault-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x4485</td>
 <td align="left">TagBinary</td>
-<td align="left">RFC 9559, <xref target="tagbinary-element"></xref></td>
+<td align="left">RFC 9559, <xref target="tagbinary-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x4487</td>
 <td align="left">TagString</td>
-<td align="left">RFC 9559, <xref target="tagstring-element"></xref></td>
+<td align="left">RFC 9559, <xref target="tagstring-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x4489</td>
 <td align="left">Duration</td>
-<td align="left">RFC 9559, <xref target="duration-element"></xref></td>
+<td align="left">RFC 9559, <xref target="duration-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x44B4</td>
 <td align="left">TagDefaultBogus</td>
-<td align="left">Reclaimed (RFC 9559, <xref target="tagdefaultbogus-element"></xref>)</td>
+<td align="left">Reclaimed (RFC 9559, <xref target="tagdefaultbogus-element"/>)</td>
 </tr>
 
 <tr>
 <td align="right">0x450D</td>
 <td align="left">ChapProcessPrivate</td>
-<td align="left">RFC 9559, <xref target="chapprocessprivate-element"></xref></td>
+<td align="left">RFC 9559, <xref target="chapprocessprivate-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x45A3</td>
 <td align="left">TagName</td>
-<td align="left">RFC 9559, <xref target="tagname-element"></xref></td>
+<td align="left">RFC 9559, <xref target="tagname-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x45B9</td>
 <td align="left">EditionEntry</td>
-<td align="left">RFC 9559, <xref target="editionentry-element"></xref></td>
+<td align="left">RFC 9559, <xref target="editionentry-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x45BC</td>
 <td align="left">EditionUID</td>
-<td align="left">RFC 9559, <xref target="editionuid-element"></xref></td>
+<td align="left">RFC 9559, <xref target="editionuid-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x45DB</td>
 <td align="left">EditionFlagDefault</td>
-<td align="left">RFC 9559, <xref target="editionflagdefault-element"></xref></td>
+<td align="left">RFC 9559, <xref target="editionflagdefault-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x45DD</td>
 <td align="left">EditionFlagOrdered</td>
-<td align="left">RFC 9559, <xref target="editionflagordered-element"></xref></td>
+<td align="left">RFC 9559, <xref target="editionflagordered-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x465C</td>
 <td align="left">FileData</td>
-<td align="left">RFC 9559, <xref target="filedata-element"></xref></td>
+<td align="left">RFC 9559, <xref target="filedata-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x4660</td>
 <td align="left">FileMediaType</td>
-<td align="left">RFC 9559, <xref target="filemediatype-element"></xref></td>
+<td align="left">RFC 9559, <xref target="filemediatype-element"/></td>
 </tr>
 <tr>
 <td align="right">0x4661</td>
 <td align="left">FileUsedStartTime</td>
-<td align="left">Reclaimed (RFC 9559, <xref target="fileusedstarttime-element"></xref>)</td>
+<td align="left">Reclaimed (RFC 9559, <xref target="fileusedstarttime-element"/>)</td>
 </tr>
 
 <tr>
 <td align="right">0x4662</td>
 <td align="left">FileUsedEndTime</td>
-<td align="left">Reclaimed (RFC 9559, <xref target="fileusedendtime-element"></xref>)</td>
+<td align="left">Reclaimed (RFC 9559, <xref target="fileusedendtime-element"/>)</td>
 </tr>
 
 <tr>
 <td align="right">0x466E</td>
 <td align="left">FileName</td>
-<td align="left">RFC 9559, <xref target="filename-element"></xref></td>
+<td align="left">RFC 9559, <xref target="filename-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x4675</td>
 <td align="left">FileReferral</td>
-<td align="left">Reclaimed (RFC 9559, <xref target="filereferral-element"></xref>)</td>
+<td align="left">Reclaimed (RFC 9559, <xref target="filereferral-element"/>)</td>
 </tr>
 
 <tr>
 <td align="right">0x467E</td>
 <td align="left">FileDescription</td>
-<td align="left">RFC 9559, <xref target="filedescription-element"></xref></td>
+<td align="left">RFC 9559, <xref target="filedescription-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x46AE</td>
 <td align="left">FileUID</td>
-<td align="left">RFC 9559, <xref target="fileuid-element"></xref></td>
+<td align="left">RFC 9559, <xref target="fileuid-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x47E1</td>
 <td align="left">ContentEncAlgo</td>
-<td align="left">RFC 9559, <xref target="contentencalgo-element"></xref></td>
+<td align="left">RFC 9559, <xref target="contentencalgo-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x47E2</td>
 <td align="left">ContentEncKeyID</td>
-<td align="left">RFC 9559, <xref target="contentenckeyid-element"></xref></td>
+<td align="left">RFC 9559, <xref target="contentenckeyid-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x47E3</td>
 <td align="left">ContentSignature</td>
-<td align="left">Reclaimed (RFC 9559, <xref target="contentsignature-element"></xref>)</td>
+<td align="left">Reclaimed (RFC 9559, <xref target="contentsignature-element"/>)</td>
 </tr>
 
 <tr>
 <td align="right">0x47E4</td>
 <td align="left">ContentSigKeyID</td>
-<td align="left">Reclaimed (RFC 9559, <xref target="contentsigkeyid-element"></xref>)</td>
+<td align="left">Reclaimed (RFC 9559, <xref target="contentsigkeyid-element"/>)</td>
 </tr>
 
 <tr>
 <td align="right">0x47E5</td>
 <td align="left">ContentSigAlgo</td>
-<td align="left">Reclaimed (RFC 9559, <xref target="contentsigalgo-element"></xref>)</td>
+<td align="left">Reclaimed (RFC 9559, <xref target="contentsigalgo-element"/>)</td>
 </tr>
 
 <tr>
 <td align="right">0x47E6</td>
 <td align="left">ContentSigHashAlgo</td>
-<td align="left">Reclaimed (RFC 9559, <xref target="contentsighashalgo-element"></xref>)</td>
+<td align="left">Reclaimed (RFC 9559, <xref target="contentsighashalgo-element"/>)</td>
 </tr>
 
 <tr>
 <td align="right">0x47E7</td>
 <td align="left">ContentEncAESSettings</td>
-<td align="left">RFC 9559, <xref target="contentencaessettings-element"></xref></td>
+<td align="left">RFC 9559, <xref target="contentencaessettings-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x47E8</td>
 <td align="left">AESSettingsCipherMode</td>
-<td align="left">RFC 9559, <xref target="aessettingsciphermode-element"></xref></td>
+<td align="left">RFC 9559, <xref target="aessettingsciphermode-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x4D80</td>
 <td align="left">MuxingApp</td>
-<td align="left">RFC 9559, <xref target="muxingapp-element"></xref></td>
+<td align="left">RFC 9559, <xref target="muxingapp-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x4DBB</td>
 <td align="left">Seek</td>
-<td align="left">RFC 9559, <xref target="seek-element"></xref></td>
+<td align="left">RFC 9559, <xref target="seek-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x5031</td>
 <td align="left">ContentEncodingOrder</td>
-<td align="left">RFC 9559, <xref target="contentencodingorder-element"></xref></td>
+<td align="left">RFC 9559, <xref target="contentencodingorder-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x5032</td>
 <td align="left">ContentEncodingScope</td>
-<td align="left">RFC 9559, <xref target="contentencodingscope-element"></xref></td>
+<td align="left">RFC 9559, <xref target="contentencodingscope-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x5033</td>
 <td align="left">ContentEncodingType</td>
-<td align="left">RFC 9559, <xref target="contentencodingtype-element"></xref></td>
+<td align="left">RFC 9559, <xref target="contentencodingtype-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x5034</td>
 <td align="left">ContentCompression</td>
-<td align="left">RFC 9559, <xref target="contentcompression-element"></xref></td>
+<td align="left">RFC 9559, <xref target="contentcompression-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x5035</td>
 <td align="left">ContentEncryption</td>
-<td align="left">RFC 9559, <xref target="contentencryption-element"></xref></td>
+<td align="left">RFC 9559, <xref target="contentencryption-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x535F</td>
 <td align="left">CueRefNumber</td>
-<td align="left">Reclaimed (RFC 9559, <xref target="cuerefnumber-element"></xref>)</td>
+<td align="left">Reclaimed (RFC 9559, <xref target="cuerefnumber-element"/>)</td>
 </tr>
 
 <tr>
 <td align="right">0x536E</td>
 <td align="left">Name</td>
-<td align="left">RFC 9559, <xref target="name-element"></xref></td>
+<td align="left">RFC 9559, <xref target="name-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x5378</td>
 <td align="left">CueBlockNumber</td>
-<td align="left">RFC 9559, <xref target="cueblocknumber-element"></xref></td>
+<td align="left">RFC 9559, <xref target="cueblocknumber-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x537F</td>
 <td align="left">TrackOffset</td>
-<td align="left">Reclaimed (RFC 9559, <xref target="trackoffset-element"></xref>)</td>
+<td align="left">Reclaimed (RFC 9559, <xref target="trackoffset-element"/>)</td>
 </tr>
 
 <tr>
 <td align="right">0x53AB</td>
 <td align="left">SeekID</td>
-<td align="left">RFC 9559, <xref target="seekid-element"></xref></td>
+<td align="left">RFC 9559, <xref target="seekid-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x53AC</td>
 <td align="left">SeekPosition</td>
-<td align="left">RFC 9559, <xref target="seekposition-element"></xref></td>
+<td align="left">RFC 9559, <xref target="seekposition-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x53B8</td>
 <td align="left">StereoMode</td>
-<td align="left">RFC 9559, <xref target="stereomode-element"></xref></td>
+<td align="left">RFC 9559, <xref target="stereomode-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x53B9</td>
 <td align="left">OldStereoMode</td>
-<td align="left">RFC 9559, <xref target="oldstereomode-element"></xref></td>
+<td align="left">RFC 9559, <xref target="oldstereomode-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x53C0</td>
 <td align="left">AlphaMode</td>
-<td align="left">RFC 9559, <xref target="alphamode-element"></xref></td>
+<td align="left">RFC 9559, <xref target="alphamode-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x54AA</td>
 <td align="left">PixelCropBottom</td>
-<td align="left">RFC 9559, <xref target="pixelcropbottom-element"></xref></td>
+<td align="left">RFC 9559, <xref target="pixelcropbottom-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x54B0</td>
 <td align="left">DisplayWidth</td>
-<td align="left">RFC 9559, <xref target="displaywidth-element"></xref></td>
+<td align="left">RFC 9559, <xref target="displaywidth-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x54B2</td>
 <td align="left">DisplayUnit</td>
-<td align="left">RFC 9559, <xref target="displayunit-element"></xref></td>
+<td align="left">RFC 9559, <xref target="displayunit-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x54B3</td>
 <td align="left">AspectRatioType</td>
-<td align="left">Reclaimed (RFC 9559, <xref target="aspectratiotype-element"></xref>)</td>
+<td align="left">Reclaimed (RFC 9559, <xref target="aspectratiotype-element"/>)</td>
 </tr>
 
 <tr>
 <td align="right">0x54BA</td>
 <td align="left">DisplayHeight</td>
-<td align="left">RFC 9559, <xref target="displayheight-element"></xref></td>
+<td align="left">RFC 9559, <xref target="displayheight-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x54BB</td>
 <td align="left">PixelCropTop</td>
-<td align="left">RFC 9559, <xref target="pixelcroptop-element"></xref></td>
+<td align="left">RFC 9559, <xref target="pixelcroptop-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x54CC</td>
 <td align="left">PixelCropLeft</td>
-<td align="left">RFC 9559, <xref target="pixelcropleft-element"></xref></td>
+<td align="left">RFC 9559, <xref target="pixelcropleft-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x54DD</td>
 <td align="left">PixelCropRight</td>
-<td align="left">RFC 9559, <xref target="pixelcropright-element"></xref></td>
+<td align="left">RFC 9559, <xref target="pixelcropright-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x55AA</td>
 <td align="left">FlagForced</td>
-<td align="left">RFC 9559, <xref target="flagforced-element"></xref></td>
+<td align="left">RFC 9559, <xref target="flagforced-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x55AB</td>
 <td align="left">FlagHearingImpaired</td>
-<td align="left">RFC 9559, <xref target="flaghearingimpaired-element"></xref></td>
+<td align="left">RFC 9559, <xref target="flaghearingimpaired-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x55AC</td>
 <td align="left">FlagVisualImpaired</td>
-<td align="left">RFC 9559, <xref target="flagvisualimpaired-element"></xref></td>
+<td align="left">RFC 9559, <xref target="flagvisualimpaired-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x55AD</td>
 <td align="left">FlagTextDescriptions</td>
-<td align="left">RFC 9559, <xref target="flagtextdescriptions-element"></xref></td>
+<td align="left">RFC 9559, <xref target="flagtextdescriptions-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x55AE</td>
 <td align="left">FlagOriginal</td>
-<td align="left">RFC 9559, <xref target="flagoriginal-element"></xref></td>
+<td align="left">RFC 9559, <xref target="flagoriginal-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x55AF</td>
 <td align="left">FlagCommentary</td>
-<td align="left">RFC 9559, <xref target="flagcommentary-element"></xref></td>
+<td align="left">RFC 9559, <xref target="flagcommentary-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x55B0</td>
 <td align="left">Colour</td>
-<td align="left">RFC 9559, <xref target="colour-element"></xref></td>
+<td align="left">RFC 9559, <xref target="colour-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x55B1</td>
 <td align="left">MatrixCoefficients</td>
-<td align="left">RFC 9559, <xref target="matrixcoefficients-element"></xref></td>
+<td align="left">RFC 9559, <xref target="matrixcoefficients-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x55B2</td>
 <td align="left">BitsPerChannel</td>
-<td align="left">RFC 9559, <xref target="bitsperchannel-element"></xref></td>
+<td align="left">RFC 9559, <xref target="bitsperchannel-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x55B3</td>
 <td align="left">ChromaSubsamplingHorz</td>
-<td align="left">RFC 9559, <xref target="chromasubsamplinghorz-element"></xref></td>
+<td align="left">RFC 9559, <xref target="chromasubsamplinghorz-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x55B4</td>
 <td align="left">ChromaSubsamplingVert</td>
-<td align="left">RFC 9559, <xref target="chromasubsamplingvert-element"></xref></td>
+<td align="left">RFC 9559, <xref target="chromasubsamplingvert-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x55B5</td>
 <td align="left">CbSubsamplingHorz</td>
-<td align="left">RFC 9559, <xref target="cbsubsamplinghorz-element"></xref></td>
+<td align="left">RFC 9559, <xref target="cbsubsamplinghorz-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x55B6</td>
 <td align="left">CbSubsamplingVert</td>
-<td align="left">RFC 9559, <xref target="cbsubsamplingvert-element"></xref></td>
+<td align="left">RFC 9559, <xref target="cbsubsamplingvert-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x55B7</td>
 <td align="left">ChromaSitingHorz</td>
-<td align="left">RFC 9559, <xref target="chromasitinghorz-element"></xref></td>
+<td align="left">RFC 9559, <xref target="chromasitinghorz-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x55B8</td>
 <td align="left">ChromaSitingVert</td>
-<td align="left">RFC 9559, <xref target="chromasitingvert-element"></xref></td>
+<td align="left">RFC 9559, <xref target="chromasitingvert-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x55B9</td>
 <td align="left">Range</td>
-<td align="left">RFC 9559, <xref target="range-element"></xref></td>
+<td align="left">RFC 9559, <xref target="range-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x55BA</td>
 <td align="left">TransferCharacteristics</td>
-<td align="left">RFC 9559, <xref target="transfercharacteristics-element"></xref></td>
+<td align="left">RFC 9559, <xref target="transfercharacteristics-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x55BB</td>
 <td align="left">Primaries</td>
-<td align="left">RFC 9559, <xref target="primaries-element"></xref></td>
+<td align="left">RFC 9559, <xref target="primaries-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x55BC</td>
 <td align="left">MaxCLL</td>
-<td align="left">RFC 9559, <xref target="maxcll-element"></xref></td>
+<td align="left">RFC 9559, <xref target="maxcll-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x55BD</td>
 <td align="left">MaxFALL</td>
-<td align="left">RFC 9559, <xref target="maxfall-element"></xref></td>
+<td align="left">RFC 9559, <xref target="maxfall-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x55D0</td>
 <td align="left">MasteringMetadata</td>
-<td align="left">RFC 9559, <xref target="masteringmetadata-element"></xref></td>
+<td align="left">RFC 9559, <xref target="masteringmetadata-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x55D1</td>
 <td align="left">PrimaryRChromaticityX</td>
-<td align="left">RFC 9559, <xref target="primaryrchromaticityx-element"></xref></td>
+<td align="left">RFC 9559, <xref target="primaryrchromaticityx-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x55D2</td>
 <td align="left">PrimaryRChromaticityY</td>
-<td align="left">RFC 9559, <xref target="primaryrchromaticityy-element"></xref></td>
+<td align="left">RFC 9559, <xref target="primaryrchromaticityy-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x55D3</td>
 <td align="left">PrimaryGChromaticityX</td>
-<td align="left">RFC 9559, <xref target="primarygchromaticityx-element"></xref></td>
+<td align="left">RFC 9559, <xref target="primarygchromaticityx-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x55D4</td>
 <td align="left">PrimaryGChromaticityY</td>
-<td align="left">RFC 9559, <xref target="primarygchromaticityy-element"></xref></td>
+<td align="left">RFC 9559, <xref target="primarygchromaticityy-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x55D5</td>
 <td align="left">PrimaryBChromaticityX</td>
-<td align="left">RFC 9559, <xref target="primarybchromaticityx-element"></xref></td>
+<td align="left">RFC 9559, <xref target="primarybchromaticityx-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x55D6</td>
 <td align="left">PrimaryBChromaticityY</td>
-<td align="left">RFC 9559, <xref target="primarybchromaticityy-element"></xref></td>
+<td align="left">RFC 9559, <xref target="primarybchromaticityy-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x55D7</td>
 <td align="left">WhitePointChromaticityX</td>
-<td align="left">RFC 9559, <xref target="whitepointchromaticityx-element"></xref></td>
+<td align="left">RFC 9559, <xref target="whitepointchromaticityx-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x55D8</td>
 <td align="left">WhitePointChromaticityY</td>
-<td align="left">RFC 9559, <xref target="whitepointchromaticityy-element"></xref></td>
+<td align="left">RFC 9559, <xref target="whitepointchromaticityy-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x55D9</td>
 <td align="left">LuminanceMax</td>
-<td align="left">RFC 9559, <xref target="luminancemax-element"></xref></td>
+<td align="left">RFC 9559, <xref target="luminancemax-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x55DA</td>
 <td align="left">LuminanceMin</td>
-<td align="left">RFC 9559, <xref target="luminancemin-element"></xref></td>
+<td align="left">RFC 9559, <xref target="luminancemin-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x55EE</td>
 <td align="left">MaxBlockAdditionID</td>
-<td align="left">RFC 9559, <xref target="maxblockadditionid-element"></xref></td>
+<td align="left">RFC 9559, <xref target="maxblockadditionid-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x5654</td>
 <td align="left">ChapterStringUID</td>
-<td align="left">RFC 9559, <xref target="chapterstringuid-element"></xref></td>
+<td align="left">RFC 9559, <xref target="chapterstringuid-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x56AA</td>
 <td align="left">CodecDelay</td>
-<td align="left">RFC 9559, <xref target="codecdelay-element"></xref></td>
+<td align="left">RFC 9559, <xref target="codecdelay-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x56BB</td>
 <td align="left">SeekPreRoll</td>
-<td align="left">RFC 9559, <xref target="seekpreroll-element"></xref></td>
+<td align="left">RFC 9559, <xref target="seekpreroll-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x5741</td>
 <td align="left">WritingApp</td>
-<td align="left">RFC 9559, <xref target="writingapp-element"></xref></td>
+<td align="left">RFC 9559, <xref target="writingapp-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x5854</td>
 <td align="left">SilentTracks</td>
-<td align="left">Reclaimed (RFC 9559, <xref target="silenttracks-element"></xref>)</td>
+<td align="left">Reclaimed (RFC 9559, <xref target="silenttracks-element"/>)</td>
 </tr>
 
 <tr>
 <td align="right">0x58D7</td>
 <td align="left">SilentTrackNumber</td>
-<td align="left">Reclaimed (RFC 9559, <xref target="silenttracknumber-element"></xref>)</td>
+<td align="left">Reclaimed (RFC 9559, <xref target="silenttracknumber-element"/>)</td>
 </tr>
 
 <tr>
 <td align="right">0x61A7</td>
 <td align="left">AttachedFile</td>
-<td align="left">RFC 9559, <xref target="attachedfile-element"></xref></td>
+<td align="left">RFC 9559, <xref target="attachedfile-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x6240</td>
 <td align="left">ContentEncoding</td>
-<td align="left">RFC 9559, <xref target="contentencoding-element"></xref></td>
+<td align="left">RFC 9559, <xref target="contentencoding-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x6264</td>
 <td align="left">BitDepth</td>
-<td align="left">RFC 9559, <xref target="bitdepth-element"></xref></td>
+<td align="left">RFC 9559, <xref target="bitdepth-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x63A2</td>
 <td align="left">CodecPrivate</td>
-<td align="left">RFC 9559, <xref target="codecprivate-element"></xref></td>
+<td align="left">RFC 9559, <xref target="codecprivate-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x63C0</td>
 <td align="left">Targets</td>
-<td align="left">RFC 9559, <xref target="targets-element"></xref></td>
+<td align="left">RFC 9559, <xref target="targets-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x63C3</td>
 <td align="left">ChapterPhysicalEquiv</td>
-<td align="left">RFC 9559, <xref target="chapterphysicalequiv-element"></xref></td>
+<td align="left">RFC 9559, <xref target="chapterphysicalequiv-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x63C4</td>
 <td align="left">TagChapterUID</td>
-<td align="left">RFC 9559, <xref target="tagchapteruid-element"></xref></td>
+<td align="left">RFC 9559, <xref target="tagchapteruid-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x63C5</td>
 <td align="left">TagTrackUID</td>
-<td align="left">RFC 9559, <xref target="tagtrackuid-element"></xref></td>
+<td align="left">RFC 9559, <xref target="tagtrackuid-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x63C6</td>
 <td align="left">TagAttachmentUID</td>
-<td align="left">RFC 9559, <xref target="tagattachmentuid-element"></xref></td>
+<td align="left">RFC 9559, <xref target="tagattachmentuid-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x63C9</td>
 <td align="left">TagEditionUID</td>
-<td align="left">RFC 9559, <xref target="tageditionuid-element"></xref></td>
+<td align="left">RFC 9559, <xref target="tageditionuid-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x63CA</td>
 <td align="left">TargetType</td>
-<td align="left">RFC 9559, <xref target="targettype-element"></xref></td>
+<td align="left">RFC 9559, <xref target="targettype-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x6624</td>
 <td align="left">TrackTranslate</td>
-<td align="left">RFC 9559, <xref target="tracktranslate-element"></xref></td>
+<td align="left">RFC 9559, <xref target="tracktranslate-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x66A5</td>
 <td align="left">TrackTranslateTrackID</td>
-<td align="left">RFC 9559, <xref target="tracktranslatetrackid-element"></xref></td>
+<td align="left">RFC 9559, <xref target="tracktranslatetrackid-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x66BF</td>
 <td align="left">TrackTranslateCodec</td>
-<td align="left">RFC 9559, <xref target="tracktranslatecodec-element"></xref></td>
+<td align="left">RFC 9559, <xref target="tracktranslatecodec-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x66FC</td>
 <td align="left">TrackTranslateEditionUID</td>
-<td align="left">RFC 9559, <xref target="tracktranslateeditionuid-element"></xref></td>
+<td align="left">RFC 9559, <xref target="tracktranslateeditionuid-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x67C8</td>
 <td align="left">SimpleTag</td>
-<td align="left">RFC 9559, <xref target="simpletag-element"></xref></td>
+<td align="left">RFC 9559, <xref target="simpletag-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x68CA</td>
 <td align="left">TargetTypeValue</td>
-<td align="left">RFC 9559, <xref target="targettypevalue-element"></xref></td>
+<td align="left">RFC 9559, <xref target="targettypevalue-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x6911</td>
 <td align="left">ChapProcessCommand</td>
-<td align="left">RFC 9559, <xref target="chapprocesscommand-element"></xref></td>
+<td align="left">RFC 9559, <xref target="chapprocesscommand-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x6922</td>
 <td align="left">ChapProcessTime</td>
-<td align="left">RFC 9559, <xref target="chapprocesstime-element"></xref></td>
+<td align="left">RFC 9559, <xref target="chapprocesstime-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x6924</td>
 <td align="left">ChapterTranslate</td>
-<td align="left">RFC 9559, <xref target="chaptertranslate-element"></xref></td>
+<td align="left">RFC 9559, <xref target="chaptertranslate-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x6933</td>
 <td align="left">ChapProcessData</td>
-<td align="left">RFC 9559, <xref target="chapprocessdata-element"></xref></td>
+<td align="left">RFC 9559, <xref target="chapprocessdata-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x6944</td>
 <td align="left">ChapProcess</td>
-<td align="left">RFC 9559, <xref target="chapprocess-element"></xref></td>
+<td align="left">RFC 9559, <xref target="chapprocess-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x6955</td>
 <td align="left">ChapProcessCodecID</td>
-<td align="left">RFC 9559, <xref target="chapprocesscodecid-element"></xref></td>
+<td align="left">RFC 9559, <xref target="chapprocesscodecid-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x69A5</td>
 <td align="left">ChapterTranslateID</td>
-<td align="left">RFC 9559, <xref target="chaptertranslateid-element"></xref></td>
+<td align="left">RFC 9559, <xref target="chaptertranslateid-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x69BF</td>
 <td align="left">ChapterTranslateCodec</td>
-<td align="left">RFC 9559, <xref target="chaptertranslatecodec-element"></xref></td>
+<td align="left">RFC 9559, <xref target="chaptertranslatecodec-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x69FC</td>
 <td align="left">ChapterTranslateEditionUID</td>
-<td align="left">RFC 9559, <xref target="chaptertranslateeditionuid-element"></xref></td>
+<td align="left">RFC 9559, <xref target="chaptertranslateeditionuid-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x6D80</td>
 <td align="left">ContentEncodings</td>
-<td align="left">RFC 9559, <xref target="contentencodings-element"></xref></td>
+<td align="left">RFC 9559, <xref target="contentencodings-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x6DE7</td>
 <td align="left">MinCache</td>
-<td align="left">Reclaimed (RFC 9559, <xref target="mincache-element"></xref>)</td>
+<td align="left">Reclaimed (RFC 9559, <xref target="mincache-element"/>)</td>
 </tr>
 
 <tr>
 <td align="right">0x6DF8</td>
 <td align="left">MaxCache</td>
-<td align="left">Reclaimed (RFC 9559, <xref target="maxcache-element"></xref>)</td>
+<td align="left">Reclaimed (RFC 9559, <xref target="maxcache-element"/>)</td>
 </tr>
 
 <tr>
 <td align="right">0x6E67</td>
 <td align="left">ChapterSegmentUUID</td>
-<td align="left">RFC 9559, <xref target="chaptersegmentuuid-element"></xref></td>
+<td align="left">RFC 9559, <xref target="chaptersegmentuuid-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x6EBC</td>
 <td align="left">ChapterSegmentEditionUID</td>
-<td align="left">RFC 9559, <xref target="chaptersegmenteditionuid-element"></xref></td>
+<td align="left">RFC 9559, <xref target="chaptersegmenteditionuid-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x6FAB</td>
 <td align="left">TrackOverlay</td>
-<td align="left">Reclaimed (RFC 9559, <xref target="trackoverlay-element"></xref>)</td>
+<td align="left">Reclaimed (RFC 9559, <xref target="trackoverlay-element"/>)</td>
 </tr>
 
 <tr>
 <td align="right">0x7373</td>
 <td align="left">Tag</td>
-<td align="left">RFC 9559, <xref target="tag-element"></xref></td>
+<td align="left">RFC 9559, <xref target="tag-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x7384</td>
 <td align="left">SegmentFilename</td>
-<td align="left">RFC 9559, <xref target="segmentfilename-element"></xref></td>
+<td align="left">RFC 9559, <xref target="segmentfilename-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x73A4</td>
 <td align="left">SegmentUUID</td>
-<td align="left">RFC 9559, <xref target="segmentuuid-element"></xref></td>
+<td align="left">RFC 9559, <xref target="segmentuuid-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x73C4</td>
 <td align="left">ChapterUID</td>
-<td align="left">RFC 9559, <xref target="chapteruid-element"></xref></td>
+<td align="left">RFC 9559, <xref target="chapteruid-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x73C5</td>
 <td align="left">TrackUID</td>
-<td align="left">RFC 9559, <xref target="trackuid-element"></xref></td>
+<td align="left">RFC 9559, <xref target="trackuid-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x7446</td>
 <td align="left">AttachmentLink</td>
-<td align="left">RFC 9559, <xref target="attachmentlink-element"></xref></td>
+<td align="left">RFC 9559, <xref target="attachmentlink-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x75A1</td>
 <td align="left">BlockAdditions</td>
-<td align="left">RFC 9559, <xref target="blockadditions-element"></xref></td>
+<td align="left">RFC 9559, <xref target="blockadditions-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x75A2</td>
 <td align="left">DiscardPadding</td>
-<td align="left">RFC 9559, <xref target="discardpadding-element"></xref></td>
+<td align="left">RFC 9559, <xref target="discardpadding-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x7670</td>
 <td align="left">Projection</td>
-<td align="left">RFC 9559, <xref target="projection-element"></xref></td>
+<td align="left">RFC 9559, <xref target="projection-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x7671</td>
 <td align="left">ProjectionType</td>
-<td align="left">RFC 9559, <xref target="projectiontype-element"></xref></td>
+<td align="left">RFC 9559, <xref target="projectiontype-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x7672</td>
 <td align="left">ProjectionPrivate</td>
-<td align="left">RFC 9559, <xref target="projectionprivate-element"></xref></td>
+<td align="left">RFC 9559, <xref target="projectionprivate-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x7673</td>
 <td align="left">ProjectionPoseYaw</td>
-<td align="left">RFC 9559, <xref target="projectionposeyaw-element"></xref></td>
+<td align="left">RFC 9559, <xref target="projectionposeyaw-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x7674</td>
 <td align="left">ProjectionPosePitch</td>
-<td align="left">RFC 9559, <xref target="projectionposepitch-element"></xref></td>
+<td align="left">RFC 9559, <xref target="projectionposepitch-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x7675</td>
 <td align="left">ProjectionPoseRoll</td>
-<td align="left">RFC 9559, <xref target="projectionposeroll-element"></xref></td>
+<td align="left">RFC 9559, <xref target="projectionposeroll-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x78B5</td>
 <td align="left">OutputSamplingFrequency</td>
-<td align="left">RFC 9559, <xref target="outputsamplingfrequency-element"></xref></td>
+<td align="left">RFC 9559, <xref target="outputsamplingfrequency-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x7BA9</td>
 <td align="left">Title</td>
-<td align="left">RFC 9559, <xref target="title-element"></xref></td>
+<td align="left">RFC 9559, <xref target="title-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x7D7B</td>
 <td align="left">ChannelPositions</td>
-<td align="left">Reclaimed (RFC 9559, <xref target="channelpositions-element"></xref>)</td>
+<td align="left">Reclaimed (RFC 9559, <xref target="channelpositions-element"/>)</td>
 </tr>
 
 <tr>
 <td align="right">0x22B59C</td>
 <td align="left">Language</td>
-<td align="left">RFC 9559, <xref target="language-element"></xref></td>
+<td align="left">RFC 9559, <xref target="language-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x22B59D</td>
 <td align="left">LanguageBCP47</td>
-<td align="left">RFC 9559, <xref target="languagebcp47-element"></xref></td>
+<td align="left">RFC 9559, <xref target="languagebcp47-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x23314F</td>
 <td align="left">TrackTimestampScale</td>
-<td align="left">RFC 9559, <xref target="tracktimestampscale-element"></xref></td>
+<td align="left">RFC 9559, <xref target="tracktimestampscale-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x234E7A</td>
 <td align="left">DefaultDecodedFieldDuration</td>
-<td align="left">RFC 9559, <xref target="defaultdecodedfieldduration-element"></xref></td>
+<td align="left">RFC 9559, <xref target="defaultdecodedfieldduration-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x2383E3</td>
 <td align="left">FrameRate</td>
-<td align="left">Reclaimed (RFC 9559, <xref target="framerate-element"></xref>)</td>
+<td align="left">Reclaimed (RFC 9559, <xref target="framerate-element"/>)</td>
 </tr>
 
 <tr>
 <td align="right">0x23E383</td>
 <td align="left">DefaultDuration</td>
-<td align="left">RFC 9559, <xref target="defaultduration-element"></xref></td>
+<td align="left">RFC 9559, <xref target="defaultduration-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x258688</td>
 <td align="left">CodecName</td>
-<td align="left">RFC 9559, <xref target="codecname-element"></xref></td>
+<td align="left">RFC 9559, <xref target="codecname-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x26B240</td>
 <td align="left">CodecDownloadURL</td>
-<td align="left">Reclaimed (RFC 9559, <xref target="codecdownloadurl-element"></xref>)</td>
+<td align="left">Reclaimed (RFC 9559, <xref target="codecdownloadurl-element"/>)</td>
 </tr>
 
 <tr>
 <td align="right">0x2AD7B1</td>
 <td align="left">TimestampScale</td>
-<td align="left">RFC 9559, <xref target="timestampscale-element"></xref></td>
+<td align="left">RFC 9559, <xref target="timestampscale-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x2EB524</td>
 <td align="left">UncompressedFourCC</td>
-<td align="left">RFC 9559, <xref target="uncompressedfourcc-element"></xref></td>
+<td align="left">RFC 9559, <xref target="uncompressedfourcc-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x2FB523</td>
 <td align="left">GammaValue</td>
-<td align="left">Reclaimed (RFC 9559, <xref target="gammavalue-element"></xref>)</td>
+<td align="left">Reclaimed (RFC 9559, <xref target="gammavalue-element"/>)</td>
 </tr>
 
 <tr>
 <td align="right">0x3A9697</td>
 <td align="left">CodecSettings</td>
-<td align="left">Reclaimed (RFC 9559, <xref target="codecsettings-element"></xref>)</td>
+<td align="left">Reclaimed (RFC 9559, <xref target="codecsettings-element"/>)</td>
 </tr>
 
 <tr>
 <td align="right">0x3B4040</td>
 <td align="left">CodecInfoURL</td>
-<td align="left">Reclaimed (RFC 9559, <xref target="codecinfourl-element"></xref>)</td>
+<td align="left">Reclaimed (RFC 9559, <xref target="codecinfourl-element"/>)</td>
 </tr>
 
 <tr>
 <td align="right">0x3C83AB</td>
 <td align="left">PrevFilename</td>
-<td align="left">RFC 9559, <xref target="prevfilename-element"></xref></td>
+<td align="left">RFC 9559, <xref target="prevfilename-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x3CB923</td>
 <td align="left">PrevUUID</td>
-<td align="left">RFC 9559, <xref target="prevuuid-element"></xref></td>
+<td align="left">RFC 9559, <xref target="prevuuid-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x3E83BB</td>
 <td align="left">NextFilename</td>
-<td align="left">RFC 9559, <xref target="nextfilename-element"></xref></td>
+<td align="left">RFC 9559, <xref target="nextfilename-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x3EB923</td>
 <td align="left">NextUUID</td>
-<td align="left">RFC 9559, <xref target="nextuuid-element"></xref></td>
+<td align="left">RFC 9559, <xref target="nextuuid-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x1043A770</td>
 <td align="left">Chapters</td>
-<td align="left">RFC 9559, <xref target="chapters-element"></xref></td>
+<td align="left">RFC 9559, <xref target="chapters-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x114D9B74</td>
 <td align="left">SeekHead</td>
-<td align="left">RFC 9559, <xref target="seekhead-element"></xref></td>
+<td align="left">RFC 9559, <xref target="seekhead-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x1254C367</td>
 <td align="left">Tags</td>
-<td align="left">RFC 9559, <xref target="tags-element"></xref></td>
+<td align="left">RFC 9559, <xref target="tags-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x1549A966</td>
 <td align="left">Info</td>
-<td align="left">RFC 9559, <xref target="info-element"></xref></td>
+<td align="left">RFC 9559, <xref target="info-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x1654AE6B</td>
 <td align="left">Tracks</td>
-<td align="left">RFC 9559, <xref target="tracks-element"></xref></td>
+<td align="left">RFC 9559, <xref target="tracks-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x18538067</td>
 <td align="left">Segment</td>
-<td align="left">RFC 9559, <xref target="segment-element"></xref></td>
+<td align="left">RFC 9559, <xref target="segment-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x1941A469</td>
 <td align="left">Attachments</td>
-<td align="left">RFC 9559, <xref target="attachments-element"></xref></td>
+<td align="left">RFC 9559, <xref target="attachments-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x1C53BB6B</td>
 <td align="left">Cues</td>
-<td align="left">RFC 9559, <xref target="cues-element"></xref></td>
+<td align="left">RFC 9559, <xref target="cues-element"/></td>
 </tr>
 
 <tr>
 <td align="right">0x1F43B675</td>
 <td align="left">Cluster</td>
-<td align="left">RFC 9559, <xref target="cluster-element"></xref></td>
+<td align="left">RFC 9559, <xref target="cluster-element"/></td>
 </tr>
 </tbody>
 </table></section>
 
 <section anchor="chapter-codec-ids-registry"><name>Chapter Codec IDs Registry</name>
 <t>IANA has created a new registry called the "Matroska Chapter Codec IDs" registry.
-The values correspond to the unsigned integer <tt>ChapProcessCodecID</tt> value described in <xref target="chapprocesscodecid-element"></xref>.</t>
+The values correspond to the unsigned integer <tt>ChapProcessCodecID</tt> value described in <xref target="chapprocesscodecid-element"/>.</t>
 <t> To register a new Chapter Codec ID in this registry, one needs a Chapter
 Codec ID, description, a Change Controller (IETF or email of registrant), and
 an optional Reference to a document describing the Chapter Codec ID.</t>
-<t>The Chapter Codec IDs are to be allocated according to the "First Come First Served" policy <xref target="RFC8126"></xref>.</t>
+<t>The Chapter Codec IDs are to be allocated according to the "First Come First Served" policy <xref target="RFC8126"/>.</t>
 <t>Values of "0" and "1" are reserved for future use (with the IETF as the Change Controller).</t>
 </section>
 
@@ -9514,8 +9573,8 @@ an optional Reference to a document describing the Chapter Codec ID.</t>
 audio-only, and (occasionally) stereoscopic video.</t>
 <t>Historically, Matroska files and streams have used the following media types with an "x-" prefix.
 For better compatibility, a system <bcp14>SHOULD</bcp14> be able to handle both formats.
-Newer systems <bcp14>SHOULD NOT</bcp14> use the historic format and use the format that follows the format in <xref target="RFC6838"></xref> instead.</t>
-<t>IANA has registered three media types per the templates (see <xref target="RFC6838"></xref>) in the following subsections.</t>
+Newer systems <bcp14>SHOULD NOT</bcp14> use the historic format and use the format that follows the format in <xref target="RFC6838"/> instead.</t>
+<t>IANA has registered three media types per the templates (see <xref target="RFC6838"/>) in the following subsections.</t>
 
 <section anchor="for-files-containing-video-tracks"><name>For Files Containing Video Tracks</name>
 
@@ -9531,7 +9590,7 @@ Newer systems <bcp14>SHOULD NOT</bcp14> use the historic format and use the form
 <dt>Encoding considerations:</dt>
 <dd>As per RFCs 9559 and 8794</dd>
 <dt>Security considerations:</dt>
-<dd>See <xref target="security-considerations"></xref> of RFC 9559.</dd>
+<dd>See <xref target="security-considerations"/> of RFC 9559.</dd>
 <dt>Interoperability considerations:</dt>
 <dd>Due to the extensibility of Matroska, it is possible to encounter files with unknown but valid EBML Elements. Readers should be ready to handle this case. The fixed byte order, octet boundaries, and UTF-8 usage allow for broad interoperability.</dd>
 <dt>Published specification:</dt>
@@ -9576,7 +9635,7 @@ Newer systems <bcp14>SHOULD NOT</bcp14> use the historic format and use the form
 <dt>Encoding considerations:</dt>
 <dd>As per RFCs 9559 and 8794</dd>
 <dt>Security considerations:</dt>
-<dd>See <xref target="security-considerations"></xref> of RFC 9559.</dd>
+<dd>See <xref target="security-considerations"/> of RFC 9559.</dd>
 <dt>Interoperability considerations:</dt>
 <dd>Due to the extensibility of Matroska, it is possible to encounter files with unknown but valid EBML Elements. Readers should be ready to handle this case. The fixed byte order, octet boundaries, and UTF-8 usage allow for broad interoperability.</dd>
 <dt>Published specification:</dt>
@@ -9622,7 +9681,7 @@ Newer systems <bcp14>SHOULD NOT</bcp14> use the historic format and use the form
 <dt>Encoding considerations:</dt>
 <dd>As per RFCs 9559 and 8794 </dd>
 <dt>Security considerations:</dt>
-<dd>See <xref target="security-considerations"></xref> of RFC 9559.</dd>
+<dd>See <xref target="security-considerations"/> of RFC 9559.</dd>
 <dt>Interoperability considerations:</dt>
 <dd>Due to the extensibility of Matroska, it is possible to encounter files with unknown but valid EBML Elements. Readers should be ready to handle this case. The fixed byte order, octet boundaries, and UTF-8 usage allow for broad interoperability.</dd>
 <dt>Published specification:</dt>
@@ -10133,7 +10192,7 @@ Being able to interpret this Element is not required for playback.</dd>
 <dt>path:</dt>
 <dd><tt>\Segment\Cluster\BlockGroup\Slices\TimeSlice\Delay</tt></dd>
 <dt>documentation:</dt>
-<dd>The delay to apply to the Element, expressed in Track Ticks; see <xref target="timestamp-ticks"></xref>.</dd>
+<dd>The delay to apply to the Element, expressed in Track Ticks; see <xref target="timestamp-ticks"/>.</dd>
 </dl>
 </section>
 
@@ -10145,7 +10204,7 @@ Being able to interpret this Element is not required for playback.</dd>
 <dt>path:</dt>
 <dd><tt>\Segment\Cluster\BlockGroup\Slices\TimeSlice\SliceDuration</tt></dd>
 <dt>documentation:</dt>
-<dd>The duration to apply to the Element, expressed in Track Ticks; see <xref target="timestamp-ticks"></xref>.</dd>
+<dd>The duration to apply to the Element, expressed in Track Ticks; see <xref target="timestamp-ticks"/>.</dd>
 </dl>
 </section>
 
@@ -10157,7 +10216,7 @@ Being able to interpret this Element is not required for playback.</dd>
 <dt>path:</dt>
 <dd><tt>\Segment\Cluster\BlockGroup\ReferenceFrame</tt></dd>
 <dt>documentation:</dt>
-<dd>Contains information about the last reference frame. See <xref target="DivXTrickTrack"></xref>.</dd>
+<dd>Contains information about the last reference frame. See <xref target="DivXTrickTrack"/>.</dd>
 </dl>
 </section>
 
@@ -10170,7 +10229,7 @@ Being able to interpret this Element is not required for playback.</dd>
 <dd><tt>\Segment\Cluster\BlockGroup\ReferenceFrame\ReferenceOffset</tt></dd>
 <dt>documentation:</dt>
 <dd>The relative offset, in bytes, from the previous <tt>BlockGroup</tt> element for this Smooth FF/RW video track to the containing <tt>BlockGroup</tt>
-element. See <xref target="DivXTrickTrack"></xref>.</dd>
+element. See <xref target="DivXTrickTrack"/>.</dd>
 </dl>
 </section>
 
@@ -10183,7 +10242,7 @@ element. See <xref target="DivXTrickTrack"></xref>.</dd>
 <dd><tt>\Segment\Cluster\BlockGroup\ReferenceFrame\ReferenceTimestamp</tt></dd>
 <dt>documentation:</dt>
 <dd>The timestamp of the <tt>BlockGroup</tt> pointed to by ReferenceOffset, expressed in Track Ticks; see <xref
-target="timestamp-ticks"></xref>. See <xref target="DivXTrickTrack"></xref>.</dd>
+target="timestamp-ticks"/>. See <xref target="DivXTrickTrack"/>.</dd>
 </dl>
 </section>
 
@@ -10195,7 +10254,7 @@ target="timestamp-ticks"></xref>. See <xref target="DivXTrickTrack"></xref>.</dd
 <dt>path:</dt>
 <dd><tt>\Segment\Cluster\EncryptedBlock</tt></dd>
 <dt>documentation:</dt>
-<dd>Similar to <tt>SimpleBlock</tt> (see <xref target="simpleblock-structure"></xref>),
+<dd>Similar to <tt>SimpleBlock</tt> (see <xref target="simpleblock-structure"/>),
 but the data inside the <tt>Block</tt> are Transformed (encrypted and/or signed).</dd>
 </dl>
 </section>
@@ -10235,7 +10294,7 @@ If set to 0, the reference pseudo-cache system is not used.</dd>
 <dd><tt>\Segment\Tracks\TrackEntry\TrackOffset</tt></dd>
 <dt>documentation:</dt>
 <dd>A value to add to the Block's Timestamp, expressed in Matroska Ticks -- i.e., in nanoseconds; see <xref
-target="timestamp-ticks"></xref>.
+target="timestamp-ticks"/>.
 This can be used to adjust the playback offset of a track.</dd>
 </dl>
 </section>
@@ -10363,7 +10422,7 @@ used for a variable frame rate <tt>TrackEntry</tt>.</dd>
 <dd><tt>\Segment\Tracks\TrackEntry\TrickTrackUID</tt></dd>
 <dt>documentation:</dt>
 <dd>The <tt>TrackUID</tt> of the Smooth FF/RW video in the paired EBML structure corresponding to this video track. See <xref
-target="DivXTrickTrack"></xref>.</dd>
+target="DivXTrickTrack"/>.</dd>
 </dl>
 </section>
 
@@ -10375,7 +10434,7 @@ target="DivXTrickTrack"></xref>.</dd>
 <dt>path:</dt>
 <dd><tt>\Segment\Tracks\TrackEntry\TrickTrackSegmentUID</tt></dd>
 <dt>documentation:</dt>
-<dd>The SegmentUID of the <tt>Segment</tt> containing the track identified by TrickTrackUID. See <xref target="DivXTrickTrack"></xref>.</dd>
+<dd>The SegmentUID of the <tt>Segment</tt> containing the track identified by TrickTrackUID. See <xref target="DivXTrickTrack"/>.</dd>
 </dl>
 </section>
 
@@ -10390,7 +10449,7 @@ target="DivXTrickTrack"></xref>.</dd>
 <dd>Set to 1 if this video track is a Smooth FF/RW track. If set to 1, MasterTrackUID and MasterTrackSegUID should be present, and
 <tt>BlockGroups</tt> for this track must contain ReferenceFrame structures.
 Otherwise, TrickTrackUID and TrickTrackSegUID must be present if this track has a corresponding Smooth FF/RW track. See <xref
-target="DivXTrickTrack"></xref>.</dd>
+target="DivXTrickTrack"/>.</dd>
 </dl>
 </section>
 
@@ -10403,7 +10462,7 @@ target="DivXTrickTrack"></xref>.</dd>
 <dd><tt>\Segment\Tracks\TrackEntry\TrickMasterTrackUID</tt></dd>
 <dt>documentation:</dt>
 <dd>The <tt>TrackUID</tt> of the video track in the paired EBML structure that corresponds to this Smooth FF/RW track. See <xref
-target="DivXTrickTrack"></xref>.</dd>
+target="DivXTrickTrack"/>.</dd>
 </dl>
 </section>
 
@@ -10415,7 +10474,7 @@ target="DivXTrickTrack"></xref>.</dd>
 <dt>path:</dt>
 <dd><tt>\Segment\Tracks\TrackEntry\TrickMasterTrackSegmentUID</tt></dd>
 <dt>documentation:</dt>
-<dd>The SegmentUID of the <tt>Segment</tt> containing the track identified by MasterTrackUID. See <xref target="DivXTrickTrack"></xref>.</dd>
+<dd>The SegmentUID of the <tt>Segment</tt> containing the track identified by MasterTrackUID. See <xref target="DivXTrickTrack"/>.</dd>
 </dl>
 </section>
 
@@ -10524,7 +10583,7 @@ target="DivXTrickTrack"></xref>.</dd>
 <dd><tt>\Segment\Attachments\AttachedFile\FileUsedStartTime</tt></dd>
 <dt>documentation:</dt>
 <dd>The timestamp at which this optimized font attachment comes into context, expressed in Segment Ticks, which are based on
-<tt>TimestampScale</tt>. See <xref target="DivXWorldFonts"></xref>.</dd>
+<tt>TimestampScale</tt>. See <xref target="DivXWorldFonts"/>.</dd>
 </dl>
 </section>
 
@@ -10537,7 +10596,7 @@ target="DivXTrickTrack"></xref>.</dd>
 <dd><tt>\Segment\Attachments\AttachedFile\FileUsedEndTime</tt></dd>
 <dt>documentation:</dt>
 <dd>The timestamp at which this optimized font attachment goes out of context, expressed in Segment Ticks, which are based on
-<tt>TimestampScale</tt>. See <xref target="DivXWorldFonts"></xref>.</dd>
+<tt>TimestampScale</tt>. See <xref target="DivXWorldFonts"/>.</dd>
 </dl>
 </section>
 
@@ -10549,7 +10608,7 @@ target="DivXTrickTrack"></xref>.</dd>
 <dt>path:</dt>
 <dd><tt>\Segment\Tags\Tag\+SimpleTag\TagDefaultBogus</tt></dd>
 <dt>documentation:</dt>
-<dd>A variant of the <tt>TagDefault</tt> element with a bogus Element ID; see <xref target="tagdefault-element"></xref>.</dd>
+<dd>A variant of the <tt>TagDefault</tt> element with a bogus Element ID; see <xref target="tagdefault-element"/>.</dd>
 </dl>
 </section>
 </section>
