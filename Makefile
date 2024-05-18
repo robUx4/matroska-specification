@@ -130,6 +130,7 @@ rfc9559.xml: $(OUTPUT_MATROSKA).xml
 	sed -e 's@<!\[CDATA\[@\n@' \
 	-e 's@\]\]>@@' \
 	-e 's@&quot;@"@g' \
+	-e 's@></xref>@/>@g' \
 	-e 's@^<reference @\n<reference @g' \
 	-e 's@</table></section>@</table>\n</section>@' \
 	-e 's@historic-deprecated-elements@appendix-a-historic-deprecated-elements@' \
