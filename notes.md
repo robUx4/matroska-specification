@@ -1,8 +1,7 @@
 # Matroska Versioning
 
 Matroska is based on the principle that a reading application does not have to support
-100% of the specifications in order to be able to play the file. Therefore, a Matroska file
-contains version indicators that tell a reading application what to expect.
+100% of the specifications in order to be able to play the file. Therefore, a Matroska file contains version indicators that tell a reading application what to expect.
 
 It is possible and valid to have the version fields indicate that the file contains
 Matroska elements from a higher specification version number while signaling that a
@@ -40,8 +39,8 @@ by the current `Parent Element`.
 It is sometimes necessary to create a Matroska file from another Matroska file, for example, to add subtitles in a language
 or to edit out a portion of the content.
 Some values from the original Matroska file need to be kept the same in the destination file.
-For example, the SamplingFrequency of an audio track wouldn't change between the two files.
-Some other values may change between the two files, for example, the TrackNumber of an audio track when another track has been added.
+For example, the `SamplingFrequency` of an audio track wouldn't change between the two files.
+Some other values may change between the two files, for example, the `TrackNumber` of an audio track when another track has been added.
 
 An element is marked with a property "`stream copy: True`" when the values of that element need to be kept identical between the source and destination files.
 If that property is not set, elements may or may not keep the same value between the source and destination files.
@@ -110,8 +109,7 @@ The value is stored as a signed value on 16 bits.
 This section describes the binary data contained in the `Block` element ((#block-element)). Bit 0 is the most significant bit.
 
 As the `TrackNumber` size can vary between 1 and 8 octets, there are 8 different sizes for the `Block` header.
-The definitions for `TrackNumber` sizes of 1 and 2 are provided;
-the other variants can be deduced by extending the size of the `TrackNumber` by multiples of 8 bits.
+The definitions for `TrackNumber` sizes of 1 and 2 are provided; the other variants can be deduced by extending the size of the `TrackNumber` by multiples of 8 bits.
 
 ```
   0                   1                   2                   3
@@ -179,8 +177,9 @@ The `SimpleBlock` structure is inspired by the `Block` structure; see (#block-st
 The main differences are the added Keyframe flag and Discardable flag. Otherwise, everything is the same.
 
 As the `TrackNumber` size can vary between 1 and 8 octets, there are 8 different sizes for the `SimpleBlock` header.
-The definitions for `TrackNumber` sizes of 1 and 2 are provided;
-the other variants can be deduced by extending the size of the `TrackNumber` by multiples of 8 bits.
+The definitions for `TrackNumber` sizes of 1 and 2 are provided; the
+other variants can be deduced by extending the size of the
+`TrackNumber` by multiples of 8 bits.
 
 ```
   0                   1                   2                   3
@@ -270,8 +269,7 @@ When the `FlagLacing` ((#flaglacing-element)) is set to 0, all blocks of that tr
 
 ### No Lacing
 
-When no lacing is used, the number of frames in the lace is omitted, and only one frame can be stored in the `Block`.
-The LACING bits of the `Block` Header flags are set to `00b`.
+When no lacing is used, the number of frames in the lace is omitted, and only one frame can be stored in the `Block`. The LACING bits of the `Block` Header flags are set to `00b`.
 
 The `Block` for an 800-octet frame is as follows:
 
@@ -408,11 +406,12 @@ For subtitles, this is usually not the case, so lacing **SHOULD NOT** be used.
 
 ## Random Access Points
 
-Random Access Points (RAPs) are positions where the parser can seek to and start playback without decoding
-what was before. In Matroska, `BlockGroups` and `SimpleBlocks` can be RAPs.
-To seek to these elements, it is still necessary to seek to the `Cluster` containing them,
-read the `Cluster` Timestamp,
-and start playback from the `BlockGroup` or `SimpleBlock` that is a RAP.
+Random Access Points (RAPs) are positions where the parser can seek to and
+start playback without decoding what was before. In Matroska,
+`BlockGroups` and `SimpleBlocks` can be RAPs.  To seek to these
+elements, it is still necessary to seek to the `Cluster` containing
+them, read the `Cluster` Timestamp, and start playback from the
+`BlockGroup` or `SimpleBlock` that is a RAP.
 
 Because a Matroska File is usually composed of multiple tracks playing at the same time
 -- video, audio, and subtitles -- to seek properly to a RAP, each selected track must be
@@ -649,8 +648,7 @@ and give an integer value in nanoseconds. This is the most common case as `Track
 
 A value of `TrackTimestampScale` other than "1.0" **MAY** be used
 to scale the timestamps more in tune with each `Track` sampling frequency.
-For historical reasons, a lot of `Matroska Readers` don't take the `TrackTimestampScale` value into account.
-Thus, using a value other than "1.0" might not work in many places.
+For historical reasons, a lot of `Matroska Readers` don't take the `TrackTimestampScale` value into account. Thus, using a value other than "1.0" might not work in many places.
 
 ## Block Timestamps
 
@@ -696,10 +694,12 @@ bibliographic ISO 639-2 form [@!ISO639-2] (like "fre" for French)
 or such a language code followed by a dash and a country code for specialities in languages (like "fre-ca" for Canadian French).
 The `ISO 639-2 Language` elements are `Language` element, `TagLanguage` element, and `ChapLanguage` element.
 
-Starting in Matroska version 4, the forms defined in either [@!ISO639-2] or [@!RFC5646] **MAY** be used,
-although the form in [@!RFC5646] is **RECOMMENDED**. The `Language` elements in the [@!RFC5646] form are `LanguageBCP47` element,
-`TagLanguageBCP47` element, and `ChapLanguageBCP47` element. If both an [@!ISO639-2] Language element and an [@!RFC5646] Language element
-are used within the same `Parent Element`, then the `Language` element in the [@!ISO639-2] form **MUST** be ignored and precedence given to the `Language` element in the [@!RFC5646] form.
+Starting in Matroska version 4, the forms defined in either [@!ISO639-2] or
+[@!RFC5646] **MAY** be used, although the form in [@!RFC5646] is **RECOMMENDED**. The `Language` elements in the [@!RFC5646] form
+are `LanguageBCP47` element, `TagLanguageBCP47` element, and
+`ChapLanguageBCP47` element. If both an [@!ISO639-2] Language element and an [@!RFC5646] Language element are used within the same
+`Parent Element`, then the `Language` element in the [@!ISO639-2] form **MUST**
+be ignored and precedence given to the `Language` element in the [@!RFC5646] form.
 
 In this document, "BCP47" in element names refers specifically to
 [@!RFC5646], which is part of BCP 47.
@@ -711,14 +711,14 @@ Country codes are the [@!RFC5646] two-letter region subtags, without the UK exce
 
 # Encryption
 
-This Matroska specification provides no interoperable solution for securing the
-data container with any assurances of confidentiality, integrity, authenticity,
-or authorization. The `ContentEncryption` element ((#contentencryption-element))
-and associated sub-fields ((#contentencalgo-element) to (#aessettingsciphermode-element)) are defined
-only for the benefit of implementers to construct their own proprietary solution
-or as the basis for further standardization activities.  How to use these
-fields to secure a Matroska data container is out of scope, as are any related
-issues such as key management and distribution.
+This Matroska specification provides no interoperable solution for
+securing the data container with any assurances of confidentiality, integrity,
+authenticity, or authorization. The `ContentEncryption` element ((#contentencryption-element))
+and associated sub-fields ((#contentencalgo-element) to (#aessettingsciphermode-element)) are defined only for the
+benefit of implementers to construct their own proprietary solution or as the
+basis for further standardization activities.  How to use these fields to
+secure a Matroska data container is out of scope, as are any related issues
+such as key management and distribution.
 
 A `Matroska Reader` who encounters containers that use the fields defined in this
 section **MUST** rely on out-of-scope guidance to decode the associated content.
@@ -742,8 +742,7 @@ parameters is required for a complete solution but is out of scope of this
 document and left to the proprietary implementations using them or subsequent
 profiles of this document.
 
-The `ContentEncodingScope` element gives an idea of which part of the track is encrypted,
-but each `ContentEncAlgo` element and its sub-elements (like `AESSettingsCipherMode`)
+The `ContentEncodingScope` element gives an idea of which part of the track is encrypted, but each `ContentEncAlgo` element and its sub-elements (like `AESSettingsCipherMode`)
 define exactly how the encrypted track should be interpreted.
 
 An example of an extension that builds upon these security-related fields in this specification is [@?WebM-Enc].
@@ -760,7 +759,7 @@ previously made archives or streams.
 The `PixelCrop` elements (`PixelCropTop`, `PixelCropBottom`, `PixelCropRight`, and `PixelCropLeft`)
 indicate when, and by how much, encoded video frames **SHOULD** be cropped for display.
 These elements allow edges of the frame that are not intended for display (such as the
-sprockets of a full-frame film scan or the Video ANCillary (VANC) area of a digitized analog videotape) to be stored but hidden. `PixelCropTop` and `PixelCropBottom` store an integer of how many
+sprockets of a full-frame film scan or the Video ANCillary (VANC) area of a digitized analog videotape) to be stored but hidden.  `PixelCropTop` and `PixelCropBottom` store an integer of how many
 rows of pixels **SHOULD** be cropped from the top and bottom of the image, respectively.
  `PixelCropLeft` and `PixelCropRight` store an integer of how many columns of pixels
  **SHOULD** be cropped from the left and right of the image, respectively.
@@ -1000,15 +999,16 @@ a different track when selecting a default track for a user that is not visually
 
 ## Descriptions Flag
 
-The Descriptions flag tells the `Matroska Player` that this track is suitable to play via
-a text-to-speech system for a user with a visual impairment and that it **SHOULD NOT** automatically
-select this track when selecting a default track for a user that is not visually impaired.
+The Descriptions flag tells the `Matroska Player` that this track
+is suitable to play via a text-to-speech system for a user with a visual impairment
+and that it **SHOULD NOT** automatically select this track when
+selecting a default track for a user that is not visually impaired.
 
 ## Original Flag
 
-The Original flag tells the `Matroska Player` that this track is in the original language
-and that it **SHOULD** prefer this track if configured to prefer original-language tracks of this
-track's type.
+The Original flag tells the `Matroska Player` that this track is in the
+original language and that it **SHOULD** prefer this track if
+configured to prefer original-language tracks of this track's type.
 
 ## Commentary Flag
 
@@ -1065,12 +1065,15 @@ For separate tracks, Matroska needs to define exactly which track does what.
 
 The 3D support is still in infancy and may evolve to support more features.
 
-The `StereoMode` used to be part of Matroska v2, but it didn't meet the requirement
-for multiple tracks. There was also a bug in [@?libmatroska] prior to 0.9.0 that would save/read
-it as `0x53B9` instead of `0x53B8`; see `OldStereoMode` ((#oldstereomode-element)). `Matroska Readers` **MAY** support these legacy files by checking
-Matroska v2 or `0x53B9`.
-The older values of `StereoMode` were 0 (mono), 1 (right eye), 2 (left eye), and 3 (both eyes); these are the only values that can be found in `OldStereoMode`.
-They are not compatible with the `StereoMode` values found in Matroska v3 and above.
+The `StereoMode` used to be part of Matroska v2, but it didn't meet the
+requirement for multiple tracks. There was also a bug in
+[@?libmatroska] prior to 0.9.0 that would save/read it as
+`0x53B9` instead of `0x53B8`; see `OldStereoMode` ((#oldstereomode-element)). `Matroska Readers`
+**MAY** support these legacy files by checking Matroska v2 or
+`0x53B9`.  The older values of `StereoMode` were 0 (mono), 1 (right eye),
+2 (left eye), and 3 (both eyes); these are the only values that can be found
+in `OldStereoMode`.  They are not compatible with the `StereoMode` values found in
+Matroska v3 and above.
 
 
 # Default Track Selection
@@ -1106,9 +1109,11 @@ The English tracks all have the Original flag, indicating that English is the or
 
 Generally, the player will first consider the track languages. If the player has an option to prefer
 original-language audio and the user has enabled it, then it should prefer one of the tracks with the Original flag.
-If the user has configured to specifically prefer audio tracks in English or Spanish, the player should select one of
-the tracks in the corresponding language. The player may also wish to prefer a track with the Original flag
-if no tracks matching any of the user's explicitly preferred languages are available.
+If the user has configured to specifically prefer audio tracks in English or
+Spanish, the player should select one of the tracks in the corresponding
+language. The player may also wish to prefer a track with the Original flag if
+no tracks matching any of the user's explicitly preferred languages are
+available.
 
 Two of the tracks have the Visual-Impaired flag. If the player has been configured to prefer such tracks,
 it should select one; otherwise, it should avoid them if possible.

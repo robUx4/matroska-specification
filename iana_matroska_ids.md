@@ -5,10 +5,9 @@
 IANA has created a new registry called the "Matroska Element IDs"
 registry.
 
-To register a new Element ID in this registry, one needs
-an Element ID, an Element Name,
-a Change Controller, and
-an optional Reference to a document describing the Element ID.
+To register a new Element ID in this registry, one needs an Element ID, an
+Element Name, a Change Controller, and an
+optional Reference to a document describing the Element ID.
 
 Element IDs are encoded
 using the VINT mechanism described in [@!RFC8794, section 4] and can be between
@@ -32,13 +31,14 @@ Four-octet Matroska Element IDs between 0x01000000 and 0x101FFFFE are not valid 
 The allowed values in the "Matroska Element IDs" registry are similar to the ones found
 in the "EBML Element IDs" registry defined in [@!RFC8794, section 17.1].
 
-EBML Element IDs defined for the EBML Header -- as defined in [@!RFC8794, section 17.1] --
-**MUST NOT** be used as Matroska Element IDs.
+EBML Element IDs defined for the EBML Header -- as defined in [@!RFC8794, section 17.1] -- **MUST NOT** be used as Matroska Element IDs.
 
-Given the scarcity of one-octet Element IDs, they should only be created to save space for elements found many times in a file
-(for example, `BlockGroup` or `Chapters`). The four-octet Element IDs are mostly for synchronization of large elements.
-They should only be used for such high-level elements.
-Elements that are not expected to be used often should use three-octet Element IDs.
+Given the scarcity of one-octet Element IDs, they should only be created
+to save space for elements found many times in a file (for example, `BlockGroup`
+or `Chapters`). The four-octet Element IDs are mostly for synchronization of
+large elements.  They should only be used for such high-level elements.
+Elements that are not expected to be used often should use three-octet Element
+IDs.
 
 Elements found in (#historic-deprecated-elements) have an assigned Matroska Element ID for historical reasons.
 These elements are not in use and **SHOULD NOT** be reused unless there are no other IDs available with the desired size.

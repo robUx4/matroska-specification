@@ -145,10 +145,10 @@ The `ChapterTimeEnd` **SHOULD NOT** be set in `Parent Chapters` and **MUST** be 
 
 ### ChapterFlagHidden
 
-Each `Chapter`'s
-`ChapterFlagHidden` flag works independently of `Parent Chapters`.
-A `Nested Chapter` with a `ChapterFlagHidden` flag that evaluates to "0" remains visible in the user interface even if the
-`Parent Chapter`'s `ChapterFlagHidden` flag is set to "1".
+Each `Chapter`'s `ChapterFlagHidden` flag works independently of `Parent Chapters`.
+A `Nested Chapter` with a `ChapterFlagHidden` flag that evaluates to
+"0" remains visible in the user interface even if the `Parent Chapter`'s
+`ChapterFlagHidden` flag is set to "1".
 
 Chapter + Nested Chapter | ChapterFlagHidden | visible
 :------------------------|:------------------|:-------
@@ -165,13 +165,12 @@ Table: ChapterFlagHidden Nested Visibility{#ChapterFlagHiddenNested}
 The menu features are handled like a `chapter codec`. That means each codec has a type,
 some private data, and some data in the chapters.
 
-The type of the menu system is defined by the `ChapProcessCodecID` parameter. For now,
-only two values are supported: 0 (Matroska Script) and 1 (menu borrowed from the DVD [@?DVD-Video]).
+The type of the menu system is defined by the `ChapProcessCodecID` parameter.
+For now, only two values are supported: 0 (Matroska Script) and 1 (menu borrowed from the DVD [@?DVD-Video]).
 The private data stored in `ChapProcessPrivate` and
 `ChapProcessData` depends on the `ChapProcessCodecID` value.
 
-The menu system, as well as Chapter Codecs in general, can perform actions on the `Matroska Player`,
-such as jumping to another `Chapter` or `Edition`, selecting different tracks, and possibly more.
+The menu system, as well as Chapter Codecs in general, can perform actions on the `Matroska Player`, such as jumping to another `Chapter` or `Edition`, selecting different tracks, and possibly more.
 The scope of all the possibilities of Chapter Codecs is not covered in this document, as it
 depends on the Chapter Codec features and its integration in a `Matroska Player`.
 

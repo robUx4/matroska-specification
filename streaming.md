@@ -8,9 +8,11 @@ File access can simply be reading a file located on your computer, but it also i
 accessing a file from an HTTP (web) server or Common Internet File System (CIFS) (Windows share) server. These protocols
 are usually safe from reading errors, and seeking in the stream is possible. However,
 when a file is stored far away or on a slow server, seeking can be an expensive operation
-and should be avoided. When followed, the guidelines in (#implementation-recommendations) help reduce the number
-of seeking operations for regular playback and also have the playback start quickly without
-needing to read lot of data first (like a `Cues` element, `Attachments` element, or `SeekHead` element).
+and should be avoided.
+When followed, the guidelines in (#implementation-recommendations) help reduce the number of
+seeking operations for regular playback and also have the playback start
+quickly without needing to read lot of data first (like a `Cues` element,
+`Attachments` element, or `SeekHead` element).
 
 Matroska, having a small overhead, is well suited for storing music/videos on file
 servers without a big impact on the bandwidth used. Matroska does not require the index
