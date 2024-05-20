@@ -7,14 +7,6 @@
  <!ENTITY wj     "&#8288;">
 ]>
 <rfc version="3" ipr="trust200902" docName="draft-ietf-cellar-matroska-21" number="9559" submissionType="IETF" category="std" consensus="true" tocInclude="true" sortRefs="true" symRefs="true" tocDepth="4" xml:lang="en" xmlns:xi="http://www.w3.org/2001/XInclude" updates="8794" obsoletes="">
-
-<!-- [rfced]  We added "Updates: 8794" to the document header per the text in
-the Abstract and Section 4.2. Please review and let us know any concerns.
--->
-
-<!-- [cellar] It doesn't update 8794 in the sense it's not describing the same things.
-It only assumes some errata of 8794 are used to be fully compliant with EBML -->
-
 <front>
   <title abbrev="Matroska Format">Matroska Media Container Format Specification</title>
   <seriesInfo name="RFC" value="9559"/>
@@ -2074,13 +2066,6 @@ The format depends on the <tt>ChapProcessCodecID</tt> used; see <xref target="ch
 <tr>
 <td align="left"><tt>9</tt></td>
 <td align="left">tff (interleaved)</td>
-
-<!-- [cellar] the labels for values 9 and 14 have been edited to match their description
-
-The description had been edited but not the labels. It has been fix in our repository
-in https://github.com/ietf-wg-cellar/matroska-specification/pull/819
--->
-
 <td align="left">Top field displayed first. Fields are interleaved in storage with the top line of the top field stored first.</td>
 </tr>
 
@@ -4308,13 +4293,6 @@ All entries are local to the <tt>Segment</tt>.</dd>
 <dd>1 / 1</dd>
 <dt>definition:</dt>
 <dd>Absolute timestamp of the seek point, expressed in Segment Ticks, which are based on <tt>TimestampScale</tt>; see <xref target="timestamp-ticks"/>.</dd>
-
-<!-- [cellar] changed CueTime from Matroska Ticks to Segment Ticks
-
-It was brought to our attention after our last submission that this was mistaken
-for a Matroska Tick. We fix the issue in our repository in https://github.com/ietf-wg-cellar/matroska-specification/pull/814
--->
-
 </dl>
 </section>
 
@@ -4455,13 +4433,6 @@ If missing, the track's <tt>DefaultDuration</tt> does not apply and no duration 
 <dd>2</dd>
 <dt>definition:</dt>
 <dd>Timestamp of the referenced Block, expressed in Segment Ticks which is based on <tt>TimestampScale</tt>; see <xref target="timestamp-ticks"/>.</dd>
-
-<!-- [cellar] changed CueRefTime from Matroska Ticks to Segment Ticks
-
-It was brought to our attention after our last submission that this was mistaken
-for a Matroska Tick. We fix the issue in our repository in https://github.com/ietf-wg-cellar/matroska-specification/pull/815
--->
-
 </dl>
 </section>
 </section>
@@ -4922,32 +4893,6 @@ This Element <bcp14>MUST</bcp14> be ignored if a <tt>ChapLanguageBCP47</tt> Elem
 </section>
 
 <section anchor="chapprocesscodecid-element"><name>ChapProcessCodecID Element</name>
-<!-- [rfced] We have two questions about the definition below:
-
-a) Does "to be defined" need further clarification, perhaps "to be defined in
-future specifications"?
-
-b) Section 20.3 defines value 0 as "matroska script" and value 1 as "menu
-borrowed from the DVD [DVD-Video]". Should the definitions match? Or is the
-current okay?
-
-Original:
-definition: Contains the type of the codec used for the processing.
-A value of 0 means built-in Matroska processing (to be defined), a value of 1
-means the DVD command set is used; see Section 20.3 on DVD menus.
--->
-
-<!-- [cellar] "to be defined" should actually refer to this CELLAR document:
-     https://datatracker.ietf.org/doc/bibxml3/reference.I-D.ietf-cellar-chapter-codecs.xml
-
-0 should indeed be referred to as Matroska Script. So the new text should be
-something like this:
-
-definition: Contains the type of the codec used for the processing.  A value
-of 0 means "Matroska Script" processing (see <xref
-target="I-D.ietf-cellar-chapter-codecs"/>), a value of 1 means the
-"DVD-menu" command set is used; see Section 20.3 on DVD menus.
--->
 
 <dl spacing="compact">
 <dt>id / type / default:</dt>
@@ -6216,20 +6161,6 @@ There are three types of ticks possible: Matroska Ticks, Segment Ticks, and Trac
 <li><tt>BlockGroup\DiscardPadding</tt>; defined in <xref target="discardpadding-element"/></li>
 <li><tt>ChapterAtom\ChapterTimeStart</tt>; defined in <xref target="chaptertimestart-element"/></li>
 <li><tt>ChapterAtom\ChapterTimeEnd</tt>; defined in <xref target="chaptertimeend-element"/></li>
-
-<!-- [cellar] changed CueTime from Matroska Ticks to Segment Ticks
-
-It was brought to our attention after our last submission that this was mistaken
-for a Matroska Tick. We fix the issue in our repository in https://github.com/ietf-wg-cellar/matroska-specification/pull/814
--->
-
-<!-- [cellar] changed CueRefTime from Matroska Ticks to Segment Ticks
-
-It was brought to our attention after our last submission that this was mistaken
-for a Matroska Tick. We fix the issue in our repository in https://github.com/ietf-wg-cellar/matroska-specification/pull/815
--->
-
-
 </ul>
 </section>
 
@@ -6249,22 +6180,8 @@ timestamp in nanosecond = element value * TimestampScale
 <li><tt>Cluster\Timestamp</tt>; defined in <xref target="timestamp-element"/></li>
 <li><tt>Info\Duration</tt> is stored as a floating-point, but the same formula applies; defined in <xref target="duration-element"/></li>
 <li><tt>CuePoint\CueTime</tt>; defined in <xref target="cuetime-element"/></li>
-
-<!-- [cellar] changed CueTime from Matroska Ticks to Segment Ticks
-
-It was brought to our attention after our last submission that this was mistaken
-for a Matroska Tick. We fix the issue in our repository in https://github.com/ietf-wg-cellar/matroska-specification/pull/814
--->
-
 <li><tt>CuePoint\CueTrackPositions\CueDuration</tt>; defined in <xref target="cueduration-element"/></li>
 <li><tt>CueReference\CueRefTime</tt>; defined in <xref target="cuetime-element"/></li>
-
-<!-- [cellar] changed CueRefTime from Matroska Ticks to Segment Ticks
-
-It was brought to our attention after our last submission that this was mistaken
-for a Matroska Tick. We fix the issue in our repository in https://github.com/ietf-wg-cellar/matroska-specification/pull/815
--->
-
 </ul>
 </section>
 
@@ -7978,35 +7895,6 @@ these encapsulated formats.</t>
 </section>
 
 <section anchor="iana-considerations"><name>IANA Considerations</name>
-<!-- [rfced]
-g) Section 27.2 notes this:
-
-Original:
-   The values correspond to the unsigned
-   integer ChapProcessCodecID value described in Section 5.1.7.1.4.15.
-   ...
-   ChapProcessCodecID values of "0" and "1" are RESERVED to the IETF for
-   future use.
-
-Values 0 and 1 in the registry are listed as Reserved, with this document as a
-reference. See
-https://www.iana.org/assignments/matroska/matroska.xhtml#matroska-chapter-codec-ids.
-
-However, Section 5.1.7.1.4.15 notes this about values "0" and "1" for ChapProcessCodecID:
-
-Original:
-   definition:  Contains the type of the codec used for the processing.
-      A value of 0 means built-in Matroska processing (to be defined), a
-      value of 1 means the DVD command set is used; see Section 20.3 on
-      DVD menus.  More codec IDs can be added later.
-
-Please review and let us know if any updates are needed.
-
--->
-
-<!-- [cellar] values 0 and 1 are indeed for Matroska Script and DVD-Menu.
-Should we update the text in this document to reflect that, given the IANA doesn't have the names yet ?
-The IANA will be update the names when the chapter-codec document is finalized, but should it be done before ? -->
 
 <section anchor="matroska-element-ids-registry"><name>Matroska Element IDs Registry</name>
 <t>IANA has created a new registry called the "Matroska Element IDs"
@@ -10366,9 +10254,6 @@ If the first one is not found, it should be the second, etc.</dd>
 <dd><tt>\Segment\Tracks\TrackEntry\Video\AspectRatioType</tt></dd>
 <dt>documentation:</dt>
 <dd>Specifies the possible modifications to the aspect ratio.</dd>
-
-<!-- [cellar] fix imperative verb at the beggining of a definition -->
-
 </dl>
 </section>
 
@@ -10609,207 +10494,4 @@ Otherwise, TrickTrackUID and TrickTrackSegUID must be present if this track has 
 
 </back>
 
-
-<!-- [rfced] Formatting with <tt>
-
-a) Sometimes the word "element" is included in the <tt> tags and sometimes it
-appears outside the tags. For example, we see both of the following in the xml:
-
-<tt>SimpleBlock Element</tt>
-<tt>SimpleBlock</tt> Element
-
-We suggest making such terms consistent. Should "Element" appear in <tt>
-tagging, or should it appear outside the tags?
-
--->
-
-
-<!-- [cellar] Indeed, it has been a struggle to pick one.
-We should probably not put Element in the <tt> code so only the actual element name is highlighted.
-Would you like us to submit a new version with all those changed ?
--->
-
-<!-- [rfced]
-b) The following terms appear both with and without <tt> in the xml. Please
-review and let us know if the tagging should be consistent.
-
-Attachment
-Attachments
-Block
-BlockAdditions
-BlockDuration
-BlockGroup
-ChapProcessCodecID
-ChapProcessData
-ChapProcessPrivate
-Chapter
-ChapterAtom
-Chapters
-ChapterSegmentEditionUID
-ChapterSegmentUUID
-ChapterTranslate
-ChapterUID
-Cluster
-Clusters
-CodecID
-Cues
-DiscardPadding
-Edition
-EditionEntry
-Editions
-Element
-FileName
-Matroska
-NextUUID
-PrevUUID
-SeekHead
-Segment
-Segments
-SegmentUUID
-SimpleBlock
-Tag
-Tags
-TagString
-Timestamp
-TimestampScale
-Track
-TrackNumber
-Tracks
-TrackTranslate
--->
-
-
-<!-- [cellar] words that are element names should be in <tt>. If they start with an uppercase
-it's a good sign they are elements (or lowercase that they are not). A link to their
-definition might even be better, but it's going to make the text a little bloated. -->
-
-<!-- [rfced]
-f) We see the following forms used in the document. We believe that the
-capitalized form indicates the element (even when not followed by the word
-"Element"), while the lowercase is for general use. Please review that this
-usage is consistent.
-
-Tag vs. tag
-Tags vs. tags
-
-Example general use:
-   When tags from the previous layout
-
-Examples of capped form not followed by "Element":
-   ...has its UID listed in the Tags.
-
-   The Tags contain all extra information
--->
-
-<!-- [cellar] Correct, except there is no Tag element, so if it's used as a capital it's wrong. -->
-
-
-<!-- [rfced]
-g) We note that the following terms are used inconsistently throughout the
-document. Please review and let us know if any updates are needed for consistency.
-
-segment vs. Segment
-
-alpha vs. Alpha
-  Note: In context of "Alpha data" and "alpha channel data".
-
-EBML header vs. EBML Header
-
-block element vs. Block Element
-
-block header vs. Block header vs. Block Header
-  Note: We will make capitalization of "header" in "SimpleBlock header" consistent
-  with the decision here.
-
-block vs. Block
-  Note: In general text, e.g., "of the virtual block" and "contained in the Block".
-
-chapter codec vs. Chapter Codec
-
-chapter edition(s) vs. Chapter Edition(s)
-
-child element vs. Child Element
-
-codec ID vs. Codec ID
-  Note: We will not change "CodecID" used in element names.
-
-codec state vs. Codec State
-
-filename vs. file name
-  Note: We are asking about instances aside from "FileName Element".
-
-linked Segment vs. Linked Segment
-
-track name vs. Track Name
-
-Track vs. track
-  Note: In general text, e.g., "For separate tracks" and "end of a Track")
-
-segment vs. Segment
-
-cluster vs. Cluster
-
-Stereo-3D vs. stereo 3D
-
-edition vs. Edition
-
-Control Track vs. control track
--->
-
-<!-- [rfced] Capitalization of "element"
-
-a) We note that capitalization of "element" is inconsistent when following the name
-of elements. Please review and let us know if any updates are needed for
-consistency.
-
-Some examples:
-
-Capitalized:
-  Root Element
-  Top-Level Element
-  Empty Element
-  Segment Element
-  Info Element
-  SeekHead Element
-  Chapters Element
-  Cluster Element
-
-Lowercase:
-  DiscardPadding element
-  NextFilename element
-  TagDefault element
-  TrackEntry\Name element
-  AttachmentLink element
-
-Mixed capitalization:
-  CRC-32 element vs. CRC-32 Element
-  ReferenceBlock element vs. ReferenceBlock Element
-  Chapter element vs. Chapter Element
-  ChapterTimeEnd element vs. ChapterTimeEnd Element
-  ChapterSegmentUUID element vs. ChapterSegmentUUID Element
-  ChapterAtom element vs. ChapterAtom Element
-
-b) Should "element" (lowercase) vs. "Element" (uppercase) be used in general text?
-
-Some examples:
-   When both values exist in the file, the value found in Tags takes
-   precedence over the value found in original location of the element.
-
-   In that case these elements are informational only.
-
-   These Elements
-   allow edges of the frame that are not intended for display,
-
-   An Element which is not
-   stored within a Segment Element, such as the Elements of the EBML
-   Header, do not have a Segment Position.
-
-   The Segment Position of an Element refers to the position of the
-   first octet of the Element ID of that Element, measured in octets,
-   from the beginning of the Element Data section of the containing
-   Segment Element.
--->
-
-<!-- [cellar] inside <tt> they were used to emphasize that it's the name of an element
-if we move it out of the <tt> it makes more sense to lowercase them. -->
 </rfc>
