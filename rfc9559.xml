@@ -11,13 +11,13 @@
 </address></author><author initials="D." surname="Rice" fullname="Dave Rice"><organization></organization><address><postal><street></street>
 </postal><email>dave@dericed.com</email>
 </address></author><date year="2024" month="May"></date>
-  <area>art</area>
-  <workgroup>cellar</workgroup>
-  <keyword>binary</keyword>
-  <keyword>storage</keyword>
-  <keyword>matroska</keyword>
-  <keyword>ebml</keyword>
-  <keyword>webm</keyword>
+<area>art</area>
+<workgroup>cellar</workgroup>
+<keyword>binary</keyword>
+<keyword>storage</keyword>
+<keyword>matroska</keyword>
+<keyword>ebml</keyword>
+<keyword>webm</keyword>
 
 <abstract>
 <t>This document defines the Matroska audiovisual data container structure,
@@ -75,16 +75,16 @@ Matroska versions 1 to 3 are no longer maintained. No new elements are expected 
 </section>
 
 <section anchor="notation-and-conventions"><name>Notation and Conventions</name>
-        <t>The key words "<bcp14>MUST</bcp14>", "<bcp14>MUST NOT</bcp14>",
-    "<bcp14>REQUIRED</bcp14>", "<bcp14>SHALL</bcp14>", "<bcp14>SHALL NOT</bcp14>",
+<t>The key words "<bcp14>MUST</bcp14>", "<bcp14>MUST NOT</bcp14>",
+"<bcp14>REQUIRED</bcp14>", "<bcp14>SHALL</bcp14>", "<bcp14>SHALL NOT</bcp14>",
 "<bcp14>SHOULD</bcp14>", "<bcp14>SHOULD NOT</bcp14>",
-    "<bcp14>RECOMMENDED</bcp14>", "<bcp14>NOT RECOMMENDED</bcp14>",
-    "<bcp14>MAY</bcp14>", and "<bcp14>OPTIONAL</bcp14>" in this document are
-    to be interpreted as described in BCP 14 <xref target="RFC2119"/>
-    <xref target="RFC8174"/> when, and only when, they appear in all capitals,
-	as shown here.</t>
-	<t>This document defines the following terms in order to
-    define the format and application of Matroska:</t>
+"<bcp14>RECOMMENDED</bcp14>", "<bcp14>NOT RECOMMENDED</bcp14>",
+"<bcp14>MAY</bcp14>", and "<bcp14>OPTIONAL</bcp14>" in this document are
+to be interpreted as described in BCP 14 <xref target="RFC2119"/>
+<xref target="RFC8174"/> when, and only when, they appear in all capitals,
+as shown here.</t>
+<t>This document defines the following terms in order to
+define the format and application of Matroska:</t>
 
 <dl>
 <dt>Matroska:</dt>
@@ -122,15 +122,15 @@ For this reason, this specification updates <xref target="RFC8794"/> to make 0x8
 </ul>
 <t>OLD:</t>
 <blockquote><t>One-octet Element IDs <bcp14>MUST</bcp14> be between 0x81 and 0xFE.  These items are
-   valuable because they are short, and they need to be used for
-   commonly repeated elements.  Element IDs are to be allocated within
-   this range according to the "RFC Required" policy <xref target="RFC8126"/>.</t>
+  valuable because they are short, and they need to be used for
+  commonly repeated elements.  Element IDs are to be allocated within
+  this range according to the "RFC Required" policy <xref target="RFC8126"/>.</t>
 <t>The following one-octet Element IDs are RESERVED: 0xFF and 0x80.</t>
 </blockquote><t>NEW:</t>
 <blockquote><t>One-octet Element IDs <bcp14>MUST</bcp14> be between 0x80 and 0xFE.  These items are
-   valuable because they are short, and they need to be used for
-   commonly repeated elements.  Element IDs are to be allocated within
-   this range according to the "RFC Required" policy <xref target="RFC8126"/>.</t>
+  valuable because they are short, and they need to be used for
+  commonly repeated elements.  Element IDs are to be allocated within
+  this range according to the "RFC Required" policy <xref target="RFC8126"/>.</t>
 <t>The following one-octet Element ID is RESERVED: 0xFF.</t>
 </blockquote>
 <ul spacing="compact">
@@ -139,23 +139,23 @@ For this reason, this specification updates <xref target="RFC8794"/> to make 0x8
 <t>OLD:</t>
 
 <artwork>
-+=========================+================+=================+
-| Element ID Octet Length | Range of Valid | Number of Valid |
-|                         |  Element IDs   |     Element IDs |
-+=========================+================+=================+
-|            1            |  0x81 - 0xFE   |             126 |
-+-------------------------+----------------+-----------------+
+  +=========================+================+=================+
+  | Element ID Octet Length | Range of Valid | Number of Valid |
+  |                         |  Element IDs   |     Element IDs |
+  +=========================+================+=================+
+  |            1            |  0x81 - 0xFE   |             126 |
+  +-------------------------+----------------+-----------------+
 
 </artwork>
 <t>NEW:</t>
 
 <artwork>
-+=========================+================+=================+
-| Element ID Octet Length | Range of Valid | Number of Valid |
-|                         |  Element IDs   |     Element IDs |
-+=========================+================+=================+
-|            1            |  0x80 - 0xFE   |             127 |
-+-------------------------+----------------+-----------------+
+  +=========================+================+=================+
+  | Element ID Octet Length | Range of Valid | Number of Valid |
+  |                         |  Element IDs   |     Element IDs |
+  +=========================+================+=================+
+  |            1            |  0x80 - 0xFE   |             127 |
+  +-------------------------+----------------+-----------------+
 
 </artwork>
 </section>
@@ -209,10 +209,14 @@ that may occur within the <tt>Segment</tt>.</t>
 <li><tt>Segment</tt></li>
 </ul>
 <t>The following diagram represents a simple Matroska file, comprised of an <tt>EBML Document</tt>
-with an <tt>EBML Header</tt>, a <tt>Segment Element</tt> (the <tt>Root Element</tt>), and all eight Matroska
+with an <tt>EBML Header</tt>, a <tt>Segment</tt> element (the <tt>Root Element</tt>), and all eight Matroska
 <tt>Top-Level Elements</tt>. In the diagrams in this section, horizontal spacing expresses
-a parent-child relationship between Matroska Elements (e.g., the <tt>Info Element</tt> is contained within
-the <tt>Segment Element</tt>), whereas vertical alignment represents the storage order within the file.</t>
+a parent-child relationship between Matroska elements (e.g., the <tt>Info</tt> element is contained within
+the <tt>Segment</tt> element), whereas vertical alignment represents the storage order within the file.</t>
+
+<!-- [cellar] Element name and "element" separation
+<tt>Segment Element</tt> turns to <tt>Segment element</tt> -->
+
 <figure><name>Basic Layout of a Matroska File
 </name>
 <artwork>
@@ -258,12 +262,18 @@ the <tt>Segment Element</tt>), whereas vertical alignment represents the storage
 <li><t><tt>Tags</tt> (<xref target="tags"/>)</t>
 </li>
 </ul>
-<t>The <tt>SeekHead Element</tt> (also known as <tt>MetaSeek</tt>) contains an index of <tt>Top-Level Elements</tt>
-locations within the <tt>Segment</tt>. Use of the <tt>SeekHead Element</tt> is <bcp14>RECOMMENDED</bcp14>. Without a <tt>SeekHead Element</tt>,
+<t>The <tt>SeekHead</tt> element (also known as <tt>MetaSeek</tt>) contains an index of <tt>Top-Level Elements</tt>
+locations within the <tt>Segment</tt>. Use of the <tt>SeekHead</tt> element is <bcp14>RECOMMENDED</bcp14>. Without a <tt>SeekHead</tt> element,
+
+<!-- [cellar] Element name and "element" separation -->
+
 a Matroska parser would have to search the entire file to find all of the other <tt>Top-Level Elements</tt>.
 This is due to Matroska's flexible ordering requirements; for instance, it is acceptable for
-the <tt>Chapters Element</tt> to be stored after the <tt>Cluster Element(s)</tt>.</t>
-<figure><name>Representation of a <tt>SeekHead Element</tt>
+the <tt>Chapters</tt> element to be stored after the <tt>Cluster</tt> element(s).</t>
+<figure><name>Representation of a <tt>SeekHead</tt> element
+
+<!-- [cellar] Element name and "element" separation -->
+
 </name>
 <artwork>
 +--------------------------------+
@@ -274,10 +284,13 @@ the <tt>Chapters Element</tt> to be stored after the <tt>Cluster Element(s)</tt>
 
 </artwork>
 </figure>
-<t>The <tt>Info Element</tt> contains vital information for identifying the whole <tt>Segment</tt>.
+<t>The <tt>Info</tt> element contains vital information for identifying the whole <tt>Segment</tt>.
 This includes the title for the <tt>Segment</tt>, a randomly generated unique identifier (UID),
-and the UID(s) of any linked <tt>Segment Elements</tt>.</t>
-<figure><name>Representation of an <tt>Info Element</tt> and Its <tt>Child Elements</tt>
+and the UID(s) of any linked <tt>Segment</tt> elements.</t>
+<figure><name>Representation of an <tt>Info</tt> element and Its <tt>Child Elements</tt>
+
+<!-- [cellar] Element name and "element" separation -->
+
 </name>
 <artwork>
 +-------------------------+
@@ -312,16 +325,19 @@ and the UID(s) of any linked <tt>Segment Elements</tt>.</t>
 
 </artwork>
 </figure>
-<t>The <tt>Tracks Element</tt> defines the technical details for each track and can store the name,
+<t>The <tt>Tracks</tt> element defines the technical details for each track and can store the name,
 number, UID, language, and type (audio, video, subtitles, etc.) of each track.
-For example, the <tt>Tracks Element</tt> <bcp14>MAY</bcp14> store information about the resolution of a video track
+For example, the <tt>Tracks</tt> element <bcp14>MAY</bcp14> store information about the resolution of a video track
 or sample rate of an audio track.</t>
-<t>The <tt>Tracks Element</tt> <bcp14>MUST</bcp14> identify all the data needed by the codec to decode the data of the
+<t>The <tt>Tracks</tt> element <bcp14>MUST</bcp14> identify all the data needed by the codec to decode the data of the
 specified track. However, the data required is contingent on the codec used for the track.
-For example, a <tt>Tracks Element</tt> for uncompressed audio only requires the audio bit rate to be present.
-A codec such as AC-3 would require that the <tt>CodecID Element</tt> be present for all tracks,
+For example, a <tt>Track</tt> element for uncompressed audio only requires the audio bit rate to be present.
+A codec such as AC-3 would require that the <tt>CodecID</tt> element be present for all tracks,
 as it is the primary way to identify which codec to use to decode the track.</t>
-<figure><name>Representation of the <tt>Tracks Element</tt> and a Selection of Its <tt>Descendant Elements</tt>
+<figure><name>Representation of the <tt>Tracks</tt> element and a Selection of Its <tt>Descendant</tt> elements
+
+<!-- [cellar] Element name and "element" separation -->
+
 </name>
 <artwork>
 +------------------------------------+
@@ -371,9 +387,12 @@ as it is the primary way to identify which codec to use to decode the track.</t>
 
 </artwork>
 </figure>
-<t>The <tt>Chapters Element</tt> lists all of the chapters. <tt>Chapters</tt> are a way to set predefined
+<t>The <tt>Chapters</tt> element lists all of the chapters. <tt>Chapters</tt> are a way to set predefined
 points to jump to in video or audio.</t>
-<figure><name>Representation of the <tt>Chapters Element</tt> and a Selection of Its <tt>Descendant Elements</tt>
+<figure><name>Representation of the <tt>Chapters</tt> element and a Selection of Its <tt>Descendant</tt> elements
+
+<!-- [cellar] Element name and "element" separation -->
+
 </name>
 <artwork>
 +-----------------------------------------+
@@ -400,20 +419,23 @@ points to jump to in video or audio.</t>
 
 </artwork>
 </figure>
-<t><tt>Cluster Elements</tt> contain the content for each track, e.g., video frames. A Matroska file
-<bcp14>SHOULD</bcp14> contain at least one <tt>Cluster Element</tt>.
+<t><tt>Cluster</tt> elements contain the content for each track, e.g., video frames. A Matroska file
+<bcp14>SHOULD</bcp14> contain at least one <tt>Cluster</tt> element.
 In the rare case it doesn't, there should be a method for <tt>Segments</tt> to link
 together, possibly using <tt>Chapters</tt>; see <xref target="linked-segments"/>.</t>
-<t>The <tt>Cluster Element</tt> helps to break up
-<tt>SimpleBlock</tt> or <tt>BlockGroup Elements</tt> and helps with seeking and error protection.
-Every <tt>Cluster Element</tt> <bcp14>MUST</bcp14> contain a <tt>Timestamp Element</tt>.
-This <bcp14>SHOULD</bcp14> be the <tt>Timestamp Element</tt> used to play the first <tt>Block</tt> in the <tt>Cluster Element</tt>,
+<t>The <tt>Cluster</tt> element helps to break up
+<tt>SimpleBlock</tt> or <tt>BlockGroup</tt> elements and helps with seeking and error protection.
+Every <tt>Cluster</tt> element <bcp14>MUST</bcp14> contain a <tt>Timestamp</tt> element.
+This <bcp14>SHOULD</bcp14> be the <tt>Timestamp</tt> element used to play the first <tt>Block</tt> in the <tt>Cluster</tt> element,
 unless a different value is needed to accommodate for more <tt>Blocks</tt>; see <xref target="block-timestamps"/>.</t>
-<t><tt>Cluster Elements</tt> contain one or more <tt>Block</tt> element, such as <tt>BlockGroup</tt> or <tt>SimpleBlock</tt> elements.
-In some situations, a <tt>Cluster Element</tt> <bcp14>MAY</bcp14> contain no <tt>Block</tt> element, for example, in a live recording
+<t><tt>Cluster</tt> elements contain one or more <tt>Block</tt> element, such as <tt>BlockGroup</tt> or <tt>SimpleBlock</tt> elements.
+In some situations, a <tt>Cluster</tt> element <bcp14>MAY</bcp14> contain no <tt>Block</tt> element, for example, in a live recording
 when no data has been collected.</t>
-<t>A <tt>BlockGroup Element</tt> <bcp14>MAY</bcp14> contain a <tt>Block</tt> of data and any information relating directly to that <tt>Block</tt>.</t>
-<figure><name>Representation of a <tt>Cluster Element</tt> and Its Immediate <tt>Child Elements</tt>
+<t>A <tt>BlockGroup</tt> element <bcp14>MAY</bcp14> contain a <tt>Block</tt> of data and any information relating directly to that <tt>Block</tt>.</t>
+<figure><name>Representation of a <tt>Cluster</tt> element and Its Immediate <tt>Child Elements</tt>
+
+<!-- [cellar] Element name and "element" separation -->
+
 </name>
 <artwork>
 +--------------------------+
@@ -430,7 +452,10 @@ when no data has been collected.</t>
 
 </artwork>
 </figure>
-<figure><name>Representation of the <tt>Block Element</tt> Structure
+<figure><name>Representation of the <tt>Block</tt> element Structure
+
+<!-- [cellar] Element name and "element" separation -->
+
 </name>
 <artwork>
 +----------------------------------+
@@ -453,30 +478,45 @@ when no data has been collected.</t>
 
 </artwork>
 </figure>
-<t>Each <tt>Cluster</tt> <bcp14>MUST</bcp14> contain exactly one <tt>Timestamp Element</tt>. The <tt>Timestamp Element</tt> value <bcp14>MUST</bcp14>
-be stored once per <tt>Cluster</tt>. The <tt>Timestamp Element</tt> in the <tt>Cluster</tt> is relative to the entire <tt>Segment</tt>.
-The <tt>Timestamp Element</tt> <bcp14>SHOULD</bcp14> be the first Element in the <tt>Cluster</tt> it belongs to
-or the second Element if that <tt>Cluster</tt> contains a <tt>CRC-32</tt> element (<xref target="crc-32"/>)</t>
-<t>Additionally, the <tt>Block</tt> contains an offset that, when added to the <tt>Cluster</tt>'s <tt>Timestamp Element</tt> value,
+<t>Each <tt>Cluster</tt> <bcp14>MUST</bcp14> contain exactly one <tt>Timestamp</tt> element. The <tt>Timestamp</tt> element value <bcp14>MUST</bcp14>
+be stored once per <tt>Cluster</tt>. The <tt>Timestamp</tt> element in the <tt>Cluster</tt> is relative to the entire <tt>Segment</tt>.
+The <tt>Timestamp</tt> element <bcp14>SHOULD</bcp14> be the first element in the <tt>Cluster</tt> it belongs to
+
+<!-- [cellar] Element name and "element" separation -->
+
+or the second element if that <tt>Cluster</tt> contains a <tt>CRC-32</tt> element (<xref target="crc-32"/>)</t>
+
+<!-- [cellar] Element is a regular noun here -->
+
+<t>Additionally, the <tt>Block</tt> contains an offset that, when added to the <tt>Cluster</tt>'s <tt>Timestamp</tt> element value,
 yields the <tt>Block</tt>'s effective timestamp. Therefore, the timestamp in the <tt>Block</tt> itself is relative to
-the <tt>Timestamp Element</tt> in the <tt>Cluster</tt>. For example, if the <tt>Timestamp Element</tt> in the <tt>Cluster</tt>
+the <tt>Timestamp</tt> element in the <tt>Cluster</tt>. For example, if the <tt>Timestamp</tt> element in the <tt>Cluster</tt>
 is set to 10 seconds and a <tt>Block</tt> in that <tt>Cluster</tt> is supposed to be played 12 seconds into the clip,
 the timestamp in the <tt>Block</tt> would be set to 2 seconds.</t>
 <t>The <tt>ReferenceBlock</tt> in the <tt>BlockGroup</tt> is used instead of the basic "P-frame"/"B-frame" description.
 Instead of simply saying that this <tt>Block</tt> depends on the <tt>Block</tt> directly before or directly after,
-the <tt>Timestamp</tt> of the necessary <tt>Block</tt> is used. Because there can be as many <tt>ReferenceBlock Elements</tt>
+the <tt>Timestamp</tt> of the necessary <tt>Block</tt> is used. Because there can be as many <tt>ReferenceBlock</tt> elements
 as necessary for a <tt>Block</tt>, it allows for some extremely complex referencing.</t>
-<t>The <tt>Cues Element</tt> is used to seek when playing back a file by providing a temporal index
-for some of the <tt>Tracks</tt>. It is similar to the <tt>SeekHead Element</tt> but is used for seeking to
+<t>The <tt>Cues</tt> element is used to seek when playing back a file by providing a temporal index
+for some of the <tt>Tracks</tt>. It is similar to the <tt>SeekHead</tt> element but is used for seeking to
+
+<!-- [cellar] Element name and "element" separation -->
+
 a specific time when playing back the file. It is possible to seek without this element,
-but it is much more difficult because a Matroska Reader would have to "hunt and peck"
+but it is much more difficult because a <tt>Matroska Reader</tt> would have to "hunt and peck"
+
+<!-- [cellar] put Matroska Reader/Write in <tt/> -->
+
 through the file to look for the correct timestamp.</t>
-<t>The <tt>Cues Element</tt> <bcp14>SHOULD</bcp14> contain at least one <tt>CuePoint Element</tt>. Each <tt>CuePoint Element</tt>
-stores the position of the <tt>Cluster</tt> that contains the <tt>BlockGroup</tt> or <tt>SimpleBlock Element</tt>.
-The timestamp is stored in the <tt>CueTime Element</tt>, and the location is stored in the <tt>CueTrackPositions Element</tt>.</t>
-<t>The <tt>Cues Element</tt> is flexible. For instance, the <tt>Cues Element</tt> can be used to index every
+<t>The <tt>Cues</tt> element <bcp14>SHOULD</bcp14> contain at least one <tt>CuePoint</tt> element. Each <tt>CuePoint</tt> element
+stores the position of the <tt>Cluster</tt> that contains the <tt>BlockGroup</tt> or <tt>SimpleBlock</tt> element.
+The timestamp is stored in the <tt>CueTime</tt> element, and the location is stored in the <tt>CueTrackPositions</tt> element.</t>
+<t>The <tt>Cues</tt> element is flexible. For instance, the <tt>Cues</tt> element can be used to index every
 single timestamp of every <tt>Block</tt> or they can be indexed selectively.</t>
-<figure><name>Representation of a <tt>Cues Element</tt> and Two Levels of Its <tt>Descendant Elements</tt>
+<figure><name>Representation of a <tt>Cues</tt> element and Two Levels of Its <tt>Descendant</tt> elements
+
+<!-- [cellar] Element name and "element" separation -->
+
 </name>
 <artwork>
 +-------------------------------------+
@@ -491,9 +531,12 @@ single timestamp of every <tt>Block</tt> or they can be indexed selectively.</t>
 
 </artwork>
 </figure>
-<t>The <tt>Attachments Element</tt> is for attaching files to a Matroska file, such as pictures,
+<t>The <tt>Attachments</tt> element is for attaching files to a Matroska file, such as pictures,
 fonts, web pages, etc.</t>
-<figure><name>Representation of an <tt>Attachments Element</tt>
+<figure><name>Representation of an <tt>Attachments</tt> Element
+
+<!-- [cellar] Element name and "element" separation -->
+
 </name>
 <artwork>
 +------------------------------------------------+
@@ -506,26 +549,25 @@ fonts, web pages, etc.</t>
 |             |              | FileData          |
 |             |              |-------------------|
 |             |              | FileUID           |
-|             |              |-------------------|
-|             |              | FileName          |
-|             |              |-------------------|
-|             |              | FileReferral      |
-|             |              |-------------------|
-|             |              | FileUsedStartTime |
-|             |              |-------------------|
-|             |              | FileUsedEndTime   |
 +------------------------------------------------+
+
+<!-- [cellar] FIX: removed FileName (duplicate) and deprecated elements that should
+not be used from the table -->
+
 
 </artwork>
 </figure>
-<t>The <tt>Tags Element</tt> contains metadata that describes the <tt>Segment</tt> and potentially
+<t>The <tt>Tags</tt> element contains metadata that describes the <tt>Segment</tt> and potentially
 its <tt>Tracks</tt>, <tt>Chapters</tt>, and <tt>Attachments</tt>. Each <tt>Track</tt> or <tt>Chapter</tt> that those tags
 applies to has its UID listed in the <tt>Tags</tt>. The <tt>Tags</tt> contain all extra information about
 the file: scriptwriters, singers, actors, directors, titles, edition, price, dates, genre, comments,
 etc. <tt>Tags</tt> can contain their values in multiple languages.
-   For example, a movie's "TITLE" <tt>Tag</tt> might contain both the original
-   English title as well as the German title.</t>
-<figure><name>Representation of a <tt>Tags Element</tt> and Three Levels of Its <tt>Children Elements</tt>
+For example, a movie's "TITLE" <tt>Tag</tt> might contain both the original
+English title as well as the German title.</t>
+<figure><name>Representation of a <tt>Tags</tt> element and Three Levels of Its <tt>Children Elements</tt>
+
+<!-- [cellar] Element name and "element" separation -->
+
 </name>
 <artwork>
 +-------------------------------------------+
@@ -560,10 +602,13 @@ etc. <tt>Tags</tt> can contain their values in multiple languages.
 </section>
 
 <section anchor="matroska-schema"><name>Matroska Schema</name>
-<t>This specification includes an <tt>EBML Schema</tt> that defines the Elements and structure
+<t>This specification includes an <tt>EBML Schema</tt> that defines the elements and structure
 of Matroska using the EBML Schema elements and attributes defined in <xref target="RFC8794" sectionFormat="of" section="11.1"/>.</t>
 <t>Attributes using their default value (like <tt>minOccurs</tt>, <tt>minver</tt>, etc.) or attributes with undefined values (like <tt>length</tt>, <tt>maxver</tt>, etc.) are omitted.</t>
-<t>The definitions for each Matroska Element are provided below.</t>
+<t>The definitions for each Matroska element are provided below.</t>
+
+<!-- [cellar] Element is a regular noun here -->
+
 
 <section anchor="segment-element"><name>Segment Element</name>
 
@@ -618,7 +663,10 @@ of Matroska using the EBML Schema elements and attributes defined in <xref targe
 <dt>minOccurs / maxOccurs:</dt>
 <dd>1 / 1</dd>
 <dt>definition:</dt>
-<dd>The binary EBML ID of a Top-Level Element.</dd>
+<dd>The binary EBML ID of a <tt>Top-Level Element</tt>.</dd>
+
+<!-- [cellar] use <tt> for Top-Level Element(s) expression -->
+
 </dl>
 </section>
 
@@ -632,7 +680,10 @@ of Matroska using the EBML Schema elements and attributes defined in <xref targe
 <dt>minOccurs / maxOccurs:</dt>
 <dd>1 / 1</dd>
 <dt>definition:</dt>
-<dd>The <tt>Segment Position</tt> (<xref target="segment-position"/>) of a Top-Level Element.</dd>
+<dd>The <tt>Segment Position</tt> (<xref target="segment-position"/>) of a <tt>Top-Level Element</tt>.</dd>
+
+<!-- [cellar] use <tt> for Top-Level Element(s) expression -->
+
 </dl>
 </section>
 </section>
@@ -667,7 +718,10 @@ of Matroska using the EBML Schema elements and attributes defined in <xref targe
 <dt>definition:</dt>
 <dd>A randomly generated UID that identifies the <tt>Segment</tt> amongst many others (128 bits). It is equivalent to a Universally Unique Identifier (UUID) v4 <xref target="RFC4122"/> with all bits randomly (or pseudorandomly) chosen.  An actual UUID v4 value, where some bits are not random, <bcp14>MAY</bcp14> also be used.</dd>
 <dt>usage notes:</dt>
-<dd>If the <tt>Segment</tt> is a part of a <tt>Linked Segment</tt>, then this Element is <bcp14>REQUIRED</bcp14>.
+<dd>If the <tt>Segment</tt> is a part of a <tt>Linked Segment</tt>, then this element is <bcp14>REQUIRED</bcp14>.
+
+<!-- [cellar] Element is a regular noun here -->
+
 The value of the UID <bcp14>MUST</bcp14> contain at least one bit set to 1.</dd>
 </dl>
 </section>
@@ -702,7 +756,10 @@ The value of the UID <bcp14>MUST</bcp14> contain at least one bit set to 1.</dd>
 <dt>usage notes:</dt>
 <dd>If the <tt>Segment</tt> is a part of a <tt>Linked Segment</tt> that uses
 Hard Linking (<xref target="hard-linking"/>), then either the
-<tt>PrevUUID</tt> or the <tt>NextUUID</tt> Element is
+<tt>PrevUUID</tt> or the <tt>NextUUID</tt> element is
+
+<!-- [cellar] Element name and "element" separation -->
+
 <bcp14>REQUIRED</bcp14>. If a <tt>Segment</tt> contains a <tt>PrevUUID</tt>
 but not a <tt>NextUUID</tt>, then it <bcp14>MAY</bcp14> be considered as the
 last <tt>Segment</tt> of the <tt>Linked Segment</tt>. The <tt>PrevUUID</tt> <bcp14>MUST NOT</bcp14>
@@ -742,7 +799,10 @@ but <tt>PrevUUID</tt> <bcp14>SHOULD</bcp14> be considered authoritative for iden
 <dd>An ID that identifies the next <tt>Segment</tt> of a <tt>Linked Segment</tt>.</dd>
 <dt>usage notes:</dt>
 <dd>If the <tt>Segment</tt> is a part of a <tt>Linked Segment</tt> that uses Hard Linking (<xref target="hard-linking"/>),
-then either the <tt>PrevUUID</tt> or the <tt>NextUUID</tt> Element is <bcp14>REQUIRED</bcp14>. If a <tt>Segment</tt> contains a <tt>NextUUID</tt> but not a <tt>PrevUUID</tt>,
+then either the <tt>PrevUUID</tt> or the <tt>NextUUID</tt> element is <bcp14>REQUIRED</bcp14>. If a <tt>Segment</tt> contains a <tt>NextUUID</tt> but not a <tt>PrevUUID</tt>,
+
+<!-- [cellar] Element name and "element" separation -->
+
 then it <bcp14>MAY</bcp14> be considered as the first <tt>Segment</tt> of the <tt>Linked Segment</tt>. The <tt>NextUUID</tt> <bcp14>MUST NOT</bcp14> be equal to the <tt>SegmentUUID</tt>.</dd>
 </dl>
 </section>
@@ -776,7 +836,10 @@ but <tt>NextUUID</tt> <bcp14>SHOULD</bcp14> be considered authoritative for iden
 <dt>definition:</dt>
 <dd>A UID that all <tt>Segments</tt> of a <tt>Linked Segment</tt> <bcp14>MUST</bcp14> share (128 bits). It is equivalent to a UUID v4 <xref target="RFC4122"/> with all bits randomly (or pseudorandomly) chosen. An actual UUID v4 value, where some bits are not random, <bcp14>MAY</bcp14> also be used.</dd>
 <dt>usage notes:</dt>
-<dd>If the <tt>Segment</tt> <tt>Info</tt> contains a <tt>ChapterTranslate</tt> element, this Element is <bcp14>REQUIRED</bcp14>.</dd>
+<dd>If the <tt>Segment</tt> <tt>Info</tt> contains a <tt>ChapterTranslate</tt> element, this element is <bcp14>REQUIRED</bcp14>.</dd>
+
+<!-- [cellar] Element is a regular noun here -->
+
 </dl>
 </section>
 
@@ -792,7 +855,10 @@ but <tt>NextUUID</tt> <bcp14>SHOULD</bcp14> be considered authoritative for iden
 segment value in the given Chapter Codec.</dd>
 <dt>rationale:</dt>
 <dd>Chapter Codecs may need to address different segments, but they may not know of the way to identify such segments when stored in Matroska.
-This element and its child elements add a way to map the internal segments known to the Chapter Codec to the <tt>Segment</tt> IDs in Matroska.
+This element and its child elements add a way to map the internal segments known to the Chapter Codec to the <tt>SegmentUUID</tt>s in Matroska.
+
+<!-- [cellar] FIX: Segment IDs are SegmentUUIDs elements -->
+
 This allows remuxing a file with Chapter Codec without changing the content of the codec data, just the <tt>Segment</tt> mapping.</dd>
 </dl>
 
@@ -821,7 +887,9 @@ The format depends on the <tt>ChapProcessCodecID</tt> used; see <xref target="ch
 <dt>minOccurs / maxOccurs:</dt>
 <dd>1 / 1</dd>
 <dt>definition:</dt>
-<dd>This <tt>ChapterTranslate</tt> applies to the chapter codec of the given chapter edition(s); see <xref target="chapprocesscodecid-element"/>.</dd>
+<dd>Applies to the chapter codec of the given chapter edition(s); see <xref target="chapprocesscodecid-element"/>.</dd>
+
+<!-- [cellar] used the same Applies change that was done for TrackTranslateCodec -->
 
 <dt>defined values:</dt>
 <dd>See <xref target="ChapterTranslateCodecValues"/>.</dd>
@@ -894,7 +962,10 @@ The format depends on the <tt>ChapProcessCodecID</tt> used; see <xref target="ch
 <dt>maxOccurs:</dt>
 <dd>1</dd>
 <dt>definition:</dt>
-<dd>Duration of the <tt>Segment</tt>, expressed in Segment Ticks, which are based on <tt>TimestampScale</tt>; see <xref target="timestamp-ticks"/>.</dd>
+<dd>Duration of the <tt>Segment</tt>, expressed in <tt>Segment</tt> Ticks, which are based on <tt>TimestampScale</tt>; see <xref target="timestamp-ticks"/>.</dd>
+
+<!-- [cellar] use <tt> for element name(s) -->
+
 </dl>
 </section>
 
@@ -969,7 +1040,10 @@ The format depends on the <tt>ChapProcessCodecID</tt> used; see <xref target="ch
 <dt>path:</dt>
 <dd><tt>\Segment\Cluster</tt></dd>
 <dt>definition:</dt>
-<dd>The Top-Level Element containing the (monolithic) <tt>Block</tt> structure.</dd>
+<dd>The <tt>Top-Level Element</tt> containing the (monolithic) <tt>Block</tt> structure.</dd>
+
+<!-- [cellar] use <tt> for Top-Level Element(s) expression -->
+
 </dl>
 
 <section anchor="timestamp-element"><name>Timestamp Element</name>
@@ -984,7 +1058,11 @@ The format depends on the <tt>ChapProcessCodecID</tt> used; see <xref target="ch
 <dt>definition:</dt>
 <dd>Absolute timestamp of the cluster, expressed in Segment Ticks, which are based on <tt>TimestampScale</tt>; see <xref target="timestamp-ticks"/>.</dd>
 <dt>usage notes:</dt>
-<dd>This element <bcp14>SHOULD</bcp14> be the first child element of the <tt>Cluster</tt> it belongs to or the second if that <tt>Cluster</tt> contains a CRC-32 element (<xref target="crc-32"/>).</dd>
+<dd>This element <bcp14>SHOULD</bcp14> be the first child element of the <tt>Cluster</tt> it belongs to
+or the second if that <tt>Cluster</tt> contains a <tt>CRC-32</tt> element (<xref target="crc-32"/>).</dd>
+
+<!-- [cellar] use <tt> for element name(s) -->
+
 </dl>
 </section>
 
@@ -1136,7 +1214,10 @@ should be handled according to the <tt>BlockAddIDType</tt> that is located in th
 <dd>See <xref target="BlockDurationNotes"/> / 1</dd>
 <dt>definition:</dt>
 <dd>The duration of the <tt>Block</tt>, expressed in Track Ticks; see <xref target="timestamp-ticks"/>.
-The <tt>BlockDuration</tt> Element can be useful at the end of a <tt>Track</tt> to define the duration of the last frame (as there is no subsequent <tt>Block</tt> available)
+The <tt>BlockDuration</tt> element can be useful at the end of a <tt>Track</tt> to define the duration of the last frame (as there is no subsequent <tt>Block</tt> available)
+
+<!-- [cellar] Element name and "element" separation -->
+
 or when there is a break in a track like for subtitle tracks.</dd>
 <dt>notes:</dt>
 <dd>See <xref target="BlockDurationNotes"/>.</dd>
@@ -1152,16 +1233,18 @@ or when there is a break in a track like for subtitle tracks.</dd>
 <tbody>
 <tr>
 <td align="left">minOccurs</td>
-<td align="left">BlockDuration <bcp14>MUST</bcp14> be set (minOccurs=1) if the associated
-TrackEntry stores a DefaultDuration value.</td>
+<td align="left"><tt>BlockDuration</tt> <bcp14>MUST</bcp14> be set (minOccurs=1) if the associated <tt>TrackEntry</tt> stores a <tt>DefaultDuration</tt> value.</td>
+
+<!-- [cellar] use <tt> for element name(s) -->
+
 </tr>
 
 <tr>
 <td align="left">default</td>
-<td align="left">If a value is not present and no DefaultDuration is defined,
-the value is assumed to be the difference between the timestamp of this Block>
-and the timestamp of the next Block in "display" order (not coding
-order).</td>
+<td align="left">If a value is not present and no <tt>DefaultDuration</tt> is defined, the value is assumed to be the difference between the timestamp of this <tt>Block</tt> and the timestamp of the next <tt>Block</tt> in "display" order (not coding order).</td>
+
+<!-- [cellar] use <tt> for element name(s) -->
+
 </tr>
 </tbody>
 </table>
@@ -1195,7 +1278,10 @@ This is used to reference other frames necessary to decode this frame.
 The relative value <bcp14>SHOULD</bcp14> correspond to a valid <tt>Block</tt> that this <tt>Block</tt> depends on.
 Historically, Matroska Writers didn't write the actual <tt>Block(s)</tt> that this <tt>Block</tt> depends on, but they did write <em>some</em> <tt>Block(s)</tt> in the past.</dd>
 </dl>
-<t>The value "0" <bcp14>MAY</bcp14> also be used to signify that this <tt>Block</tt> cannot be decoded on its own, but the necessary reference <tt>Block(s)</tt> is unknown. In this case, other <tt>ReferenceBlock</tt> Elements <bcp14>MUST NOT</bcp14> be found in the same <tt>BlockGroup</tt>. If the <tt>BlockGroup</tt> doesn't have a <tt>ReferenceBlock</tt> element, then the <tt>Block</tt> it contains can be decoded without using any other <tt>Block</tt> data.</t>
+<t>The value "0" <bcp14>MAY</bcp14> also be used to signify that this <tt>Block</tt> cannot be decoded on its own, but the necessary reference <tt>Block(s)</tt> is unknown. In this case, other <tt>ReferenceBlock</tt> elements <bcp14>MUST NOT</bcp14> be found in the same <tt>BlockGroup</tt>. If the <tt>BlockGroup</tt> doesn't have a <tt>ReferenceBlock</tt> element, then the <tt>Block</tt> it contains can be decoded without using any other <tt>Block</tt> data.</t>
+
+<!-- [cellar] Element name and "element" separation -->
+
 </section>
 
 <section anchor="codecstate-element"><name>CodecState Element</name>
@@ -1227,9 +1313,15 @@ This information <bcp14>SHOULD</bcp14> always be referenced by a seek entry.</dd
 <dt>minver:</dt>
 <dd>4</dd>
 <dt>definition:</dt>
-<dd>Duration of the silent data added to the Block, expressed in Matroska Ticks -- i.e., in nanoseconds; see <xref target="timestamp-ticks"/>
+<dd>Duration of the silent data added to the <tt>Block</tt>, expressed in Matroska Ticks -- i.e., in nanoseconds; see <xref target="timestamp-ticks"/>
+
+<!-- [cellar] use <tt> for element name(s) -->
+
 (padding at the end of the <tt>Block</tt> for positive values and at the beginning of the <tt>Block</tt> for negative values).
-The duration of <tt>DiscardPadding</tt> is not calculated in the duration of the <tt>TrackEntry</tt>and <bcp14>SHOULD</bcp14> be discarded during playback.</dd>
+The duration of <tt>DiscardPadding</tt> is not calculated in the duration of the <tt>TrackEntry</tt> and <bcp14>SHOULD</bcp14> be discarded during playback.</dd>
+
+<!-- [cellar] fix missing space after <tt> -->
+
 </dl>
 </section>
 </section>
@@ -1247,7 +1339,10 @@ The duration of <tt>DiscardPadding</tt> is not calculated in the duration of the
 <dt>recurring:</dt>
 <dd>True</dd>
 <dt>definition:</dt>
-<dd>A Top-Level Element of information with many tracks described.</dd>
+<dd>A <tt>Top-Level Element</tt> of information with many tracks described.</dd>
+
+<!-- [cellar] use <tt> for Top-Level Element(s) expression -->
+
 </dl>
 
 <section anchor="trackentry-element"><name>TrackEntry Element</name>
@@ -1260,7 +1355,10 @@ The duration of <tt>DiscardPadding</tt> is not calculated in the duration of the
 <dt>minOccurs:</dt>
 <dd>1</dd>
 <dt>definition:</dt>
-<dd>Describes a track with all Elements.</dd>
+<dd>Describes a track with all elements.</dd>
+
+<!-- [cellar] Element is a regular noun here -->
+
 </dl>
 
 <section anchor="tracknumber-element"><name>TrackNumber Element</name>
@@ -1339,7 +1437,10 @@ The value <bcp14>SHOULD</bcp14> be stored on 1 octet.</dd>
 <tr>
 <td align="left"><tt>3</tt></td>
 <td align="left">complex</td>
-<td align="left">A mix of different other TrackType. The codec needs to define how the Matroska Player should interpret such data.</td>
+<td align="left">A mix of different other <tt>TrackType</tt>. The codec needs to define how the <tt>Matroska Player</tt> should interpret such data.</td>
+
+<!-- [cellar] use <tt> for element name(s) and Matroska Player -->
+
 </tr>
 
 <tr>
@@ -1363,13 +1464,19 @@ The value <bcp14>SHOULD</bcp14> be stored on 1 octet.</dd>
 <tr>
 <td align="left"><tt>32</tt></td>
 <td align="left">control</td>
-<td align="left">Metadata used to control the player of the Matroska Player.</td>
+<td align="left">Metadata used to control the player of the <tt>Matroska Player</tt>.</td>
+
+<!-- [cellar] use <tt> for Matroska Player -->
+
 </tr>
 
 <tr>
 <td align="left"><tt>33</tt></td>
 <td align="left">metadata</td>
-<td align="left">Timed metadata that can be passed on to the Matroska Player.</td>
+<td align="left">Timed metadata that can be passed on to the <tt>Matroska Player</tt>.</td>
+
+<!-- [cellar] use <tt> for Matroska Player -->
+
 </tr>
 </tbody>
 </table>
@@ -1548,7 +1655,10 @@ When set to 0, all blocks <bcp14>MUST</bcp14> have their lacing flags set to "no
 <dd>1</dd>
 <dt>definition:</dt>
 <dd>Number of nanoseconds per frame, expressed in Matroska Ticks -- i.e., in nanoseconds; see <xref target="timestamp-ticks"/>
-("frame" in the Matroska sense -- one Element put into a (Simple)Block).</dd>
+("frame" in the Matroska sense -- one element put into a (Simple)Block).</dd>
+
+<!-- [cellar] Element is a regular noun here -->
+
 <dt>stream copy:</dt>
 <dd>True (<xref target="stream-copy"/>)</dd>
 </dl>
@@ -1660,7 +1770,10 @@ the value refers to the <tt>BlockAddID</tt> (<xref target="blockaddid-element"/>
 <dd>4</dd>
 <dt>definition:</dt>
 <dd>A human-friendly name describing the type of <tt>BlockAdditional</tt> data,
-as defined by the associated Block Additional Mapping.</dd>
+as defined by the associated <tt>Block Additional Mapping</tt>.</dd>
+
+<!-- [cellar] use <tt> for Block Additional Mapping -->
+
 </dl>
 </section>
 
@@ -1676,7 +1789,10 @@ as defined by the associated Block Additional Mapping.</dd>
 <dt>minver:</dt>
 <dd>4</dd>
 <dt>definition:</dt>
-<dd>Stores the registered identifier of the Block Additional Mapping
+<dd>Stores the registered identifier of the <tt>Block Additional Mapping</tt>
+
+<!-- [cellar] use <tt> for Block Additional Mapping -->
+
 to define how the <tt>BlockAdditional</tt> data should be handled.</dd>
 <dt>usage notes:</dt>
 <dd>If <tt>BlockAddIDType</tt> is 0, the <tt>BlockAddIDValue</tt> and corresponding <tt>BlockAddID</tt> values <bcp14>MUST</bcp14> be 1.</dd>
@@ -1696,7 +1812,10 @@ to define how the <tt>BlockAdditional</tt> data should be handled.</dd>
 <dd>4</dd>
 <dt>definition:</dt>
 <dd>Extra binary data that the <tt>BlockAddIDType</tt> can use to interpret the <tt>BlockAdditional</tt> data.
-The interpretation of the binary data depends on the <tt>BlockAddIDType</tt> value and the corresponding Block Additional Mapping.</dd>
+The interpretation of the binary data depends on the <tt>BlockAddIDType</tt> value and the corresponding <tt>Block Additional Mapping</tt>.</dd>
+
+<!-- [cellar] use <tt> for Block Additional Mapping -->
+
 </dl>
 </section>
 </section>
@@ -1727,7 +1846,10 @@ The interpretation of the binary data depends on the <tt>BlockAddIDType</tt> val
 <dt>definition:</dt>
 <dd>The language of the track,
 in the Matroska languages form; see <xref target="language-codes"/> on language codes.
-This Element <bcp14>MUST</bcp14> be ignored if the <tt>LanguageBCP47</tt> Element is used in the same <tt>TrackEntry</tt>.</dd>
+This element <bcp14>MUST</bcp14> be ignored if the <tt>LanguageBCP47</tt> element is used in the same <tt>TrackEntry</tt>.</dd>
+
+<!-- [cellar] Element name and "element" separation -->
+
 </dl>
 </section>
 
@@ -1745,7 +1867,10 @@ This Element <bcp14>MUST</bcp14> be ignored if the <tt>LanguageBCP47</tt> Elemen
 <dt>definition:</dt>
 <dd>The language of the track,
 in the form defined in <xref target="RFC5646"/>; see <xref target="language-codes"/> on language codes.
-If this Element is used, then any <tt>Language</tt> Elements used in the same <tt>TrackEntry</tt><bcp14>MUST</bcp14> be ignored.</dd>
+If this element is used, then any <tt>Language</tt> elements used in the same <tt>TrackEntry</tt> <bcp14>MUST</bcp14> be ignored.</dd>
+
+<!-- [cellar] Element name and "element" separation -->
+
 </dl>
 </section>
 
@@ -1812,7 +1937,10 @@ see <xref target="I-D.ietf-cellar-codec"/> for more info.</dd>
 <dt>definition:</dt>
 <dd>The UID of an attachment that is used by this codec.</dd>
 <dt>usage notes:</dt>
-<dd>The value <bcp14>MUST</bcp14> match the <tt>FileUID</tt> value of an attachment found in this Segment.</dd>
+<dd>The value <bcp14>MUST</bcp14> match the <tt>FileUID</tt> value of an attachment found in this <tt>Segment</tt>.</dd>
+
+<!-- [cellar] use <tt> for element name(s) -->
+
 </dl>
 </section>
 
@@ -2018,7 +2146,10 @@ The format depends on the <tt>ChapProcessCodecID</tt> used; see <xref target="ch
 <dt>defined values:</dt>
 <dd>See <xref target="FieldOrderValues"/>.</dd>
 <dt>usage notes:</dt>
-<dd>If <tt>FlagInterlaced</tt> is not set to 1, this Element <bcp14>MUST</bcp14> be ignored.</dd>
+<dd>If <tt>FlagInterlaced</tt> is not set to 1, this element <bcp14>MUST</bcp14> be ignored.</dd>
+
+<!-- [cellar] Element is a regular noun here -->
+
 <dt>stream copy:</dt>
 <dd>True (<xref target="stream-copy"/>)</dd>
 </dl>
@@ -2188,7 +2319,10 @@ The format depends on the <tt>ChapProcessCodecID</tt> used; see <xref target="ch
 <dt>minver:</dt>
 <dd>3</dd>
 <dt>definition:</dt>
-<dd>Indicates whether the <tt>BlockAdditional</tt> Element with <tt>BlockAddID</tt> of "1"
+<dd>Indicates whether the <tt>BlockAdditional</tt> element with <tt>BlockAddID</tt> of "1"
+
+<!-- [cellar] Element name and "element" separation -->
+
 contains Alpha data as defined by the Codec Mapping for the <tt>CodecID</tt>.
 Undefined values (i.e., values other than 0 or 1) <bcp14>SHOULD NOT</bcp14> be used, as the
 behavior of known implementations is different.</dd>
@@ -2210,13 +2344,19 @@ behavior of known implementations is different.</dd>
 <tr>
 <td align="left"><tt>0</tt></td>
 <td align="left">none</td>
-<td align="left">The BlockAdditional Element with BlockAddID of "1" does not exist or <bcp14>SHOULD NOT</bcp14> be considered as containing such data.</td>
+<td align="left">The <tt>BlockAdditional</tt> element with <tt>BlockAddID</tt> of "1" does not exist or <bcp14>SHOULD NOT</bcp14> be considered as containing such data.</td>
+
+<!-- [cellar] use <tt> for element name(s) -->
+
 </tr>
 
 <tr>
 <td align="left"><tt>1</tt></td>
 <td align="left">present</td>
-<td align="left">The BlockAdditional Element with BlockAddID of "1" contains alpha channel data.</td>
+<td align="left">The <tt>BlockAdditional</tt> element with <tt>BlockAddID</tt> of "1" contains alpha channel data.</td>
+
+<!-- [cellar] use <tt> for element name(s) -->
+
 </tr>
 </tbody>
 </table>
@@ -2238,7 +2378,10 @@ behavior of known implementations is different.</dd>
 <dt>restrictions:</dt>
 <dd>See <xref target="OldStereoModeValues"/>.</dd>
 <dt>usage notes:</dt>
-<dd>This Element <bcp14>MUST NOT</bcp14> be used. It was an incorrect value used in libmatroska up to 0.9.0.</dd>
+<dd>This element <bcp14>MUST NOT</bcp14> be used. It was an incorrect value used in libmatroska up to 0.9.0.</dd>
+
+<!-- [cellar] Element is a regular noun here -->
+
 </dl>
 <table anchor="OldStereoModeValues"><name>OldStereoMode Values</name>
 <thead>
@@ -2401,7 +2544,10 @@ behavior of known implementations is different.</dd>
 <tbody>
 <tr>
 <td align="left">default</td>
-<td align="left">If the DisplayUnit of the same TrackEntry is 0, then the default value for DisplayWidth is equal to PixelWidth - PixelCropLeft - PixelCropRight; else, there is no default value.</td>
+<td align="left">If the DisplayUnit of the same <tt>TrackEntry</tt> is 0, then the default value for <tt>DisplayWidth</tt> is equal to <tt>PixelWidth</tt> - <tt>PixelCropLeft</tt> - <tt>PixelCropRight</tt>; else, there is no default value.</td>
+
+<!-- [cellar] use <tt> for element name(s) -->
+
 </tr>
 </tbody>
 </table>
@@ -2436,7 +2582,10 @@ behavior of known implementations is different.</dd>
 <tbody>
 <tr>
 <td align="left">default</td>
-<td align="left">If the DisplayUnit of the same TrackEntry is 0, then the default value for DisplayHeight is equal to PixelHeight - PixelCropTop - PixelCropBottom; else, there is no default value.</td>
+<td align="left">If the DisplayUnit of the same <tt>TrackEntry</tt> is 0, then the default value for <tt>DisplayHeight</tt> is equal to <tt>PixelHeight</tt> - <tt>PixelCropTop</tt> - <tt>PixelCropBottom</tt>; else, there is no default value.</td>
+
+<!-- [cellar] use <tt> for element name(s) -->
+
 </tr>
 </tbody>
 </table>
@@ -2523,7 +2672,10 @@ This value is similar in scope to the biCompression value of AVI's <tt>BITMAPINF
 <tbody>
 <tr>
 <td align="left">minOccurs</td>
-<td align="left">UncompressedFourCC <bcp14>MUST</bcp14> be set (minOccurs=1) in TrackEntry when the <tt>CodecID</tt> Element of the TrackEntry is set to "V_UNCOMPRESSED".</td>
+<td align="left">UncompressedFourCC <bcp14>MUST</bcp14> be set (minOccurs=1) in <tt>TrackEntry</tt> when the <tt>CodecID</tt> element of the <tt>TrackEntry</tt> is set to "V_UNCOMPRESSED".</td>
+
+<!-- [cellar] use <tt> for element name(s) -->
+
 </tr>
 </tbody>
 </table>
@@ -3786,7 +3938,10 @@ flips the image horizontally and vertically.</dd>
 <dt>minver:</dt>
 <dd>3</dd>
 <dt>definition:</dt>
-<dd>Contains the list of all tracks whose Blocks need to be combined to create this virtual track.</dd>
+<dd>Contains the list of all tracks whose <tt>Blocks</tt> need to be combined to create this virtual track.</dd>
+
+<!-- [cellar] use <tt> for element name(s) -->
+
 <dt>stream copy:</dt>
 <dd>True (<xref target="stream-copy"/>)</dd>
 </dl>
@@ -3806,7 +3961,10 @@ flips the image horizontally and vertically.</dd>
 <dt>minver:</dt>
 <dd>3</dd>
 <dt>definition:</dt>
-<dd>The TrackUID number of a track whose blocks are used to create this virtual track.</dd>
+<dd>The <tt>TrackUID</tt> number of a track whose blocks are used to create this virtual track.</dd>
+
+<!-- [cellar] use <tt> for element name(s) -->
+
 <dt>stream copy:</dt>
 <dd>True (<xref target="stream-copy"/>)</dd>
 </dl>
@@ -3872,7 +4030,10 @@ This value <bcp14>MUST</bcp14> be unique for each <tt>ContentEncoding</tt> found
 <dt>minOccurs / maxOccurs:</dt>
 <dd>1 / 1</dd>
 <dt>definition:</dt>
-<dd>A bit field that describes which Elements have been modified in this way.
+<dd>A bit field that describes which elements have been modified in this way.
+
+<!-- [cellar] Element is a regular noun here -->
+
 Values (big-endian) can be OR'ed.</dd>
 <dt>defined values:</dt>
 <dd>See <xref target="ContentEncodingScopeValues"/>.</dd>
@@ -3898,13 +4059,19 @@ Values (big-endian) can be OR'ed.</dd>
 <tr>
 <td align="left"><tt>2</tt></td>
 <td align="left">Private</td>
-<td align="left">The track's CodecPrivate data.</td>
+<td align="left">The track's <tt>CodecPrivate</tt> data.</td>
+
+<!-- [cellar] use <tt> for element name(s) -->
+
 </tr>
 
 <tr>
 <td align="left"><tt>4</tt></td>
 <td align="left">Next</td>
-<td align="left">The next ContentEncoding (next ContentEncodingOrder; the data inside ContentCompression and/or ContentEncryption). This value <bcp14>SHOULD NOT</bcp14> be used, as it's not supported by players.</td>
+<td align="left">The next ContentEncoding (next <tt>ContentEncodingOrder</tt>; the data inside <tt>ContentCompression</tt> and/or <tt>ContentEncryption</tt>). This value <bcp14>SHOULD NOT</bcp14> be used, as it's not supported by players.</td>
+
+<!-- [cellar] use <tt> for element name(s) -->
+
 </tr>
 </tbody>
 </table>
@@ -3959,7 +4126,10 @@ Values (big-endian) can be OR'ed.</dd>
 <dd>1</dd>
 <dt>definition:</dt>
 <dd>Settings describing the compression used.
-This Element <bcp14>MUST</bcp14> be present if the value of <tt>ContentEncodingType</tt> is 0 and absent otherwise.
+This element <bcp14>MUST</bcp14> be present if the value of <tt>ContentEncodingType</tt> is 0 and absent otherwise.
+
+<!-- [cellar] Element is a regular noun here -->
+
 Each block <bcp14>MUST</bcp14> be decompressable, even if no previous block is available in order to not prevent seeking.</dd>
 <dt>stream copy:</dt>
 <dd>True (<xref target="stream-copy"/>)</dd>
@@ -3980,7 +4150,10 @@ Each block <bcp14>MUST</bcp14> be decompressable, even if no previous block is a
 <dt>defined values:</dt>
 <dd>See <xref target="ContentCompAlgoValues"/>.</dd>
 <dt>usage notes:</dt>
-<dd>Compression method "1" (bzlib) and "2" (lzo1x) lack proper documentation on the format, which limits implementation possibilities. Due to licensing conflicts on commonly available libraries' compression methods, "2" (lzo1x) does not offer widespread interoperability. A Matroska Writer <bcp14>SHOULD NOT</bcp14> use these compression methods by default. A Matroska Reader <bcp14>MAY</bcp14> support methods "1" and "2" and <bcp14>SHOULD</bcp14> support other methods.</dd>
+<dd>Compression method "1" (bzlib) and "2" (lzo1x) lack proper documentation on the format, which limits implementation possibilities. Due to licensing conflicts on commonly available libraries' compression methods, "2" (lzo1x) does not offer widespread interoperability. A <tt>Matroska Writer</tt> <bcp14>SHOULD NOT</bcp14> use these compression methods by default. A <tt>Matroska Reader</tt> <bcp14>MAY</bcp14> support methods "1" and "2" and <bcp14>SHOULD</bcp14> support other methods.</dd>
+
+<!-- [cellar] use <tt> for Matroska Reader/Writer -->
+
 <dt>stream copy:</dt>
 <dd>True (<xref target="stream-copy"/>)</dd>
 </dl>
@@ -4015,7 +4188,10 @@ Each block <bcp14>MUST</bcp14> be decompressable, even if no previous block is a
 <tr>
 <td align="left"><tt>3</tt></td>
 <td align="left">Header Stripping</td>
-<td align="left">Octets in ContentCompSettings (<xref target="contentcompsettings-element"/>) have been stripped from each frame.</td>
+<td align="left">Octets in <tt>ContentCompSettings</tt> (<xref target="contentcompsettings-element"/>) have been stripped from each frame.</td>
+
+<!-- [cellar] use <tt> for element name(s) -->
+
 </tr>
 </tbody>
 </table>
@@ -4049,7 +4225,10 @@ the bytes that were removed from the beginning of each frame of the track.</dd>
 <dd>1</dd>
 <dt>definition:</dt>
 <dd>Settings describing the encryption used.
-This Element <bcp14>MUST</bcp14> be present if the value of <tt>ContentEncodingType</tt> is 1 (encryption) and <bcp14>MUST</bcp14> be ignored otherwise.
+This element <bcp14>MUST</bcp14> be present if the value of <tt>ContentEncodingType</tt> is 1 (encryption) and <bcp14>MUST</bcp14> be ignored otherwise.
+
+<!-- [cellar] Element is a regular noun here -->
+
 A Matroska Player <bcp14>MAY</bcp14> support encryption.</dd>
 <dt>stream copy:</dt>
 <dd>True (<xref target="stream-copy"/>)</dd>
@@ -4244,7 +4423,10 @@ A Matroska Player <bcp14>MAY</bcp14> support encryption.</dd>
 <dt>minOccurs / maxOccurs:</dt>
 <dd>See <xref target="CuesNotes"/> / 1</dd>
 <dt>definition:</dt>
-<dd>A Top-Level Element to speed seeking access.
+<dd>A <tt>Top-Level Element</tt> to speed seeking access.
+
+<!-- [cellar] use <tt> for Top-Level Element(s) expression -->
+
 All entries are local to the <tt>Segment</tt>.</dd>
 <dt>notes:</dt>
 <dd>See <xref target="CuesNotes"/>.</dd>
@@ -4260,7 +4442,10 @@ All entries are local to the <tt>Segment</tt>.</dd>
 <tbody>
 <tr>
 <td align="left">minOccurs</td>
-<td align="left">This Element <bcp14>SHOULD</bcp14> be set when the <tt>Segment</tt> is not transmitted as a live stream; see <xref target="livestreaming"/>.</td>
+<td align="left">This element <bcp14>SHOULD</bcp14> be set when the <tt>Segment</tt> is not transmitted as a live stream; see <xref target="livestreaming"/>.</td>
+
+<!-- [cellar] Element is a regular noun here -->
+
 </tr>
 </tbody>
 </table>
@@ -4347,7 +4532,10 @@ All entries are local to the <tt>Segment</tt>.</dd>
 <dd>4</dd>
 <dt>definition:</dt>
 <dd>The relative position inside the <tt>Cluster</tt> of the referenced <tt>SimpleBlock</tt> or <tt>BlockGroup</tt>
-with 0 being the first possible position for an Element inside that <tt>Cluster</tt>.</dd>
+with 0 being the first possible position for an element inside that <tt>Cluster</tt>.</dd>
+
+<!-- [cellar] Element is a regular noun here -->
+
 </dl>
 </section>
 
@@ -4396,7 +4584,10 @@ If missing, the track's <tt>DefaultDuration</tt> does not apply and no duration 
 <dt>minver:</dt>
 <dd>2</dd>
 <dt>definition:</dt>
-<dd>The <tt>Segment Position</tt> (<xref target="segment-position"/>) of the Codec State corresponding to this <tt>Cues</tt> Element.
+<dd>The <tt>Segment Position</tt> (<xref target="segment-position"/>) of the Codec State corresponding to this <tt>Cues</tt> element.
+
+<!-- [cellar] Element name and "element" separation -->
+
 0 means that the data is taken from the initial <tt>TrackEntry</tt>.</dd>
 </dl>
 </section>
@@ -4411,7 +4602,10 @@ If missing, the track's <tt>DefaultDuration</tt> does not apply and no duration 
 <dt>minver:</dt>
 <dd>2</dd>
 <dt>definition:</dt>
-<dd>The <tt>Clusters</tt> containing the referenced Blocks.</dd>
+<dd>The <tt>Clusters</tt> containing the referenced <tt>Blocks</tt>.</dd>
+
+<!-- [cellar] use <tt> for element name(s) -->
+
 </dl>
 </section>
 
@@ -4427,7 +4621,10 @@ If missing, the track's <tt>DefaultDuration</tt> does not apply and no duration 
 <dt>minver:</dt>
 <dd>2</dd>
 <dt>definition:</dt>
-<dd>Timestamp of the referenced Block, expressed in Segment Ticks which is based on <tt>TimestampScale</tt>; see <xref target="timestamp-ticks"/>.</dd>
+<dd>Timestamp of the referenced <tt>Block</tt>, expressed in Segment Ticks which is based on <tt>TimestampScale</tt>; see <xref target="timestamp-ticks"/>.</dd>
+
+<!-- [cellar] use <tt> for element name(s) -->
+
 </dl>
 </section>
 </section>
@@ -4693,7 +4890,10 @@ For example, it is used as the storage for cue identifier values <xref target="W
 <dt>minOccurs / maxOccurs:</dt>
 <dd>See <xref target="ChapterTimeEndNotes"/> / 1</dd>
 <dt>definition:</dt>
-<dd>Timestamp of the end of <tt>Chapter</tt>, expressed in Matroska Ticks -- i.e., in nanoseconds; see <xref target="timestamp-ticks"/>.
+<dd>Timestamp of the end of <tt>Chapter</tt> timestamp excluded, expressed in Matroska Ticks -- i.e., in nanoseconds; see <xref target="timestamp-ticks"/>.
+
+<!-- [cellar] FIX: the "timestamp excluded" was edited out but should probably be there -->
+
 The value <bcp14>MUST</bcp14> be greater than or equal to the <tt>ChapterTimeStart</tt> of the same <tt>ChapterAtom</tt>.</dd>
 <dt>usage notes:</dt>
 <dd>With the <tt>ChapterTimeEnd</tt> timestamp value being excluded, it <bcp14>MUST</bcp14> take into account the duration of
@@ -4765,7 +4965,10 @@ Hidden chapters <bcp14>SHOULD NOT</bcp14> be available to the user interface
 <tbody>
 <tr>
 <td align="left">minOccurs</td>
-<td align="left">ChapterSegmentUUID <bcp14>MUST</bcp14> be set (minOccurs=1) if ChapterSegmentEditionUID is used; see <xref target="medium-linking"/> on Medium-Linking <tt>Segments</tt>.</td>
+<td align="left"><tt>ChapterSegmentUUID</tt> <bcp14>MUST</bcp14> be set (minOccurs=1) if <tt>ChapterSegmentEditionUID</tt> is used; see <xref target="medium-linking"/> on Medium-Linking <tt>Segments</tt>.</td>
+
+<!-- [cellar] use <tt> for element name(s) -->
+
 </tr>
 </tbody>
 </table>
@@ -4784,7 +4987,10 @@ Hidden chapters <bcp14>SHOULD NOT</bcp14> be available to the user interface
 <dd>1</dd>
 <dt>definition:</dt>
 <dd>The <tt>EditionUID</tt> to play from the <tt>Segment</tt> linked in <tt>ChapterSegmentUUID</tt>.
-If <tt>ChapterSegmentEditionUID</tt> is undeclared, then no <tt>Edition</tt> of the linked <tt>Segment</tt> is used; see <xref target="medium-linking"/> on Medium-Linking <tt>Segments</tt>.</dd>
+If <tt>ChapterSegmentEditionUID</tt> is undeclared, then no <tt>Edition</tt> of the <tt>Linked Segment</tt> is used; see <xref target="medium-linking"/> on Medium-Linking <tt>Segments</tt>.</dd>
+
+<!-- [cellar] use <tt> for Linked Segment(s) -->
+
 </dl>
 </section>
 
@@ -4841,7 +5047,10 @@ see <xref target="physical-types"/> for a complete list of values.</dd>
 <dt>definition:</dt>
 <dd>A language corresponding to the string,
 in the Matroska languages form; see <xref target="language-codes"/> on language codes.
-This Element <bcp14>MUST</bcp14> be ignored if a <tt>ChapLanguageBCP47</tt> Element is used within the same <tt>ChapterDisplay</tt> Element.</dd>
+This element <bcp14>MUST</bcp14> be ignored if a <tt>ChapLanguageBCP47</tt> element is used within the same <tt>ChapterDisplay</tt> element.</dd>
+
+<!-- [cellar] Element name and "element" separation -->
+
 </dl>
 </section>
 
@@ -4857,7 +5066,10 @@ This Element <bcp14>MUST</bcp14> be ignored if a <tt>ChapLanguageBCP47</tt> Elem
 <dt>definition:</dt>
 <dd>A language corresponding to the <tt>ChapString</tt>,
 in the form defined in <xref target="RFC5646"/>; see <xref target="language-codes"/> on language codes.
-If a <tt>ChapLanguageBCP47</tt> Element is used, then any <tt>ChapLanguage</tt> and <tt>ChapCountry</tt> Elements used in the same <tt>ChapterDisplay</tt> <bcp14>MUST</bcp14> be ignored.</dd>
+If a <tt>ChapLanguageBCP47</tt> element is used, then any <tt>ChapLanguage</tt> and <tt>ChapCountry</tt> elements used in the same <tt>ChapterDisplay</tt> <bcp14>MUST</bcp14> be ignored.</dd>
+
+<!-- [cellar] Element name and "element" separation -->
+
 </dl>
 </section>
 
@@ -4871,7 +5083,10 @@ If a <tt>ChapLanguageBCP47</tt> Element is used, then any <tt>ChapLanguage</tt> 
 <dt>definition:</dt>
 <dd>A country corresponding to the string,
 in the Matroska countries form; see <xref target="country-codes"/> on country codes.
-This Element <bcp14>MUST</bcp14> be ignored if a <tt>ChapLanguageBCP47</tt> Element is used within the same <tt>ChapterDisplay</tt> Element.</dd>
+This element <bcp14>MUST</bcp14> be ignored if a <tt>ChapLanguageBCP47</tt> element is used within the same <tt>ChapterDisplay</tt> element.</dd>
+
+<!-- [cellar] Element name and "element" separation -->
+
 </dl>
 </section>
 
@@ -5331,7 +5546,10 @@ the <tt>FileUID</tt> value of an attachment found in this <tt>Segment</tt>.</dd>
 <dd>1 / 1</dd>
 <dt>definition:</dt>
 <dd>Specifies the language of the specified tag in the Matroska languages form; see <xref target="language-codes"/> on language codes.
-This Element <bcp14>MUST</bcp14> be ignored if the <tt>TagLanguageBCP47</tt> Element is used within the same <tt>SimpleTag</tt> Element.</dd>
+This element <bcp14>MUST</bcp14> be ignored if the <tt>TagLanguageBCP47</tt> element is used within the same <tt>SimpleTag</tt> element.</dd>
+
+<!-- [cellar] Element name and "element" separation -->
+
 </dl>
 </section>
 
@@ -5349,7 +5567,10 @@ This Element <bcp14>MUST</bcp14> be ignored if the <tt>TagLanguageBCP47</tt> Ele
 <dt>definition:</dt>
 <dd>The language used in the <tt>TagString</tt>,
 in the form defined in <xref target="RFC5646"/>; see <xref target="language-codes"/> on language codes.
-If this Element is used, then any <tt>TagLanguage</tt> Elements used in the same <tt>SimpleTag</tt> <bcp14>MUST</bcp14> be ignored.</dd>
+If this element is used, then any <tt>TagLanguage</tt> elements used in the same <tt>SimpleTag</tt> <bcp14>MUST</bcp14> be ignored.</dd>
+
+<!-- [cellar] Element name and "element" separation -->
+
 </dl>
 </section>
 
@@ -5403,94 +5624,133 @@ If this Element is used, then any <tt>TagLanguage</tt> Elements used in the same
 </section>
 
 <section anchor="matroska-element-ordering"><name>Matroska Element Ordering</name>
-<t>With the exceptions of the <tt>EBML Header</tt> and the <tt>CRC-32 Element</tt>, the EBML specification <xref target="RFC8794"/> does not
-require any particular storage order for <tt>Elements</tt>.
+<t>With the exceptions of the <tt>EBML Header</tt> and the <tt>CRC-32</tt> element, the EBML specification <xref target="RFC8794"/> does not
+
+<!-- [cellar] Element name and "element" separation -->
+
+require any particular storage order for elements.
+
+<!-- [cellar] Element is a regular noun here -->
+
 However, this specification defines mandates and recommendations for ordering
-certain <tt>Elements</tt> to facilitate better playback, seeking, and editing
+certain elements to facilitate better playback, seeking, and editing
+
+<!-- [cellar] Element is a regular noun here -->
+
 efficiency.  This section describes and offers rationale for ordering
 requirements and recommendations for Matroska.</t>
 
 <section anchor="top-level-elements"><name>Top-Level Elements</name>
-<t>The <tt>Info Element</tt> is the only <bcp14>REQUIRED</bcp14> <tt>Top-Level Element</tt> in a Matroska file.
-To be playable, Matroska <bcp14>MUST</bcp14> also contain at least one <tt>Tracks Element</tt> and <tt>Cluster Element</tt>.
-The first <tt>Info Element</tt> and the first <tt>Tracks Element</tt> either <bcp14>MUST</bcp14> be stored before the first
-<tt>Cluster Element</tt> or <bcp14>SHALL</bcp14> both be referenced by a <tt>SeekHead Element</tt> occurring before the first <tt>Cluster Element</tt>.</t>
+<t>The <tt>Info</tt> element is the only <bcp14>REQUIRED</bcp14> <tt>Top-Level Element</tt> in a Matroska file.
+To be playable, Matroska <bcp14>MUST</bcp14> also contain at least one <tt>Tracks</tt> element and <tt>Cluster</tt> element.
+The first <tt>Info</tt> element and the first <tt>Tracks</tt> element either <bcp14>MUST</bcp14> be stored before the first
+<tt>Cluster</tt> element or <bcp14>SHALL</bcp14> both be referenced by a <tt>SeekHead</tt> element occurring before the first <tt>Cluster</tt> element.</t>
 <t>All <tt>Top-Level Elements</tt> <bcp14>MUST</bcp14> use a 4-octet EBML Element ID.</t>
 <t>When using Medium Linking, chapters are used to reference other <tt>Segments</tt> to play in a given order (see <xref target="medium-linking"/>).
-A <tt>Segment</tt> containing these <tt>Linked Chapters</tt> does not require a <tt>Track</tt> Element or a <tt>Cluster</tt> Element.</t>
+A <tt>Segment</tt> containing these <tt>Linked Chapters</tt> does not require a <tt>Track</tt> element or a <tt>Cluster</tt> element.</t>
 <t>It is possible to edit a Matroska file after it has been created. For example, chapters,
 tags, or attachments can be added. When new <tt>Top-Level Elements</tt> are added to a Matroska file,
-the <tt>SeekHead</tt> Element(s) <bcp14>MUST</bcp14> be updated so that the <tt>SeekHead</tt> Element(s) itemizes
+the <tt>SeekHead</tt> element(s) <bcp14>MUST</bcp14> be updated so that the <tt>SeekHead</tt> element(s) itemizes
+
+<!-- [cellar] Element name and "element" separation -->
+
 the identity and position of all <tt>Top-Level Elements</tt>.</t>
 <t>Editing, removing, or adding
-<tt>Elements</tt> to a Matroska file often requires that some existing <tt>Elements</tt> be voided
+elements to a Matroska file often requires that some existing elements be voided
+
+<!-- [cellar] Element is a regular noun here -->
+
 or extended.
-Transforming the existing <tt>Elements</tt> into <tt>Void Elements</tt> as padding can be used
+Transforming the existing elements into <tt>Void</tt> elements as padding can be used
+
+<!-- [cellar] use <tt> for element name(s) -->
+
 as a method to avoid moving large amounts of data around.</t>
 </section>
 
 <section anchor="crc-32"><name>CRC-32</name>
-<t>As noted by the EBML specification <xref target="RFC8794"/>, if a <tt>CRC-32 Element</tt> is used, then the <tt>CRC-32 Element</tt>
-<bcp14>MUST</bcp14> be the first ordered Element within its <tt>Parent Element</tt>.</t>
-<t>In Matroska, all <tt>Top-Level Elements</tt> of an EBML Document <bcp14>SHOULD</bcp14> include a <tt>CRC-32 Element</tt>
+<t>As noted by the EBML specification <xref target="RFC8794"/>, if a <tt>CRC-32</tt> element is used, then the <tt>CRC-32</tt> element
+<bcp14>MUST</bcp14> be the first ordered element within its <tt>Parent Element</tt>.</t>
+<t>In Matroska, all <tt>Top-Level Elements</tt> of an EBML Document <bcp14>SHOULD</bcp14> include a <tt>CRC-32</tt> element
 as their first <tt>Child Element</tt>.
-The <tt>Segment Element</tt>, which is the <tt>Root Element</tt>, <bcp14>SHOULD NOT</bcp14> have a <tt>CRC-32 Element</tt>.</t>
+The <tt>Segment</tt> element, which is the <tt>Root Element</tt>, <bcp14>SHOULD NOT</bcp14> have a <tt>CRC-32</tt> element.</t>
+
+<!-- [cellar] Element name and "element" separation -->
+
 </section>
 
 <section anchor="seekhead"><name>SeekHead</name>
-<t>If used, the first <tt>SeekHead Element</tt> <bcp14>MUST</bcp14> be the first non-<tt>CRC-32 Child Element</tt>
-of the <tt>Segment Element</tt>. If a second <tt>SeekHead Element</tt> is used, then the first
-<tt>SeekHead Element</tt> <bcp14>MUST</bcp14> reference the identity and position of the second <tt>SeekHead Element</tt>.</t>
-<t>Additionally, the second <tt>SeekHead Element</tt> <bcp14>MUST</bcp14> only reference <tt>Cluster</tt> Elements
-and not any other <tt>Top-Level Element</tt> already contained within the first <tt>SeekHead Element</tt>.</t>
-<t>The second <tt>SeekHead Element</tt> <bcp14>MAY</bcp14> be stored in any order relative to the other <tt>Top-Level Elements</tt>.
-Whether one or two <tt>SeekHead Elements</tt> are used, the <tt>SeekHead Element(s)</tt> <bcp14>MUST</bcp14>
+<t>If used, the first <tt>SeekHead</tt> element <bcp14>MUST</bcp14> be the first non-<tt>CRC-32 Child</tt> element
+of the <tt>Segment</tt> element. If a second <tt>SeekHead</tt> element is used, then the first
+<tt>SeekHead</tt> element <bcp14>MUST</bcp14> reference the identity and position of the second <tt>SeekHead</tt> element.</t>
+<t>Additionally, the second <tt>SeekHead</tt> element <bcp14>MUST</bcp14> only reference <tt>Cluster</tt> elements
+and not any other <tt>Top-Level Element</tt> already contained within the first <tt>SeekHead</tt> element.</t>
+<t>The second <tt>SeekHead</tt> element <bcp14>MAY</bcp14> be stored in any order relative to the other <tt>Top-Level Elements</tt>.
+Whether one or two <tt>SeekHead</tt> elements are used, the <tt>SeekHead</tt> element(s) <bcp14>MUST</bcp14>
 collectively reference the identity and position of all <tt>Top-Level Elements</tt> except
-for the first <tt>SeekHead Element</tt>.</t>
+for the first <tt>SeekHead</tt> element.</t>
+
+<!-- [cellar] Element name and "element" separation -->
+
 </section>
 
 <section anchor="cues-index"><name>Cues (Index)</name>
-<t>The <tt>Cues Element</tt> is <bcp14>RECOMMENDED</bcp14> to optimize seeking access in Matroska. It is
-programmatically simpler to add the <tt>Cues Element</tt> after all <tt>Cluster Elements</tt>
+<t>The <tt>Cues</tt> element is <bcp14>RECOMMENDED</bcp14> to optimize seeking access in Matroska. It is
+programmatically simpler to add the <tt>Cues</tt> element after all <tt>Cluster</tt> elements
 have been written because this does not require a prediction of how much space to
-reserve before writing the <tt>Cluster Elements</tt>. However, storing the <tt>Cues Element</tt>
-before the <tt>Cluster Elements</tt> can provide some seeking advantages. If the <tt>Cues Element</tt>
-is present, then it <bcp14>SHOULD</bcp14> either be stored before the first <tt>Cluster Element</tt>
-or be referenced by a <tt>SeekHead Element</tt>.</t>
+reserve before writing the <tt>Cluster</tt> elements. However, storing the <tt>Cues</tt> element
+before the <tt>Cluster</tt> elements can provide some seeking advantages. If the <tt>Cues</tt> element
+is present, then it <bcp14>SHOULD</bcp14> either be stored before the first <tt>Cluster</tt> element
+or be referenced by a <tt>SeekHead</tt> element.</t>
+
+<!-- [cellar] Element name and "element" separation -->
+
 </section>
 
 <section anchor="info"><name>Info</name>
-<t>The first <tt>Info Element</tt> <bcp14>SHOULD</bcp14> occur before the first <tt>Tracks Element</tt> and first
-<tt>Cluster Element</tt> except when referenced by a <tt>SeekHead Element</tt>.</t>
+<t>The first <tt>Info</tt> element <bcp14>SHOULD</bcp14> occur before the first <tt>Tracks</tt> element and first
+<tt>Cluster</tt> element except when referenced by a <tt>SeekHead</tt> element.</t>
+
+<!-- [cellar] Element name and "element" separation -->
+
 </section>
 
 <section anchor="chapters-element-1"><name>Chapters Element</name>
-<t>The <tt>Chapters Element</tt> <bcp14>SHOULD</bcp14> be placed before the <tt>Cluster Element(s)</tt>. The
-<tt>Chapters Element</tt> can be used during playback even if the user does not need to seek.
+<t>The <tt>Chapters</tt> element <bcp14>SHOULD</bcp14> be placed before the <tt>Cluster</tt> element(s). The
+<tt>Chapters</tt> element can be used during playback even if the user does not need to seek.
 It immediately gives the user information about what section is being read and what
 other sections are available.</t>
 <t>In the case of <tt>Ordered Chapters</tt>, it is <bcp14>RECOMMENDED</bcp14> to evaluate
-the logical linking before playing. The <tt>Chapters Element</tt> <bcp14>SHOULD</bcp14> be placed before
-the first <tt>Tracks Element</tt> and after the first <tt>Info Element</tt>.</t>
+the logical linking before playing. The <tt>Chapters</tt> element <bcp14>SHOULD</bcp14> be placed before
+the first <tt>Tracks</tt> element and after the first <tt>Info</tt> element.</t>
+
+<!-- [cellar] Element name and "element" separation -->
+
 </section>
 
 <section anchor="attachments"><name>Attachments</name>
-<t>The <tt>Attachments Element</tt> is not intended to be used by default when playing the file
+<t>The <tt>Attachments</tt> element is not intended to be used by default when playing the file
 but could contain information relevant to the content, such as cover art or fonts.
 Cover art is useful even before the file is played, and fonts could be needed before playback
-starts for the initialization of subtitles. The <tt>Attachments Element</tt> <bcp14>MAY</bcp14> be placed before
-the first <tt>Cluster Element</tt>; however, if the <tt>Attachments Element</tt> is likely to be edited,
-then it <bcp14>SHOULD</bcp14> be placed after the last <tt>Cluster Element</tt>.</t>
+starts for the initialization of subtitles. The <tt>Attachments</tt> element <bcp14>MAY</bcp14> be placed before
+the first <tt>Cluster</tt> element; however, if the <tt>Attachments</tt> element is likely to be edited,
+then it <bcp14>SHOULD</bcp14> be placed after the last <tt>Cluster</tt> element.</t>
+
+<!-- [cellar] Element name and "element" separation -->
+
 </section>
 
 <section anchor="tags"><name>Tags</name>
-<t>The <tt>Tags Element</tt> is most subject to changes after the file was originally created.
-For easier editing, the <tt>Tags Element</tt> can be placed at the end of the <tt>Segment Element</tt>,
-even after the <tt>Attachments Element</tt>. On the other hand, it is inconvenient to have to
+<t>The <tt>Tags</tt> element is most subject to changes after the file was originally created.
+For easier editing, the <tt>Tags</tt> element can be placed at the end of the <tt>Segment</tt> element,
+even after the <tt>Attachments</tt> element. On the other hand, it is inconvenient to have to
 seek in the <tt>Segment</tt> for tags, especially for network streams; thus, it's better if the
-<tt>Tags Element</tt> is found early in the stream. When editing the <tt>Tags Element</tt>, the original
-<tt>Tags Element</tt> at the beginning can be overwritten with a <tt>Void Element</tt> and a
-new <tt>Tags Element</tt> written at the end of the <tt>Segment Element</tt>. The file and <tt>Segment</tt> sizes will only marginally change.</t>
+<tt>Tags</tt> element is found early in the stream. When editing the <tt>Tags</tt> element, the original
+<tt>Tags</tt> element at the beginning can be overwritten with a <tt>Void</tt> element and a
+new <tt>Tags</tt> element written at the end of the <tt>Segment</tt> element. The file and <tt>Segment</tt> sizes will only marginally change.</t>
+
+<!-- [cellar] Element name and "element" separation -->
+
 </section>
 </section>
 
@@ -5498,20 +5758,35 @@ new <tt>Tags Element</tt> written at the end of the <tt>Segment Element</tt>. Th
 <t>Matroska is based on the principle that a reading application does not have to support
 100% of the specifications in order to be able to play the file. Therefore, a Matroska file contains version indicators that tell a reading application what to expect.</t>
 <t>It is possible and valid to have the version fields indicate that the file contains
-Matroska <tt>Elements</tt> from a higher specification version number while signaling that a
+Matroska elements from a higher specification version number while signaling that a
+
+<!-- [cellar] Element is a regular noun here -->
+
 reading application <bcp14>MUST</bcp14> only support a lower version number properly in order to play
 it back (possibly with a reduced feature set).</t>
 <t>The <tt>EBML Header</tt> of each Matroska document informs the reading application on what
-version of Matroska to expect. The <tt>Elements</tt> within the <tt>EBML Header</tt> with jurisdiction
+version of Matroska to expect. The elements within the <tt>EBML Header</tt> with jurisdiction
+
+<!-- [cellar] Element is a regular noun here -->
+
 over this information are <tt>DocTypeVersion</tt> and <tt>DocTypeReadVersion</tt>.</t>
 <t><tt>DocTypeVersion</tt> <bcp14>MUST</bcp14> be equal to or greater than the highest Matroska version number of
-any Element present in the Matroska file. For example, a file using the <tt>SimpleBlock Element</tt> (<xref target="simpleblock-element"/>)
+any element present in the Matroska file. For example, a file using the <tt>SimpleBlock</tt> element (<xref target="simpleblock-element"/>)
+
+<!-- [cellar] Element name and "element" separation -->
+
 <bcp14>MUST</bcp14> have a <tt>DocTypeVersion</tt> equal to or greater than 2. A file containing <tt>CueRelativePosition</tt>
-Elements  (<xref target="cuerelativeposition-element"/>) <bcp14>MUST</bcp14> have a <tt>DocTypeVersion</tt> equal to or greater than 4.</t>
+elements  (<xref target="cuerelativeposition-element"/>) <bcp14>MUST</bcp14> have a <tt>DocTypeVersion</tt> equal to or greater than 4.</t>
+
+<!-- [cellar] Element name and "element" separation -->
+
 <t>The <tt>DocTypeReadVersion</tt> <bcp14>MUST</bcp14> contain the minimum version number that a reading application
 can minimally support in order to play the file back -- optionally with a reduced feature
-set. For example, if a file contains only <tt>Elements</tt> of version 2 or lower except for
-<tt>CueRelativePosition</tt> (which is a version 4 Matroska Element), then <tt>DocTypeReadVersion</tt>
+set. For example, if a file contains only elements of version 2 or lower except for
+<tt>CueRelativePosition</tt> (which is a version 4 Matroska element), then <tt>DocTypeReadVersion</tt>
+
+<!-- [cellar] Element is a regular noun here -->
+
 <bcp14>SHOULD</bcp14> still be set to 2 and not 4 because evaluating <tt>CueRelativePosition</tt> is not
 necessary for standard playback -- it makes seeking more precise if used.</t>
 <t>A reading application supporting Matroska version <tt>V</tt> <bcp14>MUST NOT</bcp14> refuse to read a
@@ -5519,7 +5794,10 @@ file with <tt>DocReadTypeVersion</tt> equal to or lower than <tt>V</tt>, even if
 is greater than <tt>V</tt>.</t>
 <t>A reading application
 supporting at least Matroska version <tt>V</tt> and reading a file whose <tt>DocTypeReadVersion</tt>
-field is equal to or lower than <tt>V</tt> <bcp14>MUST</bcp14> skip Matroska/EBML <tt>Elements</tt> it encounters
+field is equal to or lower than <tt>V</tt> <bcp14>MUST</bcp14> skip Matroska/EBML elements it encounters
+
+<!-- [cellar] Element is a regular noun here -->
+
 but does not know about if that unknown element fits into the size constraints set
 by the current <tt>Parent Element</tt>.</t>
 </section>
@@ -5530,12 +5808,18 @@ or to edit out a portion of the content.
 Some values from the original Matroska file need to be kept the same in the destination file.
 For example, the <tt>SamplingFrequency</tt> of an audio track wouldn't change between the two files.
 Some other values may change between the two files, for example, the <tt>TrackNumber</tt> of an audio track when another track has been added.</t>
-<t>An Element is marked with a property "<tt>stream copy: True</tt>" when the values of that Element need to be kept identical between the source and destination files.
+<t>An element is marked with a property "<tt>stream copy: True</tt>" when the values of that element need to be kept identical between the source and destination files.
+
+<!-- [cellar] Element is a regular noun here -->
+
 If that property is not set, elements may or may not keep the same value between the source and destination files.</t>
 </section>
 
 <section anchor="defaultdecodedfieldduration"><name>DefaultDecodedFieldDuration</name>
-<t>The <tt>DefaultDecodedFieldDuration Element</tt> can signal to the displaying application how
+<t>The <tt>DefaultDecodedFieldDuration</tt> element can signal to the displaying application how
+
+<!-- [cellar] Element name and "element" separation -->
+
 often fields of a video sequence will be available for displaying. It can be used for both
 interlaced and progressive content.</t>
 <t>If the video sequence is signaled as interlaced (<xref target="flaginterlaced-element"/>), then <tt>DefaultDecodedFieldDuration</tt> equals
@@ -5593,34 +5877,37 @@ This is the only element with a variable size in the block header.</t>
 The value is stored as a signed value on 16 bits.</t>
 
 <section anchor="block-structure"><name>Block Structure</name>
-<t>This section describes the binary data contained in the <tt>Block</tt> Element (<xref target="block-element"/>). Bit 0 is the most significant bit.</t>
+<t>This section describes the binary data contained in the <tt>Block</tt> element (<xref target="block-element"/>). Bit 0 is the most significant bit.</t>
+
+<!-- [cellar] Element name and "element" separation -->
+
 <t>As the <tt>TrackNumber</tt> size can vary between 1 and 8 octets, there are 8 different sizes for the <tt>Block</tt> header.
 The definitions for <tt>TrackNumber</tt> sizes of 1 and 2 are provided; the other variants can be deduced by extending the size of the <tt>TrackNumber</tt> by multiples of 8 bits.</t>
 <figure><name>Block Header with 1-Octet TrackNumber
 </name>
 <artwork>
- 0                   1                   2                   3
- 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-|               |                               |       |I|LAC|U|
-|  Track Number |         Timestamp             | Rsvrd |N|ING|N|
-|               |                               |       |V|   |U|
-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+  0                   1                   2                   3
+  0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+ +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+ |               |                               |       |I|LAC|U|
+ |  Track Number |         Timestamp             | Rsvrd |N|ING|N|
+ |               |                               |       |V|   |U|
+ +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
 </artwork>
 </figure>
 <figure><name>Block Header with 2-Octet TrackNumber
 </name>
 <artwork>
- 0                   1                   2                   3
- 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-|          Track Number         |         Timestamp             |
-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-|       |I|LAC|U|
-| Rsvrd |N|ING|N|                     ...
-|       |V|   |U|
-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+  0                   1                   2                   3
+  0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+ +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+ |          Track Number         |         Timestamp             |
+ +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+ |       |I|LAC|U|
+ | Rsvrd |N|ING|N|                     ...
+ |       |V|   |U|
+ +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
 </artwork>
 </figure>
@@ -5628,7 +5915,11 @@ The definitions for <tt>TrackNumber</tt> sizes of 1 and 2 are provided; the othe
 
 <dl newline="false" spacing="normal">
 <dt>Track Number:</dt>
-<dd>8, 16, 24, 32, 40, 48, or 64 bits. An EBML VINT-coded track number.</dd>
+<dd>8, 16, 24, 32, 40, 48, or 56 bits. An EBML VINT-coded track number.</dd>
+
+<!-- [cellar] FIX: fix the last usable width for track numbers coded as an EBML VINT
+64-bit EBML VINT is uncommon and not within the Matroska requirements.-->
+
 <dt>Timestamp:</dt>
 <dd>16 bits. Signed timestamp in Track Ticks.</dd>
 <dt>Rsvrd:</dt>
@@ -5658,7 +5949,10 @@ The definitions for <tt>TrackNumber</tt> sizes of 1 and 2 are provided; the othe
 </section>
 
 <section anchor="simpleblock-structure"><name>SimpleBlock Structure</name>
-<t>This section describes the binary data contained in the <tt>SimpleBlock</tt> Element (<xref target="simpleblock-element"/>). Bit 0 is the most significant bit.</t>
+<t>This section describes the binary data contained in the <tt>SimpleBlock</tt> element (<xref target="simpleblock-element"/>). Bit 0 is the most significant bit.</t>
+
+<!-- [cellar] Element name and "element" separation -->
+
 <t>The <tt>SimpleBlock</tt> structure is inspired by the <tt>Block</tt> structure; see <xref target="block-structure"/>.
 The main differences are the added Keyframe flag and Discardable flag. Otherwise, everything is the same.</t>
 <t>As the <tt>TrackNumber</tt> size can vary between 1 and 8 octets, there are 8 different sizes for the <tt>SimpleBlock</tt> header.
@@ -5668,28 +5962,28 @@ other variants can be deduced by extending the size of the
 <figure><name>SimpleBlock Header with 1-Octet TrackNumber
 </name>
 <artwork>
- 0                   1                   2                   3
- 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-|               |                               |K|     |I|LAC|D|
-|  Track Number |         Timestamp             |E|Rsvrd|N|ING|I|
-|               |                               |Y|     |V|   |S|
-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+  0                   1                   2                   3
+  0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+ +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+ |               |                               |K|     |I|LAC|D|
+ |  Track Number |         Timestamp             |E|Rsvrd|N|ING|I|
+ |               |                               |Y|     |V|   |S|
+ +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
 </artwork>
 </figure>
 <figure><name>SimpleBlock Header with 2-Octet TrackNumber
 </name>
 <artwork>
- 0                   1                   2                   3
- 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-|          Track Number         |         Timestamp             |
-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-|K|     |I|LAC|D|
-|E|Rsvrd|N|ING|I|                     ...
-|Y|     |V|   |S|
-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+  0                   1                   2                   3
+  0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+ +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+ |          Track Number         |         Timestamp             |
+ +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+ |K|     |I|LAC|D|
+ |E|Rsvrd|N|ING|I|                     ...
+ |Y|     |V|   |S|
+ +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
 </artwork>
 </figure>
@@ -5697,7 +5991,11 @@ other variants can be deduced by extending the size of the
 
 <dl newline="false" spacing="normal">
 <dt>Track Number:</dt>
-<dd>8, 16, 24, 32, 40, 48, or 64 bits. An EBML VINT-coded track number.</dd>
+<dd>8, 16, 24, 32, 40, 48, or 56 bits. An EBML VINT-coded track number.</dd>
+
+<!-- [cellar] FIX: fix the last usable width for track numbers coded as an EBML VINT
+64-bit EBML VINT is uncommon and not within the Matroska requirements.-->
+
 <dt>Timestamp:</dt>
 <dd>16 bits. Signed timestamp in Track Ticks.</dd>
 <dt>KEY:</dt>
@@ -5742,7 +6040,10 @@ of data (referred to as frames in Matroska). It packs multiple frames into a sin
 <li><t>Fixed-size, where the size is not coded</t>
 </li>
 </ul>
-<t>When lacing is not used, i.e., to store a single frame, the lacing bits (bits 6 and 7) of the <tt>Block</tt> or <tt>SimpleBlock</tt> <bcp14>MUST</bcp14> be set to zero.</t>
+<t>When lacing is not used, i.e., to store a single frame, the lacing bits (bits 5 and 6) of the <tt>Block</tt> or <tt>SimpleBlock</tt> <bcp14>MUST</bcp14> be set to zero.</t>
+
+<!-- [cellar] FIX: The lacing bits are at bits 5 and 6 when starting from bit 0 -->
+
 <t>For example, a user wants to store three frames of the same track. The first frame is 800 octets long,
 the second is 500 octets long, and the third is 1000 octets long.
 Because these frames are small,
@@ -5751,7 +6052,10 @@ they can be stored in a lace to save space.</t>
 When the <tt>FlagLacing</tt> (<xref target="flaglacing-element"/>) is set to 0, all blocks of that track <bcp14>MUST NOT</bcp14> use lacing.</t>
 
 <section anchor="no-lacing"><name>No Lacing</name>
-<t>When no lacing is used, the number of frames in the lace is ommitted, and only one frame can be stored in the Block. The LACING bits of the <tt>Block</tt> Header flags are set to <tt>00b</tt>.</t>
+<t>When no lacing is used, the number of frames in the lace is ommitted, and only one frame can be stored in the <tt>Block</tt>. The LACING bits of the <tt>Block</tt> Header flags are set to <tt>00b</tt>.</t>
+
+<!-- [cellar] use <tt> for element name(s) -->
+
 <t>The <tt>Block</tt> for an 800-octet frame is as follows:</t>
 <table anchor="blockNoLacing"><name>No Lacing</name>
 <thead>
@@ -5836,7 +6140,10 @@ A frame with a size multiple of 255 is coded with a 0 at the end of the size -- 
 <td align="left">Third frame data</td>
 </tr>
 </tbody>
-</table><t>The Block is 2311 octets, and the last frame starts at 1311, so we can deduce that the size of the last frame is 2311 - 1311 = 1000.</t>
+</table><t>The <tt>Block</tt> is 2311 octets, and the last frame starts at 1311, so we can deduce that the size of the last frame is 2311 - 1311 = 1000.</t>
+
+<!-- [cellar] use <tt> for element name(s) -->
+
 </section>
 
 <section anchor="ebml-lacing"><name>EBML Lacing</name>
@@ -5937,12 +6244,18 @@ Decoding the unsigned number stored in the VINT to a signed number is done by su
 <td align="left">Third frame data</td>
 </tr>
 </tbody>
-</table><t>The Block is 2308 octets, and the last frame starts at 1308, so we can deduce that the size of the last frame is 2308 - 1308 = 1000.</t>
+</table><t>The <tt>Block</tt> is 2308 octets, and the last frame starts at 1308, so we can deduce that the size of the last frame is 2308 - 1308 = 1000.</t>
+
+<!-- [cellar] use <tt> for element name(s) -->
+
 </section>
 
 <section anchor="fixed-size-lacing"><name>Fixed-size Lacing</name>
 <t>Fixed-size lacing doesn't store the frame size; rather, it only stores the number of frames in the lace.
-Each frame <bcp14>MUST</bcp14> have the same size. The frame size of each frame is deduced from the total size of the Block.
+Each frame <bcp14>MUST</bcp14> have the same size. The frame size of each frame is deduced from the total size of the <tt>Block</tt>.
+
+<!-- [cellar] use <tt> for element name(s) -->
+
 The LACING bits of the <tt>Block</tt> Header flags are set to <tt>10b</tt>.</t>
 <t>The <tt>Block</tt> data with laced frames is stored as follows:</t>
 
@@ -5987,7 +6300,10 @@ The LACING bits of the <tt>Block</tt> Header flags are set to <tt>10b</tt>.</t>
 <td align="left">Third frame data</td>
 </tr>
 </tbody>
-</table><t>This gives a Block of 2405 octets. When reading the Block, we find that there are three frames (Octet 4).
+</table><t>This gives a <tt>Block</tt> of 2405 octets. When reading the <tt>Block</tt>, we find that there are three frames (Octet 4).
+
+<!-- [cellar] use <tt> for element name(s) -->
+
 The data start at Octet 5, so the size of each frame is (2405 - 5) / 3 = 800.</t>
 </section>
 
@@ -6020,7 +6336,10 @@ taken into account. Usually, all audio and subtitle <tt>BlockGroups</tt> or <tt>
 They are independent of each other and can be played randomly.</t>
 <t>On the other hand, video tracks often use references to previous and future frames for better
 coding efficiency. Frames with such references <bcp14>MUST</bcp14> either contain one or more
-<tt>ReferenceBlock</tt> Elements in their <tt>BlockGroup</tt> or <bcp14>MUST</bcp14> be marked
+<tt>ReferenceBlock</tt> elements in their <tt>BlockGroup</tt> or <bcp14>MUST</bcp14> be marked
+
+<!-- [cellar] Element name and "element" separation -->
+
 as non-keyframe in a <tt>SimpleBlock</tt>; see <xref target="simpleblock-structure"/>.</t>
 <figure><name>BlockGroup with a Frame That References Another Frame, with the EBML Tree Shown as XML
 </name>
@@ -6136,7 +6455,10 @@ frame that actually depends on other frames may create a bogus output or even cr
 
 </sourcecode>
 </figure>
-<figure><name>BlockGroup with a Frame That References Two Other Frames, with the EBML Tree Shown as XML
+<figure><name><tt>BlockGroup</tt> with a Frame That References Two Other Frames, with the EBML Tree Shown as XML
+
+<!-- [cellar] use <tt> for element name(s) -->
+
 </name>
 <sourcecode type="xml">
 &lt;Cluster&gt;
@@ -6182,10 +6504,13 @@ as long as it doesn't use any other <tt>BlockGroup</tt> features than <tt>Refere
 </section>
 
 <section anchor="timestamps"><name>Timestamps</name>
-<t>Historically, timestamps in Matroska were mistakenly called timecodes. The <tt>Timestamp Element</tt>
-was called Timecode, the <tt>TimestampScale Element</tt> was called TimecodeScale, the
-<tt>TrackTimestampScale Element</tt> was called TrackTimecodeScale, and the
-<tt>ReferenceTimestamp Element</tt> was called ReferenceTimeCode.</t>
+<t>Historically, timestamps in Matroska were mistakenly called timecodes. The <tt>Timestamp</tt> element
+was called Timecode, the <tt>TimestampScale</tt> element was called TimecodeScale, the
+<tt>TrackTimestampScale</tt> element was called TrackTimecodeScale, and the
+<tt>ReferenceTimestamp</tt> element was called ReferenceTimeCode.</t>
+
+<!-- [cellar] Element name and "element" separation -->
+
 
 <section anchor="timestamp-ticks"><name>Timestamp Ticks</name>
 <t>All timestamp values in Matroska are expressed in multiples of a tick.
@@ -6215,7 +6540,10 @@ There are three types of ticks possible: Matroska Ticks, Segment Ticks, and Trac
 </section>
 
 <section anchor="segment-ticks"><name>Segment Ticks</name>
-<t>Elements in Segment Ticks involve the use of the <tt>TimestampScale Element</tt> of the <tt>Segment</tt> to get the timestamp
+<t>Elements in Segment Ticks involve the use of the <tt>TimestampScale</tt> element of the <tt>Segment</tt> to get the timestamp
+
+<!-- [cellar] Element name and "element" separation -->
+
 in nanoseconds of the element, with the following formula:</t>
 
 <artwork>
@@ -6241,7 +6569,10 @@ timestamp in nanosecond = element value * TimestampScale
 </section>
 
 <section anchor="track-ticks"><name>Track Ticks</name>
-<t>Elements in Track Ticks involve the use of the <tt>TimestampScale Element</tt> of the <tt>Segment</tt> and the <tt>TrackTimestampScale Element</tt> of the Track
+<t>Elements in Track Ticks involve the use of the <tt>TimestampScale</tt> element of the <tt>Segment</tt> and the <tt>TrackTimestampScale</tt> element of the <tt>Track</tt>
+
+<!-- [cellar] use <tt> for element name(s) -->
+
 to get the timestamp in nanoseconds of the element, with the following formula:</t>
 
 <artwork>
@@ -6265,16 +6596,25 @@ The resulting floating-point values of the timestamps are still expressed in nan
 <t>When the <tt>TrackTimestampScale</tt> is interpreted as "1.0", Track Ticks are equivalent to Segment Ticks
 and give an integer value in nanoseconds. This is the most common case as <tt>TrackTimestampScale</tt> is usually omitted.</t>
 <t>A value of <tt>TrackTimestampScale</tt> other than "1.0" <bcp14>MAY</bcp14> be used
-to scale the timestamps more in tune with each Track sampling frequency.
+to scale the timestamps more in tune with each <tt>Track</tt> sampling frequency.
+
+<!-- [cellar] use <tt> for element name(s) -->
+
 For historical reasons, a lot of Matroska Readers don't take the <tt>TrackTimestampScale</tt> value into account. Thus, using a value other than "1.0" might not work in many places.</t>
 </section>
 </section>
 
 <section anchor="block-timestamps"><name>Block Timestamps</name>
-<t>A <tt>Block Element</tt> and <tt>SimpleBlock Element</tt> timestamp is the time when the decoded data of the first
+<t>A <tt>Block</tt> element and <tt>SimpleBlock</tt> element timestamp is the time when the decoded data of the first
+
+<!-- [cellar] Element name and "element" separation -->
+
 frame in the <tt>Block</tt>/<tt>SimpleBlock</tt> <bcp14>MUST</bcp14> be presented if the track of that <tt>Block</tt>/<tt>SimpleBlock</tt> is selected for playback.
 This is also known as the Presentation Timestamp (PTS).</t>
-<t>The <tt>Block Element</tt> and <tt>SimpleBlock Element</tt> store their timestamps as signed integers, relative
+<t>The <tt>Block</tt> element and <tt>SimpleBlock</tt> element store their timestamps as signed integers, relative
+
+<!-- [cellar] Element name and "element" separation -->
+
 to the <tt>Cluster\Timestamp</tt> value of the <tt>Cluster</tt> they are stored in.
 To get the timestamp of a <tt>Block</tt> or <tt>SimpleBlock</tt> in nanoseconds, the following formula is used:</t>
 
@@ -6283,10 +6623,16 @@ To get the timestamp of a <tt>Block</tt> or <tt>SimpleBlock</tt> in nanoseconds,
 TimestampScale
 
 </artwork>
-<t>The <tt>Block Element</tt> and <tt>SimpleBlock Element</tt> store their timestamps as 16-bit signed integers,
+<t>The <tt>Block</tt> element and <tt>SimpleBlock</tt> element store their timestamps as 16-bit signed integers,
+
+<!-- [cellar] Element name and "element" separation -->
+
 allowing a range from "-32768" to "+32767" Track Ticks.
 Although these values can be negative, when added to the <tt>Cluster\Timestamp</tt>, the resulting frame timestamp <bcp14>SHOULD NOT</bcp14> be negative.</t>
-<t>When a <tt>CodecDelay Element</tt> is set, its value <bcp14>MUST</bcp14> be substracted from each <tt>Block</tt> timestamp of that track.
+<t>When a <tt>CodecDelay</tt> element is set, its value <bcp14>MUST</bcp14> be substracted from each <tt>Block</tt> timestamp of that track.
+
+<!-- [cellar] Element name and "element" separation -->
+
 To get the timestamp in nanoseconds of the first frame in a <tt>Block</tt> or <tt>SimpleBlock</tt>, the formula becomes:</t>
 
 <artwork>
@@ -6302,8 +6648,11 @@ To get the timestamp in nanoseconds of the first frame in a <tt>Block</tt> or <t
 <t>The default Track Tick duration is one millisecond.</t>
 <t>The <tt>TimestampScale</tt> is a floating-point value that is usually "1.0". But when it's not, the multiplied
 <tt>Block</tt> Timestamp is a floating-point value in nanoseconds.
-The Matroska Reader <bcp14>SHOULD</bcp14> use the nearest rounding value in nanoseconds to get
-the proper nanosecond timestamp of a Block. This allows some clever <tt>TimestampScale</tt> values
+The <tt>Matroska Reader</tt> <bcp14>SHOULD</bcp14> use the nearest rounding value in nanoseconds to get
+the proper nanosecond timestamp of a <tt>Block</tt>. This allows some clever <tt>TimestampScale</tt> values
+
+<!-- [cellar] use <tt> for element name(s) and Matroska Reader -->
+
 to have a more refined timestamp precision per frame.</t>
 </section>
 </section>
@@ -6312,14 +6661,16 @@ to have a more refined timestamp precision per frame.</t>
 <t>Matroska versions 1 through 3 use language codes that can be either the three-letter
 bibliographic ISO 639-2 form <xref target="ISO639-2"/> (like "fre" for French)
 or such a language code followed by a dash and a country code for specialities in languages (like "fre-ca" for Canadian French).
-The <tt>ISO 639-2 Language Elements</tt> are "<tt>Language</tt> Element", "<tt>TagLanguage</tt> Element", and "<tt>ChapLanguage</tt> Element".</t>
-
+The <tt>ISO 639-2 Language</tt> elements are <tt>Language</tt> element, <tt>TagLanguage</tt> element, and <tt>ChapLanguage</tt> element.</t>
 <t>Starting in Matroska version 4, the forms defined in either <xref target="ISO639-2"/> or
-<xref target="RFC5646"/> <bcp14>MAY</bcp14> be used, although the form in <xref target="RFC5646"/> is <bcp14>RECOMMENDED</bcp14>. The <tt>Language Elements</tt> in the <xref target="RFC5646"/> form
-are "<tt>LanguageBCP47</tt> Element", "<tt>TagLanguageBCP47</tt> Element", and
-"<tt>ChapLanguageBCP47</tt> Element". If both an <tt><xref target="ISO639-2"/> Language Element</tt> and an <tt><xref target="RFC5646"/> Language Element</tt> are used within the same <tt>Parent
-Element</tt>, then the <tt>Language Element</tt> in the <xref target="ISO639-2"/> form <bcp14>MUST</bcp14>
-be ignored and precedence given to the <tt>Language Element</tt> in the <xref target="RFC5646"/> form.</t>
+<xref target="RFC5646"/> <bcp14>MAY</bcp14> be used, although the form in <xref target="RFC5646"/> is <bcp14>RECOMMENDED</bcp14>. The <tt>Language</tt> elements in the <xref target="RFC5646"/> form
+are <tt>LanguageBCP47</tt> element, <tt>TagLanguageBCP47</tt> element, and
+<tt>ChapLanguageBCP47</tt> element. If both an <xref target="ISO639-2"/> Language element and an <xref target="RFC5646"/> Language element are used within the same
+<tt>Parent Element</tt>, then the <tt>Language</tt> element in the <xref target="ISO639-2"/> form <bcp14>MUST</bcp14>
+be ignored and precedence given to the <tt>Language</tt> element in the <xref target="RFC5646"/> form.</t>
+
+<!-- [cellar] Element name and "element" separation -->
+
 <t>In this document, "BCP47" in element names refers specifically to
 <xref target="RFC5646"/>, which is part of BCP 47.</t>
 </section>
@@ -6331,21 +6682,33 @@ be ignored and precedence given to the <tt>Language Element</tt> in the <xref ta
 <section anchor="encryption"><name>Encryption</name>
 <t>This Matroska specification provides no interoperable solution for
 securing the data container with any assurances of confidentiality, integrity,
-authenticity, or authorization. The <tt>ContentEncryption Element</tt> (<xref target="contentencryption-element"/>)
+authenticity, or authorization. The <tt>ContentEncryption</tt> element (<xref target="contentencryption-element"/>)
+
+<!-- [cellar] Element name and "element" separation -->
+
 and associated sub-fields (<xref target="contentencalgo-element"/> to <xref target="aessettingsciphermode-element"/>) are defined only for the
 benefit of implementers to construct their own proprietary solution or as the
 basis for further standardization activities.  How to use these fields to
 secure a Matroska data container is out of scope, as are any related issues
 such as key management and distribution.</t>
-<t>A Matroska Reader who encounters containers that use the fields defined in this
+<t>A <tt>Matroska Reader</tt> who encounters containers that use the fields defined in this
+
+<!-- [cellar] use <tt> for Matroska Reader -->
+
 section <bcp14>MUST</bcp14> rely on out-of-scope guidance to decode the associated content.</t>
-<t>Because encryption occurs within the <tt>Block Element</tt>, it is possible to manipulate
+<t>Because encryption occurs within the <tt>Block</tt> element, it is possible to manipulate
+
+<!-- [cellar] Element name and "element" separation -->
+
 encrypted streams without decrypting them. The streams could potentially be copied,
 deleted, cut, appended, or any number of other possible editing techniques without
 decryption. The data can be used without having to expose it or go through the decrypting process.</t>
 <t>Encryption can also be layered within Matroska. This means that two completely different
 types of encryption can be used, requiring two separate keys to be able to decrypt a stream.</t>
-<t>Encryption information is stored in the <tt>ContentEncodings Element</tt> under the <tt>ContentEncryption Element</tt>.</t>
+<t>Encryption information is stored in the <tt>ContentEncodings</tt> element under the <tt>ContentEncryption</tt> element.</t>
+
+<!-- [cellar] Element name and "element" separation -->
+
 <t>For encryption systems sharing public/private keys, the creation of the keys and the exchange of keys
 are not covered by this document. They have to be handled by the system using Matroska.</t>
 <t>The algorithms described in <xref target="ContentEncAlgoValues"/> support
@@ -6353,21 +6716,33 @@ different modes of operations and key sizes.  The specification of these
 parameters is required for a complete solution but is out of scope of this
 document and left to the proprietary implementations using them or subsequent
 profiles of this document.</t>
-<t>The <tt>ContentEncodingScope Element</tt> gives an idea of which part of the track is encrypted, but each <tt>ContentEncAlgo Element</tt> and its sub-elements (like <tt>AESSettingsCipherMode</tt>)
+<t>The <tt>ContentEncodingScope</tt> element gives an idea of which part of the track is encrypted, but each <tt>ContentEncAlgo</tt> element and its sub-elements (like <tt>AESSettingsCipherMode</tt>)
+
+<!-- [cellar] Element name and "element" separation -->
+
 define exactly how the encrypted track should be interpreted.</t>
 <t>An example of an extension that builds upon these security-related fields in this specification is <xref target="WebM-Enc"/>.
 It uses AES-CTR, <tt>ContentEncAlgo</tt> = 5 (<xref target="contentencalgo-element"/>), and <tt>AESSettingsCipherMode</tt> = 1 (<xref target="aessettingsciphermode-element"/>).</t>
-<t>A Matroska Writer <bcp14>MUST NOT</bcp14> use insecure cryptographic algorithms to create new
-archives or streams, but a Matroska Reader <bcp14>MAY</bcp14> support these algorithms to read
+<t>A <tt>Matroska Writer</tt> <bcp14>MUST NOT</bcp14> use insecure cryptographic algorithms to create new
+archives or streams, but a <tt>Matroska Reader</tt> <bcp14>MAY</bcp14> support these algorithms to read
+
+<!-- [cellar] use <tt> for Matroska Reader/Writer -->
+
 previously made archives or streams.</t>
 </section>
 
 <section anchor="image-presentation"><name>Image Presentation</name>
 
 <section anchor="cropping"><name>Cropping</name>
-<t>The <tt>PixelCrop Elements</tt> (<tt>PixelCropTop</tt>, <tt>PixelCropBottom</tt>, <tt>PixelCropRight</tt>, and <tt>PixelCropLeft</tt>)
+<t>The <tt>PixelCrop</tt> elements (<tt>PixelCropTop</tt>, <tt>PixelCropBottom</tt>, <tt>PixelCropRight</tt>, and <tt>PixelCropLeft</tt>)
+
+<!-- [cellar] Element name and "element" separation -->
+
 indicate when, and by how much, encoded video frames <bcp14>SHOULD</bcp14> be cropped for display.
-These Elements allow edges of the frame that are not intended for display (such as the
+These elements allow edges of the frame that are not intended for display (such as the
+
+<!-- [cellar] Element is a regular noun here -->
+
 sprockets of a full-frame film scan or the Video ANCillary (VANC) area of a digitized analog videotape) to be stored but hidden.  <tt>PixelCropTop</tt> and <tt>PixelCropBottom</tt> store an integer of how many
 rows of pixels <bcp14>SHOULD</bcp14> be cropped from the top and bottom of the image, respectively.
  <tt>PixelCropLeft</tt> and <tt>PixelCropRight</tt> store an integer of how many columns of pixels
@@ -6375,17 +6750,23 @@ rows of pixels <bcp14>SHOULD</bcp14> be cropped from the top and bottom of the i
 <t>For example,
  a pillar-boxed video that stores a 1440x1080 visual image within the center of a padded
  1920x1080 encoded image may set both <tt>PixelCropLeft</tt> and <tt>PixelCropRight</tt> to "240",
- so a Matroska Player should crop off 240 columns of pixels from the left and
+ so a <tt>Matroska Player</tt> should crop off 240 columns of pixels from the left and
+
+<!-- [cellar] use <tt> for Matroska Player -->
+
  right of the encoded image to present the image with the pillar-boxes hidden.</t>
 <t>Cropping has to be performed before resizing and the display dimensions given by
  <tt>DisplayWidth</tt>, <tt>DisplayHeight</tt>, and <tt>DisplayUnit</tt> apply to the already-cropped image.</t>
 </section>
 
 <section anchor="rotation"><name>Rotation</name>
-<t>The <tt>ProjectionPoseRoll </tt>Element (<xref target="projectionposeroll-element"/>) can be used to indicate
+<t>The <tt>ProjectionPoseRoll</tt> element (<xref target="projectionposeroll-element"/>) can be used to indicate
 that the image from the associated video track <bcp14>SHOULD</bcp14> be rotated for presentation.
-For instance, the following example of the <tt>Projection</tt> Element (<xref target="projection-element"/>)
-and the <tt>ProjectionPoseRoll</tt> Element represents a video track where the image <bcp14>SHOULD</bcp14> be
+For instance, the following example of the <tt>Projection</tt> element (<xref target="projection-element"/>)
+and the <tt>ProjectionPoseRoll</tt> element represents a video track where the image <bcp14>SHOULD</bcp14> be
+
+<!-- [cellar] Element name and "element" separation -->
+
 presented with a 90-degree counter-clockwise rotation, with the EBML tree shown as XML:</t>
 <figure><name>Rotation Example
 </name>
@@ -6400,53 +6781,68 @@ presented with a 90-degree counter-clockwise rotation, with the EBML tree shown 
 </section>
 
 <section anchor="segment-position"><name>Segment Position</name>
-<t>The <tt>Segment Position</tt> of an Element refers to the position of the first octet of the
-<tt>Element ID</tt> of that Element, measured in octets, from the beginning of the <tt>Element Data</tt>
-section of the containing <tt>Segment Element</tt>. In other words, the <tt>Segment Position</tt> of an
-Element is the distance in octets from the beginning of its containing <tt>Segment Element</tt>
-minus the size of the <tt>Element ID</tt> and <tt>Element Data Size</tt> of that <tt>Segment Element</tt>.
-The <tt>Segment Position</tt> of the first <tt>Child Element</tt> of the <tt>Segment Element</tt> is 0.
-An Element that is not stored within a <tt>Segment Element</tt>, such as the <tt>Elements</tt> of
+<t>The <tt>Segment Position</tt> of an element refers to the position of the first octet of the
+<tt>Element ID</tt> of that element, measured in octets, from the beginning of the <tt>Element Data</tt>
+section of the containing <tt>Segment</tt> element. In other words, the <tt>Segment Position</tt> of an
+element is the distance in octets from the beginning of its containing <tt>Segment</tt> element
+minus the size of the <tt>Element ID</tt> and <tt>Element Data Size</tt> of that <tt>Segment</tt> element.
+The <tt>Segment Position</tt> of the first <tt>Child Element</tt> of the <tt>Segment</tt> element is 0.
+An element that is not stored within a <tt>Segment</tt> element, such as the elements of
+
+<!-- [cellar] Element name and "element" separation -->
+
 the <tt>EBML Header</tt>, do not have a <tt>Segment Position</tt>.</t>
 
 <section anchor="segment-position-exception"><name>Segment Position Exception</name>
-<t><tt>Elements</tt> that are defined to store a <tt>Segment Position</tt> <bcp14>MAY</bcp14> define reserved values to
+<t>Elements that are defined to store a <tt>Segment Position</tt> <bcp14>MAY</bcp14> define reserved values to
+
+<!-- [cellar] Element is a regular noun here -->
+
 indicate a special meaning.</t>
 </section>
 
 <section anchor="example-of-segment-position"><name>Example of Segment Position</name>
 <t>This table presents an example of <tt>Segment Position</tt> by showing a hexadecimal representation
 of a very small Matroska file with labels to show the offsets in octets. The file contains
-a <tt>Segment Element</tt> with an <tt>Element ID</tt> of "0x18538067" and a <tt>MuxingApp Element</tt> with an <tt>Element ID</tt> of "0x4D80".</t>
+a <tt>Segment</tt> element with an <tt>Element ID</tt> of "0x18538067" and a <tt>MuxingApp</tt> element with an <tt>Element ID</tt> of "0x4D80".</t>
+
+<!-- [cellar] Element name and "element" separation -->
+
 
 <artwork>
-   0                             1                             2
-   0  1  2  3  4  5  6  7  8  9  0  1  2  3  4  5  6  7  8  9  0
-   +--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
- 0 |1A|45|DF|A3|8B|42|82|88|6D|61|74|72|6F|73|6B|61|
-   ^ EBML Header
- 0 |                                               |18|53|80|67|
-                                                   ^ Segment ID
-20 |93|
-   ^ Segment Data Size
-20 |  |15|49|A9|66|8E|4D|80|84|69|65|74|66|57|41|84|69|65|74|66|
-      ^ Start of Segment data
-20 |                 |4D|80|84|69|65|74|66|57|41|84|69|65|74|66|
-                     ^ MuxingApp start
+     0                             1                             2
+     0  1  2  3  4  5  6  7  8  9  0  1  2  3  4  5  6  7  8  9  0
+     +--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
+   0 |1A|45|DF|A3|8B|42|82|88|6D|61|74|72|6F|73|6B|61|
+     ^ EBML Header
+   0 |                                               |18|53|80|67|
+                                                     ^ Segment ID
+  20 |93|
+     ^ Segment Data Size
+  20 |  |15|49|A9|66|8E|4D|80|84|69|65|74|66|57|41|84|69|65|74|66|
+        ^ Start of Segment data
+  20 |                 |4D|80|84|69|65|74|66|57|41|84|69|65|74|66|
+                       ^ MuxingApp start
 
 </artwork>
-<t>In the above example, the <tt>Element ID</tt> of the <tt>Segment Element</tt> is stored at offset 16,
-the <tt>Element Data Size</tt> of the <tt>Segment Element</tt> is stored at offset 20, and the
-<tt>Element Data</tt> of the <tt>Segment Element</tt> is stored at offset 21.</t>
-<t>The <tt>MuxingApp Element</tt> is stored at offset 26. Since the <tt>Segment Position</tt> of
-an Element is calculated by subtracting the position of the <tt>Element Data</tt> of
-the containing <tt>Segment Element</tt> from the position of that Element, the <tt>Segment Position</tt>
-of the <tt>MuxingApp Element</tt> in the above example is "26 - 21" or "5".</t>
+<t>In the above example, the <tt>Element ID</tt> of the <tt>Segment</tt> element is stored at offset 16,
+the <tt>Element Data Size</tt> of the <tt>Segment</tt> element is stored at offset 20, and the
+<tt>Element Data</tt> of the <tt>Segment</tt> element is stored at offset 21.</t>
+<t>The <tt>MuxingApp</tt> element is stored at offset 26. Since the <tt>Segment Position</tt> of
+an element is calculated by subtracting the position of the <tt>Element Data</tt> of
+the containing <tt>Segment</tt> element from the position of that element, the <tt>Segment Position</tt>
+of the <tt>MuxingApp</tt> element in the above example is "26 - 21" or "5".</t>
+
+<!-- [cellar] Element name and "element" separation -->
+
 </section>
 </section>
 
 <section anchor="linked-segments"><name>Linked Segments</name>
-<t>Matroska provides several methods to link two or more <tt>Segment Elements</tt> together to create
+<t>Matroska provides several methods to link two or more <tt>Segment</tt> elements together to create
+
+<!-- [cellar] Element name and "element" separation -->
+
 a <tt>Linked Segment</tt>. A <tt>Linked Segment</tt> is a set of multiple <tt>Segments</tt> linked together into
 a single presentation by using Hard Linking or Medium Linking.</t>
 <t>All <tt>Segments</tt> within a <tt>Linked Segment</tt> <bcp14>MUST</bcp14> have a <tt>SegmentUUID</tt>.</t>
@@ -6454,20 +6850,29 @@ a single presentation by using Hard Linking or Medium Linking.</t>
 or be quickly accessible based on their <tt>SegmentUUID</tt>
 in order to have a seamless transition between segments.</t>
 <t>All <tt>Segments</tt> within a <tt>Linked Segment</tt> <bcp14>MAY</bcp14> set a <tt>SegmentFamily</tt> with a common value to make
-it easier for a Matroska Player to know which <tt>Segments</tt> are meant to be played together.</t>
+it easier for a <tt>Matroska Player</tt> to know which <tt>Segments</tt> are meant to be played together.</t>
+
+<!-- [cellar] use <tt> for Matroska Player -->
+
 <t>The <tt>SegmentFilename</tt>, <tt>PrevFilename</tt>, and <tt>NextFilename</tt> elements <bcp14>MAY</bcp14> also give hints on
 the original filenames that were used when the <tt>Segment</tt> links were created, in case some <tt>SegmentUUIDs</tt> are damaged.</t>
 
 <section anchor="hard-linking"><name>Hard Linking</name>
 <t>Hard Linking, also called "splitting", is the process of creating a <tt>Linked Segment</tt>
-by linking multiple <tt>Segment Elements</tt> using the <tt>NextUUID</tt> and <tt>PrevUUID</tt> Elements.</t>
+by linking multiple <tt>Segment</tt> elements using the <tt>NextUUID</tt> and <tt>PrevUUID</tt> elements.</t>
+
+<!-- [cellar] Element name and "element" separation -->
+
 <t>All <tt>Segments</tt> within a <tt>Hard Linked Segment</tt> <bcp14>MUST</bcp14> use the same <tt>Tracks</tt> list and <tt>TimestampScale</tt>.</t>
 <t>Within a <tt>Linked Segment</tt>, the timestamps of <tt>Block</tt> and <tt>SimpleBlock</tt> <bcp14>MUST</bcp14> consecutively follow
 the timestamps of <tt>Block</tt> and <tt>SimpleBlock</tt> from the previous <tt>Segment</tt> in linking order.</t>
 <t>With Hard Linking, the chapters of any <tt>Segment</tt> within the <tt>Linked Segment</tt> <bcp14>MUST</bcp14> only reference the current <tt>Segment</tt>.
 The <tt>NextUUID</tt> and <tt>PrevUUID</tt> reference the respective <tt>SegmentUUID</tt> values of the next and previous <tt>Segments</tt>.</t>
-<t>The first <tt>Segment</tt> of a <tt>Linked Segment</tt> <bcp14>MUST NOT</bcp14> have a <tt>PrevUUID Element</tt>.
-The last <tt>Segment</tt> of a <tt>Linked Segment</tt> <bcp14>MUST NOT</bcp14> have a <tt>NextUUID Element</tt>.</t>
+<t>The first <tt>Segment</tt> of a <tt>Linked Segment</tt> <bcp14>MUST NOT</bcp14> have a <tt>PrevUUID</tt> element.
+The last <tt>Segment</tt> of a <tt>Linked Segment</tt> <bcp14>MUST NOT</bcp14> have a <tt>NextUUID</tt> element.</t>
+
+<!-- [cellar] Element name and "element" separation -->
+
 <t>For each node of the chain of <tt>Segments</tt> of a <tt>Linked Segment</tt>, at least one <tt>Segment</tt> <bcp14>MUST</bcp14> reference the other <tt>Segment</tt> within the chain.</t>
 <t>In a chain of <tt>Segments</tt> of a <tt>Linked Segment</tt>, the <tt>NextUUID</tt> always takes precedence over the <tt>PrevUUID</tt>.
 Thus, if SegmentA has a <tt>NextUUID</tt> to SegmentB and SegmentB has a <tt>PrevUUID</tt> to SegmentC,
@@ -6508,7 +6913,10 @@ cross-referencing each other with <tt>SegmentUUID</tt>, <tt>PrevUUID</tt>, and <
 <td align="left">Invalid</td>
 </tr>
 </tbody>
-</table><t>An example where only the <tt>NextUUID</tt> Element is used:</t>
+</table><t>An example where only the <tt>NextUUID</tt> element is used:</t>
+
+<!-- [cellar] Element name and "element" separation -->
+
 <table anchor="hardLinkingWoPrevUUID"><name>Hard Linking without PrevUUID</name>
 <thead>
 <tr>
@@ -6541,7 +6949,10 @@ cross-referencing each other with <tt>SegmentUUID</tt>, <tt>PrevUUID</tt>, and <
 <td align="left">Invalid</td>
 </tr>
 </tbody>
-</table><t>An example where only the <tt>PrevUUID</tt> Element is used:</t>
+</table><t>An example where only the <tt>PrevUUID</tt> element is used:</t>
+
+<!-- [cellar] Element name and "element" separation -->
+
 <table anchor="hardLinkingWoNextUUID"><name>Hard Linking without NextUUID</name>
 <thead>
 <tr>
@@ -6574,7 +6985,10 @@ cross-referencing each other with <tt>SegmentUUID</tt>, <tt>PrevUUID</tt>, and <
 <td align="left">Invalid</td>
 </tr>
 </tbody>
-</table><t>An example where only the <tt>middle.mkv</tt> is using the <tt>PrevUUID</tt> and <tt>NextUUID</tt> Elements:</t>
+</table><t>An example where only the <tt>middle.mkv</tt> is using the <tt>PrevUUID</tt> and <tt>NextUUID</tt> elements:</t>
+
+<!-- [cellar] Element name and "element" separation -->
+
 <table anchor="hardLinkingMixedUIDs"><name>Hard Linking with Mixed UID Links</name>
 <thead>
 <tr>
@@ -6612,9 +7026,12 @@ cross-referencing each other with <tt>SegmentUUID</tt>, <tt>PrevUUID</tt>, and <
 
 <section anchor="medium-linking"><name>Medium Linking</name>
 <t>Medium Linking creates relationships between <tt>Segments</tt> using <tt>Ordered Chapters</tt> (<xref target="editionflagordered"/>) and the
-<tt>ChapterSegmentUUID Element</tt>. A <tt>Chapter Edition</tt> with <tt>Ordered Chapters</tt> <bcp14>MAY</bcp14> contain
+<tt>ChapterSegmentUUID</tt> element. A <tt>Chapter Edition</tt> with <tt>Ordered Chapters</tt> <bcp14>MAY</bcp14> contain
 <tt>Chapters</tt> elements that reference timestamp ranges from other <tt>Segments</tt>. The <tt>Segment</tt>
-referenced by the <tt>Ordered Chapter</tt> via the <tt>ChapterSegmentUUID Element</tt> <bcp14>SHOULD</bcp14> be played as
+referenced by the <tt>Ordered Chapter</tt> via the <tt>ChapterSegmentUUID</tt> element <bcp14>SHOULD</bcp14> be played as
+
+<!-- [cellar] Element name and "element" separation -->
+
 part of a <tt>Linked Segment</tt>.</t>
 <t>The timestamps of <tt>Segment</tt> content referenced by <tt>Ordered Chapters</tt>
 <bcp14>MUST</bcp14> be adjusted according to the cumulative duration of the previous <tt>Ordered Chapters</tt>.</t>
@@ -6622,7 +7039,10 @@ part of a <tt>Linked Segment</tt>.</t>
 Another file called <tt>program.mkv</tt> could use a <tt>Chapter Edition</tt> that contains two <tt>Ordered Chapters</tt>.
 The first chapter references the <tt>Segment</tt> of <tt>intro.mkv</tt> with the use of a <tt>ChapterSegmentUUID</tt>,
 <tt>ChapterSegmentEditionUID</tt>, <tt>ChapterTimeStart</tt>, and an optional <tt>ChapterTimeEnd</tt> element.
-The second chapter references content within the <tt>Segment</tt> of <tt>program.mkv</tt>. A Matroska Player
+The second chapter references content within the <tt>Segment</tt> of <tt>program.mkv</tt>. A <tt>Matroska Player</tt>
+
+<!-- [cellar] use <tt> for Matroska Player -->
+
 <bcp14>SHOULD</bcp14> recognize the <tt>Linked Segment</tt> created by the use of <tt>ChapterSegmentUUID</tt> in an enabled
 <tt>Edition</tt> and present the reference content of the two <tt>Segments</tt> as a single presentation.</t>
 <t>The <tt>ChapterSegmentUUID</tt> represents the <tt>Segment</tt> that holds the content to play in place of the <tt>Linked Chapter</tt>.
@@ -6637,7 +7057,10 @@ The <tt>ChapterSegmentUUID</tt> <bcp14>MUST NOT</bcp14> be the <tt>SegmentUUID</
 </ul>
 
 <section anchor="linked-duration"><name>Linked-Duration</name>
-<t>A Matroska Player <bcp14>MUST</bcp14> play the content of the <tt>Linked Segment</tt>
+<t>A <tt>Matroska Player</tt> <bcp14>MUST</bcp14> play the content of the <tt>Linked Segment</tt>
+
+<!-- [cellar] use <tt> for Matroska Player -->
+
 from the <tt>ChapterTimeStart</tt> until the <tt>ChapterTimeEnd</tt> timestamp in place of the <tt>Linked Chapter</tt>.</t>
 <t><tt>ChapterTimeStart</tt> and <tt>ChapterTimeEnd</tt> represent timestamps in the <tt>Linked Segment</tt> matching the value of <tt>ChapterSegmentUUID</tt>.
 Their values <bcp14>MUST</bcp14> be in the range of the <tt>Linked Segment</tt> duration.</t>
@@ -6646,7 +7069,10 @@ Their values <bcp14>MUST</bcp14> be in the range of the <tt>Linked Segment</tt> 
 </section>
 
 <section anchor="linked-edition"><name>Linked-Edition</name>
-<t>A Matroska Player <bcp14>MUST</bcp14> play the whole Linked <tt>Edition</tt> of the <tt>Linked Segment</tt> in place of the <tt>Linked Chapter</tt>.</t>
+<t>A <tt>Matroska Player</tt> <bcp14>MUST</bcp14> play the whole <tt>Linked Edition</tt> of the <tt>Linked Segment</tt> in place of the <tt>Linked Chapter</tt>.</t>
+
+<!-- [cellar] use <tt> for Matroska Player/Linked Edition -->
+
 <t><tt>ChapterSegmentEditionUID</tt> represents a valid <tt>Edition</tt> from the <tt>Linked Segment</tt> matching the value of <tt>ChapterSegmentUUID</tt>.</t>
 <t>When using Linked-Edition chapter linking, <tt>ChapterTimeEnd</tt> is <bcp14>OPTIONAL</bcp14>.</t>
 </section>
@@ -6656,51 +7082,74 @@ Their values <bcp14>MUST</bcp14> be in the range of the <tt>Linked Segment</tt> 
 <section anchor="track-flags"><name>Track Flags</name>
 
 <section anchor="default-flag"><name>Default Flag</name>
-<t>The Default flag is a hint for a Matroska Player indicating that a given track
+<t>The Default flag is a hint for a <tt>Matroska Player</tt> indicating that a given track
+
+<!-- [cellar] use <tt> for Matroska Player -->
+
 <bcp14>SHOULD</bcp14> be eligible to be automatically selected as the default track for a given
 language. If no tracks in a given language have the Default flag set, then all tracks
 in that language are eligible for automatic selection. This can be used to indicate that
 a track provides "regular service" that is suitable for users with default settings, as opposed to
 specialized services, such as commentary, captions for users with hearing impairments, or descriptive audio.</t>
-<t>The Matroska Player <bcp14>MAY</bcp14> override the Default flag for any reason, including
+<t>The <tt>Matroska Player</tt> <bcp14>MAY</bcp14> override the Default flag for any reason, including
+
+<!-- [cellar] use <tt> for Matroska Player -->
+
 user preferences to prefer tracks providing accessibility services.</t>
 </section>
 
 <section anchor="forced-flag"><name>Forced Flag</name>
-<t>The Forced flag tells the Matroska Player that it <bcp14>SHOULD</bcp14> display this subtitle track,
+<t>The Forced flag tells the <tt>Matroska Player</tt> that it <bcp14>SHOULD</bcp14> display this subtitle track,
+
+<!-- [cellar] use <tt> for Matroska Player -->
+
 even if user preferences usually would not call for any subtitles to be displayed alongside
 the audio track that is currently selected. This can be used to indicate that a track contains translations
 of on-screen text or dialogue spoken in a different language than the track's primary language.</t>
 </section>
 
 <section anchor="hearing-impaired-flag"><name>Hearing-Impaired Flag</name>
-<t>The Hearing-Impaired flag tells the Matroska Player that it <bcp14>SHOULD</bcp14> prefer this track
+<t>The Hearing-Impaired flag tells the <tt>Matroska Player</tt> that it <bcp14>SHOULD</bcp14> prefer this track
+
+<!-- [cellar] use <tt> for Matroska Player -->
+
 when selecting a default track for a user with a hearing impairment and that it <bcp14>MAY</bcp14> prefer to select
 a different track when selecting a default track for a user that is not hearing impaired.</t>
 </section>
 
 <section anchor="visual-impaired-flag"><name>Visual-Impaired Flag</name>
+<t>The Visual-Impaired flag tells the <tt>Matroska Player</tt> that it <bcp14>SHOULD</bcp14> prefer this track
 
-<t>The Visual-Impaired flag tells the Matroska Player that it <bcp14>SHOULD</bcp14> prefer this track
+<!-- [cellar] use <tt> for Matroska Player -->
+
 when selecting a default track for a user with a visual impairment and that it <bcp14>MAY</bcp14> prefer to select
 a different track when selecting a default track for a user that is not visually impaired.</t>
 </section>
 
 <section anchor="descriptions-flag"><name>Descriptions Flag</name>
-<t>The Descriptions flag tells the Matroska Player that this track
+<t>The Descriptions flag tells the <tt>Matroska Player</tt> that this track
+
+<!-- [cellar] use <tt> for Matroska Player -->
+
 is suitable to play via a text-to-speech system for a user with a visual impairment
 and that it <bcp14>SHOULD NOT</bcp14> automatically select this track when
 selecting a default track for a user that is not visually impaired.</t>
 </section>
 
 <section anchor="original-flag"><name>Original Flag</name>
-<t>The Original flag tells the Matroska Player that this track is in the
+<t>The Original flag tells the <tt>Matroska Player</tt> that this track is in the
+
+<!-- [cellar] use <tt> for Matroska Player -->
+
 original language and that it <bcp14>SHOULD</bcp14> prefer this track if
 configured to prefer original-language tracks of this track's type.</t>
 </section>
 
 <section anchor="commentary-flag"><name>Commentary Flag</name>
-<t>The Commentary flag tells the Matroska Player that this track contains commentary on
+<t>The Commentary flag tells the <tt>Matroska Player</tt> that this track contains commentary on
+
+<!-- [cellar] use <tt> for Matroska Player -->
+
 the content.</t>
 </section>
 
@@ -6710,11 +7159,17 @@ two separate system to combine tracks. One to create a 3D "composition" (left/ri
 and one to simplify join two tracks together to make a single track.</t>
 <t>A track created with <tt>TrackOperation</tt> is a proper track with a UID and all its flags.
 However, the codec ID is meaningless because each "sub" track needs to be decoded by its
-own decoder before the "operation" is applied. The <tt>Cues Elements</tt> corresponding to such
-a virtual track <bcp14>SHOULD</bcp14> be the union of the <tt>Cues Elements</tt> for each of the tracks it's composed of (when the <tt>Cues</tt> are defined per track).</t>
-<t>In the case of <tt>TrackJoinBlocks</tt>, the <tt>Block Elements</tt> (from <tt>BlockGroup</tt> and <tt>SimpleBlock</tt>)
+own decoder before the "operation" is applied. The <tt>Cues</tt> elements corresponding to such
+a virtual track <bcp14>SHOULD</bcp14> be the union of the <tt>Cues</tt> elements for each of the tracks it's composed of (when the <tt>Cues</tt> are defined per track).</t>
+<t>In the case of <tt>TrackJoinBlocks</tt>, the <tt>Block</tt> elements (from <tt>BlockGroup</tt> and <tt>SimpleBlock</tt>)
+
+<!-- [cellar] Element name and "element" separation -->
+
 of all the tracks <bcp14>SHOULD</bcp14> be used as if they were defined for this new virtual <tt>Track</tt>.
-When two <tt>Block Elements</tt> have overlapping start or end timestamps, it's up to the underlying
+When two <tt>Block</tt> elements have overlapping start or end timestamps, it's up to the underlying
+
+<!-- [cellar] Element name and "element" separation -->
+
 system to either drop some of these frames or render them the way they overlap.
 This situation <bcp14>SHOULD</bcp14> be avoided when creating such tracks, as you can never be sure
 of the end result on different platforms.</t>
@@ -6730,7 +7185,10 @@ instead of the original track.</t>
 <t>There are two different ways to compress 3D videos: have each eye track in a separate track
 and have one track have both eyes combined inside (which is more efficient compression-wise).
 Matroska supports both ways.</t>
-<t>For the single-track variant, there is the <tt>StereoMode Element</tt>, which defines how planes are
+<t>For the single-track variant, there is the <tt>StereoMode</tt> element, which defines how planes are
+
+<!-- [cellar] Element name and "element" separation -->
+
 assembled in the track (mono or left-right combined). Odd values of <tt>StereoMode</tt> means the left
 plane comes first for more convenient reading. The pixel count of the track (<tt>PixelWidth</tt>/<tt>PixelHeight</tt>)
 is the raw number of pixels (for example, 3840x1080 for full HD side by side), and the
@@ -6760,11 +7218,17 @@ Matroska v3 and above.</t>
 
 <section anchor="default-track-selection"><name>Default Track Selection</name>
 <t>This section provides some example sets of <tt>Tracks</tt> and hypothetical user settings, along with
-indications of which ones a similarly configured Matroska Player <bcp14>SHOULD</bcp14> automatically
+indications of which ones a similarly configured <tt>Matroska Player</tt> <bcp14>SHOULD</bcp14> automatically
+
+<!-- [cellar] use <tt> for Matroska Player -->
+
 select for playback by default in such a situation. A player <bcp14>MAY</bcp14> provide additional settings
 with more detailed controls for more nuanced scenarios. These examples are provided as guidelines
-to illustrate the intended usages of the various supported Track flags and their expected behaviors.</t>
-<t>Track names are shown in English for illustrative purposes; actual files may have titles
+to illustrate the intended usages of the various supported <tt>Track</tt> flags and their expected behaviors.</t>
+<t><tt>Track</tt> names are shown in English for illustrative purposes; actual files may have titles
+
+<!-- [cellar] use <tt> for element name(s) -->
+
 in the language of each track or provide titles in multiple languages.</t>
 
 <section anchor="audio-selection"><name>Audio Selection</name>
@@ -7036,7 +7500,10 @@ structure borrowed from the DVD-menu system <xref target="DVD-Video"/> or have i
 
 <section anchor="editionentry"><name>EditionEntry</name>
 <t>The <tt>EditionEntry</tt> is also called an <tt>Edition</tt>.
-An <tt>Edition</tt> contains a set of <tt>Edition</tt> flags and <bcp14>MUST</bcp14> contain at least one <tt>ChapterAtom Element</tt>.
+An <tt>Edition</tt> contains a set of <tt>Edition</tt> flags and <bcp14>MUST</bcp14> contain at least one <tt>ChapterAtom</tt> element.
+
+<!-- [cellar] Element name and "element" separation -->
+
 <tt>Chapters</tt> are always inside an <tt>Edition</tt> (or a <tt>Chapter</tt> itself is part of an <tt>Edition</tt>).
 Multiple <tt>Editions</tt> are allowed. Some of these <tt>Editions</tt> <bcp14>MAY</bcp14> be ordered and others not.</t>
 
@@ -7045,7 +7512,10 @@ Multiple <tt>Editions</tt> are allowed. Some of these <tt>Editions</tt> <bcp14>M
 </section>
 
 <section anchor="default-edition"><name>Default Edition</name>
-<t>The <tt>Default Edition</tt> is the <tt>Edition</tt> that a Matroska Player <bcp14>SHOULD</bcp14> use for playback by default.</t>
+<t>The <tt>Default Edition</tt> is the <tt>Edition</tt> that a <tt>Matroska Player</tt> <bcp14>SHOULD</bcp14> use for playback by default.</t>
+
+<!-- [cellar] use <tt> for Matroska Player -->
+
 <t>The first <tt>Edition</tt> with the <tt>EditionFlagDefault</tt> flag set to <tt>true</tt> is the <tt>Default Edition</tt>.</t>
 <t>When all <tt>EditionFlagDefault</tt> flags are set to <tt>false</tt>, then the first <tt>Edition</tt>
 is the <tt>Default Edition</tt>.</t>
@@ -7145,31 +7615,49 @@ Alternatively, if a videotape is digitized in full, one <tt>Ordered Edition</tt>
 the full content (including colorbars, countdown, slate, a feature presentation, and
 black frames), while another <tt>Edition</tt> of <tt>Ordered Chapters</tt> can use <tt>Chapters</tt> that only
 mark the intended presentation with the colorbars and other ancillary visual information
-excluded. If an <tt>Edition</tt> of <tt>Ordered Chapters</tt> is enabled, then the Matroska Player <bcp14>MUST</bcp14>
+excluded. If an <tt>Edition</tt> of <tt>Ordered Chapters</tt> is enabled, then the <tt>Matroska Player</tt> <bcp14>MUST</bcp14>
+
+<!-- [cellar] use <tt> for Matroska Player -->
+
 play those <tt>Chapters</tt> in their stored order from the timestamp marked in the
-<tt>ChapterTimeStart Element</tt> to the timestamp marked in to <tt>ChapterTimeEnd Element</tt>.</t>
+<tt>ChapterTimeStart</tt> element to the timestamp marked in to <tt>ChapterTimeEnd</tt> element.</t>
+
+<!-- [cellar] Element name and "element" separation -->
+
 <t>If the <tt>EditionFlagOrdered</tt> flag evaluates to "0", <tt>Simple Chapters</tt> are used and
 only the <tt>ChapterTimeStart</tt> of a <tt>Chapter</tt> is used as a chapter mark to jump to the
-predefined point in the timeline. With <tt>Simple Chapters</tt>, a Matroska Player <bcp14>MUST</bcp14>
-ignore certain elements inside a <tt>Chapters Element</tt>. In that case, these elements are informational only.</t>
+predefined point in the timeline. With <tt>Simple Chapters</tt>, a <tt>Matroska Player</tt> <bcp14>MUST</bcp14>
+
+<!-- [cellar] use <tt> for Matroska Player -->
+
+ignore certain elements inside a <tt>Chapters</tt> element. In that case, these elements are informational only.</t>
+
+<!-- [cellar] Element name and "element" separation -->
+
 <t>The following list shows the different <tt>Chapters</tt> elements only found in <tt>Ordered Chapters</tt>.</t>
 
 <ul>
-<li><t><tt>ChapterAtom/ChapterSegmentUUID</tt></t>
+<li><t><tt>ChapterAtom\ChapterSegmentUUID</tt></t>
 </li>
-<li><t><tt>ChapterAtom/ChapterSegmentEditionUID</tt></t>
+<li><t><tt>ChapterAtom\ChapterSegmentEditionUID</tt></t>
 </li>
-<li><t><tt>ChapterAtom/ChapterTrack</tt></t>
+<li><t><tt>ChapterAtom\ChapterTrack</tt></t>
 </li>
-<li><t><tt>ChapterAtom/ChapProcess</tt></t>
+<li><t><tt>ChapterAtom\ChapProcess</tt></t>
 </li>
-<li><t><tt>Info/ChapterTranslate</tt></t>
+<li><t><tt>Info\ChapterTranslate</tt></t>
 </li>
-<li><t><tt>TrackEntry/TrackTranslate</tt></t>
+<li><t><tt>TrackEntry\TrackTranslate</tt></t>
 </li>
+
+<!-- [cellar] FIX: edited the element names to use the backslash in EBML pathes -->
+
 </ul>
-<t>Furthermore, there are other EBML <tt>Elements</tt> that could be used if the <tt>EditionFlagOrdered</tt>
+<t>Furthermore, there are other EBML elements that could be used if the <tt>EditionFlagOrdered</tt>
 evaluates to "1".</t>
+
+<!-- [cellar] Element is a regular noun here -->
+
 
 <section anchor="ordered-edition-and-matroska-segment-linking"><name>Ordered-Edition and Matroska Segment Linking</name>
 
@@ -7199,7 +7687,10 @@ For <tt>Simple Chapters</tt>, this is the position of the chapter markers in the
 <section anchor="chaptertimeend"><name>ChapterTimeEnd</name>
 <t><tt>ChapterTimeEnd</tt> is the timestamp of the end of <tt>Chapter</tt> with nanosecond accuracy and is not scaled by <tt>TimestampScale</tt>.
 The timestamp defined by the <tt>ChapterTimeEnd</tt> is not part of the <tt>Chapter</tt>.
-A Matroska Player calculates the duration of this <tt>Chapter</tt> using the difference between the
+A <tt>Matroska Player</tt> calculates the duration of this <tt>Chapter</tt> using the difference between the
+
+<!-- [cellar] use <tt> for Matroska Player -->
+
 <tt>ChapterTimeEnd</tt> and <tt>ChapterTimeStart</tt>.
 The end timestamp <bcp14>MUST</bcp14> be greater than or equal to the start timestamp.</t>
 <t>When the <tt>ChapterTimeEnd</tt> timestamp is equal to the <tt>ChapterTimeStart</tt> timestamp,
@@ -7266,8 +7757,8 @@ The <tt>ChapterTimeEnd</tt> <bcp14>SHOULD NOT</bcp14> be set in <tt>Parent Chapt
 </section>
 
 <section anchor="chapterflaghidden"><name>ChapterFlagHidden</name>
-<t> Each <tt>Chapter</tt>'s <tt>ChapterFlagHidden</tt> flag works independently of <tt>Parent
-Chapters</tt>.  A <tt>Nested Chapter</tt> with a <tt>ChapterFlagHidden</tt> flag that evaluates to
+<t>Each <tt>Chapter</tt>'s <tt>ChapterFlagHidden</tt> flag works independently of <tt>Parent Chapters</tt>.
+A <tt>Nested Chapter</tt> with a <tt>ChapterFlagHidden</tt> flag that evaluates to
 "0" remains visible in the user interface even if the <tt>Parent Chapter</tt>'s
 <tt>ChapterFlagHidden</tt> flag is set to "1".</t>
 <table anchor="ChapterFlagHiddenNested"><name>ChapterFlagHidden Nested Visibility</name>
@@ -7327,9 +7818,12 @@ some private data, and some data in the chapters.</t>
 For now, only two values are supported: 0 (Matroska Script) and 1 (menu borrowed from the DVD <xref target="DVD-Video"/>).
 The private data stored in <tt>ChapProcessPrivate</tt> and
 <tt>ChapProcessData</tt> depends on the <tt>ChapProcessCodecID</tt> value.</t>
-<t>The menu system, as well as Chapter Codecs in general, can perform actions on the Matroska Player, such as jumping to another <tt>Chapter</tt> or <tt>Edition</tt>, selecting different tracks, and possibly more.
+<t>The menu system, as well as Chapter Codecs in general, can perform actions on the <tt>Matroska Player</tt>, such as jumping to another <tt>Chapter</tt> or <tt>Edition</tt>, selecting different tracks, and possibly more.
 The scope of all the possibilities of Chapter Codecs is not covered in this document, as it
-depends on the Chapter Codec features and its integration in a Matroska Player.</t>
+depends on the Chapter Codec features and its integration in a <tt>Matroska Player</tt>.</t>
+
+<!-- [cellar] use <tt> for Matroska Player -->
+
 </section>
 
 <section anchor="physical-types"><name>Physical Types</name>
@@ -7600,15 +8094,23 @@ of them contains another splitting.</t>
 </section>
 
 <section anchor="attachments-1"><name>Attachments</name>
-<t>Matroska supports storage of related files and data in the <tt>Attachments Element</tt>
-(a <tt>Top-Level Element</tt>). An <tt>Attachments Element</tt> can be used to store related cover art,
+<t>Matroska supports storage of related files and data in the <tt>Attachments</tt> element
+(a <tt>Top-Level Element</tt>). <tt>Attachments</tt> elements can be used to store related cover art,
+
+<!-- [cellar] Element name and "element" separation -->
+
 font files, transcripts, reports, error recovery files, pictures, text-based annotations,
 copies of specifications, or other ancillary files related to the <tt>Segment</tt>.</t>
-<t><tt>Matroska Readers</tt> <bcp14>MUST NOT</bcp14> execute files stored as an <tt>Attachments Element</tt>.</t>
+<t><tt>Matroska Readers</tt> <bcp14>MUST NOT</bcp14> execute files stored as <tt>Attachments</tt> elements.</t>
+
+<!-- [cellar] FIX: used plural for Attachment elements as an Attachment may contain many elements -->
 
 <section anchor="cover-art"><name>Cover Art</name>
 <t>This section defines a set of guidelines for the storage of cover art in Matroska files.
-A Matroska Reader <bcp14>MAY</bcp14> use embedded cover art to display a representational
+A <tt>Matroska Reader</tt> <bcp14>MAY</bcp14> use embedded cover art to display a representational
+
+<!-- [cellar] use <tt> for Matroska Reader -->
+
 still-image depiction of the multimedia contents of the Matroska file.</t>
 <t>Only <xref target="JPEG"/> and PNG <xref target="RFC2083"/> image formats <bcp14>SHOULD</bcp14> be used for cover art pictures.</t>
 <t>There can be two different covers for a movie/album: a portrait style (e.g., a DVD case)
@@ -7620,10 +8122,13 @@ landscape, 600x800 for portrait, or 600x600 for square). The dimension of the
 <tt>small cover</tt> <bcp14>SHOULD</bcp14> be 120 pixels on the smallest side
 (e.g., 192x120 or 120x160).</t>
 <t>Versions of cover art can be differentiated by the filename, which is
-stored in the <tt>FileName Element</tt>. The default filename of the
+stored in the <tt>FileName</tt> element. The default filename of the
 <tt>normal cover</tt> in square or portrait mode is
 <tt>cover.(jpg|png)</tt>. When stored, the <tt>normal cover</tt>
-<bcp14>SHOULD</bcp14> be the first <tt>Attachments Element</tt> in storage
+<bcp14>SHOULD</bcp14> be the first <tt>Attachments</tt> element instorage
+
+<!-- [cellar] Element name and "element" separation -->
+
 order. The <tt>small cover</tt> <bcp14>SHOULD</bcp14> be prefixed with
 "small_", such as <tt>small_cover.(jpg|png)</tt>. The landscape variant
 <bcp14>SHOULD</bcp14> be suffixed with "_land", such as
@@ -7732,41 +8237,50 @@ They <bcp14>MAY</bcp14> use the media types found in older files when compatibil
 </section>
 
 <section anchor="cues"><name>Cues</name>
-<t>The <tt>Cues Element</tt> provides an index of certain <tt>Cluster Elements</tt> to allow for optimized
-seeking to absolute timestamps within the <tt>Segment</tt>. The <tt>Cues Element</tt> contains one or
-many <tt>CuePoint Elements</tt>, each of which <bcp14>MUST</bcp14> reference an absolute timestamp (via the
-<tt>CueTime Element</tt>), a <tt>Track</tt> (via the <tt>CueTrack Element</tt>), and a <tt>Segment Position</tt>
-(via the <tt>CueClusterPosition Element</tt>). Additional non-mandated Elements are part of
-the <tt>CuePoint Element</tt>, such as <tt>CueDuration</tt>, <tt>CueRelativePosition</tt>, <tt>CueCodecState</tt>,
-and others that provide any Matroska Reader with additional information to use in
+<t>The <tt>Cues</tt> element provides an index of certain <tt>Cluster</tt> elements to allow for optimized
+seeking to absolute timestamps within the <tt>Segment</tt>. The <tt>Cues</tt> element contains one or
+many <tt>CuePoint</tt> elements, each of which <bcp14>MUST</bcp14> reference an absolute timestamp (via the
+<tt>CueTime</tt> element), a <tt>Track</tt> (via the <tt>CueTrack</tt> element), and a <tt>Segment Position</tt>
+(via the <tt>CueClusterPosition</tt> element). Additional non-mandated elements are part of
+the <tt>CuePoint</tt> element, such as <tt>CueDuration</tt>, <tt>CueRelativePosition</tt>, <tt>CueCodecState</tt>,
+
+<!-- [cellar] Element name and "element" separation -->
+
+and others that provide any <tt>Matroska Reader</tt> with additional information to use in
+
+<!-- [cellar] use <tt> for Matroska Reader -->
+
 the optimization of seeking performance.</t>
 
 <section anchor="recommendations"><name>Recommendations</name>
 <t>The following recommendations are provided to optimize Matroska performance.</t>
 
 <ul>
-<li><t>Unless Matroska is used as a live stream, it <bcp14>SHOULD</bcp14> contain a <tt>Cues Element</tt>.</t>
+<li><t>Unless Matroska is used as a live stream, it <bcp14>SHOULD</bcp14> contain a <tt>Cues</tt> element.</t>
 </li>
-<li><t>For each video track, each keyframe <bcp14>SHOULD</bcp14> be referenced by a <tt>CuePoint Element</tt>.</t>
+<li><t>For each video track, each keyframe <bcp14>SHOULD</bcp14> be referenced by a <tt>CuePoint</tt> element.</t>
 </li>
 <li><t>It is <bcp14>RECOMMENDED</bcp14> to not reference non-keyframes of video tracks in <tt>Cues</tt> unless
-it references a <tt>Cluster Element</tt> that contains a <tt>CodecState Element</tt> but no keyframes.</t>
+it references a <tt>Cluster</tt> element that contains a <tt>CodecState</tt> element but no keyframes.</t>
 </li>
 <li><t>For each subtitle track present, each subtitle frame <bcp14>SHOULD</bcp14> be referenced by a
-<tt>CuePoint Element</tt> with a <tt>CueDuration Element</tt>.</t>
+<tt>CuePoint</tt> element with a <tt>CueDuration</tt> element.</t>
 </li>
-<li><t>References to audio tracks <bcp14>MAY</bcp14> be skipped in <tt>CuePoint Elements</tt> if a video track
-is present. When included, the <tt>CuePoint Elements</tt> <bcp14>SHOULD</bcp14> reference audio keyframes
+<li><t>References to audio tracks <bcp14>MAY</bcp14> be skipped in <tt>CuePoint</tt> elements if a video track
+is present. When included, the <tt>CuePoint</tt> elements <bcp14>SHOULD</bcp14> reference audio keyframes
 once every 500 milliseconds at most.</t>
 </li>
 <li><t>If the referenced frame is not stored within the first <tt>SimpleBlock</tt> or first
-<tt>BlockGroup</tt> within its <tt>Cluster Element</tt>, then the <tt>CueRelativePosition Element</tt>
+<tt>BlockGroup</tt> within its <tt>Cluster</tt> element, then the <tt>CueRelativePosition</tt> element
 <bcp14>SHOULD</bcp14> be written to reference where in the <tt>Cluster</tt> the reference frame is stored.</t>
 </li>
-<li><t>If a <tt>CuePoint Element</tt> references a <tt>Cluster Element</tt> that includes a <tt>CodecState Element</tt>,
-then that <tt>CuePoint Element</tt> <bcp14>MUST</bcp14> use a <tt>CueCodecState Element</tt>.</t>
+<li><t>If a <tt>CuePoint</tt> element references a <tt>Cluster</tt> element that includes a <tt>CodecState</tt> element,
+then that <tt>CuePoint</tt> element <bcp14>MUST</bcp14> use a <tt>CueCodecState</tt> element.</t>
 </li>
-<li><t><tt>CuePoint Elements</tt> <bcp14>SHOULD</bcp14> be numerically sorted in storage order by the value of the <tt>CueTime Element</tt>.</t>
+<li><t><tt>CuePoint</tt> elements <bcp14>SHOULD</bcp14> be numerically sorted in storage order by the value of the <tt>CueTime</tt> element.</t>
+
+<!-- [cellar] Element name and "element" separation -->
+
 </li>
 </ul>
 </section>
@@ -7783,8 +8297,11 @@ when a file is stored far away or on a slow server, seeking can be an expensive 
 and should be avoided.
 When followed, the guidelines in <xref target="implementation-recommendations"/> help reduce the number of
 seeking operations for regular playback and also have the playback start
-quickly without needing to read lot of data first (like a <tt>Cues Element</tt>,
-<tt>Attachments Element</tt>, or <tt>SeekHead Element</tt>).</t>
+quickly without needing to read lot of data first (like a <tt>Cues</tt> element,
+<tt>Attachments</tt> element, or <tt>SeekHead</tt> element).</t>
+
+<!-- [cellar] Element name and "element" separation -->
+
 <t>Matroska, having a small overhead, is well suited for storing music/videos on file
 servers without a big impact on the bandwidth used. Matroska does not require the index
 to be loaded before playing, which allows playback to start very quickly. The index can
@@ -7800,19 +8317,31 @@ be a source of confusion if they do not match.
 Livestreaming of Matroska over file-like protocols like HTTP, QUIC, etc., is possible.</t>
 <t>A live Matroska stream is different from a file because it usually has no known end
 (only ending when the client disconnects). For this, all bits of the "size" portion
-of the <tt>Segment Element</tt> <bcp14>MUST</bcp14> be set to 1. Another option is to concatenate <tt>Segment Elements</tt>
+of the <tt>Segment</tt> element <bcp14>MUST</bcp14> be set to 1. Another option is to concatenate <tt>Segment</tt> elements
+
+<!-- [cellar] Element name and "element" separation -->
+
 with known sizes, one after the other. This solution allows a change of codec/resolution
 between each segment. For example, this allows for a switch between 4:3 and 16:9 in a television program.</t>
-<t>When <tt>Segment Elements</tt> are continuous, certain <tt>Elements</tt> (like <tt>SeekHead</tt>, <tt>Cues</tt>,
+<t>When <tt>Segment</tt> elements are continuous, certain elements (like <tt>SeekHead</tt>, <tt>Cues</tt>,
+
+<!-- [cellar] Element name and "element" separation -->
+
 <tt>Chapters</tt>, and <tt>Attachments</tt>) <bcp14>MUST NOT</bcp14> be used.</t>
-<t>It is possible for a Matroska Player to detect that a stream is not seekable.
+<t>It is possible for a <tt>Matroska Player</tt> to detect that a stream is not seekable.
+
+<!-- [cellar] use <tt> for Matroska Player -->
+
 If the stream has neither a <tt>SeekHead</tt> list nor a <tt>Cues</tt> list at the beginning of the stream,
 it <bcp14>SHOULD</bcp14> be considered non-seekable. Even though it is possible to seek forward
 in the stream, it is <bcp14>NOT RECOMMENDED</bcp14>.</t>
 <t>In the context of live radio or web TV, it is possible to "tag" the content while it is
-playing. The <tt>Tags Element</tt> can be placed between <tt>Clusters</tt> each time it is necessary.
-In that case, the new <tt>Tags Element</tt> <bcp14>MUST</bcp14> reset the previously encountered <tt>Tags Elements</tt>
+playing. The <tt>Tags</tt> element can be placed between <tt>Clusters</tt> each time it is necessary.
+In that case, the new <tt>Tags</tt> element <bcp14>MUST</bcp14> reset the previously encountered <tt>Tags</tt> elements
 and use the new values instead.</t>
+
+<!-- [cellar] Element name and "element" separation -->
+
 </section>
 </section>
 
@@ -7820,21 +8349,33 @@ and use the new values instead.</t>
 
 <section anchor="tags-precedence"><name>Tags Precedence</name>
 <t>Tags allow tagging all kinds of Matroska parts with very detailed metadata in multiple languages.</t>
-<t>Some Matroska elements also contain their own string value, like the <tt>Name</tt> element (<xref target="name-element"/>) or the <tt>ChapString</tt> element (<xref target="chapstring-element"/>).</t>
+<t>Some Matroska elements also contain their own string value, like the track <tt>Name</tt> element (<xref target="name-element"/>) or the <tt>ChapString</tt> element (<xref target="chapstring-element"/>).</t>
+
+<!-- [cellar] FIX: use lowercase track as it's not the element name we talk about here -->
+
 <t>The following Matroska elements can also be defined with tags:</t>
 
 <ul>
-<li><t>The <tt>Name</tt> Element (<xref target="name-element"/>) corresponds to a tag with the <tt>TagTrackUID</tt> (<xref target="tagtrackuid-element"/>) set to the given track, a <tt>TagName</tt> of <tt>TITLE</tt> (<xref target="tagname-element"/>), and a <tt>TagLanguage</tt> (<xref target="taglanguage-element"/>) or <tt>TagLanguageBCP47</tt> (<xref target="taglanguagebcp47-element"/>) of "und".</t>
+<li><t>The track <tt>Name</tt> element (<xref target="name-element"/>) corresponds to a tag with the <tt>TagTrackUID</tt> (<xref target="tagtrackuid-element"/>) set to the given track, a <tt>TagName</tt> of <tt>TITLE</tt> (<xref target="tagname-element"/>), and a <tt>TagLanguage</tt> (<xref target="taglanguage-element"/>) or <tt>TagLanguageBCP47</tt> (<xref target="taglanguagebcp47-element"/>) of "und".</t>
+
+<!-- [cellar] FIX: use lowercase track as it's not the element name we talk about here -->
+
 </li>
-<li><t>The <tt>ChapString</tt> Element (<xref target="chapstring-element"/>) corresponds to a tag with the <tt>TagChapterUID</tt> (<xref target="tagchapteruid-element"/>) set to the same chapter UID, a <tt>TagName</tt> of <tt>TITLE</tt> (<xref target="tagname-element"/>), and a <tt>TagLanguage</tt> (<xref target="taglanguage-element"/>) or <tt>TagLanguageBCP47</tt> (<xref target="taglanguagebcp47-element"/>) matching the <tt>ChapLanguage</tt> (<xref target="chaplanguage-element"/>) or <tt>ChapLanguageBCP47</tt> (<xref target="chaplanguagebcp47-element"/>), respectively.</t>
+<li><t>The <tt>ChapString</tt> element (<xref target="chapstring-element"/>) corresponds to a tag with the <tt>TagChapterUID</tt> (<xref target="tagchapteruid-element"/>) set to the same chapter UID, a <tt>TagName</tt> of <tt>TITLE</tt> (<xref target="tagname-element"/>), and a <tt>TagLanguage</tt> (<xref target="taglanguage-element"/>) or <tt>TagLanguageBCP47</tt> (<xref target="taglanguagebcp47-element"/>) matching the <tt>ChapLanguage</tt> (<xref target="chaplanguage-element"/>) or <tt>ChapLanguageBCP47</tt> (<xref target="chaplanguagebcp47-element"/>), respectively.</t>
 </li>
-<li><t>The <tt>FileDescription</tt> Element (<xref target="filedescription-element"/>) of an attachment corresponds to a tag with the <tt>TagAttachmentUID</tt> (<xref target="tagattachmentuid-element"/>) set to the given attachment, a <tt>TagName</tt> of <tt>TITLE</tt> (<xref target="tagname-element"/>), and a <tt>TagLanguage</tt> (<xref target="taglanguage-element"/>) or <tt>TagLanguageBCP47</tt> (<xref target="taglanguagebcp47-element"/>) of "und".</t>
+<li><t>The <tt>FileDescription</tt> element (<xref target="filedescription-element"/>) of an attachment corresponds to a tag with the <tt>TagAttachmentUID</tt> (<xref target="tagattachmentuid-element"/>) set to the given attachment, a <tt>TagName</tt> of <tt>TITLE</tt> (<xref target="tagname-element"/>), and a <tt>TagLanguage</tt> (<xref target="taglanguage-element"/>) or <tt>TagLanguageBCP47</tt> (<xref target="taglanguagebcp47-element"/>) of "und".</t>
+
+<!-- [cellar] Element name and "element" separation -->
+
 </li>
 </ul>
 <t>When both values exist in the file, the value found in Tags takes precedence over the value found in the original location of the element.
 For example, if you have a <tt>TrackEntry\Name</tt> element and Tag <tt>TITLE</tt> for that track in a Matroska <tt>Segment</tt>, the Tag string <bcp14>SHOULD</bcp14> be used instead of the <tt>TrackEntry\Name</tt> string to identify the track.</t>
 <t>As the Tag element is optional, a lot of <tt>Matroska Readers</tt> do not handle it and will not use the tags value when it's found.
-Thus, for maximum compatibility, it's usually better to put the strings in the <tt>TrackEntry</tt>, <tt>ChapterAtom</tt>, and <tt>Attachments Element</tt>
+Thus, for maximum compatibility, it's usually better to put the strings in the <tt>TrackEntry</tt>, <tt>ChapterAtom</tt>, and <tt>Attachments</tt> elements
+
+<!-- [cellar] Element name and "element" separation -->
+
 and keep the tags matching these values if tags are also used.</t>
 </section>
 
@@ -7850,20 +8391,29 @@ an empty <tt>TagString</tt> (<xref target="tagstring-element"/>) or an empty <tt
 <section anchor="implementation-recommendations"><name>Implementation Recommendations</name>
 
 <section anchor="cluster"><name>Cluster</name>
-<t>It is <bcp14>RECOMMENDED</bcp14> that each individual <tt>Cluster Element</tt> contain no more than
+<t>It is <bcp14>RECOMMENDED</bcp14> that each individual <tt>Cluster</tt> element contain no more than
 five seconds or five megabytes of content.</t>
+
+<!-- [cellar] Element name and "element" separation -->
+
 </section>
 
 <section anchor="seekhead-1"><name>SeekHead</name>
-<t>It is <bcp14>RECOMMENDED</bcp14> that the first <tt>SeekHead Element</tt> be followed by a <tt>Void Element</tt> to
-allow for the <tt>SeekHead Element</tt> to be expanded to cover new <tt>Top-Level Elements</tt>
-that could be added to the Matroska file, such as <tt>Tags</tt>, <tt>Chapters</tt>, and <tt>Attachments</tt> Elements.</t>
-<t>The size of this <tt>Void Element</tt> should be adjusted depending on the <tt>Tags</tt>,
-<tt>Chapters</tt>, and <tt>Attachments</tt> Elements in the Matroska file.</t>
+<t>It is <bcp14>RECOMMENDED</bcp14> that the first <tt>SeekHead</tt> element be followed by a <tt>Void</tt> element to
+allow for the <tt>SeekHead</tt> element to be expanded to cover new <tt>Top-Level Elements</tt>
+that could be added to the Matroska file, such as <tt>Tags</tt>, <tt>Chapters</tt>, and <tt>Attachments</tt> elements.</t>
+<t>The size of this <tt>Void</tt> element should be adjusted depending on the<tt>Tags</tt>,
+<tt>Chapters</tt>, and <tt>Attachments</tt> elements in the Matroska file.</t>
+
+<!-- [cellar] Element name and "element" separation -->
+
 </section>
 
 <section anchor="optimum-layouts"><name>Optimum Layouts</name>
-<t>While there can be <tt>Top-Level Elements</tt> in any order, some orderings of Elements are better than others.
+<t>While there can be <tt>Top-Level Elements</tt> in any order, some orderings of elements are better than others.
+
+<!-- [cellar] Element is a regular noun here -->
+
 The following subsections detail optimum layouts for different use cases.</t>
 
 <section anchor="optimum-layout-for-a-muxer"><name>Optimum Layout for a Muxer</name>
@@ -7937,10 +8487,16 @@ All elements other than the <tt>Clusters</tt> <bcp14>MUST</bcp14> be placed befo
 
 <section anchor="security-considerations"><name>Security Considerations</name>
 <t>Matroska inherits security considerations from EBML <xref target="RFC8794"/>.</t>
-<t>Attacks on a Matroska Reader could include:</t>
+<t>Attacks on a <tt>Matroska Reader</tt> could include:</t>
+
+<!-- [cellar] use <tt> for Matroska Reader -->
+
 
 <ul>
-<li><t>Storage of an arbitrary and potentially executable data within an <tt>Attachments Element</tt>.
+<li><t>Storage of an arbitrary and potentially executable data within an <tt>Attachments</tt> element.
+
+<!-- [cellar] Element name and "element" separation -->
+
 <tt>Matroska Readers</tt> that extract or use data from <tt>Matroska Attachments</tt> <bcp14>SHOULD</bcp14>
 check that the data adheres to expectations or not use the attachment.</t>
 </li>
@@ -7960,9 +8516,11 @@ recoverable in their code.
 For example, if the checksum of the <tt>\Segment\Tracks</tt> is invalid, some
 could decide to try to read the data anyway, some will just reject the file,
 and most will not even check it.</t>
-<t>Matroska Reader implementations need to be robust against malicious payloads. Those related to denial of service are outlined in <xref target="RFC4732" sectionFormat="of" section="2.1"/>.</t>
+<t><tt>Matroska Reader</tt> implementations need to be robust against malicious payloads. Those related to denial of service are outlined in <xref target="RFC4732" sectionFormat="of" section="2.1"/>.</t>
+<t>Although rarer, the same may apply to a <tt>Matroska Writer</tt>.  Malicious stream data
 
-<t>Although rarer, the same may apply to a Matroska Writer.  Malicious stream data
+<!-- [cellar] use <tt> for Matroska Reader/Writer -->
+
 must not cause the Matroska Writer to misbehave, as this might allow an attacker access
 to transcoding gateways.</t>
 <t>As an audio/video container format, a Matroska file or stream will
@@ -7984,9 +8542,13 @@ using the VINT mechanism described in <xref target="RFC8794" sectionFormat="of" 
 one and five octets long. Five-octet Element IDs are possible
 only if declared in the EBML Header.</t>
 <t>Element IDs are described in <xref target="RFC8794" sectionFormat="of" section="5"/>, with the changes in <xref target="Err7189"/> and <xref target="Err7191"/>.</t>
-<t>One-octet Matroska Element IDs (range 0x00-0xFF) are to be allocated according to the "RFC Required" policy <xref target="RFC8126"/>.</t>
-<t>Two-octet Matroska Element IDs (range 0x0100-0xFFFF) are to be allocated according to the "Specification Required" policy <xref target="RFC8126"/>.</t>
-<t>Three-octet and four-octet Matroska Element IDs (range 0x00010000-0xFFFFFFFF) are to be allocated according to the "First Come First Served" policy <xref target="RFC8126"/>.</t>
+<t>One-octet Matroska Element IDs (range 0x80-0xFF) are to be allocated according to the "RFC Required" policy <xref target="RFC8126"/>.</t>
+<t>Two-octet Matroska Element IDs (range 0x407F-0x7FFF) are to be allocated according to the "Specification Required" policy <xref target="RFC8126"/>.</t>
+<t>Three-octet (range 0x203FFF-0x3FFFFF) and four-octet Matroska Element IDs (range 0x101FFFFF-0x1FFFFFFE) are to be allocated according to the "First Come First Served" policy <xref target="RFC8126"/>.</t>
+
+<!-- [cellar] FIX: fix the EBML IDs ranges according to RFC8794 Section 17.1
+with errata 7189 and 7191, and added the range for three-octet values as well. -->
+
 <t>The allowed values in the "Matroska Element IDs" registry are similar to the ones found
 in the "EBML Element IDs" registry defined in <xref target="RFC8794" sectionFormat="of" section="17.1"/>.</t>
 <t>EBML Element IDs defined for the EBML Header -- as defined in <xref target="RFC8794" sectionFormat="of" section="17.1"/> -- <bcp14>MUST NOT</bcp14> be used as Matroska Element IDs.</t>
@@ -9601,7 +10163,10 @@ Newer systems <bcp14>SHOULD NOT</bcp14> use the historic format and use the form
 <dt>Published specification:</dt>
 <dd>RFC 9559</dd>
 <dt>Applications that use this media type:</dt>
-<dd>FFmpeg, VLC, ...</dd>
+<dd>FFmpeg, VLC, etc.</dd>
+
+<!-- [cellar] added the etc. as was done for "For Files Containing Video Tracks" -->
+
 <dt>Fragment identifier considerations:</dt>
 <dd>N/A</dd>
 </dl>
@@ -9649,7 +10214,10 @@ Newer systems <bcp14>SHOULD NOT</bcp14> use the historic format and use the form
 <dt>Published specification:</dt>
 <dd>RFC 9559</dd>
 <dt>Applications that use this media type:</dt>
-<dd>FFmpeg, VLC, ...</dd>
+<dd>FFmpeg, VLC, etc.</dd>
+
+<!-- [cellar] added the etc. as was done for "For Files Containing Video Tracks" -->
+
 <dt>Fragment identifier considerations:</dt>
 <dd>N/A</dd>
 </dl>
@@ -9739,17 +10307,17 @@ Newer systems <bcp14>SHOULD NOT</bcp14> use the historic format and use the form
 <references><name>Informative References</name>
 
 <reference anchor="AVIFormat" target="https://docs.microsoft.com/en-us/windows/win32/directshow/avi-riff-file-reference">
-   <front>
+  <front>
     <title>AVI RIFF File Reference</title>
-      <author>
+    <author>
       <organization>Microsoft Corporation</organization>
-      </author>
+    </author>
     <date year="2023" month="June"></date>
-   </front>
+  </front>
 </reference>
 
 <reference anchor="BZIP2" target="https://sourceware.org/bzip2/">
-   <front>
+  <front>
     <title>bzip2</title>
     <author fullname="Julian Seward" initials="J." surname="Seward">
       <organization></organization>
@@ -10101,8 +10669,14 @@ It could change later if not specified as silent in a further <tt>Cluster</tt>.<
 <dt>path:</dt>
 <dd><tt>\Segment\Cluster\BlockGroup\Slices\TimeSlice</tt></dd>
 <dt>documentation:</dt>
-<dd>Contains extra time information about the data contained in the Block.
-Being able to interpret this Element is not required for playback.</dd>
+<dd>Contains extra time information about the data contained in the <tt>Block</tt>.
+
+<!-- [cellar] use <tt> for element name(s) -->
+
+Being able to interpret this element is not required for playback.</dd>
+
+<!-- [cellar] Element is a regular noun here -->
+
 </dl>
 </section>
 
@@ -10115,7 +10689,10 @@ Being able to interpret this Element is not required for playback.</dd>
 <dd><tt>\Segment\Cluster\BlockGroup\Slices\TimeSlice\LaceNumber</tt></dd>
 <dt>documentation:</dt>
 <dd>The reverse number of the frame in the lace (0 is the last frame, 1 is the next to last, etc.).
-Being able to interpret this Element is not required for playback.</dd>
+Being able to interpret this element is not required for playback.</dd>
+
+<!-- [cellar] Element is a regular noun here -->
+
 </dl>
 </section>
 
@@ -10140,7 +10717,10 @@ Being able to interpret this Element is not required for playback.</dd>
 <dt>path:</dt>
 <dd><tt>\Segment\Cluster\BlockGroup\Slices\TimeSlice\BlockAdditionID</tt></dd>
 <dt>documentation:</dt>
-<dd>The ID of the <tt>BlockAdditional</tt> Element (0 is the main Block).</dd>
+<dd>The ID of the <tt>BlockAdditional</tt> element (0 is the main <tt>Block</tt>).</dd>
+
+<!-- [cellar] use <tt> for element name(s) -->
+
 </dl>
 </section>
 
@@ -10152,7 +10732,10 @@ Being able to interpret this Element is not required for playback.</dd>
 <dt>path:</dt>
 <dd><tt>\Segment\Cluster\BlockGroup\Slices\TimeSlice\Delay</tt></dd>
 <dt>documentation:</dt>
-<dd>The delay to apply to the Element, expressed in Track Ticks; see <xref target="timestamp-ticks"/>.</dd>
+<dd>The delay to apply to the element, expressed in Track Ticks; see <xref target="timestamp-ticks"/>.</dd>
+
+<!-- [cellar] Element is a regular noun here -->
+
 </dl>
 </section>
 
@@ -10164,7 +10747,10 @@ Being able to interpret this Element is not required for playback.</dd>
 <dt>path:</dt>
 <dd><tt>\Segment\Cluster\BlockGroup\Slices\TimeSlice\SliceDuration</tt></dd>
 <dt>documentation:</dt>
-<dd>The duration to apply to the Element, expressed in Track Ticks; see <xref target="timestamp-ticks"/>.</dd>
+<dd>The duration to apply to the element, expressed in Track Ticks; see <xref target="timestamp-ticks"/>.</dd>
+
+<!-- [cellar] Element is a regular noun here -->
+
 </dl>
 </section>
 
@@ -10252,8 +10838,10 @@ If set to 0, the reference pseudo-cache system is not used.</dd>
 <dt>path:</dt>
 <dd><tt>\Segment\Tracks\TrackEntry\TrackOffset</tt></dd>
 <dt>documentation:</dt>
-<dd>A value to add to the Block's Timestamp, expressed in Matroska Ticks -- i.e., in nanoseconds; see <xref
-target="timestamp-ticks"/>.
+<dd>A value to add to the <tt>Block</tt>'s Timestamp, expressed in Matroska Ticks -- i.e., in nanoseconds; see <xref target="timestamp-ticks"/>.
+
+<!-- [cellar] use <tt> for element name(s) -->
+
 This can be used to adjust the playback offset of a track.</dd>
 </dl>
 </section>
@@ -10314,8 +10902,11 @@ This can be used to adjust the playback offset of a track.</dd>
 <dt>path:</dt>
 <dd><tt>\Segment\Tracks\TrackEntry\TrackOverlay</tt></dd>
 <dt>documentation:</dt>
-<dd>Specify that this track is an overlay track for the Track specified (in the u-integer).
-This means that when this track has a gap on SilentTracks, the overlay track should be used instead. The order of multiple TrackOverlay matters; the first one is the one that should be used.
+<dd>Specify that this track is an overlay track for the <tt>Track</tt> specified (in the u-integer).
+This means that when this track has a gap on <tt>SilentTracks</tt>, the overlay track should be used instead. The order of multiple <tt>TrackOverlay</tt> matters; the first one is the one that should be used.
+
+<!-- [cellar] use <tt> for element name(s) -->
+
 If the first one is not found, it should be the second, etc.</dd>
 </dl>
 </section>
@@ -10389,7 +10980,10 @@ used for a variable frame rate <tt>TrackEntry</tt>.</dd>
 <dt>path:</dt>
 <dd><tt>\Segment\Tracks\TrackEntry\TrickTrackSegmentUID</tt></dd>
 <dt>documentation:</dt>
-<dd>The SegmentUID of the <tt>Segment</tt> containing the track identified by TrickTrackUID. See <xref target="DivXTrickTrack"/>.</dd>
+<dd>The <tt>SegmentUUID</tt>of the <tt>Segment</tt> containing the track identified by TrickTrackUID. See <xref target="DivXTrickTrack"/>.</dd>
+
+<!-- [cellar] FIX: SegmentUID is now called SegmentUUID -->
+
 </dl>
 </section>
 
@@ -10401,7 +10995,10 @@ used for a variable frame rate <tt>TrackEntry</tt>.</dd>
 <dt>path:</dt>
 <dd><tt>\Segment\Tracks\TrackEntry\TrickTrackFlag</tt></dd>
 <dt>documentation:</dt>
-<dd>Set to 1 if this video track is a Smooth FF/RW track. If set to 1, MasterTrackUID and MasterTrackSegUID should be present, and
+<dd>Set to 1 if this video track is a Smooth FF/RW track. If set to 1, <tt>MasterTrackUID</tt> and <tt>MasterTrackSegUID</tt> should be present, and
+
+<!-- [cellar] use <tt> for element name(s) -->
+
 <tt>BlockGroups</tt> for this track must contain ReferenceFrame structures.
 Otherwise, TrickTrackUID and TrickTrackSegUID must be present if this track has a corresponding Smooth FF/RW track. See <xref target="DivXTrickTrack"/>.</dd>
 </dl>
@@ -10427,7 +11024,10 @@ Otherwise, TrickTrackUID and TrickTrackSegUID must be present if this track has 
 <dt>path:</dt>
 <dd><tt>\Segment\Tracks\TrackEntry\TrickMasterTrackSegmentUID</tt></dd>
 <dt>documentation:</dt>
-<dd>The SegmentUID of the <tt>Segment</tt> containing the track identified by MasterTrackUID. See <xref target="DivXTrickTrack"/>.</dd>
+<dd>The <tt>SegmentUUID</tt>of the <tt>Segment</tt> containing the track identified by MasterTrackUID. See <xref target="DivXTrickTrack"/>.</dd>
+
+<!-- [cellar] FIX: SegmentUID is now called SegmentUUID -->
+
 </dl>
 </section>
 
@@ -10487,7 +11087,10 @@ Otherwise, TrickTrackUID and TrickTrackSegUID must be present if this track has 
 <dt>path:</dt>
 <dd><tt>\Segment\Cues\CuePoint\CueTrackPositions\CueReference\CueRefCluster</tt></dd>
 <dt>documentation:</dt>
-<dd>The <tt>Segment Position</tt> of the <tt>Cluster</tt> containing the referenced Block.</dd>
+<dd>The <tt>Segment Position</tt> of the <tt>Cluster</tt> containing the referenced <tt>Block</tt>.</dd>
+
+<!-- [cellar] use <tt> for element name(s) -->
+
 </dl>
 </section>
 
@@ -10511,8 +11114,11 @@ Otherwise, TrickTrackUID and TrickTrackSegUID must be present if this track has 
 <dt>path:</dt>
 <dd><tt>\Segment\Cues\CuePoint\CueTrackPositions\CueReference\CueRefCodecState</tt></dd>
 <dt>documentation:</dt>
-<dd>The <tt>Segment Position</tt> of the Codec State corresponding to this referenced Element.
+<dd>The <tt>Segment Position</tt> of the Codec State corresponding to this referenced element.
 0 means that the data is taken from the initial <tt>TrackEntry</tt>.</dd>
+
+<!-- [cellar] Element is a regular noun here -->
+
 </dl>
 </section>
 
@@ -10562,7 +11168,10 @@ Otherwise, TrickTrackUID and TrickTrackSegUID must be present if this track has 
 <dt>path:</dt>
 <dd><tt>\Segment\Tags\Tag\+SimpleTag\TagDefaultBogus</tt></dd>
 <dt>documentation:</dt>
-<dd>A variant of the <tt>TagDefault</tt> element with a bogus Element ID; see <xref target="tagdefault-element"/>.</dd>
+<dd>A variant of the <tt>TagDefault</tt> element with a bogus element ID; see <xref target="tagdefault-element"/>.</dd>
+
+<!-- [cellar] Element is a regular noun here -->
+
 </dl>
 </section>
 </section>
