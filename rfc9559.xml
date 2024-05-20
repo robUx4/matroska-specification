@@ -1,44 +1,16 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- name="GENERATOR" content="github.com/mmarkdown/mmark Mmark Markdown Processor - mmark.miek.nl" -->
+<rfc version="3" ipr="trust200902" docName="draft-ietf-cellar-matroska-22" sortRefs="true" tocDepth="4" submissionType="IETF" category="std" xml:lang="en" xmlns:xi="http://www.w3.org/2001/XInclude" indexInclude="true">
 
-<!DOCTYPE rfc [
- <!ENTITY nbsp    "&#160;">
- <!ENTITY zwsp   "&#8203;">
- <!ENTITY nbhy   "&#8209;">
- <!ENTITY wj     "&#8288;">
-]>
-<rfc version="3" ipr="trust200902" docName="draft-ietf-cellar-matroska-21" number="9559" submissionType="IETF" category="std" consensus="true" tocInclude="true" sortRefs="true" symRefs="true" tocDepth="4" xml:lang="en" xmlns:xi="http://www.w3.org/2001/XInclude" updates="8794" obsoletes="">
 <front>
-  <title abbrev="Matroska Format">Matroska Media Container Format Specification</title>
-  <seriesInfo name="RFC" value="9559"/>
-
-  <author initials="S." surname="Lhomme" fullname="Steve Lhomme">
-    <organization></organization>
-    <address>
-      <postal>
-	<street></street>
-      </postal>
-      <email>slhomme@matroska.org</email>
-    </address>
-  </author>
-  <author initials="M." surname="Bunkus" fullname="Moritz Bunkus">
-    <organization></organization>
-    <address>
-      <postal>
-	<street></street>
-      </postal>
-      <email>moritz@bunkus.org</email>
-    </address>
-  </author>
-  <author initials="D." surname="Rice" fullname="Dave Rice">
-    <organization></organization>
-    <address>
-      <postal>
-	<street></street>
-      </postal>
-      <email>dave@dericed.com</email>
-    </address>
-  </author>
-  <date year="2024" month="May"/>
+<title abbrev="Matroska Format">Matroska Media Container Format Specification</title><seriesInfo value="draft-ietf-cellar-matroska-22" stream="IETF" status="standard" name="RFC"></seriesInfo>
+<author initials="S." surname="Lhomme" fullname="Steve Lhomme"><organization></organization><address><postal><street></street>
+</postal><email>slhomme@matroska.org</email>
+</address></author><author initials="M." surname="Bunkus" fullname="Moritz Bunkus"><organization></organization><address><postal><street></street>
+</postal><email>moritz@bunkus.org</email>
+</address></author><author initials="D." surname="Rice" fullname="Dave Rice"><organization></organization><address><postal><street></street>
+</postal><email>dave@dericed.com</email>
+</address></author><date year="2024" month="May"></date>
   <area>art</area>
   <workgroup>cellar</workgroup>
   <keyword>binary</keyword>
@@ -69,21 +41,31 @@ without breaking file support in parsers reading the previous versions.</t>
 what an audio/video container is:</t>
 
 <ul>
-<li>It is NOT a video or audio compression format (codec).</li>
-<li>It is an envelope in which there can be many audio, video, and subtitles streams,
-allowing the user to store a complete movie or CD in a single file.</li>
+<li><t>It is NOT a video or audio compression format (codec).</t>
+</li>
+<li><t>It is an envelope in which there can be many audio, video, and subtitles streams,
+allowing the user to store a complete movie or CD in a single file.</t>
+</li>
 </ul>
 <t>Matroska is designed with the future in mind. It incorporates features such as:</t>
 
 <ul>
-<li>Fast seeking in the file</li>
-<li>Chapter entries</li>
-<li>Full metadata (tags) support</li>
-<li>Selectable subtitle/audio/video streams</li>
-<li>Modularly expandable</li>
-<li>Error resilience (can recover playback even when the stream is damaged)</li>
-<li>Streamable over the Internet and local networks (HTTP <xref target="RFC9110"/>, FTP <xref target="RFC0959"/>, SMB <xref target="SMB-CIFS"/>, etc.)</li>
-<li>Menus (like menus that DVDs have <xref target="DVD-Video"/>)</li>
+<li><t>Fast seeking in the file</t>
+</li>
+<li><t>Chapter entries</t>
+</li>
+<li><t>Full metadata (tags) support</t>
+</li>
+<li><t>Selectable subtitle/audio/video streams</t>
+</li>
+<li><t>Modularly expandable</t>
+</li>
+<li><t>Error resilience (can recover playback even when the stream is damaged)</t>
+</li>
+<li><t>Streamable over the Internet and local networks (HTTP <xref target="RFC9110"/>, FTP <xref target="RFC0959"/>, SMB <xref target="SMB-CIFS"/>, etc.)</t>
+</li>
+<li><t>Menus (like menus that DVDs have <xref target="DVD-Video"/>)</t>
+</li>
 </ul>
 </section>
 
@@ -93,29 +75,30 @@ Matroska versions 1 to 3 are no longer maintained. No new elements are expected 
 </section>
 
 <section anchor="notation-and-conventions"><name>Notation and Conventions</name>
-        <t>
-    The key words "<bcp14>MUST</bcp14>", "<bcp14>MUST NOT</bcp14>",
-    "<bcp14>REQUIRED</bcp14>", "<bcp14>SHALL</bcp14>", "<bcp14>SHALL
-    NOT</bcp14>", "<bcp14>SHOULD</bcp14>", "<bcp14>SHOULD NOT</bcp14>",
+        <t>The key words "<bcp14>MUST</bcp14>", "<bcp14>MUST NOT</bcp14>",
+    "<bcp14>REQUIRED</bcp14>", "<bcp14>SHALL</bcp14>", "<bcp14>SHALL NOT</bcp14>",
+"<bcp14>SHOULD</bcp14>", "<bcp14>SHOULD NOT</bcp14>",
     "<bcp14>RECOMMENDED</bcp14>", "<bcp14>NOT RECOMMENDED</bcp14>",
     "<bcp14>MAY</bcp14>", and "<bcp14>OPTIONAL</bcp14>" in this document are
-    to be interpreted as described in BCP&nbsp;14 <xref target="RFC2119"/>
+    to be interpreted as described in BCP 14 <xref target="RFC2119"/>
     <xref target="RFC8174"/> when, and only when, they appear in all capitals,
-	as shown here.  </t>
-
+	as shown here.</t>
 	<t>This document defines the following terms in order to
-    define the format and application of Matroska:
-    </t>
+    define the format and application of Matroska:</t>
 
 <dl>
 <dt>Matroska:</dt>
-<dd>A multimedia container format based on EBML (Extensible Binary Meta Language).</dd>
+<dd><t>A multimedia container format based on EBML (Extensible Binary Meta Language).</t>
+</dd>
 <dt>Matroska Reader:</dt>
-<dd>A data parser that interprets the semantics of a Matroska document and creates a way for programs to use Matroska.</dd>
+<dd><t>A data parser that interprets the semantics of a Matroska document and creates a way for programs to use Matroska.</t>
+</dd>
 <dt>Matroska Player:</dt>
-<dd>A Matroska Reader with the primary purpose of playing audiovisual files, including Matroska documents.</dd>
+<dd><t>A Matroska Reader with the primary purpose of playing audiovisual files, including Matroska documents.</t>
+</dd>
 <dt>Matroska Writer:</dt>
-<dd>A data writer that creates Matroska documents.</dd>
+<dd><t>A data writer that creates Matroska documents.</t>
+</dd>
 </dl>
 </section>
 
@@ -134,9 +117,9 @@ and EBML Structure (Section <xref target="RFC8794" sectionFormat="bare" section=
 <t>Because of an oversight, <xref target="RFC8794"/> reserved EBML ID 0x80, which is used by deployed Matroska implementations.
 For this reason, this specification updates <xref target="RFC8794"/> to make 0x80 a legal EBML ID. Additionally, this specification makes the following updates:</t>
 
-<ul>
-<li><t><xref target="RFC8794" sectionFormat="of" section="17.1"/> (per Erratum ID #7189 <xref target="Err7189"/>)</t>
-
+<ul spacing="compact">
+<li><xref target="RFC8794" sectionFormat="of" section="17.1"/> (per Erratum ID #7189 <xref target="Err7189"/>)</li>
+</ul>
 <t>OLD:</t>
 <blockquote><t>One-octet Element IDs <bcp14>MUST</bcp14> be between 0x81 and 0xFE.  These items are
    valuable because they are short, and they need to be used for
@@ -150,10 +133,9 @@ For this reason, this specification updates <xref target="RFC8794"/> to make 0x8
    this range according to the "RFC Required" policy <xref target="RFC8126"/>.</t>
 <t>The following one-octet Element ID is RESERVED: 0xFF.</t>
 </blockquote>
-</li>
-
-<li><t><xref target="RFC8794" sectionFormat="of" section="5"/> (per Erratum ID #7191 <xref target="Err7191"/>)</t>
-
+<ul spacing="compact">
+<li><xref target="RFC8794" sectionFormat="of" section="5"/> (per Erratum ID #7191 <xref target="Err7191"/>)</li>
+</ul>
 <t>OLD:</t>
 
 <artwork>
@@ -176,18 +158,18 @@ For this reason, this specification updates <xref target="RFC8794"/> to make 0x8
 +-------------------------+----------------+-----------------+
 
 </artwork>
-
-</li>
-</ul>
 </section>
 
 <section anchor="added-ebml-constraints"><name>Added EBML Constraints</name>
 <t>As an EBML Document Type, Matroska adds the following constraints to the EBML specification <xref target="RFC8794"/>:</t>
 
 <ul>
-<li>The <tt>docType</tt> of the <tt>EBML Header</tt> <bcp14>MUST</bcp14> be "matroska".</li>
-<li>The <tt>EBMLMaxIDLength</tt> of the <tt>EBML Header</tt> <bcp14>MUST</bcp14> be 4.</li>
-<li>The <tt>EBMLMaxSizeLength</tt> of the <tt>EBML Header</tt> <bcp14>MUST</bcp14> be between 1 and 8, inclusive.</li>
+<li><t>The <tt>docType</tt> of the <tt>EBML Header</tt> <bcp14>MUST</bcp14> be "matroska".</t>
+</li>
+<li><t>The <tt>EBMLMaxIDLength</tt> of the <tt>EBML Header</tt> <bcp14>MUST</bcp14> be 4.</t>
+</li>
+<li><t>The <tt>EBMLMaxSizeLength</tt> of the <tt>EBML Header</tt> <bcp14>MUST</bcp14> be between 1 and 8, inclusive.</t>
+</li>
 </ul>
 </section>
 
@@ -199,9 +181,12 @@ Therefore, Matroska Writers <bcp14>MUST NOT</bcp14> use EBML Empty Elements if t
 <t>When adding new elements to Matroska, these rules apply:</t>
 
 <ul>
-<li>A non-mandatory integer/date Element <bcp14>MUST NOT</bcp14> have a default value other than 0.</li>
-<li>A non-mandatory float Element <bcp14>MUST NOT</bcp14> have a default value other than 0x0p+0.</li>
-<li>A non-mandatory string Element  <bcp14>MUST NOT</bcp14> have a default value, as empty strings cannot be defined in the XML Schema.</li>
+<li><t>A non-mandatory integer/date Element <bcp14>MUST NOT</bcp14> have a default value other than 0.</t>
+</li>
+<li><t>A non-mandatory float Element <bcp14>MUST NOT</bcp14> have a default value other than 0x0p+0.</t>
+</li>
+<li><t>A non-mandatory string Element  <bcp14>MUST NOT</bcp14> have a default value, as empty strings cannot be defined in the XML Schema.</t>
+</li>
 </ul>
 </section>
 
@@ -256,14 +241,22 @@ the <tt>Segment Element</tt>), whereas vertical alignment represents the storage
 <t>The Matroska <tt>EBML Schema</tt> defines eight <tt>Top-Level Elements</tt>:</t>
 
 <ul>
-<li><tt>SeekHead</tt> (<xref target="seekhead"/>)</li>
-<li><tt>Info</tt> (<xref target="info"/>)</li>
-<li><tt>Tracks</tt> (<xref target="track-flags"/>)</li>
-<li><tt>Chapters</tt> (<xref target="chapters"/>)</li>
-<li><tt>Cluster</tt> (<xref target="cluster-blocks"/>)</li>
-<li><tt>Cues</tt> (<xref target="cues"/>)</li>
-<li><tt>Attachments</tt> (<xref target="attachments-1"/>)</li>
-<li><tt>Tags</tt> (<xref target="tags"/>)</li>
+<li><t><tt>SeekHead</tt> (<xref target="seekhead"/>)</t>
+</li>
+<li><t><tt>Info</tt> (<xref target="info"/>)</t>
+</li>
+<li><t><tt>Tracks</tt> (<xref target="track-flags"/>)</t>
+</li>
+<li><t><tt>Chapters</tt> (<xref target="chapters"/>)</t>
+</li>
+<li><t><tt>Cluster</tt> (<xref target="cluster-blocks"/>)</t>
+</li>
+<li><t><tt>Cues</tt> (<xref target="cues"/>)</t>
+</li>
+<li><t><tt>Attachments</tt> (<xref target="attachments-1"/>)</t>
+</li>
+<li><t><tt>Tags</tt> (<xref target="tags"/>)</t>
+</li>
 </ul>
 <t>The <tt>SeekHead Element</tt> (also known as <tt>MetaSeek</tt>) contains an index of <tt>Top-Level Elements</tt>
 locations within the <tt>Segment</tt>. Use of the <tt>SeekHead Element</tt> is <bcp14>RECOMMENDED</bcp14>. Without a <tt>SeekHead Element</tt>,
@@ -1197,12 +1190,12 @@ In the cache, only a frame of the same or higher priority can replace this frame
 <dt>path:</dt>
 <dd><tt>\Segment\Cluster\BlockGroup\ReferenceBlock</tt></dd>
 <dt>definition:</dt>
-<dd><t>A timestamp value, relative to the timestamp of the <tt>Block</tt> in this <tt>BlockGroup</tt>, expressed in Track Ticks; see <xref target="timestamp-ticks"/>.
+<dd>A timestamp value, relative to the timestamp of the <tt>Block</tt> in this <tt>BlockGroup</tt>, expressed in Track Ticks; see <xref target="timestamp-ticks"/>.
 This is used to reference other frames necessary to decode this frame.
 The relative value <bcp14>SHOULD</bcp14> correspond to a valid <tt>Block</tt> that this <tt>Block</tt> depends on.
-Historically, Matroska Writers didn't write the actual <tt>Block(s)</tt> that this <tt>Block</tt> depends on, but they did write <em>some</em> <tt>Block(s)</tt> in the past.
-The value "0" <bcp14>MAY</bcp14> also be used to signify that this <tt>Block</tt> cannot be decoded on its own, but the necessary reference <tt>Block(s)</tt> is unknown. In this case, other <tt>ReferenceBlock</tt> Elements <bcp14>MUST NOT</bcp14> be found in the same <tt>BlockGroup</tt>. If the <tt>BlockGroup</tt> doesn't have a <tt>ReferenceBlock</tt> element, then the <tt>Block</tt> it contains can be decoded without using any other <tt>Block</tt> data.</t></dd>
+Historically, Matroska Writers didn't write the actual <tt>Block(s)</tt> that this <tt>Block</tt> depends on, but they did write <em>some</em> <tt>Block(s)</tt> in the past.</dd>
 </dl>
+<t>The value "0" <bcp14>MAY</bcp14> also be used to signify that this <tt>Block</tt> cannot be decoded on its own, but the necessary reference <tt>Block(s)</tt> is unknown. In this case, other <tt>ReferenceBlock</tt> Elements <bcp14>MUST NOT</bcp14> be found in the same <tt>BlockGroup</tt>. If the <tt>BlockGroup</tt> doesn't have a <tt>ReferenceBlock</tt> element, then the <tt>Block</tt> it contains can be decoded without using any other <tt>Block</tt> data.</t>
 </section>
 
 <section anchor="codecstate-element"><name>CodecState Element</name>
@@ -3460,7 +3453,8 @@ in candelas per square meter (cd/m<sup>2</sup>).</dd>
 <dt>minver:</dt>
 <dd>4</dd>
 <dt>definition:</dt>
-<dd><t>Private data that only applies to a specific projection.</t>
+<dd>Private data that only applies to a specific projection.</dd>
+</dl>
 
 <ul spacing="compact">
 <li>If <tt>ProjectionType</tt> equals 0 (rectangular),
@@ -3472,9 +3466,8 @@ in candelas per square meter (cd/m<sup>2</sup>).</dd>
 <li>If <tt>ProjectionType</tt> equals 3 (mesh), then this element <bcp14>MUST</bcp14> be present and contain the same binary data that would be stored inside
    an ISOBMFF Mesh Projection Box ("mshp").</li>
 </ul>
-</dd>
 
-
+<dl spacing="compact">
 <dt>usage notes:</dt>
 <dd>ISOBMFF box size and FourCC fields are not included in the binary data,
 but the FullBox version and flag fields are. This is to avoid
@@ -3498,10 +3491,13 @@ redundant framing information while preserving versioning and semantics between 
 <dt>minver:</dt>
 <dd>4</dd>
 <dt>definition:</dt>
-<dd><t>Specifies a yaw rotation to the projection. Value represents a clockwise rotation, in degrees, around the up vector. This rotation must be applied
+<dd>Specifies a yaw rotation to the projection. Value represents a clockwise rotation, in degrees, around the up vector. This rotation must be applied
 before any <tt>ProjectionPosePitch</tt> or <tt>ProjectionPoseRoll</tt> rotations.
-The value of this element <bcp14>MUST</bcp14> be in the -180 to 180 degree range, both inclusive.
-Setting <tt>ProjectionPoseYaw</tt> to 180 or -180 degrees with <tt>ProjectionPoseRoll</tt> and <tt>ProjectionPosePitch</tt> set to 0 degrees flips the image horizontally.</t></dd>
+The value of this element <bcp14>MUST</bcp14> be in the -180 to 180 degree range, both inclusive.</dd>
+</dl>
+<t>Setting <tt>ProjectionPoseYaw</tt> to 180 or -180 degrees with <tt>ProjectionPoseRoll</tt> and <tt>ProjectionPosePitch</tt> set to 0 degrees flips the image horizontally.</t>
+
+<dl spacing="compact">
 <dt>stream copy:</dt>
 <dd>True (<xref target="stream-copy"/>)</dd>
 </dl>
@@ -3521,10 +3517,9 @@ Setting <tt>ProjectionPoseYaw</tt> to 180 or -180 degrees with <tt>ProjectionPos
 <dt>minver:</dt>
 <dd>4</dd>
 <dt>definition:</dt>
-<dd><t>Specifies a pitch rotation to the projection. Value represents a counter-clockwise rotation, in degrees, around the right vector. This rotation must be applied
+<dd>Specifies a pitch rotation to the projection. Value represents a counter-clockwise rotation, in degrees, around the right vector. This rotation must be applied
 after the <tt>ProjectionPoseYaw</tt> rotation and before the <tt>ProjectionPoseRoll</tt> rotation.
-The value of this element <bcp14>MUST</bcp14> be in the -90 to 90 degree range, both inclusive.</t>
-</dd>
+The value of this element <bcp14>MUST</bcp14> be in the -90 to 90 degree range, both inclusive.</dd>
 <dt>stream copy:</dt>
 <dd>True (<xref target="stream-copy"/>)</dd>
 </dl>
@@ -3544,16 +3539,16 @@ The value of this element <bcp14>MUST</bcp14> be in the -90 to 90 degree range, 
 <dt>minver:</dt>
 <dd>4</dd>
 <dt>definition:</dt>
-<dd><t>Specifies a roll rotation to the projection. Value represents a
+<dd>Specifies a roll rotation to the projection. Value represents a
 counter-clockwise rotation, in degrees, around the forward vector. This
 rotation must be applied after the <tt>ProjectionPoseYaw</tt> and
 <tt>ProjectionPosePitch</tt> rotations.  The value of this element
 <bcp14>MUST</bcp14> be in the -180 to 180 degree range, both inclusive. Setting <tt>ProjectionPoseRoll</tt> to 180 or -180 degrees and
 <tt>ProjectionPoseYaw</tt> to 180 or -180 degrees with
-<tt>ProjectionPosePitch</tt> set to 0 degrees flips the image vertically.</t>
-<t>Setting <tt>ProjectionPoseRoll</tt> to 180 or -180 degrees with
+<tt>ProjectionPosePitch</tt> set to 0 degrees flips the image vertically.
+Setting <tt>ProjectionPoseRoll</tt> to 180 or -180 degrees with
 <tt>ProjectionPoseYaw</tt> and <tt>ProjectionPosePitch</tt> set to 0 degrees
-flips the image horizontally and vertically.</t></dd>
+flips the image horizontally and vertically.</dd>
 <dt>stream copy:</dt>
 <dd>True (<xref target="stream-copy"/>)</dd>
 </dl>
@@ -5473,9 +5468,8 @@ or be referenced by a <tt>SeekHead Element</tt>.</t>
 <t>The <tt>Chapters Element</tt> <bcp14>SHOULD</bcp14> be placed before the <tt>Cluster Element(s)</tt>. The
 <tt>Chapters Element</tt> can be used during playback even if the user does not need to seek.
 It immediately gives the user information about what section is being read and what
-other sections are available.
-
-In the case of <tt>Ordered Chapters</tt>, it is <bcp14>RECOMMENDED</bcp14> to evaluate
+other sections are available.</t>
+<t>In the case of <tt>Ordered Chapters</tt>, it is <bcp14>RECOMMENDED</bcp14> to evaluate
 the logical linking before playing. The <tt>Chapters Element</tt> <bcp14>SHOULD</bcp14> be placed before
 the first <tt>Tracks Element</tt> and after the first <tt>Info Element</tt>.</t>
 </section>
@@ -5553,11 +5547,16 @@ the period between two successive frames at the output of the decoding process.<
 <t>Examples:</t>
 
 <ul>
-<li>Blu-ray movie:      1000000000 ns/(48/1.001) = 20854167 ns</li>
-<li>PAL broadcast/DVD:  1000000000 ns/(50/1.000) = 20000000 ns</li>
-<li>N/ATSC broadcast:   1000000000 ns/(60/1.001) = 16683333 ns</li>
-<li>Hard-telecined DVD: 1000000000 ns/(60/1.001) = 16683333 ns (60 encoded interlaced fields per second)</li>
-<li>Soft-telecined DVD: 1000000000 ns/(60/1.001) = 16683333 ns (48 encoded interlaced fields per second, with "repeat_first_field = 1")</li>
+<li><t>Blu-ray movie:      1000000000 ns/(48/1.001) = 20854167 ns</t>
+</li>
+<li><t>PAL broadcast/DVD:  1000000000 ns/(50/1.000) = 20000000 ns</t>
+</li>
+<li><t>N/ATSC broadcast:   1000000000 ns/(60/1.001) = 16683333 ns</t>
+</li>
+<li><t>Hard-telecined DVD: 1000000000 ns/(60/1.001) = 16683333 ns (60 encoded interlaced fields per second)</t>
+</li>
+<li><t>Soft-telecined DVD: 1000000000 ns/(60/1.001) = 16683333 ns (48 encoded interlaced fields per second, with "repeat_first_field = 1")</t>
+</li>
 </ul>
 </section>
 
@@ -5568,17 +5567,22 @@ However, a frame with a past timestamp <bcp14>MUST</bcp14> reference a frame alr
 <t>Matroska has two similar ways to store frames in a block:</t>
 
 <ul>
-<li>in a <tt>Block</tt> that is contained inside a <tt>BlockGroup</tt></li>
-<li>in a <tt>SimpleBlock</tt> that is directly in the <tt>Cluster</tt></li>
+<li><t>in a <tt>Block</tt> that is contained inside a <tt>BlockGroup</tt></t>
+</li>
+<li><t>in a <tt>SimpleBlock</tt> that is directly in the <tt>Cluster</tt></t>
+</li>
 </ul>
 <t>The <tt>SimpleBlock</tt> is usually preferred unless some extra elements of the <tt>BlockGroup</tt> need to be used.
 A Matroska Reader <bcp14>MUST</bcp14> support both types of blocks.</t>
 <t>Each block contains the same parts in the following order:</t>
 
 <ul>
-<li>a variable-length header</li>
-<li>the lacing information (optional)</li>
-<li>the consecutive frame(s)</li>
+<li><t>a variable-length header</t>
+</li>
+<li><t>the lacing information (optional)</t>
+</li>
+<li><t>the consecutive frame(s)</t>
+</li>
 </ul>
 <t>The block header starts with the number of the <tt>Track</tt> it corresponds to.
 The value <bcp14>MUST</bcp14> correspond to the <tt>TrackNumber</tt> (<xref target="tracknumber-element"/>) of a <tt>TrackEntry</tt> of the <tt>Segment</tt>.</t>
@@ -5623,21 +5627,33 @@ The definitions for <tt>TrackNumber</tt> sizes of 1 and 2 are provided; the othe
 <t>where:</t>
 
 <dl newline="false" spacing="normal">
-<dt>Track Number:</dt><dd>8, 16, 24, 32, 40, 48, or 64 bits. An EBML VINT-coded track number.</dd>
-<dt>Timestamp:</dt><dd>16 bits. Signed timestamp in Track Ticks.</dd>
-<dt>Rsvrd:</dt><dd>4 bits. Reserved bits <bcp14>MUST</bcp14> be set to 0.</dd>
-<dt>INV:</dt><dd>1 bit. Invisible. The codec <bcp14>SHOULD</bcp14> decode this frame but not display it.</dd>
-<dt>LACING:</dt><dd><t>2 bits. Uses lacing mode.</t>
+<dt>Track Number:</dt>
+<dd>8, 16, 24, 32, 40, 48, or 64 bits. An EBML VINT-coded track number.</dd>
+<dt>Timestamp:</dt>
+<dd>16 bits. Signed timestamp in Track Ticks.</dd>
+<dt>Rsvrd:</dt>
+<dd>4 bits. Reserved bits <bcp14>MUST</bcp14> be set to 0.</dd>
+<dt>INV:</dt>
+<dd>1 bit. Invisible. The codec <bcp14>SHOULD</bcp14> decode this frame but not display it.</dd>
+<dt>LACING:</dt>
+<dd><t>2 bits. Uses lacing mode.</t>
 
 <dl spacing="compact">
-<dt>00b:</dt><dd>no lacing (<xref target="no-lacing"/>)</dd>
-<dt>01b:</dt><dd>Xiph lacing (<xref target="xiph-lacing"/>)</dd>
-<dt>11b:</dt><dd>EBML lacing (<xref target="ebml-lacing"/>)</dd>
-<dt>10b:</dt><dd>fixed-size lacing (<xref target="fixed-size-lacing"/>)</dd>
+<dt>00b:</dt>
+<dd>no lacing (<xref target="no-lacing"/>)</dd>
 </dl></dd>
-<dt>UNU:</dt><dd>1 bit. Unused bit.</dd>
 </dl>
+<t>01b:
+  : Xiph lacing (<xref target="xiph-lacing"/>)</t>
+<t>11b:
+  : EBML lacing (<xref target="ebml-lacing"/>)</t>
+<t>10b:
+  : fixed-size lacing (<xref target="fixed-size-lacing"/>)</t>
 
+<dl spacing="compact">
+<dt>UNU:</dt>
+<dd>1 bit. Unused bit.</dd>
+</dl>
 <t>The remaining data in the <tt>Block</tt> corresponds to the lacing data and frames usage as described in each respective lacing mode (see <xref target="block-lacing"/>).</t>
 </section>
 
@@ -5680,20 +5696,34 @@ other variants can be deduced by extending the size of the
 <t>where:</t>
 
 <dl newline="false" spacing="normal">
-<dt>Track Number:</dt><dd>8, 16, 24, 32, 40, 48, or 64 bits. An EBML VINT-coded track number.</dd>
-<dt>Timestamp:</dt><dd>16 bits. Signed timestamp in Track Ticks.</dd>
-<dt>KEY:</dt><dd>1 bit. Keyframe. Set when the <tt>Block</tt> contains only keyframes.</dd>
-<dt>Rsvrd:</dt><dd>3 bits. Reserved bits <bcp14>MUST</bcp14> be set to 0.</dd>
-<dt>INV:</dt><dd>1 bit. Invisible. The codec <bcp14>SHOULD</bcp14> decode this frame but not display it.</dd>
-<dt>LACING:</dt><dd><t>2 bits. Uses lacing mode.</t>
+<dt>Track Number:</dt>
+<dd>8, 16, 24, 32, 40, 48, or 64 bits. An EBML VINT-coded track number.</dd>
+<dt>Timestamp:</dt>
+<dd>16 bits. Signed timestamp in Track Ticks.</dd>
+<dt>KEY:</dt>
+<dd>1 bit. Keyframe. Set when the <tt>Block</tt> contains only keyframes.</dd>
+<dt>Rsvrd:</dt>
+<dd>3 bits. Reserved bits <bcp14>MUST</bcp14> be set to 0.</dd>
+<dt>INV:</dt>
+<dd>1 bit. Invisible, the codec <bcp14>SHOULD</bcp14> decode this frame but not display it.</dd>
+<dt>LACING:</dt>
+<dd><t>2 bits. Uses lacing mode.</t>
 
 <dl spacing="compact">
-<dt>00b:</dt><dd>no lacing (<xref target="no-lacing"/>)</dd>
-<dt>01b:</dt><dd>Xiph lacing (<xref target="xiph-lacing"/>)</dd>
-<dt>11b:</dt><dd>EBML lacing (<xref target="ebml-lacing"/>)</dd>
-<dt>10b:</dt><dd>fixed-size lacing (<xref target="fixed-size-lacing"/>)</dd>
+<dt>00b:</dt>
+<dd>no lacing (<xref target="no-lacing"/>)</dd>
 </dl></dd>
-<dt>DIS:</dt><dd>1 bit. Discardable. The frames of the <tt>Block</tt> can be discarded during playing if needed.</dd>
+</dl>
+<t>01b:
+  : Xiph lacing (<xref target="xiph-lacing"/>)</t>
+<t>11b:
+  : EBML lacing (<xref target="ebml-lacing"/>)</t>
+<t>10b:
+  : fixed-size lacing (<xref target="fixed-size-lacing"/>)</t>
+
+<dl spacing="compact">
+<dt>DIS:</dt>
+<dd>1 bit. Discardable. The frames of the <tt>Block</tt> can be discarded during playing if needed.</dd>
 </dl>
 <t>The remaining data in the <tt>SimpleBlock</tt> corresponds to the lacing data and frames usage as described in each respective lacing mode (see <xref target="block-lacing"/>).</t>
 </section>
@@ -5705,11 +5735,13 @@ of data (referred to as frames in Matroska). It packs multiple frames into a sin
 <t>There are three types of lacing:</t>
 
 <ul>
-<li>Xiph, which is inspired by what is found in the Ogg container <xref target="RFC3533"/></li>
-<li>EBML, which is the same with sizes coded differently</li>
-<li>Fixed-size, where the size is not coded</li>
+<li><t>Xiph, which is inspired by what is found in the Ogg container <xref target="RFC3533"/></t>
+</li>
+<li><t>EBML, which is the same with sizes coded differently</t>
+</li>
+<li><t>Fixed-size, where the size is not coded</t>
+</li>
 </ul>
-
 <t>When lacing is not used, i.e., to store a single frame, the lacing bits (bits 6 and 7) of the <tt>Block</tt> or <tt>SimpleBlock</tt> <bcp14>MUST</bcp14> be set to zero.</t>
 <t>For example, a user wants to store three frames of the same track. The first frame is 800 octets long,
 the second is 500 octets long, and the third is 1000 octets long.
@@ -5746,9 +5778,12 @@ The LACING bits of the <tt>Block</tt> Header flags are set to <tt>01b</tt>.</t>
 <t>The <tt>Block</tt> data with laced frames is stored as follows:</t>
 
 <ul>
-<li>Lacing Head on 1 octet: Number of frames in the lace minus 1.</li>
-<li>Lacing size of each frame except the last one.</li>
-<li>Binary data of each frame consecutively.</li>
+<li><t>Lacing Head on 1 Octet: Number of frames in the lace minus 1.</t>
+</li>
+<li><t>Lacing size of each frame except the last one.</t>
+</li>
+<li><t>Binary data of each frame consecutively.</t>
+</li>
 </ul>
 <t>The lacing size is split into 255 values, stored as unsigned octets -- for example, 500 is coded 255;245 or [0xFF 0xF5].
 A frame with a size multiple of 255 is coded with a 0 at the end of the size -- for example, 765 is coded 255;255;255;0 or [0xFF 0xFF 0xFF 0x00].</t>
@@ -5810,9 +5845,12 @@ The LACING bits of the <tt>Block</tt> Header flags are set to <tt>11b</tt>.</t>
 <t>The <tt>Block</tt> data with laced frames is stored as follows:</t>
 
 <ul>
-<li>Lacing Head on 1 Octet: Number of frames in the lace minus 1.</li>
-<li>Lacing size of each frame except the last one.</li>
-<li>Binary data of each frame consecutively.</li>
+<li><t>Lacing Head on 1 Octet: Number of frames in the lace minus 1.</t>
+</li>
+<li><t>Lacing size of each frame except the last one.</t>
+</li>
+<li><t>Binary data of each frame consecutively.</t>
+</li>
 </ul>
 <t>The first frame size is encoded as an EBML VINT value.
 The remaining frame sizes are encoded as signed values using the difference between the frame size and the previous frame size.
@@ -5909,8 +5947,10 @@ The LACING bits of the <tt>Block</tt> Header flags are set to <tt>10b</tt>.</t>
 <t>The <tt>Block</tt> data with laced frames is stored as follows:</t>
 
 <ul>
-<li>Lacing Head on 1 Octet: Number of frames in the lace minus 1.</li>
-<li>Binary data of each frame consecutively.</li>
+<li><t>Lacing Head on 1 Octet: Number of frames in the lace minus 1.</t>
+</li>
+<li><t>Binary data of each frame consecutively.</t>
+</li>
 </ul>
 <t>For example, for three frames that are 800 octets each:</t>
 <table anchor="blockFixedSizeLacing"><name>Fixed-Size Lacing Example</name>
@@ -6071,9 +6111,12 @@ the reference information <bcp14>SHOULD</bcp14> be recovered for non-RAP frames.
 The <tt>ReferenceBlock</tt>s <bcp14>MUST</bcp14> be used in one of the following ways:</t>
 
 <ul>
-<li>each reference frame listed as a <tt>ReferenceBlock</tt>,</li>
-<li>some referenced frames listed as a <tt>ReferenceBlock</tt>, even if the timestamp value is accurate, or</li>
-<li>one <tt>ReferenceBlock</tt> with the timestamp value "0" corresponding to a self or unknown reference.</li>
+<li><t>each reference frame listed as a <tt>ReferenceBlock</tt>,</t>
+</li>
+<li><t>some referenced frames listed as a <tt>ReferenceBlock</tt>, even if the timestamp value is accurate, or</t>
+</li>
+<li><t>one <tt>ReferenceBlock</tt> with the timestamp value "0" corresponding to a self or unknown reference.</t>
+</li>
 </ul>
 <t>The lack of <tt>ReferenceBlock</tt> would mean such a frame is a RAP, and seeking on that
 frame that actually depends on other frames may create a bogus output or even crash.</t>
@@ -6154,13 +6197,20 @@ There are three types of ticks possible: Matroska Ticks, Segment Ticks, and Trac
 <t>The elements storing values in Matroska Ticks/nanoseconds are:</t>
 
 <ul>
-<li><tt>TrackEntry\DefaultDuration</tt>; defined in <xref target="defaultduration-element"/></li>
-<li><tt>TrackEntry\DefaultDecodedFieldDuration</tt>; defined in <xref target="defaultdecodedfieldduration-element"/></li>
-<li><tt>TrackEntry\SeekPreRoll</tt>; defined in <xref target="seekpreroll-element"/></li>
-<li><tt>TrackEntry\CodecDelay</tt>; defined in <xref target="codecdelay-element"/></li>
-<li><tt>BlockGroup\DiscardPadding</tt>; defined in <xref target="discardpadding-element"/></li>
-<li><tt>ChapterAtom\ChapterTimeStart</tt>; defined in <xref target="chaptertimestart-element"/></li>
-<li><tt>ChapterAtom\ChapterTimeEnd</tt>; defined in <xref target="chaptertimeend-element"/></li>
+<li><t><tt>TrackEntry\DefaultDuration</tt>; defined in <xref target="defaultduration-element"/></t>
+</li>
+<li><t><tt>TrackEntry\DefaultDecodedFieldDuration</tt>; defined in <xref target="defaultdecodedfieldduration-element"/></t>
+</li>
+<li><t><tt>TrackEntry\SeekPreRoll</tt>; defined in <xref target="seekpreroll-element"/></t>
+</li>
+<li><t><tt>TrackEntry\CodecDelay</tt>; defined in <xref target="codecdelay-element"/></t>
+</li>
+<li><t><tt>BlockGroup\DiscardPadding</tt>; defined in <xref target="discardpadding-element"/></t>
+</li>
+<li><t><tt>ChapterAtom\ChapterTimeStart</tt>; defined in <xref target="chaptertimestart-element"/></t>
+</li>
+<li><t><tt>ChapterAtom\ChapterTimeEnd</tt>; defined in <xref target="chaptertimeend-element"/></t>
+</li>
 </ul>
 </section>
 
@@ -6177,11 +6227,16 @@ timestamp in nanosecond = element value * TimestampScale
 <t>The elements storing values in Segment Ticks are:</t>
 
 <ul>
-<li><tt>Cluster\Timestamp</tt>; defined in <xref target="timestamp-element"/></li>
-<li><tt>Info\Duration</tt> is stored as a floating-point, but the same formula applies; defined in <xref target="duration-element"/></li>
-<li><tt>CuePoint\CueTime</tt>; defined in <xref target="cuetime-element"/></li>
-<li><tt>CuePoint\CueTrackPositions\CueDuration</tt>; defined in <xref target="cueduration-element"/></li>
-<li><tt>CueReference\CueRefTime</tt>; defined in <xref target="cuetime-element"/></li>
+<li><t><tt>Cluster\Timestamp</tt>; defined in <xref target="timestamp-element"/></t>
+</li>
+<li><t><tt>Info\Duration</tt> is stored as a floating-point, but the same formula applies; defined in <xref target="duration-element"/></t>
+</li>
+<li><t><tt>CuePoint\CueTime</tt>; defined in <xref target="cuetime-element"/></t>
+</li>
+<li><t><tt>CuePoint\CueTrackPositions\CueDuration</tt>; defined in <xref target="cueduration-element"/></t>
+</li>
+<li><t><tt>CueReference\CueRefTime</tt>; defined in <xref target="cuetime-element"/></t>
+</li>
 </ul>
 </section>
 
@@ -6200,9 +6255,12 @@ The resulting floating-point values of the timestamps are still expressed in nan
 <t>The elements storing values in Track Ticks are:</t>
 
 <ul>
-<li><tt>Cluster\BlockGroup\Block</tt> and <tt>Cluster\SimpleBlock</tt> timestamps; detailed in <xref target="block-timestamps"/></li>
-<li><tt>Cluster\BlockGroup\BlockDuration</tt>; defined in <xref target="blockduration-element"/></li>
-<li><tt>Cluster\BlockGroup\ReferenceBlock</tt>; defined in <xref target="referenceblock-element"/></li>
+<li><t><tt>Cluster\BlockGroup\Block</tt> and <tt>Cluster\SimpleBlock</tt> timestamps; detailed in <xref target="block-timestamps"/></t>
+</li>
+<li><t><tt>Cluster\BlockGroup\BlockDuration</tt>; defined in <xref target="blockduration-element"/></t>
+</li>
+<li><t><tt>Cluster\BlockGroup\ReferenceBlock</tt>; defined in <xref target="referenceblock-element"/></t>
+</li>
 </ul>
 <t>When the <tt>TrackTimestampScale</tt> is interpreted as "1.0", Track Ticks are equivalent to Segment Ticks
 and give an integer value in nanoseconds. This is the most common case as <tt>TrackTimestampScale</tt> is usually omitted.</t>
@@ -7097,12 +7155,18 @@ ignore certain elements inside a <tt>Chapters Element</tt>. In that case, these 
 <t>The following list shows the different <tt>Chapters</tt> elements only found in <tt>Ordered Chapters</tt>.</t>
 
 <ul>
-<li><tt>ChapterAtom/ChapterSegmentUUID</tt></li>
-<li><tt>ChapterAtom/ChapterSegmentEditionUID</tt></li>
-<li><tt>ChapterAtom/ChapterTrack</tt></li>
-<li><tt>ChapterAtom/ChapProcess</tt></li>
-<li><tt>Info/ChapterTranslate</tt></li>
-<li><tt>TrackEntry/TrackTranslate</tt></li>
+<li><t><tt>ChapterAtom/ChapterSegmentUUID</tt></t>
+</li>
+<li><t><tt>ChapterAtom/ChapterSegmentEditionUID</tt></t>
+</li>
+<li><t><tt>ChapterAtom/ChapterTrack</tt></t>
+</li>
+<li><t><tt>ChapterAtom/ChapProcess</tt></t>
+</li>
+<li><t><tt>Info/ChapterTranslate</tt></t>
+</li>
+<li><t><tt>TrackEntry/TrackTranslate</tt></t>
+</li>
 </ul>
 <t>Furthermore, there are other EBML <tt>Elements</tt> that could be used if the <tt>EditionFlagOrdered</tt>
 evaluates to "1".</t>
@@ -7111,10 +7175,12 @@ evaluates to "1".</t>
 
 <dl>
 <dt>Hard Linking:</dt>
-<dd><tt>Ordered Chapters</tt> supersede the <tt>Hard Linking</tt>.</dd>
+<dd><t><tt>Ordered Chapters</tt> supersede the <tt>Hard Linking</tt>.</t>
+</dd>
 <dt>Medium Linking:</dt>
-<dd><tt>Ordered Chapters</tt> are used in a normal way and can be combined
-with the <tt>ChapterSegmentUUID</tt> element, which establishes a link to another <tt>Segment</tt>.</dd>
+<dd><t><tt>Ordered Chapters</tt> are used in a normal way and can be combined
+with the <tt>ChapterSegmentUUID</tt> element, which establishes a link to another <tt>Segment</tt>.</t>
+</dd>
 </dl>
 <t>See <xref target="linked-segments"/> on <tt>Linked Segment</tt>s for more information
 about <tt>Hard Linking</tt> and <tt>Medium Linking</tt>.</t>
@@ -7260,8 +7326,8 @@ some private data, and some data in the chapters.</t>
 <t>The type of the menu system is defined by the <tt>ChapProcessCodecID</tt> parameter.
 For now, only two values are supported: 0 (Matroska Script) and 1 (menu borrowed from the DVD <xref target="DVD-Video"/>).
 The private data stored in <tt>ChapProcessPrivate</tt> and
-<tt>ChapProcessData</tt> depends on the <tt>ChapProcessCodecID</tt> value.
-</t><t>The menu system, as well as Chapter Codecs in general, can perform actions on the Matroska Player, such as jumping to another <tt>Chapter</tt> or <tt>Edition</tt>, selecting different tracks, and possibly more.
+<tt>ChapProcessData</tt> depends on the <tt>ChapProcessCodecID</tt> value.</t>
+<t>The menu system, as well as Chapter Codecs in general, can perform actions on the Matroska Player, such as jumping to another <tt>Chapter</tt> or <tt>Edition</tt>, selecting different tracks, and possibly more.
 The scope of all the possibilities of Chapter Codecs is not covered in this document, as it
 depends on the Chapter Codec features and its integration in a Matroska Player.</t>
 </section>
@@ -7619,22 +7685,33 @@ Failure to use the font attachment might result in incorrect rendering of the su
 <t>A Matroska Player <bcp14>SHOULD</bcp14> handle the official font media types from <xref target="RFC8081"/> when the system can handle the type:</t>
 
 <ul>
-<li>font/sfnt: Generic SFNT Font Type</li>
-<li>font/ttf: TrueType Font (TTF) Font Type</li>
-<li>font/otf: OpenType Layout (OTF) Font Type</li>
-<li>font/collection: Collection Font Type</li>
-<li>font/woff: WOFF 1.0</li>
-<li>font/woff2: WOFF 2.0</li>
+<li><t>font/sfnt: Generic SFNT Font Type</t>
+</li>
+<li><t>font/ttf: TrueType Font (TTF) Font Type</t>
+</li>
+<li><t>font/otf: OpenType Layout (OTF) Font Type</t>
+</li>
+<li><t>font/collection: Collection Font Type</t>
+</li>
+<li><t>font/woff: WOFF 1.0</t>
+</li>
+<li><t>font/woff2: WOFF 2.0</t>
+</li>
 </ul>
 <t>Fonts in Matroska existed long before <xref target="RFC8081"/>. A few unofficial media types for fonts were used in existing files.
 Therefore, it is <bcp14>RECOMMENDED</bcp14> for a Matroska Player to support the following legacy media types for font attachments:</t>
 
 <ul>
-<li>application/x-truetype-font: TrueType fonts, equivalent to <tt>font/ttf</tt> and sometimes <tt>font/otf</tt></li>
-<li>application/x-font-ttf: TrueType fonts, equivalent to <tt>font/ttf</tt></li>
-<li>application/vnd.ms-opentype: OpenType Layout fonts, equivalent to <tt>font/otf</tt></li>
-<li>application/font-sfnt: Generic SFNT Font Type, equivalent to <tt>font/sfnt</tt></li>
-<li>application/font-woff: WOFF 1.0, equivalent to <tt>font/woff</tt></li>
+<li><t>application/x-truetype-font: TrueType fonts, equivalent to <tt>font/ttf</tt> and sometimes <tt>font/otf</tt></t>
+</li>
+<li><t>application/x-font-ttf: TrueType fonts, equivalent to <tt>font/ttf</tt></t>
+</li>
+<li><t>application/vnd.ms-opentype: OpenType Layout fonts, equivalent to <tt>font/otf</tt></t>
+</li>
+<li><t>application/font-sfnt: Generic SFNT Font Type, equivalent to <tt>font/sfnt</tt></t>
+</li>
+<li><t>application/font-woff: WOFF 1.0, equivalent to <tt>font/woff</tt></t>
+</li>
 </ul>
 <t>There may also be some font attachments with the <tt>application/octet-stream</tt> media type.
 In that case, the Matroska Player <bcp14>MAY</bcp14> try to guess the font type by checking the file extension of the <tt>AttachedFile\FileName</tt> string.
@@ -9458,7 +9535,7 @@ Newer systems <bcp14>SHOULD NOT</bcp14> use the historic format and use the form
 
 <section anchor="for-files-containing-video-tracks"><name>For Files Containing Video Tracks</name>
 
-<dl>
+<dl spacing="compact">
 <dt>Type name:</dt>
 <dd>video</dd>
 <dt>Subtype name:</dt>
@@ -9479,15 +9556,18 @@ Newer systems <bcp14>SHOULD NOT</bcp14> use the historic format and use the form
 <dd>FFmpeg, VLC, etc.</dd>
 <dt>Fragment identifier considerations:</dt>
 <dd>N/A</dd>
-<dt>Additional information:</dt><dd>
-<t><br/></t>
-<dl spacing="compact">
-<dt>Deprecated alias names for this type:</dt><dd>video/x-matroska</dd>
-<dt>Magic number(s):</dt><dd>N/A</dd>
-<dt>File extension(s):</dt><dd>mkv</dd>
-<dt>Macintosh file type code(s):</dt><dd>N/A</dd>
-</dl></dd>
+</dl>
+<t>Additional information:</t>
 
+<dl spacing="compact">
+<dt>Deprecated alias names for this type:</dt>
+<dd>video/x-matroska</dd>
+<dt>Magic number(s):</dt>
+<dd>N/A</dd>
+<dt>File extension(s):</dt>
+<dd>mkv</dd>
+<dt>Macintosh file type code(s):</dt>
+<dd>N/A</dd>
 <dt>Person &amp; email address to contact for further information:</dt>
 <dd>IETF CELLAR WG (cellar@ietf.org)</dd>
 <dt>Intended usage:</dt>
@@ -9503,7 +9583,7 @@ Newer systems <bcp14>SHOULD NOT</bcp14> use the historic format and use the form
 
 <section anchor="for-files-containing-audio-tracks-with-no-video-tracks"><name>For Files Containing Audio Tracks with No Video Tracks</name>
 
-<dl>
+<dl spacing="compact">
 <dt>Type name:</dt>
 <dd>audio</dd>
 <dt>Subtype name:</dt>
@@ -9524,16 +9604,18 @@ Newer systems <bcp14>SHOULD NOT</bcp14> use the historic format and use the form
 <dd>FFmpeg, VLC, ...</dd>
 <dt>Fragment identifier considerations:</dt>
 <dd>N/A</dd>
-<dt>Additional information:</dt><dd>
-<t><br/></t>
-<dl spacing="compact">
-<dt>Deprecated alias names for this type:</dt><dd>audio/x-matroska</dd>
-<dt>Magic number(s):</dt><dd>N/A</dd>
-<dt>File extension(s):</dt><dd>mka</dd>
-<dt>Macintosh file type code(s):</dt><dd>N/A</dd>
 </dl>
-</dd></dl>
-<dl>
+<t>Additional information:</t>
+
+<dl spacing="compact">
+<dt>Deprecated alias names for this type:</dt>
+<dd>audio/x-matroska</dd>
+<dt>Magic number(s):</dt>
+<dd>N/A</dd>
+<dt>File extension(s):</dt>
+<dd>mka</dd>
+<dt>Macintosh file type code(s):</dt>
+<dd>N/A</dd>
 <dt>Person &amp; email address to contact for further information:</dt>
 <dd>IETF CELLAR WG (cellar@ietf.org)</dd>
 <dt>Intended usage:</dt>
@@ -9549,7 +9631,7 @@ Newer systems <bcp14>SHOULD NOT</bcp14> use the historic format and use the form
 
 <section anchor="for-files-containing-a-stereoscopic-video-track"><name>For Files Containing a Stereoscopic Video Track</name>
 
-<dl>
+<dl spacing="compact">
 <dt>Type name:</dt>
 <dd>video</dd>
 <dt>Subtype name:</dt>
@@ -9570,16 +9652,18 @@ Newer systems <bcp14>SHOULD NOT</bcp14> use the historic format and use the form
 <dd>FFmpeg, VLC, ...</dd>
 <dt>Fragment identifier considerations:</dt>
 <dd>N/A</dd>
-<dt>Additional information:</dt><dd>
-<t><br/></t>
-<dl spacing="compact">
-<dt>Deprecated alias names for this type:</dt><dd>video/x-matroska-3d</dd>
-<dt>Magic number(s):</dt><dd>N/A</dd>
-<dt>File extension(s):</dt><dd>mk3d</dd>
-<dt>Macintosh file type code(s):</dt><dd>N/A</dd>
 </dl>
-</dd></dl>
-<dl>
+<t>Additional information:</t>
+
+<dl spacing="compact">
+<dt>Deprecated alias names for this type:</dt>
+<dd>video/x-matroska-3d</dd>
+<dt>Magic number(s):</dt>
+<dd>N/A</dd>
+<dt>File extension(s):</dt>
+<dd>mk3d</dd>
+<dt>Macintosh file type code(s):</dt>
+<dd>N/A</dd>
 <dt>Person &amp; email address to contact for further information:</dt>
 <dd>IETF CELLAR WG (cellar@ietf.org)</dd>
 <dt>Intended usage:</dt>
@@ -9598,10 +9682,6 @@ Newer systems <bcp14>SHOULD NOT</bcp14> use the historic format and use the form
 </middle>
 
 <back>
-
-  <displayreference target="I-D.ietf-cellar-codec" to="MatroskaCodec"/>
-  <displayreference target="I-D.ietf-cellar-tags" to="MatroskaTags"/>
-
 <references><name>References</name>
 <references><name>Normative References</name>
 
@@ -9714,7 +9794,7 @@ Newer systems <bcp14>SHOULD NOT</bcp14> use the historic format and use the form
   </front>
 </reference>
 
-<reference anchor="Err7189" quote-title="false" target="https://www.rfc-editor.org/errata/eid7189">
+<reference anchor="Err7189" target="https://www.rfc-editor.org/errata/eid7189">
   <front>
     <title>Erratum ID 7189</title>
     <author>
@@ -9724,7 +9804,7 @@ Newer systems <bcp14>SHOULD NOT</bcp14> use the historic format and use the form
   <refcontent>RFC 8794</refcontent>
 </reference>
 
-<reference anchor="Err7191" quote-title="false" target="https://www.rfc-editor.org/errata/eid7191">
+<reference anchor="Err7191" target="https://www.rfc-editor.org/errata/eid7191">
   <front>
     <title>Erratum ID 7191</title>
     <author>
@@ -9774,6 +9854,8 @@ Newer systems <bcp14>SHOULD NOT</bcp14> use the historic format and use the form
     </author>
   </front>
 </reference>
+<xi:include href="https://bib.ietf.org/public/rfc/bibxml3/reference.I-D.ietf-cellar-codec.xml"/>
+<xi:include href="https://bib.ietf.org/public/rfc/bibxml3/reference.I-D.ietf-cellar-tags.xml"/>
 
 <reference anchor="JPEG" target="https://www.w3.org/Graphics/JPEG/itu-t81.pdf">
   <front>
@@ -9835,13 +9917,6 @@ Newer systems <bcp14>SHOULD NOT</bcp14> use the historic format and use the form
     <date year="2021" month="January"></date>
   </front>
 </reference>
-
-<!-- IESG state: I-D Exists as of 3/1 -->
-<xi:include href="https://datatracker.ietf.org/doc/bibxml3/reference.I-D.ietf-cellar-codec.xml"/>
-
-<!-- IESG state: I-D Exists as of 3/1 -->
-<xi:include href="https://datatracker.ietf.org/doc/bibxml3/reference.I-D.ietf-cellar-tags.xml"/>
-
 <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.0959.xml"/>
 <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.2083.xml"/>
 <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.3533.xml"/>
