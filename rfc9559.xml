@@ -526,8 +526,8 @@ fonts, web pages, etc.</t>
 |             |              | FileUID           |
 +------------------------------------------------+
 
-<!-- [cellar] FIX: removed FileName (duplicate) and deprecated elements that should
-not be used from the table -->
+<!-- [cellar] FIX: removed FileName (duplicate) and deprecated elements that
+     should not be used from the table -->
 
 
 </artwork>
@@ -4709,10 +4709,7 @@ For example, it is used as the storage for cue identifier values <xref target="W
 <dt>minOccurs / maxOccurs:</dt>
 <dd>See <xref target="ChapterTimeEndNotes"/> / 1</dd>
 <dt>definition:</dt>
-<dd>Timestamp of the end of <tt>Chapter</tt> timestamp excluded, expressed in Matroska Ticks -- i.e., in nanoseconds; see <xref target="timestamp-ticks"/>.
-
-<!-- [cellar] FIX: the "timestamp excluded" was edited out but should probably be there -->
-
+<dd>Timestamp of the end of <tt>Chapter</tt> (timestamp excluded), expressed in Matroska Ticks -- i.e., in nanoseconds; see <xref target="timestamp-ticks"/>.
 The value <bcp14>MUST</bcp14> be greater than or equal to the <tt>ChapterTimeStart</tt> of the same <tt>ChapterAtom</tt>.</dd>
 <dt>usage notes:</dt>
 <dd>With the <tt>ChapterTimeEnd</tt> timestamp value being excluded, it <bcp14>MUST</bcp14> take into account the duration of
@@ -5438,7 +5435,7 @@ The first <tt>Info</tt> element and the first <tt>Tracks</tt> element either <bc
 <tt>Cluster</tt> element or <bcp14>SHALL</bcp14> both be referenced by a <tt>SeekHead</tt> element occurring before the first <tt>Cluster</tt> element.</t>
 <t>All <tt>Top-Level Elements</tt> <bcp14>MUST</bcp14> use a 4-octet EBML Element ID.</t>
 <t>When using Medium Linking, chapters are used to reference other <tt>Segments</tt> to play in a given order (see <xref target="medium-linking"/>).
-A <tt>Segment</tt> containing these <tt>Linked Chapters</tt> does not require a <tt>Track</tt> element or a <tt>Cluster</tt> element.</t>
+A <tt>Segment</tt> containing these <tt>Linked Chapters</tt> does not require a <tt>Tracks</tt> element or a <tt>Cluster</tt> element.</t>
 <t>It is possible to edit a Matroska file after it has been created. For
 example, chapters, tags, or attachments can be added. When new <tt>Top-Level
 Elements</tt> are added to a Matroska file, the <tt>SeekHead</tt> element(s)
@@ -7276,17 +7273,12 @@ element. In that case, these elements are informational only.</t>
 </li>
 <li><t><tt>ChapterAtom\ChapterSegmentEditionUID</tt></t>
 </li>
-<li><t><tt>ChapterAtom\ChapterTrack</tt></t>
-</li>
 <li><t><tt>ChapterAtom\ChapProcess</tt></t>
 </li>
 <li><t><tt>Info\ChapterTranslate</tt></t>
 </li>
 <li><t><tt>TrackEntry\TrackTranslate</tt></t>
 </li>
-
-<!-- [cellar] FIX: edited the element names to use the backslash in EBML pathes -->
-
 </ul>
 <t>Furthermore, there are other EBML elements that could be used if the <tt>EditionFlagOrdered</tt>
 evaluates to "1".</t>
@@ -8127,9 +8119,9 @@ using the VINT mechanism described in <xref target="RFC8794" sectionFormat="of" 
 one and five octets long. Five-octet Element IDs are possible
 only if declared in the EBML Header.</t>
 <t>Element IDs are described in <xref target="RFC8794" sectionFormat="of" section="5"/>, with the changes in <xref target="Err7189"/> and <xref target="Err7191"/>.</t>
-<t>One-octet Matroska Element IDs (range 0x80-0xFF) are to be allocated according to the "RFC Required" policy <xref target="RFC8126"/>.</t>
-<t>Two-octet Matroska Element IDs (range 0x407F-0x7FFF) are to be allocated according to the "Specification Required" policy <xref target="RFC8126"/>.</t>
-<t>Three-octet (range 0x203FFF-0x3FFFFF) and four-octet Matroska Element IDs (range 0x101FFFFF-0x1FFFFFFE) are to be allocated according to the "First Come First Served" policy <xref target="RFC8126"/>.</t>
+<t>One-octet Matroska Element IDs (range 0x80-0xFE) are to be allocated according to the "RFC Required" policy <xref target="RFC8126"/>.</t>
+<t>Two-octet Matroska Element IDs (range 0x407F-0x7FFE) are to be allocated according to the "Specification Required" policy <xref target="RFC8126"/>.</t>
+<t>Three-octet (range 0x203FFF-0x3FFFFE) and four-octet Matroska Element IDs (range 0x101FFFFF-0x1FFFFFFE) are to be allocated according to the "First Come First Served" policy <xref target="RFC8126"/>.</t>
 
 <!-- [cellar] FIX: fix the EBML IDs ranges according to RFC8794 Section 17.1
 with errata 7189 and 7191, and added the range for three-octet values as well. -->
