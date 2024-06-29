@@ -20,7 +20,7 @@ updates="8794" obsoletes="">
 </postal><email>moritz@bunkus.org</email>
 </address></author><author initials="D." surname="Rice" fullname="Dave Rice"><organization></organization><address><postal><street></street>
 </postal><email>dave@dericed.com</email>
-</address></author><date year="2024" month="May"></date>
+</address></author><date year="2024" month="June"></date>
 <area>art</area>
 <workgroup>cellar</workgroup>
 <keyword>binary</keyword>
@@ -8121,8 +8121,13 @@ only if declared in the EBML Header.</t>
 <t>Element IDs are described in <xref target="RFC8794" sectionFormat="of" section="5"/>, with the changes in <xref target="Err7189"/> and <xref target="Err7191"/>.</t>
 <t>One-octet Matroska Element IDs (range 0x80-0xFE) are to be allocated according to the "RFC Required" policy <xref target="RFC8126"/>.</t>
 <t>Two-octet Matroska Element IDs (range 0x407F-0x7FFE) are to be allocated according to the "Specification Required" policy <xref target="RFC8126"/>.</t>
+<t>Two-octet Matroska Element IDs between 0x0100 and 0x407E are not valid for
+use as an Element ID.</t>
 <t>Three-octet (range 0x203FFF-0x3FFFFE) and four-octet Matroska Element IDs (range 0x101FFFFF-0x1FFFFFFE) are to be allocated according to the "First Come First Served" policy <xref target="RFC8126"/>.</t>
-
+<t>Three-octet Matroska Element IDs between 0x010000 and 0x203FFE are not
+valid for use as an Element ID.</t>
+<t>Four-octet Matroska Element IDs between 0x01000000 and 0x101FFFFE are
+not valid for use as an Element ID.</t>
 <!-- [cellar] FIX: fix the EBML IDs ranges according to RFC8794 Section 17.1
 with errata 7189 and 7191, and added the range for three-octet values as well. -->
 
@@ -8581,6 +8586,12 @@ entries in <xref target="iana-table"/> is "IETF".</t>
 <td align="right">0xFD</td>
 <td align="left">ReferenceVirtual</td>
 <td align="left">Reclaimed (RFC 9559, <xref target="referencevirtual-element"/>)</td>
+</tr>
+
+<tr>
+<td align="right">0xFF</td>
+<td align="left">Reserved</td>
+<td align="left">RFC 9559</td>
 </tr>
 
 <tr>
@@ -9496,6 +9507,14 @@ entries in <xref target="iana-table"/> is "IETF".</t>
 </tr>
 
 <tr>
+<td align="right">0x7FFF</td>
+<td align="left">Reserved</td>
+<td align="left">RFC 9559</td>
+</tr>
+
+
+
+<tr>
 <td align="right">0x22B59C</td>
 <td align="left">Language</td>
 <td align="left">RFC 9559, <xref target="language-element"/></td>
@@ -9598,6 +9617,14 @@ entries in <xref target="iana-table"/> is "IETF".</t>
 </tr>
 
 <tr>
+<td align="right">0x3FFFFF</td>
+<td align="left">Reserved</td>
+<td align="left">RFC 9559</td>
+</tr>
+
+
+
+<tr>
 <td align="right">0x1043A770</td>
 <td align="left">Chapters</td>
 <td align="left">RFC 9559, <xref target="chapters-element"/></td>
@@ -9650,6 +9677,13 @@ entries in <xref target="iana-table"/> is "IETF".</t>
 <td align="left">Cluster</td>
 <td align="left">RFC 9559, <xref target="cluster-element"/></td>
 </tr>
+
+<tr>
+<td align="right">0x1FFFFFFF</td>
+<td align="left">Reserved</td>
+<td align="left">RFC 9559</td>
+</tr>
+
 </tbody>
 </table>
 </section>
