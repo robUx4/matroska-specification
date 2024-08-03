@@ -838,7 +838,7 @@ The format depends on the <tt>ChapProcessCodecID</tt> used; see <xref target="ch
 <dt>definition:</dt>
 <dd>Applies to the chapter codec of the given chapter edition(s); see <xref target="chapprocesscodecid-element"/>.</dd>
 <dt>defined values:</dt>
-<dd>See <xref target="ChapterTranslateCodecValues"/>.</dd>
+<dd>See <xref target="ChapterTranslateCodecValues"/>. Further values can be added in the IANA registry found in <xref target="chapter-codec-ids-registry"/>.</dd>
 </dl>
 <table anchor="ChapterTranslateCodecValues"><name>ChapterTranslateCodec Values</name>
 <thead>
@@ -1327,7 +1327,7 @@ playback.</dd>
 <dd>The <tt>TrackType</tt> defines the type of each frame found in the <tt>Track</tt>.
 The value <bcp14>SHOULD</bcp14> be stored on 1 octet.</dd>
 <dt>defined values:</dt>
-<dd>See <xref target="TrackTypeValues"/>.</dd>
+<dd>See <xref target="TrackTypeValues"/>. Further values can be added in the IANA registry found in <xref target="track-types-registry"/>.</dd>
 <dt>stream copy:</dt>
 <dd>True (<xref target="stream-copy"/>)</dd>
 </dl>
@@ -1915,7 +1915,7 @@ The format depends on the <tt>ChapProcessCodecID</tt> used; see <xref target="ch
 <dt>definition:</dt>
 <dd>Applies to the chapter codec of the given chapter edition(s); see <xref target="chapprocesscodecid-element"/>.</dd>
 <dt>defined values:</dt>
-<dd>See <xref target="TrackTranslateCodecValues"/>.</dd>
+<dd>See <xref target="TrackTranslateCodecValues"/>. Further values can be added in the IANA registry found in <xref target="chapter-codec-ids-registry"/>.</dd>
 </dl>
 <table anchor="TrackTranslateCodecValues"><name>TrackTranslateCodec Values</name>
 <thead>
@@ -1983,7 +1983,7 @@ The format depends on the <tt>ChapProcessCodecID</tt> used; see <xref target="ch
 <dd>2</dd>
 <dt>definition:</dt>
 <dd>Specifies whether the video frames in this track are interlaced.</dd>
-<dt>defined values:</dt>
+<dt>restrictions:</dt>
 <dd>See <xref target="FlagInterlacedValues"/>.</dd>
 <dt>stream copy:</dt>
 <dd>True (<xref target="stream-copy"/>)</dd>
@@ -2032,7 +2032,7 @@ The format depends on the <tt>ChapProcessCodecID</tt> used; see <xref target="ch
 <dd>4</dd>
 <dt>definition:</dt>
 <dd>Specifies the field ordering of video frames in this track.</dd>
-<dt>defined values:</dt>
+<dt>restrictions:</dt>
 <dd>See <xref target="FieldOrderValues"/>.</dd>
 <dt>usage notes:</dt>
 <dd>If <tt>FlagInterlaced</tt> is not set to 1, this element <bcp14>MUST</bcp14> be ignored.</dd>
@@ -2101,8 +2101,8 @@ The format depends on the <tt>ChapProcessCodecID</tt> used; see <xref target="ch
 <dd>3</dd>
 <dt>definition:</dt>
 <dd>Stereo-3D video mode. See <xref target="multi-planar-and-3d-videos"/> for more details.</dd>
-<dt>restrictions:</dt>
-<dd>See <xref target="StereoModeValues"/>.</dd>
+<dt>defined values:</dt>
+<dd>See <xref target="StereoModeValues"/>. Further values can be added in the IANA registry found in <xref target="stereo-modes-registry"/>.</dd>
 <dt>stream copy:</dt>
 <dd>True (<xref target="stream-copy"/>)</dd>
 </dl>
@@ -2210,7 +2210,7 @@ contains Alpha data as defined by the Codec Mapping for the <tt>CodecID</tt>.
 Undefined values (i.e., values other than 0 or 1) <bcp14>SHOULD NOT</bcp14> be used, as the
 behavior of known implementations is different.</dd>
 <dt>defined values:</dt>
-<dd>See <xref target="AlphaModeValues"/>.</dd>
+<dd>See <xref target="AlphaModeValues"/>. Further values can be added in the IANA registry found in <xref target="alpha-modes-registry"/>.</dd>
 <dt>stream copy:</dt>
 <dd>True (<xref target="stream-copy"/>)</dd>
 </dl>
@@ -2469,8 +2469,8 @@ behavior of known implementations is different.</dd>
 <dd>1 / 1</dd>
 <dt>definition:</dt>
 <dd>How <tt>DisplayWidth</tt> and <tt>DisplayHeight</tt> are interpreted.</dd>
-<dt>restrictions:</dt>
-<dd>See <xref target="DisplayUnitValues"/>.</dd>
+<dt>defined values:</dt>
+<dd>See <xref target="DisplayUnitValues"/>. Further values can be added in the IANA registry found in <xref target="display-units-registry"/>.</dd>
 </dl>
 <table anchor="DisplayUnitValues"><name>DisplayUnit Values</name>
 <thead>
@@ -2779,8 +2779,8 @@ This is additive with <tt>ChromaSubsamplingVert</tt>.</dd>
 <dd>4</dd>
 <dt>definition:</dt>
 <dd>How chroma is subsampled horizontally.</dd>
-<dt>restrictions:</dt>
-<dd>See <xref target="ChromaSitingHorzValues"/>.</dd>
+<dt>defined values:</dt>
+<dd>See <xref target="ChromaSitingHorzValues"/>. Further values can be added in the IANA registry found in <xref target="horizontal-chroma-sitings-registry"/>.</dd>
 <dt>stream copy:</dt>
 <dd>True (<xref target="stream-copy"/>)</dd>
 </dl>
@@ -2824,8 +2824,8 @@ This is additive with <tt>ChromaSubsamplingVert</tt>.</dd>
 <dd>4</dd>
 <dt>definition:</dt>
 <dd>How chroma is subsampled vertically.</dd>
-<dt>restrictions:</dt>
-<dd>See <xref target="ChromaSitingVertValues"/>.</dd>
+<dt>defined values:</dt>
+<dd>See <xref target="ChromaSitingVertValues"/>. Further values can be added in the IANA registry found in <xref target="vertical-chroma-sitings-registry"/>.</dd>
 <dt>stream copy:</dt>
 <dd>True (<xref target="stream-copy"/>)</dd>
 </dl>
@@ -2869,8 +2869,8 @@ This is additive with <tt>ChromaSubsamplingVert</tt>.</dd>
 <dd>4</dd>
 <dt>definition:</dt>
 <dd>Clipping of the color ranges.</dd>
-<dt>restrictions:</dt>
-<dd>See <xref target="RangeValues"/>.</dd>
+<dt>defined values:</dt>
+<dd>See <xref target="RangeValues"/>. Further values can be added in the IANA registry found in <xref target="color-ranges-registry"/>.</dd>
 <dt>stream copy:</dt>
 <dd>True (<xref target="stream-copy"/>)</dd>
 </dl>
@@ -3420,8 +3420,8 @@ in candelas per square meter (cd/m<sup>2</sup>).</dd>
 <dd>4</dd>
 <dt>definition:</dt>
 <dd>Describes the projection used for this video track.</dd>
-<dt>restrictions:</dt>
-<dd>See <xref target="ProjectionTypeValues"/>.</dd>
+<dt>defined values:</dt>
+<dd>See <xref target="ProjectionTypeValues"/>. Further values can be added in the IANA registry found in <xref target="projection-types-registry"/>.</dd>
 <dt>stream copy:</dt>
 <dd>True (<xref target="stream-copy"/>)</dd>
 </dl>
@@ -3758,8 +3758,8 @@ flips the image horizontally and vertically.</dd>
 <dd>3</dd>
 <dt>definition:</dt>
 <dd>The kind of plane this track corresponds to.</dd>
-<dt>restrictions:</dt>
-<dd>See <xref target="TrackPlaneTypeValues"/>.</dd>
+<dt>defined values:</dt>
+<dd>See <xref target="TrackPlaneTypeValues"/>. Further values can be added in the IANA registry found in <xref target="track-plane-types-registry"/>.</dd>
 <dt>stream copy:</dt>
 <dd>True (<xref target="stream-copy"/>)</dd>
 </dl>
@@ -3890,7 +3890,7 @@ This value <bcp14>MUST</bcp14> be unique for each <tt>ContentEncoding</tt> found
 <dt>definition:</dt>
 <dd>A bit field that describes which elements have been modified in this way. Values (big-endian) can be OR'ed.</dd>
 <dt>defined values:</dt>
-<dd>See <xref target="ContentEncodingScopeValues"/>.</dd>
+<dd>See <xref target="ContentEncodingScopeValues"/>. Further values can be added in the IANA registry found in <xref target="content-encoding-scopes-registry"/>.</dd>
 <dt>stream copy:</dt>
 <dd>True (<xref target="stream-copy"/>)</dd>
 </dl>
@@ -3936,8 +3936,8 @@ This value <bcp14>MUST</bcp14> be unique for each <tt>ContentEncoding</tt> found
 <dd>1 / 1</dd>
 <dt>definition:</dt>
 <dd>A value describing the kind of transformation that is applied.</dd>
-<dt>restrictions:</dt>
-<dd>See <xref target="ContentEncodingTypeValues"/>.</dd>
+<dt>defined values:</dt>
+<dd>See <xref target="ContentEncodingTypeValues"/>. Further values can be added in the IANA registry found in <xref target="content-encoding-types-registry"/>.</dd>
 <dt>stream copy:</dt>
 <dd>True (<xref target="stream-copy"/>)</dd>
 </dl>
@@ -3993,7 +3993,7 @@ Each block <bcp14>MUST</bcp14> be decompressable, even if no previous block is a
 <dt>definition:</dt>
 <dd>The compression algorithm used.</dd>
 <dt>defined values:</dt>
-<dd>See <xref target="ContentCompAlgoValues"/>.</dd>
+<dd>See <xref target="ContentCompAlgoValues"/>. Further values can be added in the IANA registry found in <xref target="compression-algorithms-registry"/>.</dd>
 <dt>usage notes:</dt>
 <dd>Compression method "1" (bzlib) and "2" (lzo1x) lack proper documentation on the format, which limits implementation possibilities. Due to licensing conflicts on commonly available libraries' compression methods, "2" (lzo1x) does not offer widespread interoperability. A <tt>Matroska Writer</tt> <bcp14>SHOULD NOT</bcp14> use these compression methods by default. A <tt>Matroska Reader</tt> <bcp14>MAY</bcp14> support methods "1" and "2" and <bcp14>SHOULD</bcp14> support other methods.</dd>
 <dt>stream copy:</dt>
@@ -4083,7 +4083,7 @@ A <tt>Matroska Player</tt> <bcp14>MAY</bcp14> support encryption.</dd>
 <dt>definition:</dt>
 <dd>The encryption algorithm used.</dd>
 <dt>defined values:</dt>
-<dd>See <xref target="ContentEncAlgoValues"/>.</dd>
+<dd>See <xref target="ContentEncAlgoValues"/>. Further values can be added in the IANA registry found in <xref target="encryption-algorithms-registry"/>.</dd>
 <dt>stream copy:</dt>
 <dd>True (<xref target="stream-copy"/>)</dd>
 </dl>
@@ -4201,7 +4201,7 @@ A <tt>Matroska Player</tt> <bcp14>MAY</bcp14> support encryption.</dd>
 <dt>definition:</dt>
 <dd>The AES cipher mode used in the encryption.</dd>
 <dt>defined values:</dt>
-<dd>See <xref target="AESSettingsCipherModeValues"/>.</dd>
+<dd>See <xref target="AESSettingsCipherModeValues"/>. Further values can be added in the IANA registry found in <xref target="aes-cipher-modes-registry"/>.</dd>
 <dt>notes:</dt>
 <dd>See <xref target="AESSettingsCipherModeNotes"/>.</dd>
 <dt>stream copy:</dt>
@@ -4914,10 +4914,33 @@ This element <bcp14>MUST</bcp14> be ignored if a <tt>ChapLanguageBCP47</tt> elem
 <dt>minOccurs / maxOccurs:</dt>
 <dd>1 / 1</dd>
 <dt>definition:</dt>
-<dd>Contains the type of the codec used for processing.
-A value of 0 means built-in Matroska processing (to be defined), and a value of 1 means the DVD command set is used; see <xref target="menu-features"/> on DVD menus.
-More codec IDs can be added later.</dd>
+<dd>Contains the type of the codec used for processing.</dd>
+<dt>defined values:</dt>
+<dd>See <xref target="ChapProcessCodecIDValues"/>. Further values can be added in the IANA registry found in <xref target="chapter-codec-ids-registry"/>.</dd>
 </dl>
+<table anchor="ChapProcessCodecIDValues"><name>ChapProcessCodecID Values</name>
+<thead>
+<tr>
+<th align="left">value</th>
+<th align="left">label</th>
+<th align="left">definition</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left"><tt>0</tt></td>
+<td align="left">Matroska Script</td>
+<td align="left">Chapter commands using the Matroska Script codec.</td>
+</tr>
+
+<tr>
+<td align="left"><tt>1</tt></td>
+<td align="left">DVD-menu</td>
+<td align="left">Chapter commands using the DVD-like codec.</td>
+</tr>
+</tbody>
+</table>
 </section>
 
 <section anchor="chapprocessprivate-element"><name>ChapProcessPrivate Element</name>
@@ -5058,7 +5081,7 @@ If empty or omitted, then the tag value describes everything in the <tt>Segment<
 <dt>definition:</dt>
 <dd>A number to indicate the logical level of the target.</dd>
 <dt>defined values:</dt>
-<dd>See <xref target="TargetTypeValueValues"/>.</dd>
+<dd>See <xref target="TargetTypeValueValues"/>. Further values can be added in the IANA registry found in <xref target="tags-target-types-registry"/>.</dd>
 </dl>
 <table anchor="TargetTypeValueValues"><name>TargetTypeValue Values</name>
 <thead>
@@ -9690,12 +9713,793 @@ entries in <xref target="iana-table"/> is "IETF".</t>
 
 <section anchor="chapter-codec-ids-registry"><name>Chapter Codec IDs Registry</name>
 <t>IANA has created a new registry called the "Matroska Chapter Codec IDs" registry.
-The values correspond to the unsigned integer <tt>ChapProcessCodecID</tt> value described in <xref target="chapprocesscodecid-element"/>.</t>
+The values correspond to the unsigned integer <tt>ChapProcessCodecID</tt>, <tt>ChapterTranslateCodec</tt> and <tt>TrackTranslateCodec</tt> values
+described in <xref target="chapprocesscodecid-element"/>,  <xref target="chaptertranslatecodec-element"/> and  <xref target="tracktranslatecodec-element"/> respectively.</t>
 <t>To register a new Chapter Codec ID in this registry, one needs a Chapter
 Codec ID, description, a Change Controller (IETF or email of registrant), and
 an optional Reference to a document describing the Chapter Codec ID.</t>
-<t>The Chapter Codec IDs are to be allocated according to the "First Come First Served" policy <xref target="RFC8126"/>.</t>
-<t>Values of "0" and "1" are reserved for future use (with the IETF as the Change Controller).</t>
+<t>The Chapter Codec IDs are to be allocated according to the "Specification Required" policy <xref target="RFC8126"/>.</t>
+<t><xref target="chapter-codec-registry-table"/> shows the initial contents of the "Chapter Codec IDs" registry.
+Note that the Change Controller for all entries in <xref target="chapter-codec-registry-table"/> is "IETF".</t>
+<table anchor="chapter-codec-registry-table"><name>Initial Contents of "Chapter Codec IDs" Registry</name>
+<thead>
+<tr>
+<th align="right">Chapter Codec ID</th>
+<th align="left">Description</th>
+<th align="left">Reference</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="right">0</td>
+<td align="left">Matroska Script</td>
+<td align="left">RFC 9559, <xref target="chapprocesscodecid-element"/></td>
+</tr>
+
+<tr>
+<td align="right">1</td>
+<td align="left">DVD-Menu</td>
+<td align="left">RFC 9559, <xref target="chapprocesscodecid-element"/></td>
+</tr>
+</tbody>
+</table>
+</section>
+
+<section anchor="track-types-registry"><name>Track Types Registry</name>
+<t>IANA has created a new registry called the "Track Types" registry.
+The values correspond to the unsigned integer <tt>TrackType</tt> value described in <xref target="tracktype-element"/>.</t>
+<t>To register a new Track Type in this registry, one needs an Track Type value,
+description, a Change Controller (IETF or email of registrant), and
+an optional Reference to a document describing the Track Type.</t>
+<t>The Track Types are to be allocated according to the "Specification Required" policy <xref target="RFC8126"/>.</t>
+<t><xref target="track-type-registry-table"/> shows the initial contents of the "Track Types" registry.
+Note that the Change Controller for all entries in <xref target="track-type-registry-table"/> is "IETF".</t>
+<table anchor="track-type-registry-table"><name>Initial Contents of "Track Types" Registry</name>
+<thead>
+<tr>
+<th align="right">Track Type</th>
+<th align="left">Description</th>
+<th align="left">Reference</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="right">1</td>
+<td align="left">video</td>
+<td align="left">RFC 9559, <xref target="tracktype-element"/></td>
+</tr>
+
+<tr>
+<td align="right">2</td>
+<td align="left">audio</td>
+<td align="left">RFC 9559, <xref target="tracktype-element"/></td>
+</tr>
+
+<tr>
+<td align="right">3</td>
+<td align="left">complex</td>
+<td align="left">RFC 9559, <xref target="tracktype-element"/></td>
+</tr>
+
+<tr>
+<td align="right">16</td>
+<td align="left">logo</td>
+<td align="left">RFC 9559, <xref target="tracktype-element"/></td>
+</tr>
+
+<tr>
+<td align="right">17</td>
+<td align="left">subtitle</td>
+<td align="left">RFC 9559, <xref target="tracktype-element"/></td>
+</tr>
+
+<tr>
+<td align="right">18</td>
+<td align="left">buttons</td>
+<td align="left">RFC 9559, <xref target="tracktype-element"/></td>
+</tr>
+
+<tr>
+<td align="right">32</td>
+<td align="left">control</td>
+<td align="left">RFC 9559, <xref target="tracktype-element"/></td>
+</tr>
+
+<tr>
+<td align="right">33</td>
+<td align="left">metadata</td>
+<td align="left">RFC 9559, <xref target="tracktype-element"/></td>
+</tr>
+</tbody>
+</table>
+</section>
+
+<section anchor="tags-target-types-registry"><name>Tags Target Types Registry</name>
+<t>IANA has created a new registry called the "Tags Target Types" registry.
+The values correspond to the unsigned integer <tt>TargetTypeValue</tt> value described in <xref target="targettypevalue-element"/>.</t>
+<t>To register a new Tags Target Type in this registry, one needs a Tags Target Type value,
+description, a Change Controller (IETF or email of registrant), and
+an optional Reference to a document describing the Tags Target Type.</t>
+<t>The Tags Track Types are to be allocated according to the "Specification Required" policy <xref target="RFC8126"/>.</t>
+<t><xref target="tags-target-registry-table"/> shows the initial contents of the "Tags Target Types" registry.
+Note that the Change Controller for all entries in <xref target="tags-target-registry-table"/> is "IETF".</t>
+<table anchor="tags-target-registry-table"><name>Initial Contents of "Tags Target Types" Registry</name>
+<thead>
+<tr>
+<th align="right">Tags Target Type</th>
+<th align="left">Description</th>
+<th align="left">Reference</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="right">70</td>
+<td align="left">COLLECTION</td>
+<td align="left">RFC 9559, <xref target="targettypevalue-element"/></td>
+</tr>
+
+<tr>
+<td align="right">60</td>
+<td align="left">EDITION / ISSUE / VOLUME / OPUS / SEASON / SEQUEL</td>
+<td align="left">RFC 9559, <xref target="targettypevalue-element"/></td>
+</tr>
+
+<tr>
+<td align="right">50</td>
+<td align="left">ALBUM / OPERA / CONCERT / MOVIE / EPISODE</td>
+<td align="left">RFC 9559, <xref target="targettypevalue-element"/></td>
+</tr>
+
+<tr>
+<td align="right">40</td>
+<td align="left">PART / SESSION</td>
+<td align="left">RFC 9559, <xref target="targettypevalue-element"/></td>
+</tr>
+
+<tr>
+<td align="right">30</td>
+<td align="left">TRACK / SONG / CHAPTER</td>
+<td align="left">RFC 9559, <xref target="targettypevalue-element"/></td>
+</tr>
+
+<tr>
+<td align="right">20</td>
+<td align="left">SUBTRACK / MOVEMENT / SCENE</td>
+<td align="left">RFC 9559, <xref target="targettypevalue-element"/></td>
+</tr>
+
+<tr>
+<td align="right">10</td>
+<td align="left">SHOT</td>
+<td align="left">RFC 9559, <xref target="targettypevalue-element"/></td>
+</tr>
+</tbody>
+</table>
+</section>
+
+<section anchor="alpha-modes-registry"><name>Alpha Modes Registry</name>
+<t>IANA has created a new registry called the "Alpha Modes" registry.
+The values correspond to the unsigned integer <tt>AlphaMode</tt> value described in <xref target="alphamode-element"/>.</t>
+<t>To register a new Alpha Mode in this registry, one needs an Alpha Mode value,
+description, a Change Controller (IETF or email of registrant), and
+an optional Reference to a document describing the Alpha Mode.</t>
+<t>The Alpha Modes are to be allocated according to the "First Come First Served" policy <xref target="RFC8126"/>.</t>
+<t><xref target="alpha-mode-registry-table"/> shows the initial contents of the "Alpha Modes" registry.
+Note that the Change Controller for all entries in <xref target="alpha-mode-registry-table"/> is "IETF".</t>
+<table anchor="alpha-mode-registry-table"><name>Initial Contents of "Alpha Modes" Registry</name>
+<thead>
+<tr>
+<th align="right">Alpha Mode</th>
+<th align="left">Description</th>
+<th align="left">Reference</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="right">0</td>
+<td align="left">none</td>
+<td align="left">RFC 9559, <xref target="alphamode-element"/></td>
+</tr>
+
+<tr>
+<td align="right">1</td>
+<td align="left">present</td>
+<td align="left">RFC 9559, <xref target="alphamode-element"/></td>
+</tr>
+</tbody>
+</table>
+</section>
+
+<section anchor="content-encoding-scopes-registry"><name>Content Encoding Scopes Registry</name>
+<t>IANA has created a new registry called the "Content Encoding Scopes" registry.
+The values correspond to the unsigned integer <tt>ContentEncodingScope</tt> value described in <xref target="contentencodingscope-element"/>.</t>
+<t>To register a new Content Encoding Scope in this registry, one needs an Content Encoding Scope value,
+description, a Change Controller (IETF or email of registrant), and
+an optional Reference to a document describing the Content Encoding Scope.</t>
+<t>The Content Encoding Scopes are to be allocated according to the "Specification Required" policy <xref target="RFC8126"/>.</t>
+<t><xref target="content-encoding-scope-registry-table"/> shows the initial contents of the "Content Encoding Scopes" registry.
+Note that the Change Controller for all entries in <xref target="content-encoding-scope-registry-table"/> is "IETF".</t>
+<table anchor="content-encoding-scope-registry-table"><name>Initial Contents of "Content Encoding Scopes" Registry</name>
+<thead>
+<tr>
+<th align="right">Content Encoding Scope</th>
+<th align="left">Description</th>
+<th align="left">Reference</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="right">1</td>
+<td align="left">Block</td>
+<td align="left">RFC 9559, <xref target="contentencodingscope-element"/></td>
+</tr>
+
+<tr>
+<td align="right">2</td>
+<td align="left">Private</td>
+<td align="left">RFC 9559, <xref target="contentencodingscope-element"/></td>
+</tr>
+
+<tr>
+<td align="right">4</td>
+<td align="left">Next</td>
+<td align="left">RFC 9559, <xref target="contentencodingscope-element"/></td>
+</tr>
+</tbody>
+</table>
+</section>
+
+<section anchor="content-encoding-types-registry"><name>Content Encoding Types Registry</name>
+<t>IANA has created a new registry called the "Content Encoding Types" registry.
+The values correspond to the unsigned integer <tt>ContentEncodingType</tt> value described in <xref target="contentencodingtype-element"/>.</t>
+<t>To register a new Content Encoding Type in this registry, one needs an Content Encoding Type value,
+description, a Change Controller (IETF or email of registrant), and
+an optional Reference to a document describing the Content Encoding Type.</t>
+<t>The Content Encoding Types are to be allocated according to the "Specification Required" policy <xref target="RFC8126"/>.</t>
+<t><xref target="content-encoding-type-registry-table"/> shows the initial contents of the "Content Encoding Types" registry.
+Note that the Change Controller for all entries in <xref target="content-encoding-type-registry-table"/> is "IETF".</t>
+<table anchor="content-encoding-type-registry-table"><name>Initial Contents of "Content Encoding Types" Registry</name>
+<thead>
+<tr>
+<th align="right">Content Encoding Type</th>
+<th align="left">Description</th>
+<th align="left">Reference</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="right">0</td>
+<td align="left">Compression</td>
+<td align="left">RFC 9559, <xref target="contentencodingtype-element"/></td>
+</tr>
+
+<tr>
+<td align="right">1</td>
+<td align="left">Encryption</td>
+<td align="left">RFC 9559, <xref target="contentencodingtype-element"/></td>
+</tr>
+</tbody>
+</table>
+</section>
+
+<section anchor="compression-algorithms-registry"><name>Compression Algorithms Registry</name>
+<t>IANA has created a new registry called the "Compression Algorithms" registry.
+The values correspond to the unsigned integer <tt>ContentCompAlgo</tt> value described in <xref target="contentcompalgo-element"/>.</t>
+<t>To register a new Compression Algorithm in this registry, one needs an Compression Algorithm value,
+description, a Change Controller (IETF or email of registrant), and
+an optional Reference to a document describing the Compression Algorithm.</t>
+<t>The Compression Algorithms are to be allocated according to the "Specification Required" policy <xref target="RFC8126"/>.</t>
+<t><xref target="compression-algorithm-registry-table"/> shows the initial contents of the "Compression Algorithms" registry.
+Note that the Change Controller for all entries in <xref target="compression-algorithm-registry-table"/> is "IETF".</t>
+<table anchor="compression-algorithm-registry-table"><name>Initial Contents of "Compression Algorithms" Registry</name>
+<thead>
+<tr>
+<th align="right">Compression Algorithm</th>
+<th align="left">Description</th>
+<th align="left">Reference</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="right">0</td>
+<td align="left">zlib</td>
+<td align="left">RFC 9559, <xref target="contentcompalgo-element"/></td>
+</tr>
+
+<tr>
+<td align="right">1</td>
+<td align="left">bzlib</td>
+<td align="left">RFC 9559, <xref target="contentcompalgo-element"/></td>
+</tr>
+
+<tr>
+<td align="right">2</td>
+<td align="left">lzo1x</td>
+<td align="left">RFC 9559, <xref target="contentcompalgo-element"/></td>
+</tr>
+
+<tr>
+<td align="right">3</td>
+<td align="left">Header Stripping</td>
+<td align="left">RFC 9559, <xref target="contentcompalgo-element"/></td>
+</tr>
+</tbody>
+</table>
+</section>
+
+<section anchor="encryption-algorithms-registry"><name>Encryption Algorithms Registry</name>
+<t>IANA has created a new registry called the "Encryption Algorithms" registry.
+The values correspond to the unsigned integer <tt>ContentEncAlgo</tt> value described in <xref target="contentencalgo-element"/>.</t>
+<t>To register a new Encryption Algorithm in this registry, one needs an Encryption Algorithm value,
+description, a Change Controller (IETF or email of registrant), and
+an optional Reference to a document describing the Encryption Algorithm.</t>
+<t>The Encryption Algorithms are to be allocated according to the "First Come First Served" policy <xref target="RFC8126"/>.</t>
+<t><xref target="encryption-algorithm-registry-table"/> shows the initial contents of the "Encryption Algorithms" registry.
+Note that the Change Controller for all entries in <xref target="encryption-algorithm-registry-table"/> is "IETF".</t>
+<table anchor="encryption-algorithm-registry-table"><name>Initial Contents of "Encryption Algorithms" Registry</name>
+<thead>
+<tr>
+<th align="right">Encryption Algorithm</th>
+<th align="left">Description</th>
+<th align="left">Reference</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="right">0</td>
+<td align="left">Not encrypted</td>
+<td align="left">RFC 9559, <xref target="contentencalgo-element"/></td>
+</tr>
+
+<tr>
+<td align="right">1</td>
+<td align="left">DES</td>
+<td align="left">RFC 9559, <xref target="contentencalgo-element"/></td>
+</tr>
+
+<tr>
+<td align="right">2</td>
+<td align="left">3DES</td>
+<td align="left">RFC 9559, <xref target="contentencalgo-element"/></td>
+</tr>
+
+<tr>
+<td align="right">3</td>
+<td align="left">Twofish</td>
+<td align="left">RFC 9559, <xref target="contentencalgo-element"/></td>
+</tr>
+
+<tr>
+<td align="right">4</td>
+<td align="left">Blowfish</td>
+<td align="left">RFC 9559, <xref target="contentencalgo-element"/></td>
+</tr>
+
+<tr>
+<td align="right">5</td>
+<td align="left">AES</td>
+<td align="left">RFC 9559, <xref target="contentencalgo-element"/></td>
+</tr>
+</tbody>
+</table>
+</section>
+
+<section anchor="aes-cipher-modes-registry"><name>AES Cipher Modes Registry</name>
+<t>IANA has created a new registry called the "AES Cipher Modes" registry.
+The values correspond to the unsigned integer <tt>AESSettingsCipherMode</tt> value described in <xref target="aessettingsciphermode-element"/>.</t>
+<t>To register a new AES Cipher Mode in this registry, one needs an AES Cipher Mode value,
+description, a Change Controller (IETF or email of registrant), and
+an optional Reference to a document describing the AES Cipher Mode.</t>
+<t>The AES Cipher Modes are to be allocated according to the "First Come First Served" policy <xref target="RFC8126"/>.</t>
+<t><xref target="aes-cipher-mode-registry-table"/> shows the initial contents of the "AES Cipher Modes" registry.
+Note that the Change Controller for all entries in <xref target="aes-cipher-mode-registry-table"/> is "IETF".</t>
+<table anchor="aes-cipher-mode-registry-table"><name>Initial Contents of "AES Cipher Modes" Registry</name>
+<thead>
+<tr>
+<th align="right">AES Cipher Mode</th>
+<th align="left">Description</th>
+<th align="left">Reference</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="right">1</td>
+<td align="left">AES-CTR</td>
+<td align="left">RFC 9559, <xref target="aessettingsciphermode-element"/></td>
+</tr>
+
+<tr>
+<td align="right">2</td>
+<td align="left">AES-CBC</td>
+<td align="left">RFC 9559, <xref target="aessettingsciphermode-element"/></td>
+</tr>
+</tbody>
+</table>
+</section>
+
+<section anchor="stereo-modes-registry"><name>Stereo Modes Registry</name>
+<t>IANA has created a new registry called the "Stereo Modes" registry.
+The values correspond to the unsigned integer <tt>StereoMode</tt> value described in <xref target="stereomode-element"/>.</t>
+<t>To register a new Stereo Mode in this registry, one needs an Stereo Mode value,
+description, a Change Controller (IETF or email of registrant), and
+an optional Reference to a document describing the Stereo Mode.</t>
+<t>The Stereo Modes are to be allocated according to the "Specification Required" policy <xref target="RFC8126"/>.</t>
+<t><xref target="stereo-mode-registry-table"/> shows the initial contents of the "Stereo Modes" registry.
+Note that the Change Controller for all entries in <xref target="stereo-mode-registry-table"/> is "IETF".</t>
+<table anchor="stereo-mode-registry-table"><name>Initial Contents of "Stereo Modes" Registry</name>
+<thead>
+<tr>
+<th align="right">Stereo Mode</th>
+<th align="left">Description</th>
+<th align="left">Reference</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="right">0</td>
+<td align="left">mono</td>
+<td align="left">RFC 9559, <xref target="stereomode-element"/></td>
+</tr>
+
+<tr>
+<td align="right">1</td>
+<td align="left">Side By Side (left first)</td>
+<td align="left">RFC 9559, <xref target="stereomode-element"/></td>
+</tr>
+
+<tr>
+<td align="right">2</td>
+<td align="left">Top Bottom (right first)</td>
+<td align="left">RFC 9559, <xref target="stereomode-element"/></td>
+</tr>
+
+<tr>
+<td align="right">3</td>
+<td align="left">Top Bottom (left first)</td>
+<td align="left">RFC 9559, <xref target="stereomode-element"/></td>
+</tr>
+
+<tr>
+<td align="right">4</td>
+<td align="left">Checkboard (right first)</td>
+<td align="left">RFC 9559, <xref target="stereomode-element"/></td>
+</tr>
+
+<tr>
+<td align="right">5</td>
+<td align="left">Checkboard (left first)</td>
+<td align="left">RFC 9559, <xref target="stereomode-element"/></td>
+</tr>
+
+<tr>
+<td align="right">6</td>
+<td align="left">Row Interleaved (right first)</td>
+<td align="left">RFC 9559, <xref target="stereomode-element"/></td>
+</tr>
+
+<tr>
+<td align="right">7</td>
+<td align="left">Row Interleaved (left first)</td>
+<td align="left">RFC 9559, <xref target="stereomode-element"/></td>
+</tr>
+
+<tr>
+<td align="right">8</td>
+<td align="left">Column Interleaved (right first)</td>
+<td align="left">RFC 9559, <xref target="stereomode-element"/></td>
+</tr>
+
+<tr>
+<td align="right">9</td>
+<td align="left">Column Interleaved (left first)</td>
+<td align="left">RFC 9559, <xref target="stereomode-element"/></td>
+</tr>
+
+<tr>
+<td align="right">10</td>
+<td align="left">Anaglyph (cyan/red)</td>
+<td align="left">RFC 9559, <xref target="stereomode-element"/></td>
+</tr>
+
+<tr>
+<td align="right">11</td>
+<td align="left">Side By Side (right first)</td>
+<td align="left">RFC 9559, <xref target="stereomode-element"/></td>
+</tr>
+
+<tr>
+<td align="right">12</td>
+<td align="left">Anaglyph (green/magenta)</td>
+<td align="left">RFC 9559, <xref target="stereomode-element"/></td>
+</tr>
+
+<tr>
+<td align="right">13</td>
+<td align="left">Both in Block (left first)</td>
+<td align="left">RFC 9559, <xref target="stereomode-element"/></td>
+</tr>
+
+<tr>
+<td align="right">14</td>
+<td align="left">Both in Block (right first)</td>
+<td align="left">RFC 9559, <xref target="stereomode-element"/></td>
+</tr>
+</tbody>
+</table>
+</section>
+
+<section anchor="display-units-registry"><name>Display Units Registry</name>
+<t>IANA has created a new registry called the "Display Units" registry.
+The values correspond to the unsigned integer <tt>DisplayUnit</tt> value described in <xref target="displayunit-element"/>.</t>
+<t>To register a new Display Unit in this registry, one needs an Display Unit value,
+description, a Change Controller (IETF or email of registrant), and
+an optional Reference to a document describing the Display Unit.</t>
+<t>The Display Units are to be allocated according to the "Specification Required" policy <xref target="RFC8126"/>.</t>
+<t><xref target="display-unit-registry-table"/> shows the initial contents of the "Display Units" registry.
+Note that the Change Controller for all entries in <xref target="display-unit-registry-table"/> is "IETF".</t>
+<table anchor="display-unit-registry-table"><name>Initial Contents of "Display Units" Registry</name>
+<thead>
+<tr>
+<th align="right">Display Unit</th>
+<th align="left">Description</th>
+<th align="left">Reference</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="right">0</td>
+<td align="left">Pixels</td>
+<td align="left">RFC 9559, <xref target="displayunit-element"/></td>
+</tr>
+
+<tr>
+<td align="right">1</td>
+<td align="left">Centimeters</td>
+<td align="left">RFC 9559, <xref target="displayunit-element"/></td>
+</tr>
+
+<tr>
+<td align="right">2</td>
+<td align="left">Inches</td>
+<td align="left">RFC 9559, <xref target="displayunit-element"/></td>
+</tr>
+
+<tr>
+<td align="right">3</td>
+<td align="left">Display Aspect Ration</td>
+<td align="left">RFC 9559, <xref target="displayunit-element"/></td>
+</tr>
+
+<tr>
+<td align="right">4</td>
+<td align="left">Unknown</td>
+<td align="left">RFC 9559, <xref target="displayunit-element"/></td>
+</tr>
+</tbody>
+</table>
+</section>
+
+<section anchor="projection-types-registry"><name>Projection Types Registry</name>
+<t>IANA has created a new registry called the "Projection Types" registry.
+The values correspond to the unsigned integer <tt>ProjectionType</tt> value described in <xref target="projectiontype-element"/>.</t>
+<t>To register a new Projection Type in this registry, one needs an Projection Type value,
+description, a Change Controller (IETF or email of registrant), and
+an optional Reference to a document describing the Projection Type.</t>
+<t>The Projection Types are to be allocated according to the "First Come First Served" policy <xref target="RFC8126"/>.</t>
+<t><xref target="projection-type-registry-table"/> shows the initial contents of the "Projection Types" registry.
+Note that the Change Controller for all entries in <xref target="projection-type-registry-table"/> is "IETF".</t>
+<table anchor="projection-type-registry-table"><name>Initial Contents of "Projection Types" Registry</name>
+<thead>
+<tr>
+<th align="right">Projection Type</th>
+<th align="left">Description</th>
+<th align="left">Reference</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="right">0</td>
+<td align="left">Rectangular</td>
+<td align="left">RFC 9559, <xref target="projectiontype-element"/></td>
+</tr>
+
+<tr>
+<td align="right">1</td>
+<td align="left">Equirectangular</td>
+<td align="left">RFC 9559, <xref target="projectiontype-element"/></td>
+</tr>
+
+<tr>
+<td align="right">2</td>
+<td align="left">Cubemap</td>
+<td align="left">RFC 9559, <xref target="projectiontype-element"/></td>
+</tr>
+
+<tr>
+<td align="right">3</td>
+<td align="left">Mesh</td>
+<td align="left">RFC 9559, <xref target="projectiontype-element"/></td>
+</tr>
+</tbody>
+</table>
+</section>
+
+<section anchor="track-plane-types-registry"><name>Track Plane Types Registry</name>
+<t>IANA has created a new registry called the "Track Plane Types" registry.
+The values correspond to the unsigned integer <tt>TrackPlaneType</tt> value described in <xref target="trackplanetype-element"/>.</t>
+<t>To register a new Track Plane Type in this registry, one needs an Track Plane Type value,
+description, a Change Controller (IETF or email of registrant), and
+an optional Reference to a document describing the Track Plane Type.</t>
+<t>The Track Plane Types are to be allocated according to the "First Come First Served" policy <xref target="RFC8126"/>.</t>
+<t><xref target="track-plane-type-registry-table"/> shows the initial contents of the "Track Plane Types" registry.
+Note that the Change Controller for all entries in <xref target="track-plane-type-registry-table"/> is "IETF".</t>
+<table anchor="track-plane-type-registry-table"><name>Initial Contents of "Track Plane Types" Registry</name>
+<thead>
+<tr>
+<th align="right">Track Plane Type</th>
+<th align="left">Description</th>
+<th align="left">Reference</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="right">0</td>
+<td align="left">Left Eye</td>
+<td align="left">RFC 9559, <xref target="trackplanetype-element"/></td>
+</tr>
+
+<tr>
+<td align="right">1</td>
+<td align="left">Right Eye</td>
+<td align="left">RFC 9559, <xref target="trackplanetype-element"/></td>
+</tr>
+
+<tr>
+<td align="right">2</td>
+<td align="left">Background</td>
+<td align="left">RFC 9559, <xref target="trackplanetype-element"/></td>
+</tr>
+</tbody>
+</table>
+</section>
+
+<section anchor="horizontal-chroma-sitings-registry"><name>Horizontal Chroma Sitings Registry</name>
+<t>IANA has created a new registry called the "Horizontal Chroma Sitings" registry.
+The values correspond to the unsigned integer <tt>ChromaSitingHorz</tt> value described in <xref target="chromasitinghorz-element"/>.</t>
+<t>To register a new Horizontal Chroma Siting in this registry, one needs an Horizontal Chroma Siting value,
+description, a Change Controller (IETF or email of registrant), and
+an optional Reference to a document describing the Horizontal Chroma Siting.</t>
+<t>The Horizontal Chroma Sitings are to be allocated according to the "First Come First Served" policy <xref target="RFC8126"/>.</t>
+<t><xref target="horizontal-chroma-siting-registry-table"/> shows the initial contents of the "Horizontal Chroma Sitings" registry.
+Note that the Change Controller for all entries in <xref target="horizontal-chroma-siting-registry-table"/> is "IETF".</t>
+<table anchor="horizontal-chroma-siting-registry-table"><name>Initial Contents of "Horizontal Chroma Sitings" Registry</name>
+<thead>
+<tr>
+<th align="right">Horizontal Chroma Siting</th>
+<th align="left">Description</th>
+<th align="left">Reference</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="right">0</td>
+<td align="left">unspecified</td>
+<td align="left">RFC 9559, <xref target="chromasitinghorz-element"/></td>
+</tr>
+
+<tr>
+<td align="right">1</td>
+<td align="left">left collocated</td>
+<td align="left">RFC 9559, <xref target="chromasitinghorz-element"/></td>
+</tr>
+
+<tr>
+<td align="right">2</td>
+<td align="left">half</td>
+<td align="left">RFC 9559, <xref target="chromasitinghorz-element"/></td>
+</tr>
+</tbody>
+</table>
+</section>
+
+<section anchor="vertical-chroma-sitings-registry"><name>Vertical Chroma Sitings Registry</name>
+<t>IANA has created a new registry called the "Vertical Chroma Sitings" registry.
+The values correspond to the unsigned integer <tt>ChromaSitingVert</tt> value described in <xref target="chromasitingvert-element"/>.</t>
+<t>To register a new Vertical Chroma Siting in this registry, one needs an Vertical Chroma Siting value,
+description, a Change Controller (IETF or email of registrant), and
+an optional Reference to a document describing the Vertical Chroma Siting.</t>
+<t>The Vertical Chroma Sitings are to be allocated according to the "First Come First Served" policy <xref target="RFC8126"/>.</t>
+<t><xref target="vertical-chroma-siting-registry-table"/> shows the initial contents of the "Vertical Chroma Sitings" registry.
+Note that the Change Controller for all entries in <xref target="vertical-chroma-siting-registry-table"/> is "IETF".</t>
+<table anchor="vertical-chroma-siting-registry-table"><name>Initial Contents of "Vertical Chroma Sitings" Registry</name>
+<thead>
+<tr>
+<th align="right">Vertical Chroma Siting</th>
+<th align="left">Description</th>
+<th align="left">Reference</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="right">0</td>
+<td align="left">unspecified</td>
+<td align="left">RFC 9559, <xref target="chromasitingvert-element"/></td>
+</tr>
+
+<tr>
+<td align="right">1</td>
+<td align="left">top collocated</td>
+<td align="left">RFC 9559, <xref target="chromasitingvert-element"/></td>
+</tr>
+
+<tr>
+<td align="right">2</td>
+<td align="left">half</td>
+<td align="left">RFC 9559, <xref target="chromasitingvert-element"/></td>
+</tr>
+</tbody>
+</table>
+</section>
+
+<section anchor="color-ranges-registry"><name>Color Ranges Registry</name>
+<t>IANA has created a new registry called the "Color Ranges" registry.
+The values correspond to the unsigned integer <tt>Range</tt> value described in <xref target="range-element"/>.</t>
+<t>To register a new Color Range in this registry, one needs an Color Range value,
+description, a Change Controller (IETF or email of registrant), and
+an optional Reference to a document describing the Color Range.</t>
+<t>The Color Ranges are to be allocated according to the "Specification Required" policy <xref target="RFC8126"/>.</t>
+<t><xref target="color-range-registry-table"/> shows the initial contents of the "Color Ranges" registry.
+Note that the Change Controller for all entries in <xref target="color-range-registry-table"/> is "IETF".</t>
+<table anchor="color-range-registry-table"><name>Initial Contents of "Color Ranges" Registry</name>
+<thead>
+<tr>
+<th align="right">Color Range</th>
+<th align="left">Description</th>
+<th align="left">Reference</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="right">0</td>
+<td align="left">unspecified</td>
+<td align="left">RFC 9559, <xref target="range-element"/></td>
+</tr>
+
+<tr>
+<td align="right">1</td>
+<td align="left">broadcast range</td>
+<td align="left">RFC 9559, <xref target="range-element"/></td>
+</tr>
+
+<tr>
+<td align="right">2</td>
+<td align="left">full range</td>
+<td align="left">RFC 9559, <xref target="range-element"/></td>
+</tr>
+
+<tr>
+<td align="right">3</td>
+<td align="left">defined by MatrixCoefficients / TransferCharacteristics</td>
+<td align="left">RFC 9559, <xref target="range-element"/></td>
+</tr>
+</tbody>
+</table>
 </section>
 
 <section anchor="media-types"><name>Media Types</name>
