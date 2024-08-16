@@ -526,10 +526,6 @@ fonts, web pages, etc.</t>
 |             |              | FileUID           |
 +------------------------------------------------+
 
-<!-- [cellar] FIX: removed FileName (duplicate) and deprecated elements that
-     should not be used from the table -->
-
-
 </artwork>
 </figure>
 <t>The <tt>Tags</tt> element contains metadata that describes the <tt>Segment</tt> and potentially
@@ -806,8 +802,6 @@ segment value in the given Chapter Codec.</dd>
 <dt>rationale:</dt>
 <dd>Chapter Codecs may need to address different segments, but they may not know of the way to identify such segments when stored in Matroska.
 This element and its child elements add a way to map the internal segments known to the Chapter Codec to the <tt>SegmentUUID</tt>s in Matroska.
-
-<!-- [cellar] FIX: Segment IDs are SegmentUUIDs elements -->
 This allows remuxing a file with Chapter Codec without changing the content of the codec data, just the <tt>Segment</tt> mapping.</dd>
 </dl>
 
@@ -5700,10 +5694,6 @@ The definitions for <tt>TrackNumber</tt> sizes of 1 and 2 are provided; the othe
 <dl newline="false" spacing="normal">
 <dt>Track Number:</dt>
 <dd>8, 16, 24, 32, 40, 48, or 56 bits. An EBML VINT-coded track number.</dd>
-
-<!-- [cellar] FIX: fix the last usable width for track numbers coded as an EBML VINT
-64-bit EBML VINT is uncommon and not within the Matroska requirements.-->
-
 <dt>Timestamp:</dt>
 <dd>16 bits. Signed timestamp in Track Ticks.</dd>
 <dt>Rsvrd:</dt>
@@ -5774,10 +5764,6 @@ other variants can be deduced by extending the size of the
 <dl newline="false" spacing="normal">
 <dt>Track Number:</dt>
 <dd>8, 16, 24, 32, 40, 48, or 56 bits. An EBML VINT-coded track number.</dd>
-
-<!-- [cellar] FIX: fix the last usable width for track numbers coded as an EBML VINT
-64-bit EBML VINT is uncommon and not within the Matroska requirements.-->
-
 <dt>Timestamp:</dt>
 <dd>16 bits. Signed timestamp in Track Ticks.</dd>
 <dt>KEY:</dt>
@@ -5823,9 +5809,6 @@ of data (referred to as frames in Matroska). It packs multiple frames into a sin
 </li>
 </ul>
 <t>When lacing is not used, i.e., to store a single frame, the lacing bits (bits 5 and 6) of the <tt>Block</tt> or <tt>SimpleBlock</tt> <bcp14>MUST</bcp14> be set to zero.</t>
-
-<!-- [cellar] FIX: The lacing bits are at bits 5 and 6 when starting from bit 0 -->
-
 <t>For example, a user wants to store three frames of the same track. The first frame is 800 octets long,
 the second is 500 octets long, and the third is 1000 octets long.
 Because these frames are small,
@@ -7777,8 +7760,6 @@ text-based annotations, copies of specifications, or other ancillary files
 related to the <tt>Segment</tt>.</t>
 <t><tt>Matroska Readers</tt> <bcp14>MUST NOT</bcp14> execute files stored as <tt>Attachments</tt> elements.</t>
 
-<!-- [cellar] FIX: used plural for Attachment elements as an Attachment may contain many elements -->
-
 <section anchor="cover-art"><name>Cover Art</name>
 <t>This section defines a set of guidelines for the storage of cover art in
 Matroska files.  A <tt>Matroska Reader</tt> <bcp14>MAY</bcp14> use embedded
@@ -8189,13 +8170,8 @@ only if declared in the EBML Header.</t>
 <t>Two-octet Matroska Element IDs between 0x0100 and 0x407E are not valid for
 use as an Element ID.</t>
 <t>Three-octet (range 0x203FFF-0x3FFFFE) and four-octet Matroska Element IDs (range 0x101FFFFF-0x1FFFFFFE) are to be allocated according to the "First Come First Served" policy <xref target="RFC8126"/>.</t>
-<t>Three-octet Matroska Element IDs between 0x010000 and 0x203FFE are not
-valid for use as an Element ID.</t>
-<t>Four-octet Matroska Element IDs between 0x01000000 and 0x101FFFFE are
-not valid for use as an Element ID.</t>
-<!-- [cellar] FIX: fix the EBML IDs ranges according to RFC8794 Section 17.1
-with errata 7189 and 7191, and added the range for three-octet values as well. -->
-
+<t>Three-octet Matroska Element IDs between 0x010000 and 0x203FFE are not valid for use as an Element ID.</t>
+<t>Four-octet Matroska Element IDs between 0x01000000 and 0x101FFFFE are not valid for use as an Element ID.</t>
 <t>The allowed values in the "Matroska Element IDs" registry are similar to the ones found
 in the "EBML Element IDs" registry defined in <xref target="RFC8794" sectionFormat="of" section="17.1"/>.</t>
 <t>EBML Element IDs defined for the EBML Header -- as defined in <xref target="RFC8794" sectionFormat="of" section="17.1"/> -- <bcp14>MUST NOT</bcp14> be used as Matroska Element IDs.</t>
@@ -11450,9 +11426,6 @@ used for a variable frame rate <tt>TrackEntry</tt>.</dd>
 <dd><tt>\Segment\Tracks\TrackEntry\TrickTrackSegmentUID</tt></dd>
 <dt>documentation:</dt>
 <dd>The <tt>SegmentUUID</tt> of the <tt>Segment</tt> containing the track identified by TrickTrackUID. See <xref target="DivXTrickTrack"/>.</dd>
-
-<!-- [cellar] FIX: SegmentUID is now called SegmentUUID -->
-
 </dl>
 </section>
 
@@ -11491,9 +11464,6 @@ Otherwise, TrickTrackUID and TrickTrackSegUID must be present if this track has 
 <dd><tt>\Segment\Tracks\TrackEntry\TrickMasterTrackSegmentUID</tt></dd>
 <dt>documentation:</dt>
 <dd>The <tt>SegmentUUID</tt> of the <tt>Segment</tt> containing the track identified by MasterTrackUID. See <xref target="DivXTrickTrack"/>.</dd>
-
-<!-- [cellar] FIX: SegmentUID is now called SegmentUUID -->
-
 </dl>
 </section>
 
