@@ -6357,22 +6357,11 @@ is used:</t>
 TimestampScale
 
 </artwork>
-<t>The <tt>Block</tt> element and <tt>SimpleBlock</tt> element store their
-timestamps as 16-bit signed integers, allowing a range from "-32768" to
-"+32767" Track Ticks.  Although these values can be negative, when added to
-the <tt>Cluster\Timestamp</tt>, the resulting frame timestamp <bcp14>SHOULD
-NOT</bcp14> be negative.</t>
-<!-- [rfced] Should "substracted" be "subtracted"?
-
-Current: 
-   When a CodecDelay element is set, its value MUST be substracted 
-   from each Block timestamp of that track. 
--->
-
-<t>When a <tt>CodecDelay</tt> element is set, its value <bcp14>MUST</bcp14> be
-substracted from each <tt>Block</tt> timestamp of that track. To get the
-timestamp in nanoseconds of the first frame in a <tt>Block</tt> or
-<tt>SimpleBlock</tt>, the formula becomes:</t>
+<t>The <tt>Block</tt> element and <tt>SimpleBlock</tt> element store their timestamps as 16-bit signed integers,
+allowing a range from "-32768" to "+32767" Track Ticks.
+Although these values can be negative, when added to the <tt>Cluster\Timestamp</tt>, the resulting frame timestamp <bcp14>SHOULD NOT</bcp14> be negative.</t>
+<t>When a <tt>CodecDelay</tt> element is set, its value <bcp14>MUST</bcp14> be subtracted from each <tt>Block</tt> timestamp of that track.
+To get the timestamp in nanoseconds of the first frame in a <tt>Block</tt> or <tt>SimpleBlock</tt>, the formula becomes:</t>
 
 <artwork>
 ( ( Cluster\Timestamp + ( block timestamp * TrackTimestampScale ) ) *
