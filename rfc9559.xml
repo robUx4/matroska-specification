@@ -5699,7 +5699,7 @@ The definitions for <tt>TrackNumber</tt> sizes of 1 and 2 are provided; the othe
 <dt>Rsvrd:</dt>
 <dd>4 bits. Reserved bits <bcp14>MUST</bcp14> be set to 0.</dd>
 <dt>INV:</dt>
-<dd>1 bit. Invisible. The codec <bcp14>SHOULD</bcp14> decode this frame but not display it.</dd>
+<dd>1 bit. Invisible; The codec <bcp14>SHOULD</bcp14> decode this frame but not display it.</dd>
 <dt>LACING:</dt>
 <dd><t>2 bits. Uses lacing mode.</t>
 
@@ -5767,7 +5767,7 @@ other variants can be deduced by extending the size of the
 <dt>Timestamp:</dt>
 <dd>16 bits. Signed timestamp in Track Ticks.</dd>
 <dt>KEY:</dt>
-<dd>1 bit. Keyframe. Set when the <tt>Block</tt> contains only keyframes.</dd>
+<dd>1 bit. Keyframe; Set when the <tt>Block</tt> contains only keyframes.</dd>
 <dt>Rsvrd:</dt>
 <dd>3 bits. Reserved bits <bcp14>MUST</bcp14> be set to 0.</dd>
 <dt>INV:</dt>
@@ -5789,7 +5789,7 @@ other variants can be deduced by extending the size of the
 
 <dl spacing="compact">
 <dt>DIS:</dt>
-<dd>1 bit. Discardable. The frames of the <tt>Block</tt> can be discarded during playing if needed.</dd>
+<dd>1 bit. Discardable; The frames of the <tt>Block</tt> can be discarded during playing if needed.</dd>
 </dl>
 <t>The remaining data in the <tt>SimpleBlock</tt> corresponds to the lacing data and frames usage as described in each respective lacing mode (see <xref target="block-lacing"/>).</t>
 </section>
