@@ -9724,7 +9724,7 @@ The values correspond to the unsigned integer <tt>ChapProcessCodecID</tt>, <tt>C
 described in <xref target="chapprocesscodecid-element"/>,  <xref target="chaptertranslatecodec-element"/>, and  <xref target="tracktranslatecodec-element"/>, respectively.</t>
 <t>To register a new Chapter Codec ID in this registry, one needs a Chapter
 Codec ID, a description, a Change Controller (IETF or email of registrant), and
-an optional Reference to a document describing the Chapter Codec ID.</t>
+a Reference to a document describing the Chapter Codec ID.</t>
 <t>The Chapter Codec IDs are to be allocated according to the "Specification Required" policy <xref target="RFC8126"/>.</t>
 <t><xref target="chapter-codec-registry-table"/> shows the initial contents of the "Chapter Codec IDs" registry.
 The Change Controller for the initial entries is the IETF.</t>
@@ -9756,34 +9756,9 @@ The Change Controller for the initial entries is the IETF.</t>
 <section anchor="track-types-registry"><name>Track Types Registry</name>
 <t>IANA has created a new registry called the "Track Types" registry.
 The values correspond to the unsigned integer <tt>TrackType</tt> value described in <xref target="tracktype-element"/>.</t>
-<!-- [rfced] For cases where the registration policy is Specification Required, is "optional Reference" correct?  Specification Required seems to require a public specification.  
-
-From RFC 8126 <https://www.rfc-editor.org/rfc/rfc8126.html#section-4.6>: 
-   For the Specification Required policy, review and approval by a
-   designated expert (see Section 5) is required, and the values and
-   their meanings must be documented in a permanent and readily
-   available public specification, in sufficient detail so that
-   interoperability between independent implementations is possible.
-   This policy is the same as Expert Review, with the additional
-   requirement of a formal public specification. ... 
-
-Note that the following sections have a registration policy of Specification Required and include text like "and an optional Reference to a document describing the foo": 
-
-Sections 
-27.1 - 27.4, 
-27.6 - 27.8, 
-27.11 - 27.12, and 
-27.17
-
-
-The following sections also refer to an "optional Reference", but the registration policy is First Come First Serve, so "optional" seems ok. 
-Sections 
-27.5, 27.9 - 27.10, and 27.13 - 27.16,
--->
-
 <t>To register a new Track Type in this registry, one needs a Track Type value,
 a description, a Change Controller (IETF or email of registrant), and
-an optional Reference to a document describing the Track Type.</t>
+a Reference to a document describing the Track Type.</t>
 <t>The Track Types are to be allocated according to the "Specification Required" policy <xref target="RFC8126"/>.</t>
 <t><xref target="track-type-registry-table"/> shows the initial contents of the "Track Types" registry. The Change Controller for the initial entries is the IETF.</t>
 <table anchor="track-type-registry-table"><name>Initial Contents of "Track Types" Registry</name>
@@ -9852,7 +9827,7 @@ an optional Reference to a document describing the Track Type.</t>
 The values correspond to the unsigned integer <tt>TargetTypeValue</tt> value described in <xref target="targettypevalue-element"/>.</t>
 <t>To register a new Tags Target Type in this registry, one needs a Tags Target Type value,
 a description, a Change Controller (IETF or email of registrant), and
-an optional Reference to a document describing the Tags Target Type.</t>
+a Reference to a document describing the Tags Target Type.</t>
 <t>The Tags Track Types are to be allocated according to the "Specification Required" policy <xref target="RFC8126"/>.</t>
 <t><xref target="tags-target-registry-table"/> shows the initial contents of the "Tags Target Types" registry. The Change Controller for the initial entries is the IETF.
 </t>
@@ -9949,7 +9924,7 @@ an optional Reference to a document describing the Alpha Mode.</t>
 The values correspond to the unsigned integer <tt>ContentEncodingScope</tt> value described in <xref target="contentencodingscope-element"/>.</t>
 <t>To register a new Content Encoding Scope in this registry, one needs a Content Encoding Scope value,
 a description, a Change Controller (IETF or email of registrant), and
-an optional Reference to a document describing the Content Encoding Scope.</t>
+a Reference to a document describing the Content Encoding Scope.</t>
 <t>The Content Encoding Scopes are to be allocated according to the "Specification Required" policy <xref target="RFC8126"/>.</t>
 <t><xref target="content-encoding-scope-registry-table"/> shows the initial contents of the "Content Encoding Scopes" registry. The Change Controller for the initial entries is the IETF.
 </t>
@@ -9989,7 +9964,7 @@ an optional Reference to a document describing the Content Encoding Scope.</t>
 The values correspond to the unsigned integer <tt>ContentEncodingType</tt> value described in <xref target="contentencodingtype-element"/>.</t>
 <t>To register a new Content Encoding Type in this registry, one needs a Content Encoding Type value,
 a description, a Change Controller (IETF or email of registrant), and
-an optional Reference to a document describing the Content Encoding Type.</t>
+a Reference to a document describing the Content Encoding Type.</t>
 <t>The Content Encoding Types are to be allocated according to the "Specification Required" policy <xref target="RFC8126"/>.</t>
 <t><xref target="content-encoding-type-registry-table"/> shows the initial contents of the "Content Encoding Types" registry. The Change Controller for the initial entries is the IETF.
 </t>
@@ -10023,7 +9998,7 @@ an optional Reference to a document describing the Content Encoding Type.</t>
 The values correspond to the unsigned integer <tt>ContentCompAlgo</tt> value described in <xref target="contentcompalgo-element"/>.</t>
 <t>To register a new Compression Algorithm in this registry, one needs a Compression Algorithm value,
 a description, a Change Controller (IETF or email of registrant), and
-an optional Reference to a document describing the Compression Algorithm.</t>
+a Reference to a document describing the Compression Algorithm.</t>
 <t>The Compression Algorithms are to be allocated according to the "Specification Required" policy <xref target="RFC8126"/>.</t>
 <t><xref target="compression-algorithm-registry-table"/> shows the initial contents of the "Compression Algorithms" registry. The Change Controller for the initial entries is the IETF.
 </t>
@@ -10161,7 +10136,7 @@ an optional Reference to a document describing the AES Cipher Mode.</t>
 The values correspond to the unsigned integer <tt>StereoMode</tt> value described in <xref target="stereomode-element"/>.</t>
 <t>To register a new Stereo Mode in this registry, one needs a Stereo Mode value,
 a description, a Change Controller (IETF or email of registrant), and
-an optional Reference to a document describing the Stereo Mode.</t>
+a Reference to a document describing the Stereo Mode.</t>
 <t>The Stereo Modes are to be allocated according to the "Specification Required" policy <xref target="RFC8126"/>.</t>
 <t><xref target="stereo-mode-registry-table"/> shows the initial contents of the "Stereo Modes" registry. The Change Controller for the initial entries is the IETF.
 </t>
@@ -10273,7 +10248,7 @@ an optional Reference to a document describing the Stereo Mode.</t>
 The values correspond to the unsigned integer <tt>DisplayUnit</tt> value described in <xref target="displayunit-element"/>.</t>
 <t>To register a new Display Unit in this registry, one needs a Display Unit value,
 a description, a Change Controller (IETF or email of registrant), and
-an optional Reference to a document describing the Display Unit.</t>
+a Reference to a document describing the Display Unit.</t>
 <t>The Display Units are to be allocated according to the "Specification Required" policy <xref target="RFC8126"/>.</t>
 <t><xref target="display-unit-registry-table"/> shows the initial contents of the "Display Units" registry. The Change Controller for the initial entries is the IETF.
 </t>
@@ -10492,7 +10467,7 @@ an optional Reference to a document describing the Vertical Chroma Siting.</t>
 The values correspond to the unsigned integer <tt>Range</tt> value described in <xref target="color-range-element"/>.</t>
 <t>To register a new Color Range in this registry, one needs a Color Range value,
 a description, a Change Controller (IETF or email of registrant), and
-an optional Reference to a document describing the Color Range.</t>
+a Reference to a document describing the Color Range.</t>
 <t>The Color Ranges are to be allocated according to the "Specification Required" policy <xref target="RFC8126"/>.</t>
 <t><xref target="color-range-registry-table"/> shows the initial contents of the "Color Ranges" registry. The Change Controller for the initial entries is the IETF.
 </t>
