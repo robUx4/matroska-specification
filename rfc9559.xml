@@ -2889,7 +2889,7 @@ This is additive with <tt>ChromaSubsamplingVert</tt>.</dd>
 <dt>definition:</dt>
 <dd>Clipping of the color ranges.</dd>
 <dt>defined values:</dt>
-<dd>See <xref target="RangeValues"/>. Additional values can be defined in the "Color Ranges" registry defined in <xref target="color-ranges-registry"/>.</dd>
+<dd>See <xref target="RangeValues"/>. Additional values can be registered in the "Color Ranges" registry defined in <xref target="color-ranges-registry"/>.</dd>
 <dt>stream copy:</dt>
 <dd>True (<xref target="stream-copy"/>)</dd>
 </dl>
