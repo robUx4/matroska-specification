@@ -5031,6 +5031,9 @@ If empty or omitted, then the tag value describes everything in the <tt>Segment<
 <dd>A number to indicate the logical level of the target.</dd>
 <dt>defined values:</dt>
 <dd>See <xref target="TargetTypeValueValues"/>. Additional values can be registered in the "Matroska Tags Target Types" registry defined in <xref target="matroska-tags-target-types-registry"/>.</dd>
+<dt>usage notes:</dt>
+<dd>The <tt>TargetTypeValue</tt> values are meant to be compared.
+Higher values MUST correspond to a logical level that contains the logical level lower <tt>TargetTypeValue</tt> values.</dd>
 </dl>
 <table anchor="TargetTypeValueValues"><name>TargetTypeValue Values</name>
 <thead>
