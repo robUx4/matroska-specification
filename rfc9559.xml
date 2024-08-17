@@ -8067,7 +8067,7 @@ these encapsulated formats.</t>
 <t>IANA has created a new registry called the "Matroska Element IDs"
 registry.</t>
 <t>To register a new Element ID in this registry, one needs an Element ID, an
-Element Name, a Change Controller (IETF or email of registrant), and an
+Element Name, a Change Controller, and an
 optional Reference to a document describing the Element ID.</t>
 <t>Element IDs are encoded
 using the VINT mechanism described in <xref target="RFC8794" sectionFormat="of" section="4"/> and can be between
@@ -9642,7 +9642,7 @@ entries is the IETF.</t>
 <t>IANA has created a new registry called the "Matroska Compression Algorithms" registry.
 The values correspond to the unsigned integer <tt>ContentCompAlgo</tt> value described in <xref target="contentcompalgo-element"/>.</t>
 <t>To register a new Compression Algorithm in this registry, one needs a Compression Algorithm value,
-a description, a Change Controller (IETF or email of registrant), and
+a description, a Change Controller, and
 a Reference to a document describing the Compression Algorithm.</t>
 <t>The Compression Algorithms are to be allocated according to the "Specification Required" policy <xref target="RFC8126"/>.</t>
 <t><xref target="compression-algorithm-registry-table"/> shows the initial contents of the "Matroska Compression Algorithms" registry.
@@ -9688,7 +9688,7 @@ The Change Controller for the initial entries is the IETF.</t>
 <t>IANA has created a new registry called the "Matroska Encryption Algorithms" registry.
 The values correspond to the unsigned integer <tt>ContentEncAlgo</tt> value described in <xref target="contentencalgo-element"/>.</t>
 <t>To register a new Encryption Algorithm in this registry, one needs an Encryption Algorithm value,
-a description, a Change Controller (IETF or email of registrant), and
+a description, a Change Controller, and
 an optional Reference to a document describing the Encryption Algorithm.</t>
 <t>The Encryption Algorithms are to be allocated according to the "First Come First Served" policy <xref target="RFC8126"/>.</t>
 <t><xref target="encryption-algorithm-registry-table"/> shows the initial contents of the "Matroska Encryption Algorithms" registry. The Change Controller for the initial entries is the IETF.
@@ -9746,7 +9746,7 @@ an optional Reference to a document describing the Encryption Algorithm.</t>
 <t>IANA has created a new registry called the "Matroska AES Cipher Modes" registry.
 The values correspond to the unsigned integer <tt>AESSettingsCipherMode</tt> value described in <xref target="aessettingsciphermode-element"/>.</t>
 <t>To register a new AES Cipher Mode in this registry, one needs an AES Cipher Mode value,
-a description, a Change Controller (IETF or email of registrant), and
+a description, a Change Controller, and
 an optional Reference to a document describing the AES Cipher Mode.</t>
 <t>The AES Cipher Modes are to be allocated according to the "First Come First Served" policy <xref target="RFC8126"/>.</t>
 <t><xref target="aes-cipher-mode-registry-table"/> shows the initial contents of the "Matroska AES Cipher Modes" registry. The Change Controller for the initial entries is the IETF.</t>
@@ -9779,7 +9779,7 @@ an optional Reference to a document describing the AES Cipher Mode.</t>
 <t>IANA has created a new registry called the "Matroska Content Encoding Scopes" registry.
 The values correspond to the unsigned integer <tt>ContentEncodingScope</tt> value described in <xref target="contentencodingscope-element"/>.</t>
 <t>To register a new Content Encoding Scope in this registry, one needs a Content Encoding Scope value,
-a description, a Change Controller (IETF or email of registrant), and
+a description, a Change Controller, and
 a Reference to a document describing the Content Encoding Scope.</t>
 <t>The Content Encoding Scopes are to be allocated according to the "Specification Required" policy <xref target="RFC8126"/>.</t>
 <t><xref target="content-encoding-scope-registry-table"/> shows the initial contents of the "Matroska Content Encoding Scopes" registry. The Change Controller for the initial entries is the IETF.
@@ -9819,7 +9819,7 @@ a Reference to a document describing the Content Encoding Scope.</t>
 <t>IANA has created a new registry called the "Matroska Content Encoding Types" registry.
 The values correspond to the unsigned integer <tt>ContentEncodingType</tt> value described in <xref target="contentencodingtype-element"/>.</t>
 <t>To register a new Content Encoding Type in this registry, one needs a Content Encoding Type value,
-a description, a Change Controller (IETF or email of registrant), and
+a description, a Change Controller, and
 a Reference to a document describing the Content Encoding Type.</t>
 <t>The Content Encoding Types are to be allocated according to the "Specification Required" policy <xref target="RFC8126"/>.</t>
 <t><xref target="content-encoding-type-registry-table"/> shows the initial contents of the "Matroska Content Encoding Types" registry. The Change Controller for the initial entries is the IETF.
@@ -9853,7 +9853,7 @@ a Reference to a document describing the Content Encoding Type.</t>
 <t>IANA has created a new registry called the "Matroska Stereo Modes" registry.
 The values correspond to the unsigned integer <tt>StereoMode</tt> value described in <xref target="stereomode-element"/>.</t>
 <t>To register a new Stereo Mode in this registry, one needs a Stereo Mode value,
-a description, a Change Controller (IETF or email of registrant), and
+a description, a Change Controller, and
 a Reference to a document describing the Stereo Mode.</t>
 <t>The Stereo Modes are to be allocated according to the "Specification Required" policy <xref target="RFC8126"/>.</t>
 <t><xref target="stereo-mode-registry-table"/> shows the initial contents of the "Matroska Stereo Modes" registry. The Change Controller for the initial entries is the IETF.
@@ -9965,7 +9965,7 @@ a Reference to a document describing the Stereo Mode.</t>
 <t>IANA has created a new registry called the "Matroska Alpha Modes" registry.
 The values correspond to the unsigned integer <tt>AlphaMode</tt> value described in <xref target="alphamode-element"/>.</t>
 <t>To register a new Alpha Mode in this registry, one needs an Alpha Mode value,
-a description, a Change Controller (IETF or email of registrant), and
+a description, a Change Controller, and
 an optional Reference to a document describing the Alpha Mode.</t>
 <t>The Alpha Modes are to be allocated according to the "First Come First Served" policy <xref target="RFC8126"/>.</t>
 <t><xref target="alpha-mode-registry-table"/> shows the initial contents of the "Matroska Alpha Modes" registry. The Change Controller for the initial entries is the IETF.
@@ -9999,7 +9999,7 @@ an optional Reference to a document describing the Alpha Mode.</t>
 <t>IANA has created a new registry called the "Matroska Display Units" registry.
 The values correspond to the unsigned integer <tt>DisplayUnit</tt> value described in <xref target="displayunit-element"/>.</t>
 <t>To register a new Display Unit in this registry, one needs a Display Unit value,
-a description, a Change Controller (IETF or email of registrant), and
+a description, a Change Controller, and
 a Reference to a document describing the Display Unit.</t>
 <t>The Display Units are to be allocated according to the "Specification Required" policy <xref target="RFC8126"/>.</t>
 <t><xref target="display-unit-registry-table"/> shows the initial contents of the "Matroska Display Units" registry. The Change Controller for the initial entries is the IETF.
@@ -10051,7 +10051,7 @@ a Reference to a document describing the Display Unit.</t>
 <t>IANA has created a new registry called the "Matroska Horizontal Chroma Sitings" registry.
 The values correspond to the unsigned integer <tt>ChromaSitingHorz</tt> value described in <xref target="chromasitinghorz-element"/>.</t>
 <t>To register a new Horizontal Chroma Siting in this registry, one needs a Horizontal Chroma Siting value,
-a description, a Change Controller (IETF or email of registrant), and
+a description, a Change Controller, and
 an optional Reference to a document describing the Horizontal Chroma Siting.</t>
 <t>The Horizontal Chroma Sitings are to be allocated according to the "First Come First Served" policy <xref target="RFC8126"/>.</t>
 <t><xref target="horizontal-chroma-siting-registry-table"/> shows the initial contents of the "Matroska Horizontal Chroma Sitings" registry.
@@ -10091,7 +10091,7 @@ The Change Controller for the initial entries is the IETF.</t>
 <t>IANA has created a new registry called the "Matroska Vertical Chroma Sitings" registry.
 The values correspond to the unsigned integer <tt>ChromaSitingVert</tt> value described in <xref target="chromasitingvert-element"/>.</t>
 <t>To register a new Vertical Chroma Siting in this registry, one needs a Vertical Chroma Siting value,
-a description, a Change Controller (IETF or email of registrant), and
+a description, a Change Controller, and
 an optional Reference to a document describing the Vertical Chroma Siting.</t>
 <t>The Vertical Chroma Sitings are to be allocated according to the "First Come First Served" policy <xref target="RFC8126"/>.</t>
 <t><xref target="vertical-chroma-siting-registry-table"/> shows the initial contents of the "Matroska Vertical Chroma Sitings" registry.
@@ -10131,7 +10131,7 @@ The Change Controller for the initial entries is the IETF.</t>
 <t>IANA has created a new registry called the "Matroska Color Ranges" registry.
 The values correspond to the unsigned integer <tt>Range</tt> value described in <xref target="color-range-element"/>.</t>
 <t>To register a new Color Range in this registry, one needs a Color Range value,
-a description, a Change Controller (IETF or email of registrant), and
+a description, a Change Controller, and
 a Reference to a document describing the Color Range.</t>
 <t>The Color Ranges are to be allocated according to the "Specification Required" policy <xref target="RFC8126"/>.</t>
 <t><xref target="color-range-registry-table"/> shows the initial contents of the "Matroska Color Ranges" registry. The Change Controller for the initial entries is the IETF.
@@ -10177,7 +10177,7 @@ a Reference to a document describing the Color Range.</t>
 <t>IANA has created a new registry called the "Matroska Tags Target Types" registry.
 The values correspond to the unsigned integer <tt>TargetTypeValue</tt> value described in <xref target="targettypevalue-element"/>.</t>
 <t>To register a new Tags Target Type in this registry, one needs a Tags Target Type value,
-a description, a Change Controller (IETF or email of registrant), and
+a description, a Change Controller, and
 a Reference to a document describing the Tags Target Type.</t>
 <t>The Tags Target Types are to be allocated according to the "Specification Required" policy <xref target="RFC8126"/>.</t>
 <t><xref target="tags-target-type-registry-table"/> shows the initial contents of the "Matroska Tags Target Types" registry. The Change Controller for the initial entries is the IETF.
@@ -10241,7 +10241,7 @@ a Reference to a document describing the Tags Target Type.</t>
 <t>IANA has created a new registry called the "Matroska Chapter Codec IDs" registry.
 The values correspond to the unsigned integer <tt>ChapProcessCodecID</tt>, <tt>ChapterTranslateCodec</tt>, and <tt>TrackTranslateCodec</tt> values described in <xref target="chapprocesscodecid-element"/>.</t>
 <t>To register a new Chapter Codec ID in this registry, one needs a Chapter Codec ID value,
-a description, a Change Controller (IETF or email of registrant), and
+a description, a Change Controller, and
 a Reference to a document describing the Chapter Codec ID.</t>
 <t>The Chapter Codec IDs are to be allocated according to the "Specification Required" policy <xref target="RFC8126"/>.</t>
 <t><xref target="chapter-codec-id-registry-table"/> shows the initial contents of the "Matroska Chapter Codec IDs" registry. The Change Controller for the initial entries is the IETF.
@@ -10275,7 +10275,7 @@ a Reference to a document describing the Chapter Codec ID.</t>
 <t>IANA has created a new registry called the "Matroska Projection Types" registry.
 The values correspond to the unsigned integer <tt>ProjectionType</tt> value described in <xref target="projectiontype-element"/>.</t>
 <t>To register a new Projection Type in this registry, one needs a Projection Type value,
-a description, a Change Controller (IETF or email of registrant), and
+a description, a Change Controller, and
 an optional Reference to a document describing the Projection Type.</t>
 <t>The Projection Types are to be allocated according to the "First Come First Served" policy <xref target="RFC8126"/>.</t>
 <t><xref target="projection-type-registry-table"/> shows the initial contents of the "Matroska Projection Types" registry. The Change Controller for the initial entries is the IETF.
@@ -10321,7 +10321,7 @@ an optional Reference to a document describing the Projection Type.</t>
 <t>IANA has created a new registry called the "Matroska Track Types" registry.
 The values correspond to the unsigned integer <tt>TrackType</tt> value described in <xref target="tracktype-element"/>.</t>
 <t>To register a new Track Type in this registry, one needs a Track Type value,
-a description, a Change Controller (IETF or email of registrant), and
+a description, a Change Controller, and
 a Reference to a document describing the Track Type.</t>
 <t>The Track Types are to be allocated according to the "Specification Required" policy <xref target="RFC8126"/>.</t>
 <t><xref target="track-type-registry-table"/> shows the initial contents of the "Matroska Track Types" registry. The Change Controller for the initial entries is the IETF.
@@ -10393,7 +10393,7 @@ a Reference to a document describing the Track Type.</t>
 <t>IANA has created a new registry called the "Matroska Track Plane Types" registry.
 The values correspond to the unsigned integer <tt>TrackPlaneType</tt> value described in <xref target="trackplanetype-element"/>.</t>
 <t>To register a new Track Plane Type in this registry, one needs a Track Plane Type value,
-a description, a Change Controller (IETF or email of registrant), and
+a description, a Change Controller, and
 an optional Reference to a document describing the Track Plane Type.</t>
 <t>The Track Plane Types are to be allocated according to the "First Come First Served" policy <xref target="RFC8126"/>.</t>
 <t><xref target="track-plane-type-registry-table"/> shows the initial contents of the "Matroska Track Plane Types" registry.
