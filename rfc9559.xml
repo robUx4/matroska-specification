@@ -9782,6 +9782,8 @@ The values correspond to the unsigned integer <tt>ContentEncodingScope</tt> valu
 a description, a Change Controller, and
 a Reference to a document describing the Content Encoding Scope.</t>
 <t>The Content Encoding Scopes are to be allocated according to the "Specification Required" policy <xref target="RFC8126"/>.</t>
+<t>The Content Encoding Scope is a bit-field value so only power of 2 value can be registered.</t>
+<t>The value 0 is not valid for use as a Content Encoding Scope.</t>
 <t><xref target="content-encoding-scope-registry-table"/> shows the initial contents of the "Matroska Content Encoding Scopes" registry. The Change Controller for the initial entries is the IETF.
 </t>
 <table anchor="content-encoding-scope-registry-table"><name>Initial Contents of "Matroska Content Encoding Scopes" Registry</name>
@@ -10180,6 +10182,7 @@ The values correspond to the unsigned integer <tt>TargetTypeValue</tt> value des
 a description, a Change Controller, and
 a Reference to a document describing the Tags Target Type.</t>
 <t>The Tags Target Types are to be allocated according to the "Specification Required" policy <xref target="RFC8126"/>.</t>
+<t>The value 0 is not valid for use as a Tags Target Type.</t>
 <t><xref target="tags-target-type-registry-table"/> shows the initial contents of the "Matroska Tags Target Types" registry. The Change Controller for the initial entries is the IETF.
 </t>
 <table anchor="tags-target-type-registry-table"><name>Initial Contents of "Matroska Tags Target Types" Registry</name>
