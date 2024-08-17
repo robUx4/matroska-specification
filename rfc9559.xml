@@ -2875,7 +2875,7 @@ This is additive with <tt>ChromaSubsamplingVert</tt>.</dd>
 </table>
 </section>
 
-<section anchor="range-element"><name>Range Element</name>
+<section anchor="color-range-element"><name>Color Range Element</name>
 
 <dl spacing="compact">
 <dt>id / type / default:</dt>
@@ -9107,7 +9107,7 @@ entries is the IETF.</t>
 <tr>
 <td align="right">0x55B9</td>
 <td align="left">Range</td>
-<td align="left">RFC 9559, <xref target="range-element"/></td>
+<td align="left">RFC 9559, <xref target="color-range-element"/></td>
 </tr>
 
 <tr>
@@ -10488,15 +10488,8 @@ an optional Reference to a document describing the Vertical Chroma Siting.</t>
 
 
 <section anchor="color-ranges-registry"><name>Color Ranges Registry</name>
-<!-- [rfced] This section seems to correlate with section 5.1.4.1.28.25 (Range Element).  Should the titles match?  
-
-Current: 
-5.1.4.1.28.25.  Range Element
-27.17.  Color Ranges Registry
--->
-
 <t>IANA has created a new registry called the "Color Ranges" registry.
-The values correspond to the unsigned integer <tt>Range</tt> value described in <xref target="range-element"/>.</t>
+The values correspond to the unsigned integer <tt>Range</tt> value described in <xref target="color-range-element"/>.</t>
 <t>To register a new Color Range in this registry, one needs a Color Range value,
 a description, a Change Controller (IETF or email of registrant), and
 an optional Reference to a document describing the Color Range.</t>
@@ -10516,25 +10509,25 @@ an optional Reference to a document describing the Color Range.</t>
 <tr>
 <td align="right">0</td>
 <td align="left">unspecified</td>
-<td align="left">RFC 9559, <xref target="range-element"/></td>
+<td align="left">RFC 9559, <xref target="color-range-element"/></td>
 </tr>
 
 <tr>
 <td align="right">1</td>
 <td align="left">broadcast range</td>
-<td align="left">RFC 9559, <xref target="range-element"/></td>
+<td align="left">RFC 9559, <xref target="color-range-element"/></td>
 </tr>
 
 <tr>
 <td align="right">2</td>
 <td align="left">full range</td>
-<td align="left">RFC 9559, <xref target="range-element"/></td>
+<td align="left">RFC 9559, <xref target="color-range-element"/></td>
 </tr>
 
 <tr>
 <td align="right">3</td>
 <td align="left">defined by MatrixCoefficients / TransferCharacteristics</td>
-<td align="left">RFC 9559, <xref target="range-element"/></td>
+<td align="left">RFC 9559, <xref target="color-range-element"/></td>
 </tr>
 </tbody>
 </table>
