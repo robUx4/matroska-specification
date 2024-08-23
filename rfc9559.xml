@@ -1291,6 +1291,8 @@ playback.</dd>
 <dl spacing="compact">
 <dt>id / type:</dt>
 <dd>0x83 / uinteger</dd>
+<dt>range:</dt>
+<dd>not 0</dd>
 <dt>path:</dt>
 <dd><tt>\Segment\Tracks\TrackEntry\TrackType</tt></dd>
 <dt>minOccurs / maxOccurs:</dt>
@@ -3832,6 +3834,8 @@ This value <bcp14>MUST</bcp14> be unique for each <tt>ContentEncoding</tt> found
 <dl spacing="compact">
 <dt>id / type / default:</dt>
 <dd>0x5032 / uinteger / 1</dd>
+<dt>range:</dt>
+<dd>not 0</dd>
 <dt>path:</dt>
 <dd><tt>\Segment\Tracks\TrackEntry\ContentEncodings\ContentEncoding\ContentEncodingScope</tt></dd>
 <dt>minOccurs / maxOccurs:</dt>
@@ -4141,6 +4145,8 @@ A <tt>Matroska Player</tt> <bcp14>MAY</bcp14> support encryption.</dd>
 <dl spacing="compact">
 <dt>id / type:</dt>
 <dd>0x47E8 / uinteger</dd>
+<dt>range:</dt>
+<dd>not 0</dd>
 <dt>path:</dt>
 <dd><tt>\Segment\Tracks\TrackEntry\ContentEncodings\ContentEncoding\ContentEncryption\ContentEncAESSettings\AESSettingsCipherMode</tt></dd>
 <dt>minOccurs / maxOccurs:</dt>
@@ -5023,6 +5029,8 @@ If empty or omitted, then the tag value describes everything in the <tt>Segment<
 <dl spacing="compact">
 <dt>id / type / default:</dt>
 <dd>0x68CA / uinteger / 50</dd>
+<dt>range:</dt>
+<dd>not 0</dd>
 <dt>path:</dt>
 <dd><tt>\Segment\Tags\Tag\Targets\TargetTypeValue</tt></dd>
 <dt>minOccurs / maxOccurs:</dt>
@@ -5033,7 +5041,7 @@ If empty or omitted, then the tag value describes everything in the <tt>Segment<
 <dd>See <xref target="TargetTypeValueValues"/>. Additional values can be registered in the "Matroska Tags Target Types" registry defined in <xref target="matroska-tags-target-types-registry"/>.</dd>
 <dt>usage notes:</dt>
 <dd>The <tt>TargetTypeValue</tt> values are meant to be compared.
-Higher values MUST correspond to a logical level that contains the logical level lower <tt>TargetTypeValue</tt> values.</dd>
+Higher values <bcp14>MUST</bcp14> correspond to a logical level that contains the lower logical level <tt>TargetTypeValue</tt> values.</dd>
 </dl>
 <table anchor="TargetTypeValueValues"><name>TargetTypeValue Values</name>
 <thead>
@@ -9752,7 +9760,9 @@ The values correspond to the unsigned integer <tt>AESSettingsCipherMode</tt> val
 a description, a Change Controller, and
 an optional Reference to a document describing the AES Cipher Mode.</t>
 <t>The AES Cipher Modes are to be allocated according to the "First Come First Served" policy <xref target="RFC8126"/>.</t>
-<t><xref target="aes-cipher-mode-registry-table"/> shows the initial contents of the "Matroska AES Cipher Modes" registry. The Change Controller for the initial entries is the IETF.</t>
+<t>The value 0 is not valid for use as an AES Cipher Mode.</t>
+<t><xref target="aes-cipher-mode-registry-table"/> shows the initial contents of the "Matroska AES Cipher Modes" registry.
+The Change Controller for the initial entries is the IETF.</t>
 <table anchor="aes-cipher-mode-registry-table"><name>Initial Contents of "Matroska AES Cipher Modes" Registry</name>
 <thead>
 <tr>
@@ -10330,8 +10340,9 @@ The values correspond to the unsigned integer <tt>TrackType</tt> value described
 a description, a Change Controller, and
 a Reference to a document describing the Track Type.</t>
 <t>The Track Types are to be allocated according to the "Specification Required" policy <xref target="RFC8126"/>.</t>
-<t><xref target="track-type-registry-table"/> shows the initial contents of the "Matroska Track Types" registry. The Change Controller for the initial entries is the IETF.
-</t>
+<t>The value 0 is not valid for use as a Track Type.</t>
+<t><xref target="track-type-registry-table"/> shows the initial contents of the "Matroska Track Types" registry.
+The Change Controller for the initial entries is the IETF.</t>
 <table anchor="track-type-registry-table"><name>Initial Contents of "Matroska Track Types" Registry</name>
 <thead>
 <tr>
