@@ -3858,19 +3858,19 @@ This value <bcp14>MUST</bcp14> be unique for each <tt>ContentEncoding</tt> found
 
 <tbody>
 <tr>
-<td align="left"><tt>1</tt></td>
+<td align="left"><tt>0x1</tt></td>
 <td align="left">Block</td>
 <td align="left">All frame contents, excluding lacing data.</td>
 </tr>
 
 <tr>
-<td align="left"><tt>2</tt></td>
+<td align="left"><tt>0x2</tt></td>
 <td align="left">Private</td>
 <td align="left">The track's <tt>CodecPrivate</tt> data.</td>
 </tr>
 
 <tr>
-<td align="left"><tt>4</tt></td>
+<td align="left"><tt>0x4</tt></td>
 <td align="left">Next</td>
 <td align="left">The next ContentEncoding (next <tt>ContentEncodingOrder</tt>; the data inside <tt>ContentCompression</tt> and/or <tt>ContentEncryption</tt>). This value <bcp14>SHOULD NOT</bcp14> be used, as it's not supported by players.</td>
 </tr>
@@ -9810,19 +9810,19 @@ a Reference to a document describing the Content Encoding Scope.</t>
 
 <tbody>
 <tr>
-<td align="right">1</td>
+<td align="right">0x1</td>
 <td align="left">Block</td>
 <td align="left">RFC 9559, <xref target="contentencodingscope-element"/></td>
 </tr>
 
 <tr>
-<td align="right">2</td>
+<td align="right">0x2</td>
 <td align="left">Private</td>
 <td align="left">RFC 9559, <xref target="contentencodingscope-element"/></td>
 </tr>
 
 <tr>
-<td align="right">4</td>
+<td align="right">0x4</td>
 <td align="left">Next</td>
 <td align="left">RFC 9559, <xref target="contentencodingscope-element"/></td>
 </tr>
