@@ -9655,7 +9655,7 @@ The values correspond to the unsigned integer <tt>ContentCompAlgo</tt> value des
 <t>To register a new Compression Algorithm in this registry, one needs a Compression Algorithm value,
 a description, a Change Controller, and
 a Reference to a document describing the Compression Algorithm.</t>
-<t>The Compression Algorithms are to be allocated according to the "Specification Required" policy <xref target="RFC8126"/>.</t>
+<t>The Compression Algorithms are to be allocated according to the "Specification Required" policy <xref target="RFC8126"/>. Available values range from 4-18446744073709551615.</t>
 <t><xref target="compression-algorithm-registry-table"/> shows the initial contents of the "Matroska Compression Algorithms" registry.
 The Change Controller for the initial entries is the IETF.</t>
 <table anchor="compression-algorithm-registry-table"><name>Initial Contents of "Matroska Compression Algorithms" Registry</name>
@@ -9701,7 +9701,7 @@ The values correspond to the unsigned integer <tt>ContentEncAlgo</tt> value desc
 <t>To register a new Encryption Algorithm in this registry, one needs an Encryption Algorithm value,
 a description, a Change Controller, and
 an optional Reference to a document describing the Encryption Algorithm.</t>
-<t>The Encryption Algorithms are to be allocated according to the "First Come First Served" policy <xref target="RFC8126"/>.</t>
+<t>The Encryption Algorithms are to be allocated according to the "First Come First Served" policy <xref target="RFC8126"/>. Available values range from 6-18446744073709551615.</t>
 <t><xref target="encryption-algorithm-registry-table"/> shows the initial contents of the "Matroska Encryption Algorithms" registry. The Change Controller for the initial entries is the IETF.
 </t>
 <table anchor="encryption-algorithm-registry-table"><name>Initial Contents of "Matroska Encryption Algorithms" Registry</name>
@@ -9759,7 +9759,7 @@ The values correspond to the unsigned integer <tt>AESSettingsCipherMode</tt> val
 <t>To register a new AES Cipher Mode in this registry, one needs an AES Cipher Mode value,
 a description, a Change Controller, and
 an optional Reference to a document describing the AES Cipher Mode.</t>
-<t>The AES Cipher Modes are to be allocated according to the "First Come First Served" policy <xref target="RFC8126"/>.</t>
+<t>The AES Cipher Modes are to be allocated according to the "First Come First Served" policy <xref target="RFC8126"/>. Available values range from 3-18446744073709551615.</t>
 <t>The value 0 is not valid for use as an AES Cipher Mode.</t>
 <t><xref target="aes-cipher-mode-registry-table"/> shows the initial contents of the "Matroska AES Cipher Modes" registry.
 The Change Controller for the initial entries is the IETF.</t>
@@ -9794,7 +9794,7 @@ The values correspond to the unsigned integer <tt>ContentEncodingScope</tt> valu
 <t>To register a new Content Encoding Scope in this registry, one needs a Content Encoding Scope value,
 a description, a Change Controller, and
 a Reference to a document describing the Content Encoding Scope.</t>
-<t>The Content Encoding Scopes are to be allocated according to the "Specification Required" policy <xref target="RFC8126"/>.</t>
+<t>The Content Encoding Scopes are to be allocated according to the "Specification Required" policy <xref target="RFC8126"/>. Available values range from 0x8-0x8000000000000000.</t>
 <t>The Content Encoding Scope is a bit-field value so only power of 2 value can be registered.</t>
 <t>The value 0 is not valid for use as a Content Encoding Scope.</t>
 <t><xref target="content-encoding-scope-registry-table"/> shows the initial contents of the "Matroska Content Encoding Scopes" registry. The Change Controller for the initial entries is the IETF.
@@ -9836,7 +9836,7 @@ The values correspond to the unsigned integer <tt>ContentEncodingType</tt> value
 <t>To register a new Content Encoding Type in this registry, one needs a Content Encoding Type value,
 a description, a Change Controller, and
 a Reference to a document describing the Content Encoding Type.</t>
-<t>The Content Encoding Types are to be allocated according to the "Specification Required" policy <xref target="RFC8126"/>.</t>
+<t>The Content Encoding Types are to be allocated according to the "Specification Required" policy <xref target="RFC8126"/>. Available values range from 2-18446744073709551615.</t>
 <t><xref target="content-encoding-type-registry-table"/> shows the initial contents of the "Matroska Content Encoding Types" registry. The Change Controller for the initial entries is the IETF.
 </t>
 <table anchor="content-encoding-type-registry-table"><name>Initial Contents of "Matroska Content Encoding Types" Registry</name>
@@ -9870,7 +9870,7 @@ The values correspond to the unsigned integer <tt>StereoMode</tt> value describe
 <t>To register a new Stereo Mode in this registry, one needs a Stereo Mode value,
 a description, a Change Controller, and
 a Reference to a document describing the Stereo Mode.</t>
-<t>The Stereo Modes are to be allocated according to the "Specification Required" policy <xref target="RFC8126"/>.</t>
+<t>The Stereo Modes are to be allocated according to the "Specification Required" policy <xref target="RFC8126"/>. Available values range from 15-18446744073709551615.</t>
 <t><xref target="stereo-mode-registry-table"/> shows the initial contents of the "Matroska Stereo Modes" registry. The Change Controller for the initial entries is the IETF.
 </t>
 <table anchor="stereo-mode-registry-table"><name>Initial Contents of "Matroska Stereo Modes" Registry</name>
@@ -9982,7 +9982,7 @@ The values correspond to the unsigned integer <tt>AlphaMode</tt> value described
 <t>To register a new Alpha Mode in this registry, one needs an Alpha Mode value,
 a description, a Change Controller, and
 an optional Reference to a document describing the Alpha Mode.</t>
-<t>The Alpha Modes are to be allocated according to the "First Come First Served" policy <xref target="RFC8126"/>.</t>
+<t>The Alpha Modes are to be allocated according to the "First Come First Served" policy <xref target="RFC8126"/>. Available values range from 2-18446744073709551615.</t>
 <t><xref target="alpha-mode-registry-table"/> shows the initial contents of the "Matroska Alpha Modes" registry. The Change Controller for the initial entries is the IETF.
 </t>
 <table anchor="alpha-mode-registry-table"><name>Initial Contents of "Matroska Alpha Modes" Registry</name>
@@ -10016,7 +10016,7 @@ The values correspond to the unsigned integer <tt>DisplayUnit</tt> value describ
 <t>To register a new Display Unit in this registry, one needs a Display Unit value,
 a description, a Change Controller, and
 a Reference to a document describing the Display Unit.</t>
-<t>The Display Units are to be allocated according to the "Specification Required" policy <xref target="RFC8126"/>.</t>
+<t>The Display Units are to be allocated according to the "Specification Required" policy <xref target="RFC8126"/>. Available values range from 5-18446744073709551615.</t>
 <t><xref target="display-unit-registry-table"/> shows the initial contents of the "Matroska Display Units" registry. The Change Controller for the initial entries is the IETF.
 </t>
 <table anchor="display-unit-registry-table"><name>Initial Contents of "Matroska Display Units" Registry</name>
@@ -10068,7 +10068,7 @@ The values correspond to the unsigned integer <tt>ChromaSitingHorz</tt> value de
 <t>To register a new Horizontal Chroma Siting in this registry, one needs a Horizontal Chroma Siting value,
 a description, a Change Controller, and
 an optional Reference to a document describing the Horizontal Chroma Siting.</t>
-<t>The Horizontal Chroma Sitings are to be allocated according to the "First Come First Served" policy <xref target="RFC8126"/>.</t>
+<t>The Horizontal Chroma Sitings are to be allocated according to the "First Come First Served" policy <xref target="RFC8126"/>. Available values range from 3-18446744073709551615.</t>
 <t><xref target="horizontal-chroma-siting-registry-table"/> shows the initial contents of the "Matroska Horizontal Chroma Sitings" registry.
 The Change Controller for the initial entries is the IETF.</t>
 <table anchor="horizontal-chroma-siting-registry-table"><name>Initial Contents of "Matroska Horizontal Chroma Sitings" Registry</name>
@@ -10108,7 +10108,7 @@ The values correspond to the unsigned integer <tt>ChromaSitingVert</tt> value de
 <t>To register a new Vertical Chroma Siting in this registry, one needs a Vertical Chroma Siting value,
 a description, a Change Controller, and
 an optional Reference to a document describing the Vertical Chroma Siting.</t>
-<t>The Vertical Chroma Sitings are to be allocated according to the "First Come First Served" policy <xref target="RFC8126"/>.</t>
+<t>The Vertical Chroma Sitings are to be allocated according to the "First Come First Served" policy <xref target="RFC8126"/>. Available values range from 3-18446744073709551615.</t>
 <t><xref target="vertical-chroma-siting-registry-table"/> shows the initial contents of the "Matroska Vertical Chroma Sitings" registry.
 The Change Controller for the initial entries is the IETF.</t>
 <table anchor="vertical-chroma-siting-registry-table"><name>Initial Contents of "Matroska Vertical Chroma Sitings" Registry</name>
@@ -10148,7 +10148,7 @@ The values correspond to the unsigned integer <tt>Range</tt> value described in 
 <t>To register a new Color Range in this registry, one needs a Color Range value,
 a description, a Change Controller, and
 a Reference to a document describing the Color Range.</t>
-<t>The Color Ranges are to be allocated according to the "Specification Required" policy <xref target="RFC8126"/>.</t>
+<t>The Color Ranges are to be allocated according to the "Specification Required" policy <xref target="RFC8126"/>. Available values range from 4-18446744073709551615.</t>
 <t><xref target="color-range-registry-table"/> shows the initial contents of the "Matroska Color Ranges" registry. The Change Controller for the initial entries is the IETF.
 </t>
 <table anchor="color-range-registry-table"><name>Initial Contents of "Matroska Color Ranges" Registry</name>
@@ -10194,7 +10194,7 @@ The values correspond to the unsigned integer <tt>TargetTypeValue</tt> value des
 <t>To register a new Tags Target Type in this registry, one needs a Tags Target Type value,
 a description, a Change Controller, and
 a Reference to a document describing the Tags Target Type.</t>
-<t>The Tags Target Types are to be allocated according to the "Specification Required" policy <xref target="RFC8126"/>.</t>
+<t>The Tags Target Types are to be allocated according to the "Specification Required" policy <xref target="RFC8126"/>. Available values range from 1-9, 11-19, 21-29, 31-39, 41-49, 51-59, 61-69, 71-18446744073709551615.</t>
 <t>The value 0 is not valid for use as a Tags Target Type.</t>
 <t><xref target="tags-target-type-registry-table"/> shows the initial contents of the "Matroska Tags Target Types" registry. The Change Controller for the initial entries is the IETF.
 </t>
@@ -10259,7 +10259,7 @@ The values correspond to the unsigned integer <tt>ChapProcessCodecID</tt>, <tt>C
 <t>To register a new Chapter Codec ID in this registry, one needs a Chapter Codec ID value,
 a description, a Change Controller, and
 a Reference to a document describing the Chapter Codec ID.</t>
-<t>The Chapter Codec IDs are to be allocated according to the "Specification Required" policy <xref target="RFC8126"/>.</t>
+<t>The Chapter Codec IDs are to be allocated according to the "Specification Required" policy <xref target="RFC8126"/>. Available values range from 2-18446744073709551615.</t>
 <t><xref target="chapter-codec-id-registry-table"/> shows the initial contents of the "Matroska Chapter Codec IDs" registry. The Change Controller for the initial entries is the IETF.
 </t>
 <table anchor="chapter-codec-id-registry-table"><name>Initial Contents of "Matroska Chapter Codec IDs" Registry</name>
@@ -10293,7 +10293,7 @@ The values correspond to the unsigned integer <tt>ProjectionType</tt> value desc
 <t>To register a new Projection Type in this registry, one needs a Projection Type value,
 a description, a Change Controller, and
 an optional Reference to a document describing the Projection Type.</t>
-<t>The Projection Types are to be allocated according to the "First Come First Served" policy <xref target="RFC8126"/>.</t>
+<t>The Projection Types are to be allocated according to the "First Come First Served" policy <xref target="RFC8126"/>. Available values range from 4-18446744073709551615.</t>
 <t><xref target="projection-type-registry-table"/> shows the initial contents of the "Matroska Projection Types" registry. The Change Controller for the initial entries is the IETF.
 </t>
 <table anchor="projection-type-registry-table"><name>Initial Contents of "Matroska Projection Types" Registry</name>
@@ -10339,7 +10339,7 @@ The values correspond to the unsigned integer <tt>TrackType</tt> value described
 <t>To register a new Track Type in this registry, one needs a Track Type value,
 a description, a Change Controller, and
 a Reference to a document describing the Track Type.</t>
-<t>The Track Types are to be allocated according to the "Specification Required" policy <xref target="RFC8126"/>.</t>
+<t>The Track Types are to be allocated according to the "Specification Required" policy <xref target="RFC8126"/>. Available values range from 4-15, 19-31, 34-18446744073709551615.</t>
 <t>The value 0 is not valid for use as a Track Type.</t>
 <t><xref target="track-type-registry-table"/> shows the initial contents of the "Matroska Track Types" registry.
 The Change Controller for the initial entries is the IETF.</t>
@@ -10412,7 +10412,7 @@ The values correspond to the unsigned integer <tt>TrackPlaneType</tt> value desc
 <t>To register a new Track Plane Type in this registry, one needs a Track Plane Type value,
 a description, a Change Controller, and
 an optional Reference to a document describing the Track Plane Type.</t>
-<t>The Track Plane Types are to be allocated according to the "First Come First Served" policy <xref target="RFC8126"/>.</t>
+<t>The Track Plane Types are to be allocated according to the "First Come First Served" policy <xref target="RFC8126"/>. Available values range from 3-18446744073709551615.</t>
 <t><xref target="track-plane-type-registry-table"/> shows the initial contents of the "Matroska Track Plane Types" registry.
 The Change Controller for the initial entries is the IETF.</t>
 <table anchor="track-plane-type-registry-table"><name>Initial Contents of "Matroska Track Plane Types" Registry</name>
