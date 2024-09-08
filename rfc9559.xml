@@ -858,7 +858,7 @@ The format depends on the <tt>ChapProcessCodecID</tt> used; see <xref target="ch
 <dt>id / type / default:</dt>
 <dd>0x2AD7B1 / uinteger / 1000000</dd>
 <dt>range:</dt>
-<dd>not 0</dd>
+<dd>not 0 (1-18446744073709551615)</dd>
 <dt>path:</dt>
 <dd><tt>\Segment\Info\TimestampScale</tt></dd>
 <dt>minOccurs / maxOccurs:</dt>
@@ -1095,7 +1095,7 @@ An EBML parser that has no knowledge of the <tt>Block</tt> structure could still
 <dt>id / type / default:</dt>
 <dd>0xEE / uinteger / 1</dd>
 <dt>range:</dt>
-<dd>not 0</dd>
+<dd>not 0 (1-18446744073709551615)</dd>
 <dt>path:</dt>
 <dd><tt>\Segment\Cluster\BlockGroup\BlockAdditions\BlockMore\BlockAddID</tt></dd>
 <dt>minOccurs / maxOccurs:</dt>
@@ -1258,7 +1258,7 @@ playback.</dd>
 <dt>id / type:</dt>
 <dd>0xD7 / uinteger</dd>
 <dt>range:</dt>
-<dd>not 0</dd>
+<dd>not 0 (1-18446744073709551615)</dd>
 <dt>path:</dt>
 <dd><tt>\Segment\Tracks\TrackEntry\TrackNumber</tt></dd>
 <dt>minOccurs / maxOccurs:</dt>
@@ -1274,7 +1274,7 @@ playback.</dd>
 <dt>id / type:</dt>
 <dd>0x73C5 / uinteger</dd>
 <dt>range:</dt>
-<dd>not 0</dd>
+<dd>not 0 (1-18446744073709551615)</dd>
 <dt>path:</dt>
 <dd><tt>\Segment\Tracks\TrackEntry\TrackUID</tt></dd>
 <dt>minOccurs / maxOccurs:</dt>
@@ -1292,7 +1292,7 @@ playback.</dd>
 <dt>id / type:</dt>
 <dd>0x83 / uinteger</dd>
 <dt>range:</dt>
-<dd>not 0</dd>
+<dd>not 0 (1-18446744073709551615)</dd>
 <dt>path:</dt>
 <dd><tt>\Segment\Tracks\TrackEntry\TrackType</tt></dd>
 <dt>minOccurs / maxOccurs:</dt>
@@ -1532,7 +1532,7 @@ When set to 0, all blocks <bcp14>MUST</bcp14> have their lacing flags set to "no
 <dt>id / type:</dt>
 <dd>0x23E383 / uinteger</dd>
 <dt>range:</dt>
-<dd>not 0</dd>
+<dd>not 0 (1-18446744073709551615)</dd>
 <dt>path:</dt>
 <dd><tt>\Segment\Tracks\TrackEntry\DefaultDuration</tt></dd>
 <dt>maxOccurs:</dt>
@@ -1551,7 +1551,7 @@ When set to 0, all blocks <bcp14>MUST</bcp14> have their lacing flags set to "no
 <dt>id / type:</dt>
 <dd>0x234E7A / uinteger</dd>
 <dt>range:</dt>
-<dd>not 0</dd>
+<dd>not 0 (1-18446744073709551615)</dd>
 <dt>path:</dt>
 <dd><tt>\Segment\Tracks\TrackEntry\DefaultDecodedFieldDuration</tt></dd>
 <dt>maxOccurs:</dt>
@@ -1793,7 +1793,7 @@ see <xref target="I-D.ietf-cellar-codec"/> for more info.</dd>
 <dt>id / type:</dt>
 <dd>0x7446 / uinteger</dd>
 <dt>range:</dt>
-<dd>not 0</dd>
+<dd>not 0 (1-18446744073709551615)</dd>
 <dt>path:</dt>
 <dd><tt>\Segment\Tracks\TrackEntry\AttachmentLink</tt></dd>
 <dt>maxOccurs:</dt>
@@ -2245,7 +2245,7 @@ behavior of known implementations is different.</dd>
 <dt>id / type:</dt>
 <dd>0xB0 / uinteger</dd>
 <dt>range:</dt>
-<dd>not 0</dd>
+<dd>not 0 (1-18446744073709551615)</dd>
 <dt>path:</dt>
 <dd><tt>\Segment\Tracks\TrackEntry\Video\PixelWidth</tt></dd>
 <dt>minOccurs / maxOccurs:</dt>
@@ -2263,7 +2263,7 @@ behavior of known implementations is different.</dd>
 <dt>id / type:</dt>
 <dd>0xBA / uinteger</dd>
 <dt>range:</dt>
-<dd>not 0</dd>
+<dd>not 0 (1-18446744073709551615)</dd>
 <dt>path:</dt>
 <dd><tt>\Segment\Tracks\TrackEntry\Video\PixelHeight</tt></dd>
 <dt>minOccurs / maxOccurs:</dt>
@@ -2345,7 +2345,7 @@ behavior of known implementations is different.</dd>
 <dt>id / type:</dt>
 <dd>0x54B0 / uinteger</dd>
 <dt>range:</dt>
-<dd>not 0</dd>
+<dd>not 0 (1-18446744073709551615)</dd>
 <dt>path:</dt>
 <dd><tt>\Segment\Tracks\TrackEntry\Video\DisplayWidth</tt></dd>
 <dt>maxOccurs:</dt>
@@ -2380,7 +2380,7 @@ behavior of known implementations is different.</dd>
 <dt>id / type:</dt>
 <dd>0x54BA / uinteger</dd>
 <dt>range:</dt>
-<dd>not 0</dd>
+<dd>not 0 (1-18446744073709551615)</dd>
 <dt>path:</dt>
 <dd><tt>\Segment\Tracks\TrackEntry\Video\DisplayHeight</tt></dd>
 <dt>maxOccurs:</dt>
@@ -3592,7 +3592,7 @@ flips the image horizontally and vertically.</dd>
 <dt>id / type / default:</dt>
 <dd>0x9F / uinteger / 1</dd>
 <dt>range:</dt>
-<dd>not 0</dd>
+<dd>not 0 (1-18446744073709551615)</dd>
 <dt>path:</dt>
 <dd><tt>\Segment\Tracks\TrackEntry\Audio\Channels</tt></dd>
 <dt>minOccurs / maxOccurs:</dt>
@@ -3610,7 +3610,7 @@ flips the image horizontally and vertically.</dd>
 <dt>id / type:</dt>
 <dd>0x6264 / uinteger</dd>
 <dt>range:</dt>
-<dd>not 0</dd>
+<dd>not 0 (1-18446744073709551615)</dd>
 <dt>path:</dt>
 <dd><tt>\Segment\Tracks\TrackEntry\Audio\BitDepth</tt></dd>
 <dt>maxOccurs:</dt>
@@ -3682,7 +3682,7 @@ flips the image horizontally and vertically.</dd>
 <dt>id / type:</dt>
 <dd>0xE5 / uinteger</dd>
 <dt>range:</dt>
-<dd>not 0</dd>
+<dd>not 0 (1-18446744073709551615)</dd>
 <dt>path:</dt>
 <dd><tt>\Segment\Tracks\TrackEntry\TrackOperation\TrackCombinePlanes\TrackPlane\TrackPlaneUID</tt></dd>
 <dt>minOccurs / maxOccurs:</dt>
@@ -3765,7 +3765,7 @@ flips the image horizontally and vertically.</dd>
 <dt>id / type:</dt>
 <dd>0xED / uinteger</dd>
 <dt>range:</dt>
-<dd>not 0</dd>
+<dd>not 0 (1-18446744073709551615)</dd>
 <dt>path:</dt>
 <dd><tt>\Segment\Tracks\TrackEntry\TrackOperation\TrackJoinBlocks\TrackJoinUID</tt></dd>
 <dt>minOccurs:</dt>
@@ -3835,7 +3835,7 @@ This value <bcp14>MUST</bcp14> be unique for each <tt>ContentEncoding</tt> found
 <dt>id / type / default:</dt>
 <dd>0x5032 / uinteger / 1</dd>
 <dt>range:</dt>
-<dd>not 0</dd>
+<dd>not 0 (0x1-0x8000000000000000)</dd>
 <dt>path:</dt>
 <dd><tt>\Segment\Tracks\TrackEntry\ContentEncodings\ContentEncoding\ContentEncodingScope</tt></dd>
 <dt>minOccurs / maxOccurs:</dt>
@@ -4146,7 +4146,7 @@ A <tt>Matroska Player</tt> <bcp14>MAY</bcp14> support encryption.</dd>
 <dt>id / type:</dt>
 <dd>0x47E8 / uinteger</dd>
 <dt>range:</dt>
-<dd>not 0</dd>
+<dd>not 0 (1-18446744073709551615)</dd>
 <dt>path:</dt>
 <dd><tt>\Segment\Tracks\TrackEntry\ContentEncodings\ContentEncoding\ContentEncryption\ContentEncAESSettings\AESSettingsCipherMode</tt></dd>
 <dt>minOccurs / maxOccurs:</dt>
@@ -4280,7 +4280,7 @@ local to the <tt>Segment</tt>.</dd>
 <dt>id / type:</dt>
 <dd>0xF7 / uinteger</dd>
 <dt>range:</dt>
-<dd>not 0</dd>
+<dd>not 0 (1-18446744073709551615)</dd>
 <dt>path:</dt>
 <dd><tt>\Segment\Cues\CuePoint\CueTrackPositions\CueTrack</tt></dd>
 <dt>minOccurs / maxOccurs:</dt>
@@ -4344,7 +4344,7 @@ If missing, the track's <tt>DefaultDuration</tt> does not apply and no duration 
 <dt>id / type:</dt>
 <dd>0x5378 / uinteger</dd>
 <dt>range:</dt>
-<dd>not 0</dd>
+<dd>not 0 (1-18446744073709551615)</dd>
 <dt>path:</dt>
 <dd><tt>\Segment\Cues\CuePoint\CueTrackPositions\CueBlockNumber</tt></dd>
 <dt>maxOccurs:</dt>
@@ -4497,7 +4497,7 @@ data is taken from the initial <tt>TrackEntry</tt>.</dd>
 <dt>id / type:</dt>
 <dd>0x46AE / uinteger</dd>
 <dt>range:</dt>
-<dd>not 0</dd>
+<dd>not 0 (1-18446744073709551615)</dd>
 <dt>path:</dt>
 <dd><tt>\Segment\Attachments\AttachedFile\FileUID</tt></dd>
 <dt>minOccurs / maxOccurs:</dt>
@@ -4546,7 +4546,7 @@ For more detailed information, see <xref target="chapters"/>.</dd>
 <dt>id / type:</dt>
 <dd>0x45BC / uinteger</dd>
 <dt>range:</dt>
-<dd>not 0</dd>
+<dd>not 0 (1-18446744073709551615)</dd>
 <dt>path:</dt>
 <dd><tt>\Segment\Chapters\EditionEntry\EditionUID</tt></dd>
 <dt>maxOccurs:</dt>
@@ -4611,7 +4611,7 @@ For more detailed information, see <xref target="chapters"/>.</dd>
 <dt>id / type:</dt>
 <dd>0x73C4 / uinteger</dd>
 <dt>range:</dt>
-<dd>not 0</dd>
+<dd>not 0 (1-18446744073709551615)</dd>
 <dt>path:</dt>
 <dd><tt>\Segment\Chapters\EditionEntry\+ChapterAtom\ChapterUID</tt></dd>
 <dt>minOccurs / maxOccurs:</dt>
@@ -4748,7 +4748,7 @@ Hidden chapters <bcp14>SHOULD NOT</bcp14> be available to the user interface
 <dt>id / type:</dt>
 <dd>0x6EBC / uinteger</dd>
 <dt>range:</dt>
-<dd>not 0</dd>
+<dd>not 0 (1-18446744073709551615)</dd>
 <dt>path:</dt>
 <dd><tt>\Segment\Chapters\EditionEntry\+ChapterAtom\ChapterSegmentEditionUID</tt></dd>
 <dt>maxOccurs:</dt>
@@ -5030,7 +5030,7 @@ If empty or omitted, then the tag value describes everything in the <tt>Segment<
 <dt>id / type / default:</dt>
 <dd>0x68CA / uinteger / 50</dd>
 <dt>range:</dt>
-<dd>not 0</dd>
+<dd>not 0 (1-18446744073709551615)</dd>
 <dt>path:</dt>
 <dd><tt>\Segment\Tags\Tag\Targets\TargetTypeValue</tt></dd>
 <dt>minOccurs / maxOccurs:</dt>
